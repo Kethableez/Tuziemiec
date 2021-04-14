@@ -19,7 +19,7 @@ public class TourResource {
     private final TourService tourService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Tour>> getAllUsers() {
+    public ResponseEntity<List<Tour>> getAllTours() {
         List<Tour> tours = tourService.findAllTours();
         return new ResponseEntity<>(tours, HttpStatus.OK);
     }

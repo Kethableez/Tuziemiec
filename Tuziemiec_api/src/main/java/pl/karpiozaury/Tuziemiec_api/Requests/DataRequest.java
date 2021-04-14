@@ -1,4 +1,4 @@
-package pl.karpiozaury.Tuziemiec_api.Registration;
+package pl.karpiozaury.Tuziemiec_api.Requests;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -11,12 +11,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class RegistrationRequest {
+public class DataRequest {
     private final String firstName;
     private final String lastName;
-    private final String userName;
-    private final String email;
-    private final String password;
     private final LocalDate dayOfBirth;
-
 }

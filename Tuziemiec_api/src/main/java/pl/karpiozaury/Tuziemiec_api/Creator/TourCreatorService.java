@@ -5,6 +5,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Service;
 import pl.karpiozaury.Tuziemiec_api.Model.Tour;
 import pl.karpiozaury.Tuziemiec_api.Model.User;
+import pl.karpiozaury.Tuziemiec_api.Requests.TourCreatorRequest;
 import pl.karpiozaury.Tuziemiec_api.Service.TourService;
 import pl.karpiozaury.Tuziemiec_api.Service.UserService;
 
