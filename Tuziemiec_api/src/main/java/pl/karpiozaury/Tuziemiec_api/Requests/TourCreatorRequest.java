@@ -1,4 +1,4 @@
-package pl.karpiozaury.Tuziemiec_api.Creator;
+package pl.karpiozaury.Tuziemiec_api.Requests;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

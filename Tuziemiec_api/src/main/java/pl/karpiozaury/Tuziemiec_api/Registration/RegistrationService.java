@@ -3,6 +3,7 @@ package pl.karpiozaury.Tuziemiec_api.Registration;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.karpiozaury.Tuziemiec_api.Model.User;
+import pl.karpiozaury.Tuziemiec_api.Requests.RegistrationRequest;
 import pl.karpiozaury.Tuziemiec_api.Service.UserService;
 
 @Service
