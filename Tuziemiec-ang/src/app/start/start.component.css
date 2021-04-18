@@ -1,0 +1,148 @@
+html {
+    height: 100%;
+  }
+  
+  body {
+    height: 100%;
+    background: #ded9d5;
+    margin: 0;
+    padding: 0;
+    font-family: arial, verdana, sans-serif;
+  }
+  
+  .Top {
+    background-color: #353535;
+    background-image: url(428904.jpg);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: exclusion;
+    width: 100%;
+    height: 55%;
+  }
+  
+  .AppName {
+    text-align: left;
+    margin-left: 2%;
+  }
+  
+  .Main_text{
+    width: 100%;
+    font-family: 'Alata';
+    /* font-size: 60px; */
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 5px;
+    color: #ffffff;
+  }
+  
+  .Sub_text {
+    width: 100%;
+    margin-top: 42px;
+    font-family: 'Alegreya Sans', sans-serif;
+    /* font-size: 36px; */
+    font-size: 2vw;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  
+  .Name {
+    font-family: 'Alata';
+    font-style: italic;
+    /* font-size: 60px; */
+    font-size: 3vw;
+    color: #ffffff;
+  }
+  
+  .Caption {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-style: italic;
+    /* font-size: 24px; */
+    font-size: 1vw;
+    letter-spacing: 0.5vw;
+    margin-left: 0.5vw;
+    color: #ffffff;
+  }
+  
+  .Buttons {
+    width: 100%;
+    margin-top: 42px;
+  
+    text-align: center;
+  }
+  
+  a.Button {
+      margin-right: 50px;
+      margin-left: 50px;
+      width: 200px;
+      height: 50px;
+      background-color: #BDB4AE;
+      box-sizing: border-box;
+      border: 3px solid #BDB4AE;
+      border-radius: 20px;
+      font-style: italic;
+      /* font-size: 24px; */
+        font-size: 1.5vw;
+      color: #353535;
+      /* font-weight: bold; */
+  }
+  
+  a {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #ffffff;
+  }
+  
+  .Bottom {
+    background-color: #BDB4AE;
+    width: 100%;
+    height: 45%;
+    text-align: center;
+  }
+  
+  .Lighter {
+    background-color: #ded9d5;
+    margin: auto;
+    width: 90%;
+    height: 100%;
+  }
+  
+  .Block {
+    /* width: 600px; */
+    width: 30%;
+    height: auto;
+    margin-left: 3%;
+    margin-right: 3%;
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .text1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Alata';
+    /* font-size: 48px; */
+    font-size: 2.5vw;
+    color: #000000;
+    font-weight: bold;
+    /* //font-style: italic; */
+  }
+  
+  .text2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-family: 'Alegreya Sans', sans-serif;
+    /* font-size: 24px; */
+    font-size: 1.5vw;
+    color: #000000;
+    font-weight: lighter;
+  }
