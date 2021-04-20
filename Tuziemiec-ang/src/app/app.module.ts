@@ -13,6 +13,7 @@ import { StartComponent } from './start';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MainComponent } from './main/main.component';
+import { TripCreatorComponent } from './trip-creator/trip-creator.component';
  
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MainComponent } from './main/main.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    MainComponent
+    MainComponent,
+    TripCreatorComponent
   ],
   imports: [
     HttpClientModule,

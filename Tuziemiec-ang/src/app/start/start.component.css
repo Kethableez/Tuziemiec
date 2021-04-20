@@ -47,7 +47,7 @@ html {
     text-align: center;
   }
   
-  .Name {
+  .Name_start {
     font-family: 'Alata';
     font-style: italic;
     /* font-size: 60px; */
@@ -55,7 +55,7 @@ html {
     color: #ffffff;
   }
   
-  .Caption {
+  .Caption_start {
     font-family: 'Alegreya Sans', sans-serif;
     font-style: italic;
     /* font-size: 24px; */

@@ -55,7 +55,7 @@ public class Trip {
     }
 
     public Boolean getIsAvaliable() {
-        return !Period.between(this.tripDate, LocalDate.now()).isNegative();
+        return Period.between(this.tripDate, LocalDate.now()).isNegative();
     }
 
     public void setIsAvaliable(boolean avaliable) {

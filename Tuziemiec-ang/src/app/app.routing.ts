@@ -5,12 +5,14 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { RegisterComponent } from './register';
 import { StartComponent } from './start/start.component';
+import { TripCreatorComponent } from './trip-creator/trip-creator.component';
 
 const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent},
     { path: 'profile', component: ProfileComponent},
     { path: 'main', component: MainComponent},
+    { path: 'create', component: TripCreatorComponent},
     { path: '', component: StartComponent},
     { path: '**', redirectTo: ''},
 ];

@@ -34,4 +34,20 @@
         </div>
       </div>
 
+      <div *ngFor="let trip of avTrips">
+        <div class="Trip_box">
+          <div class="Trip_name">
+            {{trip.name}}
+          </div>
+          <div class="Trip_description">
+            {{trip.description}} <br>
+            <br>
+            
+            0 / {{trip.userLimit}} <br>
+            {{trip.city}}, {{trip.tripDate}} 
+             
+          </div>
+        </div>
+
+      </div>
 </body>
