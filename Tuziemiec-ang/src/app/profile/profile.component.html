@@ -8,7 +8,7 @@
     
           <div class="Error" *ngIf="isLoggedIn">
             <form>
-              Profil użytkownika {{ currentUser.username }}
+              Profil użytkownika {{ userData.username }}
             </form>
           </div>
 
@@ -34,11 +34,12 @@
       </div>
 
 <div class="Profile_body" *ngIf="isLoggedIn">
-  {{ currentUser.username }}<br>
-  {{ currentUser.email }} <br>
-  {{ currentUser.roles }} <br>
+  Imię i nazwisko: {{userData.firstName}} {{userData.lastName}}<br>
+  E-mail: {{userData.email}}<br>
+  Data urodzenia: {{userData.dayOfBirth}}<br>
+  Wiek: {{userData.age}}<br>
+
+  
 
 
 </div>
-
-{{data}}
