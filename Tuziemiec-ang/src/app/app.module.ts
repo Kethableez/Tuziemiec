@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { appRoutingModule } from './app.routing';
 
-//import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register';
@@ -31,7 +31,7 @@ import { MainComponent } from './main/main.component';
     appRoutingModule
   ],
 
-  providers: [/*authInterceptorProviders*/],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
