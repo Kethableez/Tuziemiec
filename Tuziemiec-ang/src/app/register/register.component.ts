@@ -7,8 +7,8 @@ import { RegisterService } from './register.service';
     styleUrls: ['register.component.css']
 })
 export class RegisterComponent{
-    get userName() {
-        return this.registerForm.get('userName');
+    get username() {
+        return this.registerForm.get('username');
     }
 
     get firstName(){
@@ -34,7 +34,7 @@ export class RegisterComponent{
     constructor(private fb: FormBuilder, private registerService: RegisterService) {}
 
     registerForm = this.fb.group({
-        userName: ['', [Validators.required, Validators.minLength(6)]],
+        username: ['', [Validators.required, Validators.minLength(6)]],
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', Validators.required],

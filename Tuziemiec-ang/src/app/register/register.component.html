@@ -10,15 +10,15 @@
 
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="Form_body">
-                <input formControlName="userName" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
-                <div class="validate" *ngIf="userName.invalid && userName.touched">
-                    <small *ngIf="userName.errors?.required">Nazwa użytkownika jest wymagana!</small>
-                    <small *ngIf="userName.errors?.minlength">Nazwa użytkownika musi miec minimum 6 znaków!</small>
+                <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
+                <div class="validate" *ngIf="username.invalid && username.touched">
+                    <small *ngIf="username.errors?.required">Nazwa użytkownika jest wymagana!</small>
+                    <small *ngIf="username.errors?.minlength">Nazwa użytkownika musi miec minimum 6 znaków!</small>
                 </div>
 
                 <input formControlName="firstName" type="text" placeholder="Wpisz swoje imię" ><br>
                 <div class="validate" *ngIf="firstName.invalid && firstName.touched">
-                    <small *ngIf="userName.errors?.required">Imię jest wymagane!</small>
+                    <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
                 </div>
 
                 <input formControlName="lastName" type="text" placeholder="Wpisz swoje nazwisko" ><br>
@@ -42,6 +42,7 @@
                 </div>
 
                 <button class="Button1" type="submit">Wyślij</button>
+                <button class="Button2" routerLink="/login">Zaloguj się</button>
             </div>
         </form>
     </div>

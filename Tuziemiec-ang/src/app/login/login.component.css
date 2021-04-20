@@ -115,7 +115,7 @@ html {
     color: #ffffff;
   }
   
-  .Button2 {
+  a.Button2 {
     margin-left: 20px;
     width: 200px;
     height: 50px;
@@ -129,6 +129,10 @@ html {
     color: #4F565C;
   }
   
+  a.Button2:hover {
+    border: 3px solid #444444;
+    color: #444444;
+  }
   
   a.Link {
     color: #4F565C;

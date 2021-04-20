@@ -1,0 +1,44 @@
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+    
+          <div class="Header">
+            <div class="Name">Tuziemiec</div>
+            <div class="Caption">Spotkajmy się!</div>
+          </div>
+    
+          <div class="Error" *ngIf="isLoggedIn">
+            <form>
+              Profil użytkownika {{ currentUser.username }}
+            </form>
+          </div>
+
+          <div class="Error" *ngIf="!isLoggedIn">
+            <form>
+              ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
+            </form>
+          </div>
+    
+          <div class="Options" *ngIf="isLoggedIn">
+            <div>
+                <button class="back_btn" routerLink="/main">Strona główna</button>
+                <a href class="logout_btn" (click)="logout()">Wyloguj się</a>
+            </div>
+          </div>
+           
+
+          <div class="Back_button" *ngIf="!isLoggedIn">
+            <button class="back_btn" routerLink="/">Strona główna! </button>
+          </div>
+    
+        </div>
+      </div>
+
+<div class="Profile_body" *ngIf="isLoggedIn">
+  {{ currentUser.username }}<br>
+  {{ currentUser.email }} <br>
+  {{ currentUser.roles }} <br>
+
+
+</div>
+
+{{data}}

@@ -5,15 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { appRoutingModule } from './app.routing';
 
+//import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register';
 import { StartComponent } from './start';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MainComponent } from './main/main.component';
  
 @NgModule({
   declarations: [
     AppComponent,
     StartComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent,
+    MainComponent
   ],
   imports: [
     HttpClientModule,
@@ -23,7 +31,7 @@ import { StartComponent } from './start';
     appRoutingModule
   ],
 
-  providers: [],
+  providers: [/*authInterceptorProviders*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
