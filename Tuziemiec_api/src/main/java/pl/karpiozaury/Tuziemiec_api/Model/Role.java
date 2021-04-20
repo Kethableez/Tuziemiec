@@ -1,24 +1,27 @@
 package pl.karpiozaury.Tuziemiec_api.Model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Data
-@Builder
+//INSERT INTO tuziemiec.roles(name) VALUES('ROLE_ADMIN');
+//INSERT INTO tuziemiec.roles(name) VALUES('ROLE_USER');
+
+@Entity
+@Table(name="roles")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id", nullable = false)
-    private Long id;
+    private Integer id;
 
-    @Column(name = "role", nullable = false)
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERole name;
 }

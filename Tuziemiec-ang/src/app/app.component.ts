@@ -1,7 +1,6 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { User } from './user';
-import { UserService } from './user.service';
+import { Component, OnInit  } from '@angular/core';
+import { TokenStorageService } from './_services/token-storage.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,22 +8,28 @@ import { UserService } from './user.service';
 })
 export class AppComponent implements OnInit {
   title = 'Tuziemiec-ang';
-  public users: User[] = []; /////////
 
-  constructor(private userService: UserService) { }
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username: string;
 
-  ngOnInit() {
-    this.getUsers();
+  constructor(private tokenStorageService: TokenStorageService) { }
+
+  ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    }
   }
 
-  public getUsers(): void {
-    this.userService.getUsers().subscribe(
-      (response: User[]) => {
-        this.users = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
+
 }

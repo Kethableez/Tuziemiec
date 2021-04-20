@@ -1,0 +1,37 @@
+<body>
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+    
+          <div class="Header">
+            <div class="Name">Tuziemiec</div>
+            <div class="Caption">Spotkajmy się!</div>
+          </div>
+    
+          <div class="Search" *ngIf="isLoggedIn">
+            <form>
+              <input type="text" placeholder="Wpisz adres żeby wyszukać wycieczki">
+            </form>
+          </div>
+
+          <div class="Error" *ngIf="!isLoggedIn">
+            <form>
+              ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
+            </form>
+          </div>
+    
+          <div class="Options" *ngIf="isLoggedIn">
+            <div>
+                <button class="back_btn" routerLink="/profile">Przejdź do profilu! </button>
+                <a href class="logout_btn" (click)="logout()">Wyloguj się</a>
+              </div>
+            </div>
+           
+
+          <div class="Back_button" *ngIf="!isLoggedIn">
+            <button class="back_btn" routerLink="/">Strona główna! </button>
+          </div>
+    
+        </div>
+      </div>
+
+</body>
