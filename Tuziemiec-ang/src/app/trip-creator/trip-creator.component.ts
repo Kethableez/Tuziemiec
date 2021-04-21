@@ -13,6 +13,7 @@ export class TripCreatorComponent implements OnInit {
   constructor(private fb: FormBuilder, private token: TokenStorageService, private tripService: TripService ) { }
 
   isLoggedIn = false;
+  isSubmit = false;
   currentUser: any;
 
   get city() {
@@ -56,5 +57,6 @@ export class TripCreatorComponent implements OnInit {
       response => console.log('Success!', response),
       error => console.error('Error!', error)
     );
+    this.isSubmit=true;
   }
 }

@@ -25,4 +25,8 @@ const API_URL = 'http://localhost:8080/trip';
     public getAvailableTrips(): Observable<Trip[]> {
       return this.http.get<Trip[]>(this.apiServerUrl + '/trip/available');
     }
+
+    public getPast(): Observable<Trip[]> {
+      return this.http.get<Trip[]>(this.apiServerUrl + '/trip/guide_history');
+    }
   }

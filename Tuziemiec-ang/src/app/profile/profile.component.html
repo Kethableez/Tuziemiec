@@ -8,7 +8,7 @@
     
           <div class="Error" *ngIf="isLoggedIn">
             <form>
-              Profil użytkownika {{ userData.username }}
+              Profil użytkownika {{userData.username}}
             </form>
           </div>
 
@@ -20,14 +20,14 @@
     
           <div class="Options" *ngIf="isLoggedIn">
             <div>
-                <button class="back_btn" routerLink="/main">Strona główna</button>
-                <a href class="logout_btn" (click)="logout()">Wyloguj się</a>
+                <button class="button" routerLink="/main">Strona główna</button>
+                <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button>
             </div>
           </div>
            
 
           <div class="Back_button" *ngIf="!isLoggedIn">
-            <button class="back_btn" routerLink="/">Strona główna! </button>
+            <button class="button" routerLink="/">Strona główna! </button>
           </div>
     
         </div>
@@ -38,4 +38,8 @@
   E-mail: {{userData.email}}<br>
   Data urodzenia: {{userData.dayOfBirth}}<br>
   Wiek: {{userData.age}}<br>
+</div>
+
+<div *ngFor="let trip of pastTrips">
+  {{trip.name}}
 </div>

@@ -6,6 +6,32 @@ agm-map{
   margin-right: 20%;
 }
 
+.Button {
+  width: 200px;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 50px;
+  background-color: #4F565C;
+  box-sizing: border-box;
+  border: 3px solid #4F565C;
+  border-radius: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-style: italic;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.Button:active {
+  background-color: #104169;
+  border: 3px solid #104169;
+}
+
+.Button:focus {
+  outline: 0;
+}
+
+
 
 
   

@@ -1,3 +1,4 @@
+import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators  } from '@angular/forms';
 import { RegisterService } from './register.service';
@@ -31,6 +32,8 @@ export class RegisterComponent{
         return this.registerForm.get('dayOfBirth');
     }
 
+    isSubmit = false;
+
     constructor(private fb: FormBuilder, private registerService: RegisterService) {}
 
     registerForm = this.fb.group({
@@ -48,5 +51,7 @@ export class RegisterComponent{
             response => console.log('Success!', response),
             error => console.error('Error!', error)
         );
+
+        this.isSubmit = true;
     }
 }

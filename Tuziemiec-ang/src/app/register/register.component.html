@@ -1,6 +1,6 @@
 <body>
     <!-- App name -->
-    <div class="App_name">
+    <div class="App_name" routerLink="/start">
       <div class="Name">Tuziemiec</div>
       <div class="Caption">Spotkajmy się!</div>
     </div>
@@ -10,39 +10,45 @@
 
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="Form_body">
-                <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
-                <div class="validate" *ngIf="username.invalid && username.touched">
-                    <small *ngIf="username.errors?.required">Nazwa użytkownika jest wymagana!</small>
-                    <small *ngIf="username.errors?.minlength">Nazwa użytkownika musi miec minimum 6 znaków!</small>
+                <div *ngIf="!isSubmit">
+                    <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
+                    <div class="validate" *ngIf="username.invalid && username.touched">
+                        <small *ngIf="username.errors?.required">Nazwa użytkownika jest wymagana!</small>
+                        <small *ngIf="username.errors?.minlength">Nazwa użytkownika musi miec minimum 6 znaków!</small>
+                    </div>
+
+                    <input formControlName="firstName" type="text" placeholder="Wpisz swoje imię" ><br>
+                    <div class="validate" *ngIf="firstName.invalid && firstName.touched">
+                        <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
+                    </div>
+
+                    <input formControlName="lastName" type="text" placeholder="Wpisz swoje nazwisko" ><br>
+                    <div class="validate" *ngIf="lastName.invalid && lastName.touched">
+                        <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
+                    </div>
+
+                    <input formControlName="email" type="text" placeholder="Wpisz adres e-mail" ><br>
+                    <div class="validate" *ngIf="email.invalid && email.touched">
+                        <small *ngIf="email.errors?.required">Adres e-mail jest wymagany!</small>
+                    </div>
+
+                    <input formControlName="password"  type="password" placeholder="Wpisz swoje hasło" ><br>
+                    <div class="validate" *ngIf="password.invalid && password.touched">
+                        <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
+                    </div>
+
+                    <input formControlName="dayOfBirth"  type="date"><br>
+                    <div class="validate" *ngIf="dayOfBirth.invalid && dayOfBirth.touched">
+                        <small *ngIf="dayOfBirth.errors?.required">Data urodzenia jest wymagana!</small>
+                    </div>
                 </div>
 
-                <input formControlName="firstName" type="text" placeholder="Wpisz swoje imię" ><br>
-                <div class="validate" *ngIf="firstName.invalid && firstName.touched">
-                    <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
+                <div class="text" *ngIf="isSubmit">
+                    Zarejestrowano pomyślnie!
                 </div>
-
-                <input formControlName="lastName" type="text" placeholder="Wpisz swoje nazwisko" ><br>
-                <div class="validate" *ngIf="lastName.invalid && lastName.touched">
-                    <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
-                </div>
-
-                <input formControlName="email" type="text" placeholder="Wpisz adres e-mail" ><br>
-                <div class="validate" *ngIf="email.invalid && email.touched">
-                    <small *ngIf="email.errors?.required">Adres e-mail jest wymagany!</small>
-                </div>
-
-                <input formControlName="password"  type="password" placeholder="Wpisz swoje hasło" ><br>
-                <div class="validate" *ngIf="password.invalid && password.touched">
-                    <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
-                </div>
-
-                <input formControlName="dayOfBirth"  type="date"><br>
-                <div class="validate" *ngIf="dayOfBirth.invalid && dayOfBirth.touched">
-                    <small *ngIf="dayOfBirth.errors?.required">Data urodzenia jest wymagana!</small>
-                </div>
-
-                <button class="Button1" type="submit">Wyślij</button>
-                <button class="Button2" routerLink="/login">Zaloguj się</button>
+                
+                <button *ngIf="!isSubmit" class="Button" type="submit" [disabled]="!registerForm.valid">Wyślij</button>
+                <button *ngIf="isSubmit" class="Button" routerLink="/login">Zaloguj się</button>
             </div>
         </form>
     </div>

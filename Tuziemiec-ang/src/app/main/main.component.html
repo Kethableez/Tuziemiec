@@ -13,26 +13,33 @@
             </form>
           </div>
 
-          <div class="Error" *ngIf="!isLoggedIn">
+          <div class="Header_text" *ngIf="!isLoggedIn">
             <form>
-              ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
+             Zaloguj się aby korzystać z funkcjonalności!
             </form>
           </div>
     
           <div class="Options" *ngIf="isLoggedIn">
             <div>
-                <button class="back_btn" routerLink="/profile">Profil </button>
-                <a href class="logout_btn" (click)="logout()">Wyloguj się</a>
+                <button class="button" routerLink="/profile">Profil </button>
+                <button class="button" routerLink="/" (click)="logout()">Wyloguj się </button>
+                <!-- <a href class="back_btn" (click)="logout()">Wyloguj się</a> -->
             </div>
           </div>
            
 
           <div class="Back_button" *ngIf="!isLoggedIn">
-            <button class="back_btn" routerLink="/">Strona główna! </button>
+            <button class="button" routerLink="/">Strona główna! </button>
           </div>
     
         </div>
       </div>
+
+      <div class="fnc_btn" *ngIf="isLoggedIn">
+        <button class="button" routerLink="/maps">Mapa</button>
+        <button class="button" routerLink="/create">Dodaj wycieczkę</button>
+      </div>
+
 
       <div *ngFor="let trip of avTrips">
         <div class="Trip_box">

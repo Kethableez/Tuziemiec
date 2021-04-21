@@ -15,12 +15,12 @@ import { StartComponent } from './start';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MainComponent } from './main/main.component';
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import { TripCreatorComponent } from './trip-creator/trip-creator.component';
-=======
+// =======
 import { MapsComponent } from './maps/maps.component';
 
->>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
+// >>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
  
 @NgModule({
   declarations: [
@@ -30,11 +30,11 @@ import { MapsComponent } from './maps/maps.component';
     LoginComponent,
     ProfileComponent,
     MainComponent,
-<<<<<<< HEAD
-    TripCreatorComponent
-=======
+// <<<<<<< HEAD
+    TripCreatorComponent,
+// =======
     MapsComponent
->>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
+// >>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
   ],
   imports: [
     HttpClientModule,

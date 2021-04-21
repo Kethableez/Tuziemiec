@@ -12,6 +12,7 @@ import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
 import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -47,9 +48,29 @@ public class TripController {
         return new ResponseEntity<>(trip, HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Trip>> getAllTrips(){
+        List<Trip> all = tripRepository.findAll();
+        return new ResponseEntity<>(all, HttpStatus.OK);
+    }
+
     @GetMapping("/available")
-    public ResponseEntity<List<Trip>> getAvailableTrips(){
-        List<Trip> available = tripRepository.findAll();
-        return new ResponseEntity<>(available, HttpStatus.OK);
+    public ResponseEntity<List<Trip>> getAvaliableTrips(){
+        List<Trip> avaliable = tripRepository.findByTripDateGreaterThanEqual(LocalDate.now());
+        return new ResponseEntity<>(avaliable, HttpStatus.OK);
+    }
+
+    @GetMapping("/past")
+    public ResponseEntity<List<Trip>> getPastTrips(){
+        List<Trip> past = tripRepository.findByTripDateLessThan(LocalDate.now());
+        return new ResponseEntity<>(past, HttpStatus.OK);
+    }
+
+    @GetMapping("/guide_history")
+    public ResponseEntity<List<Trip>> getGuidePastTrips(UsernamePasswordAuthenticationToken token){
+        List<Trip> guide_past_trips = tripRepository.findByTripDateLessThanAndGuideId(
+                LocalDate.now(),
+                userRepository.findByUsername(token.getName()).orElseThrow().getId());
+        return new ResponseEntity<>(guide_past_trips, HttpStatus.OK);
     }
 }

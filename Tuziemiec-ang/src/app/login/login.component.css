@@ -18,8 +18,13 @@ html {
     margin: auto;
     width: 100%;
     text-align: center;
+    cursor: pointer;
   }
   
+  .App_name:focus {
+    outline: 0;
+  }
+
   .Name {
     font-family: 'Alata';
     font-style: italic;
@@ -101,8 +106,7 @@ html {
     font-size: 20px;
   }
   
-  .Button1 {
-    margin-right: 20px;
+  .Button1:enabled {
     width: 200px;
     height: 50px;
     background-color: #4F565C;
@@ -113,6 +117,30 @@ html {
     font-style: italic;
     font-size: 24px;
     color: #ffffff;
+    cursor: pointer;
+  }
+
+  .Button1:disabled {
+    width: 200px;
+    height: 50px;
+    opacity: 50%;
+    background-color: #4F565C;
+    box-sizing: border-box;
+    border: 3px solid #4F565C;
+    border-radius: 20px;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #ffffff;
+  }
+
+  .Button1:active {
+    background-color: #104169;
+    border: 3px solid #104169;
+  }
+  
+  .Button1:focus {
+    outline: 0;
   }
   
   a.Button2 {

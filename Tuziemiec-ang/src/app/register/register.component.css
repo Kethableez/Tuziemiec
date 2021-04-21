@@ -18,6 +18,11 @@ html {
     margin: auto;
     width: 100%;
     text-align: center;
+    cursor: pointer;
+  }
+
+  .App_name:focus {
+    outline: 0;
   }
   
   .Name {
@@ -101,8 +106,7 @@ html {
     font-size: 20px;
   }
   
-  .Button1 {
-    margin-right: 20px;
+  .Button:enabled {
     width: 200px;
     height: 50px;
     background-color: #4F565C;
@@ -113,40 +117,34 @@ html {
     font-style: italic;
     font-size: 24px;
     color: #ffffff;
+    cursor: pointer;
   }
-  
-  .Button2 {
-    margin-left: 20px;
+
+  .Button:disabled {
     width: 200px;
     height: 50px;
-    background-color: #bdb4ae;
+    opacity: 50%;
+    background-color: #4F565C;
     box-sizing: border-box;
     border: 3px solid #4F565C;
     border-radius: 20px;
     font-family: 'Alegreya Sans', sans-serif;
     font-style: italic;
     font-size: 24px;
-    color: #4F565C;
+    color: #ffffff;
+  }
+
+  .Button:active {
+    background-color: #104169;
+    border: 3px solid #104169;
   }
   
-  
-  a.Link {
-    color: #4F565C;
-    margin-left: -280px;
+  .Button:focus {
+    outline: 0;
   }
-  
-  a {
+
+  .text{
     font-family: 'Alegreya Sans', sans-serif;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    text-decoration: none;
-        font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 2%;
   }
-  
-  a:hover {
-    color: #444444;
-  }
-  

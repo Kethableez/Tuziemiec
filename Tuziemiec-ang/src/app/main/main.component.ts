@@ -32,7 +32,6 @@ export class MainComponent implements OnInit {
 
   logout(): void {
     this.token.signOut();
-    window.location.reload();
   }
 
 }
