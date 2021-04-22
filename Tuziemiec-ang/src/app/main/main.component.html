@@ -34,27 +34,27 @@
     
         </div>
       </div>
+      <div class="white_body">
 
-      <div class="fnc_btn" *ngIf="isLoggedIn">
-        <button class="button" routerLink="/maps">Mapa</button>
-        <button class="button" routerLink="/create">Dodaj wycieczkę</button>
-      </div>
-
-
-      <div *ngFor="let trip of avTrips">
-        <div class="Trip_box">
-          <div class="Trip_name">
-            {{trip.name}}
-          </div>
-          <div class="Trip_description">
-            {{trip.description}} <br>
-            <br>
-            
-            0 / {{trip.userLimit}} <br>
-            {{trip.city}}, {{trip.tripDate}} 
-             
-          </div>
+        <div class="fnc_btn" *ngIf="isLoggedIn">
+          <button class="button" routerLink="/maps">Mapa</button>
+          <button class="button" routerLink="/create">Dodaj wycieczkę</button>
         </div>
+
+
+        <div class="wrapper">
+          <ng-container *ngFor="let trip of avTrips">
+            <div class="Trips">
+              <div class="Trip_name">{{trip.name}}</div>
+              <div class="Trip_description">
+                {{trip.city}} <br>
+                {{trip.tripDate}} <br>
+                0 / {{trip.userLimit}}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
 
       </div>
 </body>

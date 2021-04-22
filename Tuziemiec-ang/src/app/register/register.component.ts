@@ -1,7 +1,6 @@
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators  } from '@angular/forms';
-import { RegisterService } from './register.service';
+import { UserService } from '../_services/user.service';
 
 @Component({ 
     templateUrl: 'register.component.html',
@@ -34,7 +33,7 @@ export class RegisterComponent{
 
     isSubmit = false;
 
-    constructor(private fb: FormBuilder, private registerService: RegisterService) {}
+    constructor(private fb: FormBuilder, private userService: UserService) {}
 
     registerForm = this.fb.group({
         username: ['', [Validators.required, Validators.minLength(6)]],
@@ -47,7 +46,7 @@ export class RegisterComponent{
 
     onSubmit(){
         console.log(this.registerForm.value);
-        this.registerService.register(this.registerForm.value).subscribe(
+        this.userService.register(this.registerForm.value).subscribe(
             response => console.log('Success!', response),
             error => console.error('Error!', error)
         );

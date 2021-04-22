@@ -71,14 +71,12 @@ html {
     text-align: center;
   }
   
-  .Text {
-    padding: 100px;
+  .Text2 {
     text-align: center;
     color: #000000;
     font-family: 'Alata';
     font-style: italic;
-    font-size: 60px;
-    letter-spacing: 9px;
+    font-size: 30px;
   }
 
   .Error {
@@ -91,6 +89,7 @@ html {
     width: 50%;
     text-align: center;
   }
+
 
   .Back_button {
     display: table-cell;
@@ -140,5 +139,33 @@ html {
     border-radius: 0px 0px 35px 35px;
     background-color: #bdb4ae;
     padding: 20px;
+    margin-bottom: 5%;
   }
 
+  .Trip_name{
+    background-color: #4f565c;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Alata';
+    font-size: 35px;
+    text-align:justify;
+    color: ivory;
+  }
+
+  .Trip_description{
+    color: black;
+    font-family: 'Alegreya Sans', sans-serif;
+    /* border-radius: 0 0 20px 20px; */
+    background-color: #bdb4ae;
+    font-size: 20px;
+    text-align:justify;
+  }
+
+  .wrapper {
+    margin: auto;
+    width: 80%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 1em;
+    grid-column-gap: 1em;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators  } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -9,14 +10,28 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService ) { }
+  constructor(
+    private authService: AuthService, 
+    private tokenStorage: TokenStorageService,
+    private fb: FormBuilder ) { }
+
+    get username() {
+      return this.loginForm.get('username');
+    }
+
+    get password() {
+      return this.loginForm.get('password');
+    }
+
+    loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    })
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -26,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authService.login(this.form).subscribe(
+    this.authService.login(this.loginForm.value).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);

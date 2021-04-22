@@ -7,15 +7,11 @@
           </div>
     
           <div class="Error" *ngIf="isLoggedIn">
-            <form>
               Profil użytkownika {{userData.username}}
-            </form>
           </div>
 
           <div class="Error" *ngIf="!isLoggedIn">
-            <form>
               ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
-            </form>
           </div>
     
           <div class="Options" *ngIf="isLoggedIn">
@@ -40,6 +36,23 @@
   Wiek: {{userData.age}}<br>
 </div>
 
-<div *ngFor="let trip of pastTrips">
-  {{trip.name}}
+<div class="Text2">  
+  Historia twoich zorganizowanych wycieczek:
 </div>
+
+
+<div class="wrapper">
+  <ng-container *ngFor="let trip of pastTrips">
+    <div class="Trips">
+      <div class="Trip_description">
+        <b>Nazwa: {{trip.name}}</b> Miasto: {{trip.city}}, data: {{trip.tripDate}}
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="Text2">  
+  Historia twoich przebytych wycieczek:
+</div>
+
+

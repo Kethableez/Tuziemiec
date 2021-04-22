@@ -1,71 +1,30 @@
 <body>
-    <!-- App name -->
     <div class="App_name" routerLink="/start">
       <div class="Name">Tuziemiec</div>
       <div class="Caption">Spotkajmy się!</div>
     </div>
 
-<div class="Form">
-    <div class="Form_title" *ngIf="!isLoggedIn">Zaloguj się!</div>
-    <div class="Form_title" *ngIf="isLoggedIn">Zalogowano!</div>
-
-        <form
-        *ngIf="!isLoggedIn"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-      >
+    <div class="Form">
+      <div class="Form_title" *ngIf="!isLoggedIn" >Zaloguj się!</div>
+      <div class="Form_title" *ngIf="isLoggedIn" >Zalogowano</div>
       <div class="Form_body">
-        <div class="form-group">
-            <input
-              type="text"
-              placeholder="Wpisz nazwę użytkownika"
-              class="form-control"
-              name="username"
-              [(ngModel)]="form.username"
-              required
-              #username="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="f.submitted && username.invalid"
-            >
-              Username is required!
-            </div>
+      <form [formGroup]="loginForm" *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()">
+
+
+          <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
+          <div class="validate" *ngIf="username.invalid && username.touched">
+            <small *ngIf="username.errors?.required">Nazwa użytkownika jest wymagana!</small>
           </div>
-          <div class="form-group">
-            <input
-              type="password"
-              placeholder="Wpisz hasło"
-              class="form-control"
-              name="password"
-              [(ngModel)]="form.password"
-              required
-              minlength="6"
-              #password="ngModel"
-            />
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="f.submitted && password.invalid"
-            >
-              <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">
-                Password must be at least 6 characters
-              </div>
-            </div>
+
+          <input formControlName="password" type="password" placeholder="Wpisz hasło" ><br>
+          <div class="validate" *ngIf="password.invalid && password.touched">
+            <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
           </div>
-            <button class="Button1" >Zaloguj się!</button>
-      </div>
+          <button *ngIf="!isLoggedIn" class="Button1" type="submit" [disabled]="!loginForm.valid">Wyślij</button>
       </form>
 
-      <div class="Form_body" *ngIf="isLoggedIn">
-        <button class="Button1" routerLink="/main">Strona główna </button>
-      </div>
-
-
+      <button *ngIf="isLoggedIn" class="Button1" routerLink="/main">Strona główna</button>
+    </div>
     </div>
 
   </body>

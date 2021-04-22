@@ -97,6 +97,12 @@ html {
     outline: 0;
   }
 
+  .validate{
+    color: #9e2a2b;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: bold;
+}
+
   .Button {
     width: 200px;
     margin-left: 1%;

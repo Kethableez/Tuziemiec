@@ -128,36 +128,45 @@ html {
     outline: 0;
   }
   
-  .Greetings {
-    padding-top: 0px;
-    margin-top: 0px;
-  }
-
-  .Trip_box{
-    width: 30%;
-    margin: auto;
-    margin-top: 2%;
-    background-color: #bdb4ae;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 25px;
-    text-align: center;
-  }
 
   .Trip_name{
     background-color: #4f565c;
-    font-weight: bold;
+    border-radius: 20px 20px 0 0;
+    font-family: 'Alata';
+    font-size: 35px;
+    text-align: center;
+    color: ivory;
   }
 
-  .fnc_btn{
-    margin: 2%;
+  .Trip_description{
+    color: black;
+    font-family: 'Alegreya Sans', sans-serif;
+    border-radius: 0 0 20px 20px;
+    background-color: #bdb4ae;
+    font-size: 20px;
     text-align: center;
   }
 
-  /* .Button2 {
-    width: 30%;
-    height: auto;
-    margin-left: 3%;
-    margin-right: 3%;
-    display: inline-block;
-    vertical-align: top;
-  } */
+  .wrapper {
+    margin: auto;
+    width: 80%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 1em;
+    grid-column-gap: 1em;
+}
+
+  .white_body{
+    background-color: #ffffff;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    height: 88%;
+  }
+
+  
+  .fnc_btn{
+    padding: 2%;
+    text-align: center;
+  }
