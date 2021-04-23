@@ -1,0 +1,58 @@
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+    
+          <div class="Header">
+            <div class="Name">Tuziemiec</div>
+            <div class="Caption">Spotkajmy się!</div>
+          </div>
+    
+          <div class="Error" *ngIf="isLoggedIn">
+              Profil użytkownika {{userData.username}}
+          </div>
+
+          <div class="Error" *ngIf="!isLoggedIn">
+              ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
+          </div>
+    
+          <div class="Options" *ngIf="isLoggedIn">
+            <div>
+                <button class="button" routerLink="/main">Strona główna</button>
+                <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button>
+            </div>
+          </div>
+           
+
+          <div class="Back_button" *ngIf="!isLoggedIn">
+            <button class="button" routerLink="/">Strona główna! </button>
+          </div>
+    
+        </div>
+      </div>
+
+<div class="Profile_body" *ngIf="isLoggedIn">
+  Imię i nazwisko: {{userData.firstName}} {{userData.lastName}}<br>
+  E-mail: {{userData.email}}<br>
+  Data urodzenia: {{userData.dayOfBirth}}<br>
+  Wiek: {{userData.age}}<br>
+</div>
+
+<div class="Text2">  
+  Historia twoich zorganizowanych wycieczek:
+</div>
+
+
+<div class="wrapper">
+  <ng-container *ngFor="let trip of pastTrips">
+    <div class="Trips">
+      <div class="Trip_description">
+        <b>Nazwa: {{trip.name}}</b> Miasto: {{trip.city}}, data: {{trip.tripDate}}
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div class="Text2">  
+  Historia twoich przebytych wycieczek:
+</div>
+
+

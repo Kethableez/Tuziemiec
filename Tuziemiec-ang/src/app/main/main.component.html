@@ -1,0 +1,60 @@
+<body>
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+    
+          <div class="Header">
+            <div class="Name">Tuziemiec</div>
+            <div class="Caption">Spotkajmy się!</div>
+          </div>
+    
+          <div class="Search" *ngIf="isLoggedIn">
+            <form>
+              <input type="text" placeholder="Wpisz adres żeby wyszukać wycieczki">
+            </form>
+          </div>
+
+          <div class="Header_text" *ngIf="!isLoggedIn">
+            <form>
+             Zaloguj się aby korzystać z funkcjonalności!
+            </form>
+          </div>
+    
+          <div class="Options" *ngIf="isLoggedIn">
+            <div>
+                <button class="button" routerLink="/profile">Profil </button>
+                <button class="button" routerLink="/" (click)="logout()">Wyloguj się </button>
+                <!-- <a href class="back_btn" (click)="logout()">Wyloguj się</a> -->
+            </div>
+          </div>
+           
+
+          <div class="Back_button" *ngIf="!isLoggedIn">
+            <button class="button" routerLink="/">Strona główna! </button>
+          </div>
+    
+        </div>
+      </div>
+      <div class="white_body">
+
+        <div class="fnc_btn" *ngIf="isLoggedIn">
+          <button class="button" routerLink="/maps">Mapa</button>
+          <button class="button" routerLink="/create">Dodaj wycieczkę</button>
+        </div>
+
+
+        <div class="wrapper">
+          <ng-container *ngFor="let trip of avTrips">
+            <div class="Trips">
+              <div class="Trip_name">{{trip.name}}</div>
+              <div class="Trip_description">
+                {{trip.city}} <br>
+                {{trip.tripDate}} <br>
+                0 / {{trip.userLimit}}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+
+      </div>
+</body>
