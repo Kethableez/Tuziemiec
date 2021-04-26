@@ -32,9 +32,14 @@ export class RegisterComponent{
     }
 
     isSubmit = false;
+    failedRegister = false;
+    errorMessage: string;
 
     constructor(private fb: FormBuilder, private userService: UserService) {}
 
+
+    //Email Validator
+    //Password Validator
     registerForm = this.fb.group({
         username: ['', [Validators.required, Validators.minLength(6)]],
         firstName: ['', Validators.required],
@@ -48,9 +53,16 @@ export class RegisterComponent{
         console.log(this.registerForm.value);
         this.userService.register(this.registerForm.value).subscribe(
             response => console.log('Success!', response),
-            error => console.error('Error!', error)
+            err => {
+                this.errorMessage = err.error.message;
+                this.failedRegister = true;
+            }
         );
 
         this.isSubmit = true;
     }
+
+    reloadPage(): void {
+        window.location.reload();
+      }
 }

@@ -12,7 +12,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = '';
+  errorMessage = 'Eror';
   roles: string[] = [];
 
   constructor(
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
-
+  // Zamiast reload -> redirect 
   onSubmit(): void {
     this.authService.login(this.loginForm.value).subscribe(
       data => {
@@ -49,13 +49,17 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        this.submit();
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
+  }
+
+  submit(): void {
+    window.location.href = "http://localhost:4200/main";
   }
 
   reloadPage(): void {

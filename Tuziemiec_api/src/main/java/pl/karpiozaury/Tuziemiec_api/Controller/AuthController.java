@@ -48,6 +48,12 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest loginRequest) {
 
+        if (!userRepository.existsByUsername(loginRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Taki użytkownik nie istnieje"));
+        }
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -71,13 +77,13 @@ public class AuthController {
         if (userRepository.existsByUsername(registerRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Użytkownik o takiej nazwie już istnieje"));
         }
 
         if (userRepository.existsByEmail(registerRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Email is already in use!"));
+                    .body(new MessageResponse("Użytkownik o takim adresie e-mail już istnieje"));
         }
 
         // Create new user's account

@@ -8,7 +8,12 @@
       <div class="Form_title" *ngIf="!isLoggedIn" >Zaloguj się!</div>
       <div class="Form_title" *ngIf="isLoggedIn" >Zalogowano</div>
       <div class="Form_body">
-      <form [formGroup]="loginForm" *ngIf="!isLoggedIn" (ngSubmit)="onSubmit()">
+
+        <div class="text" *ngIf="!isLoggedIn && isLoginFailed">
+          <div class="validate">{{errorMessage}}</div>
+      </div>
+
+      <form [formGroup]="loginForm" *ngIf="!isLoggedIn && !isLoginFailed" (ngSubmit)="onSubmit()">
 
 
           <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
@@ -20,11 +25,11 @@
           <div class="validate" *ngIf="password.invalid && password.touched">
             <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
           </div>
-          <button *ngIf="!isLoggedIn" class="Button1" type="submit" [disabled]="!loginForm.valid">Wyślij</button>
+          <button *ngIf="!isLoggedIn" class="Button1" (click)="submit()" type="submit" [disabled]="!loginForm.valid">Wyślij</button>
       </form>
 
-      <button *ngIf="isLoggedIn" class="Button1" routerLink="/main">Strona główna</button>
+      <button *ngIf="!isLoggedIn && isLoginFailed" class="Button1" (click)="reloadPage()" >Spróbuj ponownie</button>
+      <button *ngIf="isLoggedIn && !isLoginFailed" class="Button1" routerLink="/main">Strona główna</button>
     </div>
     </div>
-
   </body>

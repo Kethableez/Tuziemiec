@@ -1,9 +1,6 @@
 package pl.karpiozaury.Tuziemiec_api.Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,8 +11,7 @@ import javax.persistence.*;
 @Table(name="roles")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

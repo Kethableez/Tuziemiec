@@ -12,9 +12,7 @@ import java.util.List;
 @Repository
 public interface TripRepository extends JpaRepository<Trip, Long> {
 
-    Trip findByName(String name);
-    List<Trip> findByTripDateGreaterThanEqual(LocalDate now);
-    List<Trip> findByTripDateLessThan(LocalDate now);
+    List<Trip> findByStartDateGreaterThanEqual(LocalDate now);
+    List<Trip> findByStartDateLessThan(LocalDate now);
 
-    List<Trip> findByTripDateLessThanAndGuideId(LocalDate now, Long id);
 }
