@@ -84,6 +84,12 @@
             <div *ngIf="trip.template.rating != 0">
               Ocena: {{trip.template.rating}} / 5 <br>
             </div>
+
+            <div>
+              <button class="button" (click)="addCurrentUserToTrip(trip.id)">
+                +
+              </button>
+            </div>
           </div>
         </div>
 

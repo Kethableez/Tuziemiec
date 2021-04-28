@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Trip } from '../_model/trip';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
+import {ParticipationService} from '../_services/participation.service';
+
 
 @Component({
   selector: 'app-main',
@@ -16,7 +18,9 @@ export class MainComponent implements OnInit {
   resp: Trip;
 
 
-  constructor(private token: TokenStorageService, private tripService: TripService) { }
+  constructor(private token: TokenStorageService, 
+              private tripService: TripService,
+              private participationService: ParticipationService) { }
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -35,6 +39,17 @@ export class MainComponent implements OnInit {
 
   logout(): void {
     this.token.signOut();
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+
+  addCurrentUserToTrip(TripId : number): void {
+      this.participationService.postParticipation(TripId).subscribe( 
+        response => console.log('Success!', response),
+        error => console.error('Error!', error));
+      this.reloadPage();
   }
 
 }

@@ -12,8 +12,8 @@ import pl.karpiozaury.Tuziemiec_api.Payload.Request.UserDataRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 
-@RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
 @AllArgsConstructor
 @RequestMapping("/user")
 public class UserResource {
@@ -22,7 +22,7 @@ public class UserResource {
     private final UserRepository userRepository;
 
     @GetMapping("/data")
-    @PreAuthorize("hasRole('USER')")
+//    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<User> getUser(UsernamePasswordAuthenticationToken token){
         User user = userRepository.findByUsername(token.getName()).orElseThrow();
         return new ResponseEntity<>(user, HttpStatus.OK);

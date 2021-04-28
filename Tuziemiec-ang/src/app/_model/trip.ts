@@ -1,4 +1,4 @@
-import { TripTemplate } from "./TripTemplate";
+import { TripTemplate } from "./tripTemplate";
 
 export interface Trip {
     id: number;

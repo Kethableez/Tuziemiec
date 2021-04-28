@@ -34,6 +34,29 @@
   E-mail: {{userData.email}}<br>
   Data urodzenia: {{userData.dayOfBirth}}<br>
   Wiek: {{userData.age}}<br>
+  <button class="button" (click)="openEditPanel()">
+    Edytuj
+  </button>
+
+
+  <div class ="Form" *ngIf="isEditPanelClicked">
+    <div class="Form_title">Zmień swoje dane</div>
+    
+    <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()">
+      <div class="Form_body">
+
+
+        <input formControlName="firstName" type="text" placeholder="Wpisz swoje imię" ><br>
+        <input formControlName="lastName" type="text" placeholder="Wpisz swoje nazwisko" ><br>
+        <input formControlName="dayOfBirth"  type="date"><br><br>
+        {{editPersonalDataForm.value | json}}
+
+        <button class="button" type="submit" >Zmień wprowadzone dane</button>
+      </div>
+    </form>
+
+  </div>
+
 </div>
 
 <div class="Text2">  
@@ -45,7 +68,7 @@
   <ng-container *ngFor="let trip of pastTrips">
     <div class="Trips">
       <div class="Trip_description">
-        <b>Nazwa: {{trip.name}}</b> Miasto: {{trip.city}}, data: {{trip.tripDate}}
+        <!-- <b>Nazwa: {{trip.template.name}}</b> Miasto: {{trip.city}}, data: {{trip.tripDate}} -->
       </div>
     </div>
   </ng-container>
