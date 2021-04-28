@@ -13,50 +13,57 @@ export class TripCreatorComponent implements OnInit {
   constructor(private fb: FormBuilder, private token: TokenStorageService, private tripService: TripService ) { }
 
   isLoggedIn = false;
-  isSubmit = false;
+  setPlace = false;
+  place: string;
+  // isSubmit = false;
   currentUser: any;
 
-  get city() {
-    return this.createTrip.get('city');
-  }
+  // get city() {
+  //   return this.createTrip.get('city');
+  // }
 
-  get name() {
-    return this.createTrip.get('name');
-  }
+  // get name() {
+  //   return this.createTrip.get('name');
+  // }
 
-  get description() {
-    return this.createTrip.get('description');
-  }
+  // get description() {
+  //   return this.createTrip.get('description');
+  // }
 
-  get user_limit() {
-    return this.createTrip.get('limit');
-  }
+  // get user_limit() {
+  //   return this.createTrip.get('limit');
+  // }
 
-  get trip_date() {
-    return this.createTrip.get('tripDate');
-  }
+  // get trip_date() {
+  //   return this.createTrip.get('tripDate');
+  // }
 
-  createTrip = this.fb.group({
-    city: ['', Validators.required],
-    name: ['', Validators.required],
-    description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(250)]],
-    limit: ['', [Validators.required, Validators.min(1)]],
-    tripDate: ['', Validators.required],
-  });
+  // createTrip = this.fb.group({
+  //   city: ['', Validators.required],
+  //   name: ['', Validators.required],
+  //   description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(250)]],
+  //   limit: ['', [Validators.required, Validators.min(1)]],
+  //   tripDate: ['', Validators.required],
+  // });
 
   ngOnInit(): void {
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
     }
+    this.setPlace = false;
   }
 
-  onSubmit(){
-    
-    this.tripService.createTrip(this.createTrip.value).subscribe(
-      response => console.log('Success!', response),
-      error => console.error('Error!', error)
-    );
-    this.isSubmit=true;
+  getPlace(Place: string): any {
+    return this.place = Place;
   }
+
+  // onSubmit(){
+    
+  //   this.tripService.createTrip(this.createTrip.value).subscribe(
+  //     response => console.log('Success!', response),
+  //     error => console.error('Error!', error)
+  //   );
+  //   this.isSubmit=true;
+  // }
 }

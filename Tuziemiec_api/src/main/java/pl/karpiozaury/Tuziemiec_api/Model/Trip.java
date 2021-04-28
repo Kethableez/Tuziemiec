@@ -6,59 +6,43 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.Period;
+import java.util.Set;
 
 @Entity
 @Table(name="trips")
 @Setter
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(max = 20)
-    private String city;
+    @JoinColumn(name = "template_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private TripTemplate template;
 
     @NotBlank
-    @Size(max = 20)
-    private String name;
+    private LocalDate startDate;
 
     @NotBlank
-    @Size(max = 500)
-    private String description;
+    private LocalDate endDate;
 
     @NotBlank
-    @Size(max = 20)
     private Integer userLimit;
 
     @NotBlank
-    private LocalDate tripDate;
+    private Integer booking;
 
-    @NotBlank
-    private Long guideId;
-
-    @NotBlank
-    @Transient
-    private Boolean isAvaliable;
-
-    public Trip(String city, String name, String description, Integer limit, LocalDate tripDate, Long guide_id) {
-        this.city = city;
-        this.name = name;
-        this.description = description;
-        this.userLimit = limit;
-        this.tripDate = tripDate;
-        this.guideId = guide_id;
-    }
-
-    public Boolean getIsAvaliable() {
-        return Period.between(this.tripDate, LocalDate.now()).isNegative();
-    }
-
-    public void setIsAvaliable(boolean avaliable) {
-        this.isAvaliable = avaliable;
+    public Trip(@NotBlank TripTemplate template,
+                @NotBlank LocalDate startDate,
+                @NotBlank LocalDate endDate,
+                @NotBlank Integer userLimit,
+                @NotBlank Integer booking) {
+        this.template = template;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.userLimit = userLimit;
+        this.booking = booking;
     }
 }

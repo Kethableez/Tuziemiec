@@ -156,6 +156,12 @@ html {
     font-size: 24px;
     color: #4F565C;
   }
+
+  .text{
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 25px;
+    margin-bottom: 2%;
+  }
   
   a.Button2:hover {
     border: 3px solid #444444;

@@ -7,8 +7,7 @@ import java.time.LocalDate;
 
 @Setter
 @Getter
-public class TripRequest {
-    private String templateName;
+public class TripDataRequest {
     private LocalDate startDate;
     private LocalDate endDate;
     private Integer userLimit;
