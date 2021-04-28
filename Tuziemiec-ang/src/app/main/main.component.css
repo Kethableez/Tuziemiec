@@ -128,34 +128,43 @@ html {
     outline: 0;
   }
   
+  .wrapper{
+    display: flex;
+    justify-content: center;
 
-  .Trip_name{
-    background-color: #4f565c;
-    border-radius: 20px 20px 0 0;
-    font-family: 'Alata';
-    font-size: 35px;
-    text-align: center;
-    color: ivory;
   }
 
-  .Trip_description{
-    color: black;
-    font-family: 'Alegreya Sans', sans-serif;
-    border-radius: 0 0 20px 20px;
+  .trip-box{
     background-color: #bdb4ae;
-    font-size: 20px;
-    text-align: center;
+    border: 3px;
+    border-radius: 20px;
+    width: 25%;
+    margin: 10px;
   }
 
-  .wrapper {
-    margin: auto;
-    width: 80%;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(3, 1fr);
-    grid-row-gap: 1em;
-    grid-column-gap: 1em;
-}
+  .trip-name {
+    border-radius: 20px 20px 0 0;
+    background-color: #4f565c;
+    font-family: 'Alata';
+    font-size: 25px;
+    color: #ffffff;
+  }
+
+  .trip-place {
+    font-style: 'Alegreya Sans', sans-serif;
+    background-color: #4f565c;
+    font-style: italic;
+    font-size: 20px;
+    color: #ffffff;
+  }
+  
+  .trip-description {
+    margin-inline: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-style: 'Alegreya Sans', sans-serif;
+    font-style: italic;
+  }
 
   .white_body{
     background-color: #ffffff;

@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.submit();
+        this.reloadPage();
       },
       err => {
         this.errorMessage = err.error.message;
@@ -58,9 +58,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  submit(): void {
-    window.location.href = "http://localhost:4200/main";
-  }
+  // submit(): void {
+  //   window.location.href = "http://localhost:4200/main";
+  // }
 
   reloadPage(): void {
     window.location.reload();

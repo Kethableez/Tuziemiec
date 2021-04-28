@@ -42,7 +42,7 @@
         </div>
 
 
-        <div class="wrapper">
+        <!-- <div class="wrapper">
           <ng-container *ngFor="let trip of avTrips">
             <div class="Trips">
               <div class="Trip_name">{{trip.name}}</div>
@@ -53,8 +53,45 @@
               </div>
             </div>
           </ng-container>
+        </div> -->
+        <!-- {{resp | json}}  -->
+
+        <div class="wrapper">
+          <div class="trip-box" *ngFor="let trip of avTrips">
+            <div class="trip-name">
+              {{trip.template.name}}
+            </div>
+            <div class="trip-place">
+              {{trip.template.description}}
+            </div>
+            
+            <div class="trip-description">
+              {{trip.template.place}}
+            </div>
+            
+            <div class="trip-date"> 
+              Od {{trip.startDate}} do {{trip.endDate}}
+            </div>
+  
+            <div class="trip-participants">
+              Ilość uczestników: {{trip.booking}} / {{trip.userLimit}}
+            </div>
+  
+            <div class="attraction-number">
+              Atrakcje: {{trip.template.attractions.length}}
+            </div>
+  
+            <div *ngIf="trip.template.rating != 0">
+              Ocena: {{trip.template.rating}} / 5 <br>
+            </div>
+          </div>
         </div>
 
+
+
+        <!-- {{avTrips | json}} -->
+        <!-- {{resp.template.rating}} -->
+        <!-- TODO: sensowna funkcjonalność -->
 
       </div>
 </body>

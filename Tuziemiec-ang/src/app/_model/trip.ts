@@ -1,10 +1,10 @@
+import { TripTemplate } from "./TripTemplate";
+
 export interface Trip {
     id: number;
-    city: string;
-    name: string;
-    description: string;
+    template: TripTemplate;
+    startDate: Date;
+    endDate: Date;
     userLimit: number;
-    tripDate: Date;
-    guideId: number;
-    isAvaliable: boolean;
+    booking: number;
 }

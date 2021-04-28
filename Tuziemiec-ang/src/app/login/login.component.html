@@ -25,7 +25,7 @@
           <div class="validate" *ngIf="password.invalid && password.touched">
             <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
           </div>
-          <button *ngIf="!isLoggedIn" class="Button1" (click)="submit()" type="submit" [disabled]="!loginForm.valid">Wyślij</button>
+          <button *ngIf="!isLoggedIn" class="Button1" (click)="onSubmit()" type="submit" [disabled]="!loginForm.valid">Wyślij</button>
       </form>
 
       <button *ngIf="!isLoggedIn && isLoginFailed" class="Button1" (click)="reloadPage()" >Spróbuj ponownie</button>

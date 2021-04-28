@@ -9,13 +9,13 @@ html {
     /* background: linear-gradient(to bottom, #37323E 10%, #BFBDC1 90%);
     background-attachment:fixed;
     background-repeat: no-repeat; */
-    background-color:  #7c90a0;
+    background-color:  #ffffff;
     margin: 0;
     padding: 0;
     font-family: arial, verdana, sans-serif;
   }
 
-  .Header {
+  /* .Header {
     display: table-cell;
     background-color: #353535;
     margin: auto;
@@ -80,4 +80,4 @@ html {
     font-style: italic;
     font-size: 60px;
     letter-spacing: 9px;
-  }
+  } */

@@ -13,6 +13,8 @@ export class MainComponent implements OnInit {
   isLoggedIn = false;
   currentUser: any;
   avTrips: Trip[];
+  resp: Trip;
+
 
   constructor(private token: TokenStorageService, private tripService: TripService) { }
 
@@ -24,6 +26,7 @@ export class MainComponent implements OnInit {
       this.tripService.getAvailableTrips().subscribe(
         (response: Trip[]) => {
           this.avTrips = response;
+          this.resp = this.avTrips[1];
         }
       )
     }
