@@ -12,10 +12,10 @@ import pl.karpiozaury.Tuziemiec_api.Payload.Request.UserDataRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 
-@RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@AllArgsConstructor
+@RestController
 @RequestMapping("/user")
+@AllArgsConstructor
 public class UserResource {
 
     @Autowired
