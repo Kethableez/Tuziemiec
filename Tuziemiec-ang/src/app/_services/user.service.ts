@@ -23,4 +23,8 @@ export class UserService {
   getData(): Observable<any> {
     return this.http.get<User>(this.apiServerUrl + '/user/data');
   }
+
+  editData(userData){
+    return this.http.post<any>(this.apiServerUrl + '/user/edit', userData);
+  }
 }
