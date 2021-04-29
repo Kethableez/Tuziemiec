@@ -22,7 +22,7 @@ public class UserResource {
     private final UserRepository userRepository;
 
     @GetMapping("/data")
-    @PreAuthorize("hasRole('USER')")
+//    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<User> getUser(UsernamePasswordAuthenticationToken token){
         User user = userRepository.findByUsername(token.getName()).orElseThrow();
         return new ResponseEntity<>(user, HttpStatus.OK);
