@@ -14,8 +14,8 @@ import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@AllArgsConstructor
 @RequestMapping("/user")
+@AllArgsConstructor
 public class UserResource {
 
     @Autowired

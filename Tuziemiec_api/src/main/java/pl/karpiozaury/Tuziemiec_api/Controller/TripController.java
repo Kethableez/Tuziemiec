@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
-import pl.karpiozaury.Tuziemiec_api.Model.Participation;
 import pl.karpiozaury.Tuziemiec_api.Model.Trip;
 import pl.karpiozaury.Tuziemiec_api.Model.TripTemplate;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.*;
@@ -197,6 +196,7 @@ public class TripController {
 
     @GetMapping("/all_templates")
     public ResponseEntity<List<TripTemplate>> getAllTemplates() {
+        //TODO: Wyświetlanie listy tylko dla osoby, która stworzyła szablon
         List<TripTemplate> all = tripTemplateRepository.findAll();
         return new ResponseEntity<>(all, HttpStatus.OK);
     }
@@ -209,6 +209,9 @@ public class TripController {
 
     @GetMapping("/available")
     public ResponseEntity<List<Trip>> getAvaliableTrips(){
+        //TODO: Wyświetlenie wycieczek na których użytkownik nie jest zapisany,
+        //      Pomijanie tych wycieczek na których użytkownik już jest
+        //      UsernamePassword...Token... etc.
         List<Trip> avaliable = tripRepository.findByStartDateGreaterThanEqual(LocalDate.now());
         return new ResponseEntity<>(avaliable, HttpStatus.OK);
     }

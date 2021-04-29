@@ -61,6 +61,8 @@ public class ParticipationController {
         return new ResponseEntity<>(tripCurrent, HttpStatus.OK);
     }
 
+    // TODO: Trigger do BD zamiast increase i decrease
+
     @PostMapping("/participe/{id}")
     public ResponseEntity<?> singToTrip(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {
         if(participationService.isAlreadyParticipate(tripId, token)) {
@@ -94,4 +96,7 @@ public class ParticipationController {
         List<Participation> unreviewedParticipations = participationRepository.findAllByIsReviewedTrue().orElseThrow();
         return new ResponseEntity<>(unreviewedParticipations, HttpStatus.OK);
     }
+
+    //TODO: Rekomendacje -> pobranie np. nazwy z histori, nazwy z aktualnymi porównanie i zwrocenie lub
+    //      od tego samego uzytkownika, najwyżej oceniane etc...
 }
