@@ -16,6 +16,7 @@ import pl.karpiozaury.Tuziemiec_api.Service.ParticipationService;
 import pl.karpiozaury.Tuziemiec_api.Service.TripService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -61,20 +62,6 @@ public class TripController {
 
         tripService.addTemplate(request, token);
         return ResponseEntity.ok(new MessageResponse("Szablon dodany pomyślnie"));
-    }
-
-    //TODO: existsByName inside tripService
-    @PostMapping("/create_attraction")
-    public ResponseEntity<?> createAttraction(@RequestBody AttractionRequest request) {
-        if(attractionRepository.existsByName(request.getName())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new MessageResponse("Taka atrakcja już istnieje"));
-        }
-        else {
-            tripService.addAttraction(request);
-            return ResponseEntity.ok(new MessageResponse("Atrakcja dodana pomyślnie"));
-        }
     }
 
     //TODO: existsByNameAndGuideId inside tripService
@@ -194,11 +181,31 @@ public class TripController {
         return new ResponseEntity<>(trip, HttpStatus.OK);
     }
 
-    @GetMapping("/all_templates")
-    public ResponseEntity<List<TripTemplate>> getAllTemplates() {
-        //TODO: Wyświetlanie listy tylko dla osoby, która stworzyła szablon
-        List<TripTemplate> all = tripTemplateRepository.findAll();
-        return new ResponseEntity<>(all, HttpStatus.OK);
+//    @GetMapping("/all_templates")
+//    public ResponseEntity<List<TripTemplate>> getAllTemplates() {
+//        //TODO: Wyświetlanie listy tylko dla osoby, która stworzyła szablon
+//        List<TripTemplate> all = tripTemplateRepository.findAll();
+//        return new ResponseEntity<>(all, HttpStatus.OK);
+//    }
+
+    @GetMapping("/templates")
+    public ResponseEntity<List<TripTemplate>> getUserTemplates(UsernamePasswordAuthenticationToken token) {
+        List<TripTemplate> userAll = tripTemplateRepository.findAllByGuideId(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId()).orElseThrow();
+        return new ResponseEntity<>(userAll, HttpStatus.OK);
+    }
+
+    @GetMapping("/created_trips")
+    public ResponseEntity<List<Trip>> getGuideTrips(UsernamePasswordAuthenticationToken token) {
+        List<TripTemplate> userTemplates = tripTemplateRepository.findAllByGuideId(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId()).orElseThrow();
+
+        List<Trip> guideTrips = new ArrayList<>();
+        for (TripTemplate template : userTemplates) {
+            guideTrips.addAll(tripRepository.findAllByTemplate_Name(template.getName()).orElseThrow());
+        }
+
+        return new ResponseEntity<>(guideTrips, HttpStatus.OK);
     }
 
     @GetMapping("/all_trips")

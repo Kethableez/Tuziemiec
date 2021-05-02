@@ -1,0 +1,70 @@
+<body>
+    <div style="width: 100%; display: table;">
+        <div style="display: table-row">
+    
+            <div class="Header">
+                <div class="Name">Tuziemiec</div>
+                <div class="Caption">Spotkajmy się!</div>
+            </div>
+        
+            <div class="Text" *ngIf="isLoggedIn">
+                {{trip.template.name}}
+            </div>
+        
+            <div class="Text" *ngIf="!isLoggedIn">
+                ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
+            </div>
+        
+            <div class="Back" *ngIf="isLoggedIn">
+                <div>
+                    <button class="button" routerLink="/main">Wstecz</button>
+                    <!-- <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button> -->
+                </div>
+            </div>
+    
+                <div class="Back" *ngIf="!isLoggedIn">
+                    <button class="button" routerLink="/">Strona główna! </button>
+                </div>
+            </div>
+    </div>
+
+    <div class="Trip-details">
+        <div class="Text3">Informacje</div>
+        <div class="description">
+            "{{this.trip.template.description}}"
+        </div>
+        <hr>
+
+        <div class="wrapper">
+            <div class="Text1">Miejsce: </div>
+            <div class="Text2"> {{this.trip.template.place}} </div>
+
+            <div class="Text1">Data: </div>
+            <div class="Text2">{{this.trip.startDate}} - {{this.trip.endDate}} </div>
+
+            <div class="Text1">Ocena:</div>
+            <div class="Text2"> {{this.trip.template.rating}} / 5 </div>
+
+            <div class="Text1">Ilość miejsc:</div>
+            <div class="Text2"> {{this.trip.booking}} / {{this.trip.userLimit}} </div>
+
+            <div class="Text1">Atrakcje:</div>
+            <div class="Text2">
+                <div *ngFor="let att of this.trip.template.attractions"> 
+                    {{att.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngFor="let rev of reviews">
+        {{rev.commentHeader}} 
+        {{rev.commentBody}}
+        {{rev.rating}}
+        {{rev.commentDate}}
+        {{rev.participation.startDate}}
+        {{rev.participation.userId}}
+
+
+    </div>
+</body>

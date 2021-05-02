@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators  } from '@angular/forms';
+import { TripTemplate } from '../_model/tripTemplate';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
 
@@ -10,54 +11,97 @@ import { TripService } from '../_services/trip.service';
 })
 export class TripCreatorComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private token: TokenStorageService, private tripService: TripService ) { }
+  constructor(
+    private fb: FormBuilder, 
+    private token: TokenStorageService,
+    private tripService: TripService ) { }
 
+  step_1 = true;
+  step_2 = false;
+
+  userTemplateList: TripTemplate[] = [];
+
+  selectedTemplate = "none";
+  
+  isSubmit = false;
+  isFailed = false;
   isLoggedIn = false;
-  setPlace = false;
-  place: string;
-  // isSubmit = false;
+
+  message: string;
   currentUser: any;
 
-  // get city() {
-  //   return this.createTrip.get('city');
+  get startDate() {
+    return this.createTrip.get('startDate');
+  }
+
+  get endDate() {
+    return this.createTrip.get('endDate');
+  }
+
+  // get templateName() {
+  //   return this.createTrip.get('templateName');
   // }
 
-  // get name() {
-  //   return this.createTrip.get('name');
-  // }
+  get userLimit() {
+    return this.createTrip.get('userLimit');
+  }
 
-  // get description() {
-  //   return this.createTrip.get('description');
-  // }
+  set __templateName(name: string) {
+    this.createTrip.setValue({
+      templateName: name
+    })
+  }
 
-  // get user_limit() {
-  //   return this.createTrip.get('limit');
-  // }
-
-  // get trip_date() {
-  //   return this.createTrip.get('tripDate');
-  // }
-
-  // createTrip = this.fb.group({
-  //   city: ['', Validators.required],
-  //   name: ['', Validators.required],
-  //   description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(250)]],
-  //   limit: ['', [Validators.required, Validators.min(1)]],
-  //   tripDate: ['', Validators.required],
-  // });
+  createTrip = this.fb.group({
+    startDate: ['', Validators.required],
+    endDate: ['', Validators.required],
+    templateName: [this.selectedTemplate],
+    userLimit: ['', [Validators.required, Validators.min(1)]],
+  });
 
   ngOnInit(): void {
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
+
+      this.tripService.getTemplates().subscribe(
+        (response: TripTemplate[]) => {
+          this.userTemplateList = response;
+        }
+      )
     }
-    this.setPlace = false;
   }
 
-  getPlace(Place: string): any {
-    return this.place = Place;
+  onSelect(name: string): any {
+    return this.selectedTemplate = name;
   }
 
+  onClick() {
+    this.createTrip.patchValue({
+      templateName: this.selectedTemplate
+    })
+    this.step_1 = false;
+    this.step_2 = true;
+  }
+
+  onSubmit() {
+    this.tripService.createTrip(this.createTrip.value).subscribe(
+      response => {
+        console.log(response)
+        this.message = response.message
+      },
+      err => {
+        console.log(err.error.message)
+        this.message = err.error.message
+        this.isFailed = true
+      }
+    );
+    this.isSubmit = true;
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
   // onSubmit(){
     
   //   this.tripService.createTrip(this.createTrip.value).subscribe(

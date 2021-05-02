@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Trip } from '../_model/trip';
-
-const API_URL = 'http://localhost:8080/trip';
+import { TripTemplate } from '../_model/tripTemplate';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +14,15 @@ const API_URL = 'http://localhost:8080/trip';
     constructor(private http: HttpClient) { }
   
     public createTrip(tripData){
-      return this.http.post<any>(this.apiServerUrl + '/trip/create', tripData);
+      return this.http.post<any>(this.apiServerUrl + '/trip/create_trip', tripData);
+    }
+
+    public createTemplate(templateData){
+      return this.http.post<any>(this.apiServerUrl + '/trip/create_template', templateData);
+    }
+
+    public getTemplates(): Observable<TripTemplate[]> {
+      return this.http.get<TripTemplate[]>(this.apiServerUrl + '/trip/templates');
     }
 
     public getTrip(id: number): Observable<any> {
@@ -26,7 +33,15 @@ const API_URL = 'http://localhost:8080/trip';
       return this.http.get<Trip[]>(this.apiServerUrl + '/trip/available');
     }
 
-    public getPast(): Observable<Trip[]> {
-      return this.http.get<Trip[]>(this.apiServerUrl + '/trip/guide_history');
+    public getPastTrips(): Observable<Trip[]> {
+      return this.http.get<Trip[]>(this.apiServerUrl + '/participation/user_past');
+    }
+
+    public getIncomingTrips(): Observable<Trip[]> {
+      return this.http.get<Trip[]>(this.apiServerUrl + '/participation/user_incoming');
+    }
+
+    public getOrganisedTrips(): Observable<Trip[]> {
+      return this.http.get<Trip[]>(this.apiServerUrl + '/trip/created_trips');
     }
   }

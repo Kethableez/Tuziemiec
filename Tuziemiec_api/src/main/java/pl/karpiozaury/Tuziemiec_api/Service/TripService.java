@@ -43,16 +43,23 @@ public class TripService {
 
         TripTemplate template = new TripTemplate(
                 request.getName(),
-                request.getPlace(),
                 request.getDescription(),
+                request.getPlace(),
                 userRepository.findByUsername(token.getName()).orElseThrow().getId(),
                 initial_rating
         );
 
+
+        //TODO: add attraction by id!
         Set<Attraction> attractions = new HashSet<>();
-        request.getAttraction_names().forEach(
-                (name) -> attractions.add(attractionRepository.findByName(name).orElseThrow())
+//        request.getAttraction_names().forEach(
+//                (name) -> attractions.add(attractionRepository.findByName(name).orElseThrow())
+//        );
+
+        request.getAttraction_id().forEach(
+                (id) -> attractions.add(attractionRepository.findById(id).orElseThrow())
         );
+
         template.setAttractions(attractions);
 
         return templateRepository.save(template);

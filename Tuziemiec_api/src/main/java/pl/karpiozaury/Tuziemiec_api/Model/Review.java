@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "reviews")
@@ -18,14 +19,15 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-//    @JoinColumn(name = "participation_id")
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Participation participation;
-    @NotBlank
-    private Long userId;
+    @JoinColumn(name = "participation_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Participation participation;
 
-    @NotBlank
-    private Long tripId;
+//    @NotBlank
+//    private Long userId;
+//
+//    @NotBlank
+//    private Long tripId;
 
     @NotBlank
     private String commentHeader;
@@ -36,26 +38,36 @@ public class Review {
     @NotBlank
     private Integer rating;
 
-//    public Review(Participation participation,
+    @NotBlank
+    private LocalDate commentDate;
+
+    @NotBlank
+    private Long templateId;
+
+    public Review(Participation participation,
+                  @NotBlank String commentHeader,
+                  @NotBlank String commentBody,
+                  @NotBlank Integer rating,
+                  @NotBlank LocalDate commentDate,
+                  @NotBlank Long templateId ) {
+        this.participation = participation;
+        this.commentHeader = commentHeader;
+        this.commentBody = commentBody;
+        this.rating = rating;
+        this.commentDate = commentDate;
+        this.templateId = templateId;
+    }
+
+
+//    public Review(@NotBlank Long userId,
+//                  @NotBlank Long tripId,
 //                  @NotBlank String commentHeader,
 //                  @NotBlank String commentBody,
 //                  @NotBlank Integer rating) {
-//        //this.participation = participation;
+//        this.userId = userId;
+//        this.tripId = tripId;
 //        this.commentHeader = commentHeader;
 //        this.commentBody = commentBody;
 //        this.rating = rating;
 //    }
-
-
-    public Review(@NotBlank Long userId,
-                  @NotBlank Long tripId,
-                  @NotBlank String commentHeader,
-                  @NotBlank String commentBody,
-                  @NotBlank Integer rating) {
-        this.userId = userId;
-        this.tripId = tripId;
-        this.commentHeader = commentHeader;
-        this.commentBody = commentBody;
-        this.rating = rating;
-    }
 }

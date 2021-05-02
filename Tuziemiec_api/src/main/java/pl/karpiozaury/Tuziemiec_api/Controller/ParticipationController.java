@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import pl.karpiozaury.Tuziemiec_api.Model.Participation;
+import pl.karpiozaury.Tuziemiec_api.Model.Trip;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
 import pl.karpiozaury.Tuziemiec_api.Repository.ParticipationRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
@@ -14,6 +15,7 @@ import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 import pl.karpiozaury.Tuziemiec_api.Service.ParticipationService;
 import pl.karpiozaury.Tuziemiec_api.Service.TripService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -37,7 +39,7 @@ public class ParticipationController {
     @Autowired
     private final UserRepository userRepository;
 
-    @GetMapping("/user_past")
+    @GetMapping("/user_past_part")
     public ResponseEntity<List<Participation>> getUserPastParticipationList (UsernamePasswordAuthenticationToken token) {
         List<Participation> userPast = participationService.getUserPast(token);
         return new ResponseEntity<>(userPast, HttpStatus.OK);
@@ -49,6 +51,52 @@ public class ParticipationController {
         return new ResponseEntity<>(userCurrent, HttpStatus.OK);
     }
 
+    // List of past trips where user participated
+    @GetMapping("/user_past")
+    public ResponseEntity<List<Trip>> getUserPastTrips (UsernamePasswordAuthenticationToken token) {
+        List<Participation> userPast = participationService.getUserPast(token);
+
+        List<Trip> past = new ArrayList<>();
+        for (Participation p : userPast) {
+            past.add(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
+        return new ResponseEntity<>(past, HttpStatus.OK);
+    }
+
+    // List of current trips where user will participate
+    @GetMapping("/user_incoming")
+    public ResponseEntity<List<Trip>> getUserCurrentTrips (UsernamePasswordAuthenticationToken token) {
+        List<Participation> userCurrent = participationService.getUserCurrent(token);
+
+        List<Trip> current = new ArrayList<>();
+        for (Participation p : userCurrent) {
+            current.add(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
+
+        return new ResponseEntity<>(current, HttpStatus.OK);
+    }
+
+    // List of past trips which are not reviewed
+    @GetMapping("/unreviewed_trips")
+    public ResponseEntity<List<Trip>> getUnreviewedTrips(UsernamePasswordAuthenticationToken token){
+        List<Participation> unreviewedParticipation = participationRepository.findAllByIsReviewedFalseAndUserId(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId()).orElseThrow();
+
+        List<Trip> unreviewed = new ArrayList<>();
+        for (Participation p : unreviewedParticipation){
+            unreviewed.add(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
+
+        return new ResponseEntity<>(unreviewed, HttpStatus.OK);
+    }
+
+
+//    public ResponseEntity<List<Participation>> getAllUnreviewedTrips(UsernamePasswordAuthenticationToken token) {
+//        List<Participation> unreviewedParticipations = participationRepository.findAllByIsReviewedTrue().orElseThrow();
+//        return new ResponseEntity<>(unreviewedParticipations, HttpStatus.OK);
+//    }
+
+    //----------------------
     @GetMapping("/trip_past/{id}")
     public ResponseEntity<List<Participation>> getTripPastParticipationList (@PathVariable("id") Long tripId) {
         List<Participation> tripPast = participationService.getTripPast(tripId);
@@ -65,6 +113,10 @@ public class ParticipationController {
 
     @PostMapping("/participe/{id}")
     public ResponseEntity<?> singToTrip(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {
+        if(tripRepository.findById(tripId).orElseThrow().getTemplate().getGuideId().equals(userRepository.findByUsername(token.getName()).orElseThrow().getId())){
+            return ResponseEntity.badRequest().body(new MessageResponse("Stworzyłeś tą wycieczkę!"));
+        }
+
         if(participationService.isAlreadyParticipate(tripId, token)) {
             return ResponseEntity.badRequest().body(new MessageResponse("Jesteś już zapisany"));
         }
@@ -91,11 +143,11 @@ public class ParticipationController {
         return ResponseEntity.ok(new MessageResponse("Wypisano z wycieczki!"));
     }
 
-    @GetMapping("/unreviewed")
-    public ResponseEntity<List<Participation>> getAllUnreviewedTrips(UsernamePasswordAuthenticationToken token) {
-        List<Participation> unreviewedParticipations = participationRepository.findAllByIsReviewedTrue().orElseThrow();
-        return new ResponseEntity<>(unreviewedParticipations, HttpStatus.OK);
-    }
+//    @GetMapping("/unreviewed")
+//    public ResponseEntity<List<Participation>> getAllUnreviewedTrips(UsernamePasswordAuthenticationToken token) {
+//        List<Participation> unreviewedParticipations = participationRepository.findAllByIsReviewedTrue().orElseThrow();
+//        return new ResponseEntity<>(unreviewedParticipations, HttpStatus.OK);
+//    }
 
     //TODO: Rekomendacje -> pobranie np. nazwy z histori, nazwy z aktualnymi porównanie i zwrocenie lub
     //      od tego samego uzytkownika, najwyżej oceniane etc...

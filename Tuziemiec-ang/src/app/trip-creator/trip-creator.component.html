@@ -1,3 +1,4 @@
+<body>
 <div style="width: 100%; display: table;">
     <div style="display: table-row">
 
@@ -23,62 +24,77 @@
     </div>
   </div>
   
+  <div class="center" *ngIf="step_1">
 
-  <!-- Choose template -->
-  <!-- or -->
-  <!-- Add new template -->
-  <!-- 
-    set details, 
-   -->
+    <div class="Text3">
+      Wybierz szablon:
+    </div>
 
-  <!-- Choose attraction from list based on place, if not found, show all attractions -->
-  <!-- or -->
-  <!-- Add new attraction -->
+    <div class="Text" *ngIf="userTemplateList.length==0">
+      Nie masz żadnego szablonu.
+      <div class="router" routerLink="/create_template">
+        Kliknij tutaj aby dodać nowy szablon!
+      </div> 
+    </div>
 
+    <div class="template-list" *ngFor="let template of userTemplateList">
+      <div class="template">
+        <div class="template-name" (click)="onSelect(template.name)">{{template.name}}</div>
+        <div class="template-details">{{template.place}}</div>
+      </div>
+    </div>
 
+    <div style="margin-top: 2%;">
+      <button class="button"  [disabled]="selectedTemplate.match('none')" (click)="onClick()">Dalej</button>
+    </div>
 
+    <div class="Text" *ngIf="userTemplateList.length!=0">
+      <div class="router" routerLink="/create_template">
+        Kliknij tutaj aby dodać nowy szablon!
+      </div> 
+    </div>
 
-  <!-- Insert details -->
+  </div>
 
-  <!-- <div class ="Form" *ngIf="isLoggedIn">
-    <form [formGroup]="createTrip" (ngSubmit)="onSubmit()">
+  <div class="center" *ngIf="step_2">
+    <div class="Text3">
+      Uzupełnij dane
+    </div>
+
+    <div class="Form" *ngIf="isLoggedIn">
+      <form [formGroup]="createTrip" (ngSubmit)="onSubmit()">
         <div class="Form_body">
-
           <div *ngIf="!isSubmit">
-            <input formControlName="city" type="text" placeholder="Wpisz miejscowość" ><br>
-            <div class="validate" *ngIf="city.invalid && city.touched">
-                <small *ngIf="city.errors?.required">Miejscowość jest wymagana</small>
+      
+            <input formControlName="startDate" type="date"><br>
+            <div class="validate" *ngIf="startDate.invalid && startDate.touched">
+                <small *ngIf="startDate.errors?.required">Data startowa jest wymagana</small>
             </div>
-
-            <input formControlName="name" type="text" placeholder="Wpisz nazwę wycieczki" ><br>
-            <div class="validate" *ngIf="name.invalid && name.touched">
-                <small *ngIf="name.errors?.required">Nazwa wycieczki jest wymagana</small>
+  
+            <input formControlName="endDate" type="date"><br>
+            <div class="validate" *ngIf="endDate.invalid && endDate.touched">
+                <small *ngIf="endDate.errors?.required">Data końcowa jest wymagana</small>
             </div>
-
-            <textarea formControlName="description" placeholder="Wpisz opis" cols="40" rows="5"></textarea>
-            <div class="validate" *ngIf="description.invalid && description.touched">
-                <small *ngIf="description.errors?.required">Opis wycieczki jest wymagany</small>
-                <small *ngIf="description.errors?.minlength"> Opis musi mieć więcej niż 10 znaków</small>
-                <small *ngIf="description.errors?.maxlength"> Opis musi mieć mniej niż 200 znaków</small>
-            </div>
-
-            <input formControlName="limit" type="number" placeholder="Wpisz limit turystów" ><br>
-            <div class="validate" *ngIf="user_limit.invalid && user_limit.touched">
-                <small *ngIf="user_limit.errors?.required">Limit miejsc jest wymagany</small>
-                <small *ngIf="user_limit.errors?.min">Wincyj</small>
-            </div>
-
-            <input formControlName="tripDate" type="date" placeholder="Wpisz datę" ><br>
-            <div class="validate" *ngIf="trip_date.invalid && trip_date.touched">
-                <small *ngIf="trip_date.errors?.required">Data wycieczki jest wymagana</small>
-            </div>
+  
+            <input formControlName="userLimit" type="number" placeholder="Określ liczbę użytkowników"><br>
+            <div class="validate" *ngIf="userLimit.invalid && userLimit.touched">
+              <small *ngIf="userLimit.errors?.required">Limit użytkowników jest wymagany</small>
           </div>
-
-          <div class="text" *ngIf="isSubmit">
-            Pomyślnie dodano wycieczkę!
           </div>
-
-            <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit" >Stwórz wycieczkę</button>
+  
+          <div class="text" *ngIf="isSubmit && !isFailed">
+            {{message}}
+          </div>
+  
+          <div class="text validate" *ngIf="isSubmit && isFailed">
+            {{message}}
+          </div>
+          
+          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną wycieczkę</button>
+          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
+          <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit">Stwórz atrakcję</button>
         </div>
-    </form>
-</div> -->
+      </form>
+    </div>
+  </div>
+</body>

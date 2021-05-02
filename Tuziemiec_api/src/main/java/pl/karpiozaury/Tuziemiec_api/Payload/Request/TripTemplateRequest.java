@@ -11,5 +11,5 @@ public class TripTemplateRequest {
     private String name;
     private String description;
     private String place;
-    private List<String> attraction_names;
+    private List<Long> attraction_id;
 }
