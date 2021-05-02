@@ -4,7 +4,6 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
 import {ParticipationService} from '../_services/participation.service';
 
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -16,6 +15,7 @@ export class MainComponent implements OnInit {
   currentUser: any;
   avTrips: Trip[];
   resp: Trip;
+  message: string;
 
 
   constructor(private token: TokenStorageService, 
@@ -47,9 +47,17 @@ export class MainComponent implements OnInit {
 
   addCurrentUserToTrip(TripId : number): void {
       this.participationService.postParticipation(TripId).subscribe( 
-        response => console.log('Success!', response),
-        error => console.error('Error!', error));
-      this.reloadPage();
+        response => {
+          console.log(response)
+          this.message = response.message
+        },
+
+        err => {
+          console.log(err.error.message)
+          this.message = err.error.message
+        }
+      // this.reloadPage();
+      )
   }
 
 }

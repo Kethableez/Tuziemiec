@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
   isEditPanelClicked = false;
   currentUser: any;
   userData: User;
-  pastTrips: Trip[];
   failedRegister = false;
   errorMessage: string;
   isSubmit = false;
@@ -25,7 +24,6 @@ export class ProfileComponent implements OnInit {
   constructor(
     private token: TokenStorageService, 
     private userService: UserService, 
-    private tripService: TripService,
     private fb: FormBuilder) { }
 
     editPersonalDataForm = this.fb.group({
@@ -64,19 +62,14 @@ export class ProfileComponent implements OnInit {
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
+    }
 
+    if (this.isLoggedIn == true){
       this.userService.getData().subscribe(
         (response: User) => {
           this.userData = response;
         }
-      )
-
-      this.tripService.getPast().subscribe(
-        (response: Trip[]) => {
-          this.pastTrips = response;
-        }
-      )
-
+      )    
     }
   }
 

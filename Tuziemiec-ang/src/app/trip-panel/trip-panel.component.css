@@ -1,0 +1,127 @@
+html {
+    background-color:  #7c90a0;
+  }
+  
+  body {
+    height: auto;
+    min-height: 100%;
+    background-color:  #7c90a0;
+    margin: 0;
+    padding: 0;
+    font-family: arial, verdana, sans-serif;
+  }
+  
+  .Header {
+    display: table-cell;
+    background-color: #353535;
+    margin: auto;
+    width: 25%;
+    padding-bottom: 0.5%;
+    text-align: center;
+  }
+  
+  .Name {
+    background-color: #353535;
+    font-family: 'Alata';
+    font-style: italic;
+    font-size: 60px;
+    color: #ffffff;
+  }
+  
+  .Caption {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-style: italic;
+    font-size: 24px;
+    letter-spacing: 9px;
+    color: #ffffff;
+  }
+
+  .Text {
+    background-color: #353535;
+    display: table-cell;
+    font-family: 'Alata';
+    font-size: 30px;
+    color: #ffffff;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+  }
+
+  .Back {
+    display: table-cell;
+    background-color: #353535;
+    margin: auto;
+    width: 25%;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .button {
+    width: 200px;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 50px;
+    background-color: #4F565C;
+    box-sizing: border-box;
+    border: 3px solid #4F565C;
+    border-radius: 20px;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .button:disabled {
+    opacity: 60%;
+    cursor:default;
+  }
+
+  .button:active {
+    background-color: #104169;
+    border: 3px solid #104169;
+  }
+
+  .button:focus {
+    outline: 0;
+  }
+
+  .Function-buttons{
+    background-color: #4f565c;
+    padding: 1%;
+    text-align: center;
+  }
+
+  .button2 {
+    width: 200px;
+    margin-left: 1%;
+    margin-right: 1%;
+    height: 50px;
+    background-color: #353535;
+    box-sizing: border-box;
+    border: 3px solid #353535;
+    border-radius: 20px;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .button2:active {
+    background-color: #104169;
+    border: 3px solid #104169;
+  }
+  
+  .button2:focus {
+    outline: 0;
+  }
+
+  .panel {
+      margin: auto;
+      width: 80%;
+      background-color: #9facb9;
+      border-radius: 0 0 20px 20px;
+  }

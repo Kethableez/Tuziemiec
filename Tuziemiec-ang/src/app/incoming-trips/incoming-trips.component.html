@@ -1,0 +1,39 @@
+<body>
+    <div class="wrapper">
+        <div class="table-header">Nazwa</div>
+        <div class="table-header">Miejsce</div>
+        <div class="table-header">Data wycieczki</div>
+        <div class="table-header">Ilość osób</div>
+        <div class="table-header">Ocena</div>
+        <div class="table-header"></div>
+    </div>
+<hr>
+    <div *ngFor="let trip of incomingTrips">
+       <div class="wrapper">
+            <div class="table-cell"><b>{{trip.template.name}}</b></div>
+            <div class="table-cell">{{trip.template.place}}</div>
+            <div class="table-cell">{{trip.startDate}} - {{trip.endDate}}</div>
+            <div class="table-cell">{{trip.booking}} / {{trip.userLimit}}</div>
+            <div class="table-cell">{{trip.template.rating}}</div>
+            <div class="table-cell icons">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
+                        <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                      </svg>
+                </div>
+                <!-- <div class="icon">
+                    <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    fill="currentColor" 
+                    class="bi bi-people-fill" 
+                    viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                        <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                      </svg>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>

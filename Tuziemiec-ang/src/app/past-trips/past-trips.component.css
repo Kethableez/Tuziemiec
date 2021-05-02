@@ -1,0 +1,43 @@
+.body {
+    background-color: #bdb4ae;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 0.4fr 0.4fr;
+    margin:auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.table-header {
+    text-align: center;
+    font-family: 'Alata';
+    font-size: 30px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.table-cell {
+    text-align: center;
+    margin: 2%;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    color: black;
+}
+
+.icons {
+    display: inline-block;
+}
+
+.icon {
+    margin-inline: 0.4rem;
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+hr {
+    border: 1px solid black;
+}
