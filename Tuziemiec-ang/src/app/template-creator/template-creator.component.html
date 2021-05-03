@@ -42,14 +42,11 @@
           background-color: #ffffff;
           width: 50%;
           height: 40px;
-          padding: 12px 20px;
-          margin: 8px 0;
+          border: none;
           box-sizing: border-box;
-          border: 3px solid #ffffff;
-          -webkit-transition: 0.5s;
-          transition: 0.5s;
           outline: none;" 
           formControlName="place" type="text" placeholder="Wpisz miasto aby wyszukać atrakcje">
+          
           <button class="search-button" type="submit" [disabled]="!search.valid">
             <svg xmlns="http://www.w3.org/2000/svg" 
             width="1.2rem" 
@@ -139,9 +136,9 @@
                 {{message}}
               </div>
               
-              <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną wycieczkę</button>
+              <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejny szablon</button>
               <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
-              <button class="Submit_button" type="submit" [disabled]="!templateForm.valid" *ngIf="!isSubmit">Stwórz atrakcję</button>
+              <button class="Submit_button" type="submit" [disabled]="!templateForm.valid" *ngIf="!isSubmit">Stwórz szablon</button>
             </div>
           </form>
         </div>

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
+import pl.karpiozaury.Tuziemiec_api.Model.Participation;
 import pl.karpiozaury.Tuziemiec_api.Model.Trip;
 import pl.karpiozaury.Tuziemiec_api.Model.TripTemplate;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.*;
@@ -145,48 +146,12 @@ public class TripController {
          return ResponseEntity.ok(new MessageResponse("Pomyślnie zmieniono parametry wycziecki"));
     }
 
-    // Done
-//    @PostMapping("/participe/{id}")
-//    public ResponseEntity<?> singToTrip(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {
-//        if(participationService.isAlreadyParticipate(tripId, token)) {
-//            return ResponseEntity.badRequest().body(new MessageResponse("Jesteś już zapisany"));
-//        }
-//
-//        if (tripService.isBookingNotAvailable(tripRepository.findById(tripId).orElseThrow())) {
-//            return ResponseEntity.badRequest().body(new MessageResponse("Brak miejsc"));
-//        }
-//
-//        participationService.addPatricipant(tripId, token);
-//        tripService.increaseBooking(tripRepository.findById(tripId).orElseThrow());
-//
-//        return ResponseEntity.ok(new MessageResponse("Dodano do wycieczki pomyślnie"));
-//    }
-
-//    @DeleteMapping("/unparticipate/{id}")
-//    public ResponseEntity<?> singOutFromTrip(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {
-//        if(!participationRepository.existsByUserIdAndTripId(userRepository.findByUsername(token.getName()).orElseThrow().getId(), tripId)){
-//            return ResponseEntity.badRequest().body(new MessageResponse("Nie jesteś zapisany do tej wycieczki"));
-//        }
-//
-//        Participation p = participationRepository.findByUserIdAndTripId(userRepository.findByUsername(token.getName()).orElseThrow().getId(), tripId).orElseThrow();
-//        participationRepository.deleteById(p.getId());
-//        tripService.decreaseBooking(tripRepository.findById(tripId).orElseThrow());
-//        return ResponseEntity.ok(new MessageResponse("Usunięto pomyślnie"));
-//    }
-
     // All necessary GetMappings
     @GetMapping("/{id}")
     public ResponseEntity<Trip> getTripById(@PathVariable("id")Long id) {
         Trip trip = tripRepository.findById(id).orElseThrow();
         return new ResponseEntity<>(trip, HttpStatus.OK);
     }
-
-//    @GetMapping("/all_templates")
-//    public ResponseEntity<List<TripTemplate>> getAllTemplates() {
-//        //TODO: Wyświetlanie listy tylko dla osoby, która stworzyła szablon
-//        List<TripTemplate> all = tripTemplateRepository.findAll();
-//        return new ResponseEntity<>(all, HttpStatus.OK);
-//    }
 
     @GetMapping("/templates")
     public ResponseEntity<List<TripTemplate>> getUserTemplates(UsernamePasswordAuthenticationToken token) {
@@ -215,11 +180,22 @@ public class TripController {
     }
 
     @GetMapping("/available")
-    public ResponseEntity<List<Trip>> getAvaliableTrips(){
+    public ResponseEntity<List<Trip>> getAvaliableTrips(UsernamePasswordAuthenticationToken token){
         //TODO: Wyświetlenie wycieczek na których użytkownik nie jest zapisany,
         //      Pomijanie tych wycieczek na których użytkownik już jest
         //      UsernamePassword...Token... etc.
+        List<Participation> userParticipation = participationRepository.findAllByUserId(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId()
+        ).orElseThrow();
+
         List<Trip> avaliable = tripRepository.findByStartDateGreaterThanEqual(LocalDate.now());
+
+        avaliable.removeIf(t -> t.getBooking().equals(t.getUserLimit()));
+
+        for (Participation p : userParticipation) {
+            avaliable.remove(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
+
         return new ResponseEntity<>(avaliable, HttpStatus.OK);
     }
 

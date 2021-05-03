@@ -4,6 +4,7 @@ html {
   
   body {
     width: 100%;
+    min-height: 100%;
     height: fit-content;
     background: #ded9d5;
     margin: 0;
@@ -157,6 +158,8 @@ html {
     text-align: center;
     margin: auto;
     width: 80%;
+    /* height: max-content; */
+    min-height: 80vh;
     /* height: 88%; */
   }
 
@@ -173,11 +176,13 @@ html {
     border-radius: 20px;
     width: 25%;
     margin: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+       box-shadow: 0 8px 6px -6px black;
   }
 
   .attraction-box:hover{
-    
-    width: 26%;
+    background: #ded9d5;
   }
 
   .attraction-name {
@@ -208,6 +213,7 @@ html {
   .icon {
     display: inline-block;
     margin-top: 2%;
+    margin-bottom: 2%;
   }
 
 

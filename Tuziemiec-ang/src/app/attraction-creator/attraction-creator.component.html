@@ -63,7 +63,7 @@
           {{message}}
         </div>
         
-        <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną wycieczkę</button>
+        <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną atrakcję</button>
         <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
         <button class="Submit_button" type="submit" [disabled]="!attractionForm.valid" *ngIf="!isSubmit">Stwórz atrakcję</button>
       </div>

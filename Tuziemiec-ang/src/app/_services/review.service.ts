@@ -19,4 +19,9 @@ import { Review } from '../_model/review';
         return this.http.get<Review[]>(this.apiServerUrl + this.apiReviewUrl +'/template_reviews/' + tempateId);
       }
 
+    public addReview(commentData, tripId: number){
+      console.log(this.apiServerUrl + this.apiReviewUrl + '/add_review', commentData)
+      return this.http.post<any>(this.apiServerUrl + this.apiReviewUrl + '/add_review', commentData);
+    }
+
   }
