@@ -17,7 +17,7 @@
 
       <div class="Options">
         <div>
-            <button class="Button" routerLink="/main">Strona główna </button>
+            <button class="Button" routerLink="/main">Wstecz</button>
             <!-- <a href class="logout_btn" (click)="logout()">Wyloguj się</a> -->
         </div>
       </div>
@@ -92,7 +92,7 @@
           
           <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną wycieczkę</button>
           <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
-          <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit">Stwórz atrakcję</button>
+          <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit">Stwórz wycieczkę</button>
         </div>
       </form>
     </div>

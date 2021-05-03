@@ -50,13 +50,12 @@ public class ReviewController {
     @PostMapping("/add_review")
     public ResponseEntity<?> addNewReview(
             @RequestBody ReviewRequest request,
-            Long tripId,
             UsernamePasswordAuthenticationToken token) {
         // Czy był
 
         if(!participationRepository.existsByUserIdAndTripId(
                 userRepository.findByUsername(token.getName()).orElseThrow().getId(),
-                tripId)) {
+                request.getTripId())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Nie uczestniczyłeś w takiej wycieczce"));
@@ -64,7 +63,7 @@ public class ReviewController {
         // Czy dodał
         if(participationRepository.findByUserIdAndTripId(
                 userRepository.findByUsername(token.getName()).orElseThrow().getId(),
-                tripId
+                request.getTripId()
         ).orElseThrow().getIsReviewed()) {
             return ResponseEntity
                     .badRequest()
@@ -74,8 +73,8 @@ public class ReviewController {
         // Czy wycieczka się już odbyła
         if(participationRepository.findByUserIdAndTripId(
                 userRepository.findByUsername(token.getName()).orElseThrow().getId(),
-                tripId
-        ).orElseThrow().getStartDate().isBefore(LocalDate.now())) {
+                request.getTripId()
+        ).orElseThrow().getStartDate().isAfter(LocalDate.now())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Wycieczka jeszcze się nie odbyła"));
@@ -84,21 +83,21 @@ public class ReviewController {
         Review review = new Review(
                 participationRepository.findByUserIdAndTripId(
                         userRepository.findByUsername(token.getName()).orElseThrow().getId(),
-                        tripId).orElseThrow(),
+                        request.getTripId()).orElseThrow(),
                 request.getCommentHeader(),
                 request.getCommentBody(),
                 request.getRating(),
                 LocalDate.now(),
-                tripRepository.findById(tripId).orElseThrow().getTemplate().getId()
+                tripRepository.findById(request.getTripId()).orElseThrow().getTemplate().getId()
         );
 
         tripService.setRating(
-                tripRepository.findById(tripId).orElseThrow().getTemplate(),
+                tripRepository.findById(request.getTripId()).orElseThrow().getTemplate(),
                 request.getRating());
 
         participationRepository.findByUserIdAndTripId(
                 userRepository.findByUsername(token.getName()).orElseThrow().getId(),
-                tripId).orElseThrow().setIsReviewed(true);
+                request.getTripId()).orElseThrow().setIsReviewed(true);
 
         reviewRepository.save(review);
 

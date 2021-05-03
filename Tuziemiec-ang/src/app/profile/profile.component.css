@@ -43,11 +43,27 @@ html {
       text-align: center;
   }
 
+  .left {
+    margin-left: 5%;
+    font-family: 'Alata';
+    font-weight: bolder;
+    text-align: left;
+  }
+
+  .right {
+    font-family: 'Alata';
+    font-weight: lighter;
+    margin-left: 5%;
+    text-align: left;
+  }
+
   .inside {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding-top: 2%; 
     padding-bottom: 2%;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-weight: lighter;
+    margin:auto;
+    width: 60%;
     font-size: 24px;
   }
   
@@ -146,6 +162,9 @@ html {
     border-radius: 0px 0px 35px 35px;
     background-color: #bdb4ae;
     margin-bottom: 5%;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+      -moz-box-shadow: 0 8px 6px -6px black;
+         box-shadow: 0 8px 6px -6px black;
   }
 
   .Trip_name{

@@ -28,7 +28,7 @@
             </div>
     </div>
 
-    <div class="Trip-details">
+    <div class="Trip-details shadow">
         <div class="Text3">Informacje</div>
         <div class="description">
             "{{this.trip.template.description}}"
@@ -43,7 +43,14 @@
             <div class="Text2">{{this.trip.startDate}} - {{this.trip.endDate}} </div>
 
             <div class="Text1">Ocena:</div>
-            <div class="Text2"> {{this.trip.template.rating}} / 5 </div>
+            <div class="Text2"> 
+                <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                        <span class="half" [style.width.%]="fill">★</span>☆
+                      </span>
+                </ng-template>
+                <ngb-rating [max]="5" [(rate)]="trip.template.rating" [starTemplate]="t" [readonly]="true"></ngb-rating>
+            </div>
 
             <div class="Text1">Ilość miejsc:</div>
             <div class="Text2"> {{this.trip.booking}} / {{this.trip.userLimit}} </div>
@@ -57,14 +64,34 @@
         </div>
     </div>
 
-    <div *ngFor="let rev of reviews">
-        {{rev.commentHeader}} 
-        {{rev.commentBody}}
-        {{rev.rating}}
-        {{rev.commentDate}}
-        {{rev.participation.startDate}}
-        {{rev.participation.userId}}
-
-
+    <div class="Trip-comments shadow">
+        <div class="Text3">
+            Komentarze i oceny
+        </div>
+        <div *ngFor="let rev of reviews">
+                <div class="Comment">
+                    <div class="col1 ">
+                       <b> Użytkownik: {{rev.participation.userId}}  </b><br>
+                        Dodano: {{rev.commentDate}}             
+                    </div>
+        
+                    <div class="col2">
+                        <!-- {{rev.rating}} -->
+                        <div class="comment-header">
+                            {{rev.commentHeader}} 
+                        </div>
+                        <div class="comment-body">
+                            {{rev.commentBody}}
+                        </div>
+                    </div>
+        
+                    <div class="col3 "> 
+                        <ngb-rating [max]="5" [(rate)]="rev.rating" [readonly]="true"></ngb-rating> <br>
+                        Uczestniczył: <br>
+                        {{rev.participation.startDate}}
+                    </div>
+                </div>
+                <hr>
+        </div>
     </div>
 </body>

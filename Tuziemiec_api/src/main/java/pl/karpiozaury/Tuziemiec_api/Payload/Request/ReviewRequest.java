@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @RequiredArgsConstructor
 public class ReviewRequest {
+    private Long tripId;
     private String commentHeader;
     private String commentBody;
     private Integer rating;

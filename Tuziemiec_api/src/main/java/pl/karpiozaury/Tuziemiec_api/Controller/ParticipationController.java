@@ -131,7 +131,7 @@ public class ParticipationController {
         return ResponseEntity.ok(new MessageResponse("Zapisano na wycieczkę!"));
     }
 
-    @DeleteMapping("/unparticipate/{id}")
+    @DeleteMapping("/unparticipe/{id}")
     public ResponseEntity<?> singOutFromTrip(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {
         if(!participationRepository.existsByUserIdAndTripId(userRepository.findByUsername(token.getName()).orElseThrow().getId(), tripId)){
             return ResponseEntity.badRequest().body(new MessageResponse("Nie jesteś zapisany do tej wycieczki"));

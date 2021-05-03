@@ -5,8 +5,8 @@ html {
   
   body {
     position: relative;
-    height: auto;
     min-height: 100%;
+    height: fit-content;
     background: #ded9d5;
     margin: 0;
     padding: 0;
@@ -158,11 +158,11 @@ html {
   
   .white_body{
     /* height: 100vh; */
-    min-height: 90vh;
+    min-height: 79vh;
     background-color: #ffffff;
     text-align: center;
     margin: auto;
-    width:fit-content;
+    width: 90%;
   }
 
   .wrapper{
@@ -178,6 +178,9 @@ html {
     border: 3px;
     border-radius: 20px;
     margin: 10px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+         box-shadow: 0 8px 6px -6px black;
   }
 
   .trip-name {
@@ -198,15 +201,32 @@ html {
   
   .trip-description {
     margin-inline: 10%;
+    font-style: 'Alegreya Sans', sans-serif;
+    font-size: 20px;
     margin-top: 2%;
     margin-bottom: 2%;
-    font-style: 'Alegreya Sans', sans-serif;
     font-style: italic;
+    font-weight: lighter;
   }
 
+  .trip-date {
+    font-family: 'Alata';
+    font-size: 19px;
+    color: #000000;
+  }
 
+  .trip-participants {
+    font-family: 'Alata';
+    font-size: 19px;
+    color: #000000;
+  }
 
-  
+  .attraction-number {
+    font-family: 'Alata';
+    font-size: 19px;
+    color: #000000;
+  }
+
   .fnc_btn{
     background-color: #4f565c;
     padding: 1%;
@@ -214,7 +234,6 @@ html {
   }
 
   .icons {
-      bottom: 0;
       margin: 1%;
   }
 
@@ -227,4 +246,31 @@ html {
 
   .icon:hover {
     fill:#104169;
+  }
+  
+  .star {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    color: #104169;
+  }
+  .full {
+    color: #104169;
+  }
+  .half {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    color: #104169;
+  }
+
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .shadow {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+       -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black;
   }

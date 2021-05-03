@@ -26,7 +26,8 @@ import { TripPanelComponent } from './trip-panel/trip-panel.component';
 import { PastTripsComponent } from './past-trips/past-trips.component';
 import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';
 import { OrganizedTripsComponent } from './organized-trips/organized-trips.component';
-import { TripDetailComponent } from './trip-detail/trip-detail.component'
+import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 // >>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
  
@@ -60,7 +61,8 @@ import { TripDetailComponent } from './trip-detail/trip-detail.component'
     appRoutingModule,
     AgmCoreModule.forRoot({
     apiKey: 'AIzaSyCr68faOi-O2mIfX7Rs7jSDXNhogTkvhW4'
-    })
+    }),
+    NgbModule
   ],
 
   providers: [authInterceptorProviders],

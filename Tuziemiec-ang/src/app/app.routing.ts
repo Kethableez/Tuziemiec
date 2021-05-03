@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { combineLatest } from 'rxjs';
 import { AttractionCreatorComponent } from './attraction-creator/attraction-creator.component';
 import { AttractionComponent } from './attraction/attraction.component';
 import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';

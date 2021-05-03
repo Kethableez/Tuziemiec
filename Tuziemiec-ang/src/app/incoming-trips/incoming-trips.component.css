@@ -1,5 +1,10 @@
-.body {
-    background-color: #bdb4ae;
+html {
+    background-color: #9facb9;
+}
+
+
+body {
+    background-color: #9facb9;
 }
 
 .wrapper {
@@ -8,6 +13,21 @@
     margin:auto;
     width: 100%;
     justify-content: center;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #104169;
+}
+
+.Text {
+    text-align: center;
+    font-family: 'Alata';
+    font-size: 30px;
+    margin-bottom: 2%;
 }
 
 .table-header {
@@ -36,8 +56,10 @@
     display: inline-block;
     width: 1.4rem;
     height: 1.4rem;
+    cursor: pointer;
 }
 
 hr {
-    border: 1px solid black;
+    margin-top: 0;
+    margin-bottom: 0;
 }

@@ -90,11 +90,46 @@ html {
 
   .Trip-details {
     text-align: center;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-inline: auto;
+    width: 70%;
     border-radius: 0px 0px 35px 35px;
     background-color: #bdb4ae;
     margin-bottom: 5%;
+  }
+
+  .Trip-comments{
+    background: #ded9d5;
+    text-align: center;
+    margin-inline: auto;
+    width: 70%;
+  }
+  
+  .Comment{
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 0.5fr;
+    margin-top: 0.5%;
+  }
+
+  .col1 {
+    margin: auto;
+  }
+
+  .col3 {
+    margin: auto;
+  }
+
+  .comment-header {
+    font-family: 'Alata';
+    text-align: left;
+    font-size: 30px;
+    color: #353535;
+  }
+
+  .comment-body {
+    font-family: 'Alata';
+    text-align: justify;
+    font-size: 20px;
+    color: #353535;
   }
 
   .Text1 {
@@ -124,12 +159,28 @@ html {
     font-size: 25px;
   }
 
+  .Text4 {
+    text-align: center;
+    background-color: #4f565c;
+    color: #ffffff;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: bold;
+    padding: 0.75%;
+    font-size: 25px;
+  }
+
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin:auto;
     width: 60%;
     justify-content: left;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
 }
 
 .description {
@@ -140,5 +191,27 @@ html {
 }
 
 hr {
-    border: 1px solid black;
+    color: black;
+    opacity: 100%;
+}
+
+ngb-rating {
+  font-size: 30px;
+  color: #104169;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+  color: #104169;
+}
+.full {
+  color: #104169;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #104169;
 }

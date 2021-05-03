@@ -34,12 +34,17 @@
   <div class="Text3">Twój profil</div>
 
   <div class="inside">
-    <b>Imię i nazwisko:</b> {{userData.firstName}} {{userData.lastName}}<br>
-    <b>E-mail:</b> {{userData.email}}<br>
-    <b>Data urodzenia:</b> {{userData.dayOfBirth}}<br>
-    <b>Wiek:</b> {{userData.age}}<br>
+    <div class="left">Imię i nazwisko:</div>
+    <div class="right"> {{userData.firstName}} {{userData.lastName}}</div>
+    <div class="left">E-mail:</div>
+    <div class="right">{{userData.email}}</div>
+    <div class="left">Data urodzenia:</div>
+    <div class="right">{{userData.dayOfBirth}}</div>
+    <div class="left">Wiek:</div>
+    <div class="right">{{userData.age}}</div>
   </div>
 
+  <hr>
 
 
   <button class="button" (click)="openEditPanel()">

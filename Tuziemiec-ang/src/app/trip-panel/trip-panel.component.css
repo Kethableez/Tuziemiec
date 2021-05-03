@@ -122,6 +122,10 @@ html {
   .panel {
       margin: auto;
       width: 80%;
+      min-height: 50vh;
       background-color: #9facb9;
       border-radius: 0 0 20px 20px;
+      -webkit-box-shadow: 0 8px 6px -6px black;
+      -moz-box-shadow: 0 8px 6px -6px black;
+         box-shadow: 0 8px 6px -6px black;
   }

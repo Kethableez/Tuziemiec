@@ -15,6 +15,7 @@ public interface ParticipationRepository extends JpaRepository<Participation, Lo
     Optional<List<Participation>> findByTripIdAndStartDateGreaterThanEqual (Long id, LocalDate date);
 
     Optional<List<Participation>> findAllByIsReviewedFalseAndUserId(Long userId);
+    Optional<List<Participation>> findAllByUserId(Long userId);
 
     Optional<List<Participation>> findAllByIsReviewedTrue();
     Optional<Participation> findByUserIdAndTripId (Long userId, Long tripId);

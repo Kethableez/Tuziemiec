@@ -1,5 +1,5 @@
-.body {
-    background-color: #bdb4ae;
+body {
+    background-color: #9facb9;
 }
 
 .wrapper {
@@ -8,6 +8,21 @@
     margin:auto;
     width: 100%;
     justify-content: center;
+}
+
+.Text {
+    text-align: center;
+    font-family: 'Alata';
+    font-size: 30px;
+    margin-bottom: 2%;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #104169;
 }
 
 .table-header {
@@ -39,5 +54,6 @@
 }
 
 hr {
-    border: 1px solid black;
+    margin-top: 0;
+    margin-bottom: 0;
 }
