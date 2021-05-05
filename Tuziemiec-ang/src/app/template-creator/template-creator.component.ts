@@ -1,10 +1,11 @@
-import { i18nMetaToJSDoc } from '@angular/compiler/src/render3/view/i18n/meta';
+import { MapsAPILoader } from '@agm/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Attraction } from '../_model/attraction'
 import { AttractionService } from '../_services/attraction.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
+
 
 @Component({
   selector: 'app-template-creator',
@@ -16,6 +17,8 @@ export class TemplateCreatorComponent implements OnInit {
   step_1 = true;
   step_2 = false;
 
+  selectedAttractions: Attraction[] = [];
+
   isLoggedIn = false;
   attractionList: Attraction[];
 
@@ -23,7 +26,6 @@ export class TemplateCreatorComponent implements OnInit {
   isFailed = false;
   message: string;
 
-  selectedAttractions: Attraction[] = [];
   idList: number[] = [];
 
   get place() {
@@ -57,7 +59,8 @@ export class TemplateCreatorComponent implements OnInit {
     private token: TokenStorageService,
     private attractionService: AttractionService,
     private tripService: TripService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private mapsApiLoader: MapsAPILoader) { }
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -101,6 +104,28 @@ export class TemplateCreatorComponent implements OnInit {
       this.addToIdList(item.id);
     });
   }
+
+  // onAttractionAdd(m: marker) {
+  //   this.markerList.push(m);
+  // }
+
+  onAttractionAdd(att: Attraction) {
+    this.selectedAttractions.push(att);
+  }
+
+  onAttractionRemove(att: Attraction){
+    this.selectedAttractions.forEach((value, index) =>{
+      if(value.name == att.name) this.selectedAttractions.splice(index, 1);
+    })
+  };
+
+  // onAttractionRemove(m: marker){
+  //   this.markerList.forEach((value, index) =>{
+  //     if(value.name == m.name) this.markerList.splice(index, 1);
+  //   })
+  // };
+
+
 
   onSubmit(){
     this.tripService.createTemplate(this.templateForm.value).subscribe(

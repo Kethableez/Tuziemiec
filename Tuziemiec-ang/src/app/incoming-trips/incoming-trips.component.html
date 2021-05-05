@@ -5,7 +5,7 @@
 
     <div *ngIf="incomingTrips.length != 0">
         <div class="wrapper">
-            <div class="table-header" >Nazwa</div>
+            <div class="table-header">Nazwa</div>
             <div class="table-header">Miejsce</div>
             <div class="table-header">Data wycieczki</div>
             <div class="table-header">Ilość osób</div>
@@ -14,7 +14,7 @@
         </div>
         <hr>
         <div *ngFor="let trip of incomingTrips">
-           <div class="wrapper">
+            <div class="wrapper">
                 <div class="table-cell link" [routerLink]="['/trip', trip.id]"><b>{{trip.template.name}}</b></div>
                 <div class="table-cell">{{trip.template.place}}</div>
                 <div class="table-cell">{{trip.startDate}} - {{trip.endDate}}</div>
@@ -22,10 +22,14 @@
                 <div class="table-cell">{{trip.template.rating}}</div>
                 <div class="table-cell icons">
                     <div class="icon" (click)="removeCurrentUserFromTrip(trip.id)">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"/>
-                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                          </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-user-x">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="8.5" cy="7" r="4"></circle>
+                            <line x1="18" y1="8" x2="23" y2="13"></line>
+                            <line x1="23" y1="8" x2="18" y2="13"></line>
+                        </svg>
                     </div>
                     <!-- <div class="icon">
                         <svg 

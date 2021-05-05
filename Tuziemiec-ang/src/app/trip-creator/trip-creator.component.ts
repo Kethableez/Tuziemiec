@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators  } from '@angular/forms';
+import { Attraction } from '../_model/attraction';
 import { TripTemplate } from '../_model/tripTemplate';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
@@ -84,6 +85,11 @@ export class TripCreatorComponent implements OnInit {
     this.step_2 = true;
   }
 
+  isSelected(template_n: string): boolean {
+    if( template_n == this.selectedTemplate) return true;
+    else return false;
+  }
+
   onSubmit() {
     this.tripService.createTrip(this.createTrip.value).subscribe(
       response => {
@@ -102,12 +108,4 @@ export class TripCreatorComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
-  // onSubmit(){
-    
-  //   this.tripService.createTrip(this.createTrip.value).subscribe(
-  //     response => console.log('Success!', response),
-  //     error => console.error('Error!', error)
-  //   );
-  //   this.isSubmit=true;
-  // }
 }

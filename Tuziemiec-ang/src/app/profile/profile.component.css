@@ -45,14 +45,17 @@ html {
 
   .left {
     margin-left: 5%;
-    font-family: 'Alata';
+    font-family: 'Alegreya Sans', sans-serif;
+    text-align: left;
+    font-size: 	2rem;
     font-weight: bolder;
     text-align: left;
   }
 
   .right {
-    font-family: 'Alata';
-    font-weight: lighter;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 	2rem;
+    /* font-weight: bolder; */
     margin-left: 5%;
     text-align: left;
   }

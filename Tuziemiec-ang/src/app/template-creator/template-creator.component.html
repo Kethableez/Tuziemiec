@@ -1,40 +1,40 @@
 <body>
-    <div style="width: 100%; display: table;">
-        <div style="display: table-row">
-    
-          <div class="Header">
-            <div class="Name">Tuziemiec</div>
-            <div class="Caption">Spotkajmy się!</div>
-          </div>
-    
-          <div class="Error" *ngIf="isLoggedIn">
-              Tworzenie szablonu wycieczki!
-          </div>
-    
-          <div class="Error" *ngIf="!isLoggedIn">
-              ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
-          </div>
-    
-          <div class="Options" *ngIf="isLoggedIn">
-            <div>
-                <button class="button" routerLink="/main">Wstecz</button>
-                <!-- <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button> -->
-            </div>
-          </div>
-  
-          <div class="Options" *ngIf="!isLoggedIn">
-            <button class="button" routerLink="/">Strona główna! </button>
-          </div>
+  <div style="width: 100%; display: table;">
+    <div style="display: table-row">
 
-          
+      <div class="Header">
+        <div class="Name">Tuziemiec</div>
+        <div class="Caption">Spotkajmy się!</div>
+      </div>
+
+      <div class="Error" *ngIf="isLoggedIn">
+        Tworzenie szablonu wycieczki!
+      </div>
+
+      <div class="Error" *ngIf="!isLoggedIn">
+        ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
+      </div>
+
+      <div class="Options" *ngIf="isLoggedIn">
+        <div>
+          <button class="button" routerLink="/main">Wstecz</button>
+          <!-- <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button> -->
         </div>
       </div>
 
-      <div class="center" *ngIf="step_1">
-        <div class="Text4">
-          
-        <form [formGroup]="search" (ngSubmit)="findAttractions(place.value)">
-          <input style="
+      <div class="Options" *ngIf="!isLoggedIn">
+        <button class="button" routerLink="/">Strona główna! </button>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="center" *ngIf="step_1">
+    <div class="Text4">
+
+      <form [formGroup]="search" (ngSubmit)="findAttractions(place.value)">
+        <input style="
           border-radius: 20px 0px 0px 20px;
           font-family: 'Alegreya Sans', sans-serif;
           font-size: 25px;
@@ -44,104 +44,104 @@
           height: 40px;
           border: none;
           box-sizing: border-box;
-          outline: none;" 
-          formControlName="place" type="text" placeholder="Wpisz miasto aby wyszukać atrakcje">
-          
-          <button class="search-button" type="submit" [disabled]="!search.valid">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-            width="1.2rem" 
-            height="1.2rem" 
-            fill="currentColor" 
-            class="bi bi-search" 
-            viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-            </svg>
-          </button>
-        </form>
-        </div>
+          outline: none;" formControlName="place" type="text" placeholder="Wpisz miasto aby wyszukać atrakcje">
 
-  
-        <div class="attraction-list" *ngFor="let attraction of attractionList">
-          <div class="attraction">
-            <div class="attraction-name Text2" (click)="addToSelected(attraction)">{{attraction.name}} </div>
+        <button class="search-button" type="submit" [disabled]="!search.valid">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" fill="currentColor"
+            class="bi bi-search" viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="wrapper">
+      <div class="list">
+        <div class="Text2 sticky">
+          Lista atrakcji
+        </div>
+        <hr>
+        <div class="Text2" *ngFor="let attraction of attractionList">
+          <div class="link selected" *ngIf="selectedAttractions.includes(attraction)"
+            (click)="onAttractionRemove(attraction)">
+            {{attraction.name}}
           </div>
-        </div>
-  
-        <div class="Text3" *ngIf="selectedAttractions.length != 0">
-          Lista wybranych atrakcji:
-        </div>
-  
-  
-        <div style="display: inline-block; margin: 0.5%;" *ngFor="let att of selectedAttractions">
-          <div class="attraction-bean" (click)="removeFromSelected(att.id)">
-            <div class="Text5">
-              {{att.name}}
-            </div>
-            
 
-            <div class="remove-icon">           
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.6rem" height="1.6rem" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </div>
+          <div class="link to-select" *ngIf="!selectedAttractions.includes(attraction)"
+            (click)="onAttractionAdd(attraction)">
+            {{attraction.name}}
           </div>
-        </div>
-
-
-
-        
-        <div style="margin: 2%;" >
-          <button class="button" [disabled]="selectedAttractions.length == 0" (click)="onClick()">Dalej</button>
-        </div>
-        <div class="Text">
-          Nie ma miejsca które szukasz?
-          <div class="router" routerLink="/create_attraction">
-            Kliknij tutaj aby dodać nową atrakcję!
-          </div> 
-    
+          <hr>
         </div>
       </div>
 
-      <div *ngIf="step_2">
 
-        <div class="Text4">
-          Uzupełnij dane
-        </div>
-        <div class="Form" *ngIf="isLoggedIn">
-          <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
-            <div class="Form_body">
-              <div *ngIf="!isSubmit">
-                <input formControlName="name" type="text" placeholder="Wpisz nazwę szablonu" ><br>
-                <div class="validate" *ngIf="name.invalid && name.touched">
-                    <small *ngIf="name.errors?.required">Nazwa szablonu jest wymagana</small>
-                </div>
-      
-                <input formControlName="place" type="text" placeholder="Wpisz miejsce" ><br>
-                <div class="validate" *ngIf="template_place.invalid && template_place.touched">
-                  <small *ngIf="template_place.errors?.required">Miejsce jest wymagane</small>
-                </div>
-      
-                <textarea formControlName="description" type="text" placeholder="Wpisz opis szablonu" ></textarea>
-                <div class="validate" *ngIf="description.invalid && description.touched">
-                  <small *ngIf="description.errors?.required">Opis szablonu jest wymagany</small>
-                </div>
-              </div>
-      
-              <div class="text" *ngIf="isSubmit && !isFailed">
-                {{message}}
-              </div>
-      
-              <div class="text validate" *ngIf="isSubmit && isFailed">
-                {{message}}
-              </div>
-              
-              <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejny szablon</button>
-              <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
-              <button class="Submit_button" type="submit" [disabled]="!templateForm.valid" *ngIf="!isSubmit">Stwórz szablon</button>
-            </div>
-          </form>
-        </div>
+      <div class="map">
+        <agm-map [latitude]="51.9189046" [longitude]="19.1343786" [zoom]="6.7">
+          <div *ngFor="let marker of selectedAttractions">
+            <agm-marker [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
+
+          </div>
+        </agm-map>
       </div>
+    </div>
+
+    <div style="margin: 2%;">
+      <button class="button" [disabled]="selectedAttractions.length == 0" (click)="onClick()">Dalej</button>
+    </div>
+    <div class="Text">
+      Nie ma miejsca które szukasz?
+      <div class="router" routerLink="/create_attraction">
+        Kliknij tutaj aby dodać nową atrakcję!
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="step_2">
+
+    <div class="Text4">
+      Uzupełnij dane
+    </div>
+    <div class="Form" *ngIf="isLoggedIn">
+      <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+        <div class="Form_body">
+          <div *ngIf="!isSubmit">
+            <input formControlName="name" type="text" placeholder="Wpisz nazwę szablonu"><br>
+            <div class="validate" *ngIf="name.invalid && name.touched">
+              <small *ngIf="name.errors?.required">Nazwa szablonu jest wymagana</small>
+            </div>
+
+            <input formControlName="place" type="text" placeholder="Wpisz miejsce"><br>
+            <div class="validate" *ngIf="template_place.invalid && template_place.touched">
+              <small *ngIf="template_place.errors?.required">Miejsce jest wymagane</small>
+            </div>
+
+            <textarea formControlName="description" type="text" placeholder="Wpisz opis szablonu"></textarea>
+            <div class="validate" *ngIf="description.invalid && description.touched">
+              <small *ngIf="description.errors?.required">Opis szablonu jest wymagany</small>
+            </div>
+          </div>
+
+          <div class="text" *ngIf="isSubmit && !isFailed">
+            {{message}}
+          </div>
+
+          <div class="text validate" *ngIf="isSubmit && isFailed">
+            {{message}}
+          </div>
+
+          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejny
+            szablon</button>
+          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj
+            ponownie</button>
+          <button class="Submit_button" type="submit" [disabled]="!templateForm.valid" *ngIf="!isSubmit">Stwórz
+            szablon</button>
+        </div>
+      </form>
+
+      {{templateForm.value | json}}
+    </div>
+  </div>
 </body>
-    

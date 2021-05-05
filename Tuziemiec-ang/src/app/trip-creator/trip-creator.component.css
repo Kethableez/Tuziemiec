@@ -197,6 +197,12 @@ html {
     font-size: 25px;
     margin: 2%;
   }
+
+  .selected {
+    color: #104169;
+    letter-spacing: 2px;
+
+  }
   
   .Text3 {
     text-align: center;
@@ -210,17 +216,15 @@ html {
   }
 
   .template-list {
-    text-align: center;
+    margin-inline: auto;
   }
 
   .template {
     margin-top: 0.5%;
-    text-align: center;
   }
 
   .template-name {
     font-family: 'Alegreya Sans', sans-serif;
-    color: black;
     font-weight: bold;
     font-size: 25px;
     cursor: pointer;

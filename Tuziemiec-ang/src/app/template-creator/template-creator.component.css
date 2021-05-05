@@ -305,3 +305,44 @@ html {
     color: #104169;
     text-decoration-line: underline;
   }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    width: 90%;
+    margin-inline: auto;
+    height: 70vh;
+  }
+
+  .list {
+    background-color: #ded9d5;
+    overflow: auto; /* new */
+  }
+
+  .link {
+    cursor: pointer;
+  }
+
+  .link:hover {
+    color: #104169;
+  }
+
+  .map {
+    padding: auto;
+    background-color: #bdb4ae;
+  }
+
+  .selected {
+    color: #104169;
+    background-color: #bdb4ae;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+    letter-spacing: 2px;
+    /* text-decoration: underline; */
+
+  }
+  
+  agm-map {
+    height: 70vh;
+  }

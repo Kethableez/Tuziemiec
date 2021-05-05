@@ -91,7 +91,7 @@ html {
   .Trip-details {
     text-align: center;
     margin-inline: auto;
-    width: 70%;
+    width: 90%;
     border-radius: 0px 0px 35px 35px;
     background-color: #bdb4ae;
     margin-bottom: 5%;
@@ -214,4 +214,13 @@ ngb-rating {
   display: inline-block;
   overflow: hidden;
   color: #104169;
+}
+
+.wrapper2 {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+agm-map {
+  height: 100%;
 }
