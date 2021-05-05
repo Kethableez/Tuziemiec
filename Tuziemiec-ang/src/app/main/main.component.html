@@ -1,53 +1,53 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 <body>
   <div style="width: 100%; display: table;">
-        <div style="display: table-row">
-    
-          <div class="Header">
-            <div class="Name">Tuziemiec</div>
-            <div class="Caption">Spotkajmy się!</div>
-          </div>
-    
-          <div class="Search" *ngIf="isLoggedIn">
-            <form>
-              <input type="text" placeholder="Wpisz adres żeby wyszukać wycieczki">
-            </form>
-          </div>
+    <div style="display: table-row">
 
-          <div class="Header_text" *ngIf="!isLoggedIn">
-            <form>
-             Zaloguj się aby korzystać z funkcjonalności!
-            </form>
-          </div>
-    
-          <div class="Options" *ngIf="isLoggedIn">
-            <div>
-                <button class="button" routerLink="/profile">Profil </button>
-                <button class="button" routerLink="/" (click)="logout()">Wyloguj się </button>
-                <!-- <a href class="back_btn" (click)="logout()">Wyloguj się</a> -->
-            </div>
-          </div>
-           
+      <div class="Header">
+        <div class="Name">Tuziemiec</div>
+        <div class="Caption">Spotkajmy się!</div>
+      </div>
 
-          <div class="Back_button" *ngIf="!isLoggedIn">
-            <button class="button" routerLink="/">Strona główna! </button>
-          </div>
-    
+      <div class="Search" *ngIf="isLoggedIn">
+        <form>
+          <input type="text" placeholder="Wpisz adres żeby wyszukać wycieczki">
+        </form>
+      </div>
+
+      <div class="Header_text" *ngIf="!isLoggedIn">
+        <form>
+          Zaloguj się aby korzystać z funkcjonalności!
+        </form>
+      </div>
+
+      <div class="Options" *ngIf="isLoggedIn">
+        <div>
+          <button class="button" routerLink="/profile">Profil </button>
+          <button class="button" routerLink="/" (click)="logout()">Wyloguj się </button>
+          <!-- <a href class="back_btn" (click)="logout()">Wyloguj się</a> -->
         </div>
+      </div>
+
+
+      <div class="Back_button" *ngIf="!isLoggedIn">
+        <button class="button" routerLink="/">Strona główna! </button>
+      </div>
+
+    </div>
   </div>
 
   <div class="fnc_btn" *ngIf="isLoggedIn">
-        <!-- <button class="button2" routerLink="/maps">Mapa</button> -->
-        <button class="button2" routerLink="/attractions">Lista atrakcji</button>
-        <button class="button2" routerLink="/create_template">Dodaj szablon</button>
-        <button class="button2" routerLink="/create_trip">Dodaj wycieczkę</button>
-        <button class="button2" routerLink="/panel">Panel wycieczek</button>
+    <!-- <button class="button2" routerLink="/maps">Mapa</button> -->
+    <button class="button2" routerLink="/attractions">Lista atrakcji</button>
+    <button class="button2" routerLink="/create_template">Dodaj szablon</button>
+    <button class="button2" routerLink="/create_trip">Dodaj wycieczkę</button>
+    <button class="button2" routerLink="/panel">Panel wycieczek</button>
   </div>
-      
-      
+
+
   <div class="white_body">
     <div class="wrapper">
-      <div class="trip-box" *ngFor="let trip of avTrips">
+
+      <!-- <div class="trip-box" *ngFor="let trip of avTrips">
               <div class="trip-name ">
                 {{trip.template.name}}
               </div>
@@ -73,10 +73,6 @@
                 Atrakcje: {{trip.template.attractions.length}}
               </div>
               <hr>
-    
-              <!-- <div *ngIf="trip.template.rating != 0">
-                Ocena: {{trip.template.rating}} / 5 <br>
-              </div> -->
 
               <div>
                 <ng-template #t let-fill="fill">
@@ -88,40 +84,132 @@
               </div>
               <hr>
               <div class="icons">
-                <!-- <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                  width="1.7rem" 
-                  height="1.7rem" 
-                  class="bi bi-heart" 
-                  viewBox="0 0 16 16">
-                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                  </svg>
-                </div> -->
-
                 <div class="icon" (click)="addCurrentUserToTrip(trip.id)">
                   <svg xmlns="http://www.w3.org/2000/svg" 
-                  width="2em" 
+                  width="2rem" 
                   height="2rem" 
-
-                  class="bi bi-plus-circle" 
-                  viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="feather feather-plus-circle">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/>
+                    <line x1="8" y1="12" x2="16" y2="12"/>
                   </svg>
                 </div>
 
                 <div class="icon" [routerLink]="['/trip', trip.id]">
-                  <svg xmlns="http://www.w3.org/2000/svg" 
-                  width="2em" 
+                  <svg xmlns="http://www.w3.org/2000/svg"   
+                  width="2rem" 
                   height="2rem" 
-                  class="bi bi-info-circle" 
-                  viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="feather feather-info">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12" y2="8"></line>
                   </svg>
                 </div>
               </div>
+      </div> -->
+
+      <div class="trip-card" *ngFor="let trip of avTrips">
+        <div class="t-name">
+          {{trip.template.name}}
+        </div>
+
+        <div class="t-body">
+          <div class="t-details">
+
+            <!-- Place icon -->
+            <div class="t-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-map">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                <line x1="8" y1="2" x2="8" y2="18"></line>
+                <line x1="16" y1="6" x2="16" y2="22"></line>
+              </svg>
+            </div>
+
+            <!-- Place name -->
+            <div class="t-text">
+              {{trip.template.place}}
+            </div>
+
+            <!-- Date icon -->
+            <div class="t-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+
+            <!-- Trip Date -->
+            <div class="t-text">
+              {{trip.startDate}}
+            </div>
+
+            <!-- Participants number icon -->
+            <div class="t-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" 
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+
+            <!-- Attraction number -->
+            <div class="t-text">
+              {{trip.booking}} / {{trip.userLimit}}
+            </div>
+
+          </div>
+
+          <div class="t-funct">
+            <div class="t-rating">
+              <ng-template #t let-fill="fill">
+                <span class="star" [class.full]="fill === 100">
+                  <span class="half" [style.width.%]="fill">★</span>☆
+                </span>
+              </ng-template>
+              <ngb-rating [max]="5" [(rate)]="trip.template.rating" [starTemplate]="t" [readonly]="true"></ngb-rating>
+            </div>
+
+            <div class="t-buttons">
+              <!-- Participe button -->
+              <div class="t-button" (click)="addCurrentUserToTrip(trip.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+              </div>
+
+              <!-- Info button -->
+              <div class="t-button" [routerLink]="['/trip', trip.id]">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12" y2="8"></line>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
 
   </div>

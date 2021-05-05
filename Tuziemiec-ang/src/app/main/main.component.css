@@ -238,20 +238,21 @@ html {
   }
 
   .icon {
-    fill: #353535;
+    /* fill: #353535; */
+    stroke: #353535;
     cursor: pointer;
     display: inline;
     margin-inline: 1.5rem;
   }
 
   .icon:hover {
-    fill:#104169;
+    stroke:#104169;
   }
   
   .star {
     position: relative;
     display: inline-block;
-    font-size: 40px;
+    font-size: 2rem;
     color: #104169;
   }
   .full {
@@ -273,4 +274,84 @@ html {
     -webkit-box-shadow: 0 8px 6px -6px black;
        -moz-box-shadow: 0 8px 6px -6px black;
             box-shadow: 0 8px 6px -6px black;
+  }
+
+  /* Testy */
+
+  .trip-card {
+    display: grid;
+    grid-template-rows: 0.7fr 1.3fr;
+    background-color: #bdb4ae;
+    border-radius: 0 0 30px 0;
+    margin: 3%;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+         box-shadow: 0 8px 6px -6px black;
+  }
+
+  .t-body {
+    display: grid;
+    grid-template-columns: 0.9fr 0.5fr;
+  }
+
+  .t-name {
+    font-family: 'Alata';
+    font-size: 	1.5rem;
+    width: 100%;
+    height: 100%;
+    padding-inline: 2%;
+    background-color: #4f565c;
+    color: #ffffff;
+    font-style: italic;
+    margin: auto;
+  }
+
+  .t-details {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .t-text {
+    font-family: 'Alegreya Sans', sans-serif;
+    text-align: left;
+    font-size: 	1.25rem;
+    font-weight: bolder;
+  }
+
+  .t-funct {
+    border-left: 2px solid rgba(0, 0, 0, 0.089);
+    display: grid;
+    grid-template-rows: 1.5fr 1.5fr;
+  }
+
+  .t-icon {
+    /* fill: #353535; */
+    stroke: #353535;
+    margin: auto;
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .t-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* margin-top: 0.5rem;
+    margin-bottom: 0.5rem; */
+  }
+
+  .t-rating {
+    height: 2rem;
+    margin: auto;
+  }
+  
+  .t-button {
+    margin: auto;
+    stroke: #353535;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+
+  .t-button:hover {
+    stroke: #104169;
   }

@@ -35,40 +35,56 @@
     Uzupełnij dane
   </div>
 
-  <div class="Form" *ngIf="isLoggedIn">
-    <form [formGroup]="attractionForm" (ngSubmit)="onSubmit()">
-      <div class="Form_body">
-        <div *ngIf="!isSubmit">
-          <input formControlName="name" type="text" placeholder="Wpisz nazwę atrakcji" ><br>
-          <div class="validate" *ngIf="name.invalid && name.touched">
-              <small *ngIf="name.errors?.required">Nazwa atrakcji jest wymagana</small>
+  <div class="wrapper" *ngIf="isLoggedIn">
+    <div class="Form" >
+      <form [formGroup]="attractionForm" (ngSubmit)="onSubmit()">
+        <div class="Form_body">
+          <div *ngIf="!isSubmit">
+            <input formControlName="name" type="text" placeholder="Wpisz nazwę atrakcji" ><br>
+            <div class="validate" *ngIf="name.invalid && name.touched">
+                <small *ngIf="name.errors?.required">Nazwa atrakcji jest wymagana</small>
+            </div>
+  
+            <input formControlName="place" type="text" placeholder="Wpisz miejsce" ><br>
+            <div class="validate" *ngIf="place.invalid && place.touched">
+              <small *ngIf="place.errors?.required">Miejsce atrakcji jest wymagane</small>
+            </div>
+  
+            <textarea formControlName="description" type="text" placeholder="Wpisz opis atrakcji" ></textarea>
+            <div class="validate" *ngIf="description.invalid && description.touched">
+              <small *ngIf="description.errors?.required">Opis atrakcji jest wymagany</small>
+            </div>
           </div>
-
-          <input formControlName="place" type="text" placeholder="Wpisz miejsce" ><br>
-          <div class="validate" *ngIf="place.invalid && place.touched">
-            <small *ngIf="place.errors?.required">Miejsce atrakcji jest wymagane</small>
+  
+          <div class="text" *ngIf="isSubmit && !isFailed">
+            {{message}}
           </div>
+  
+          <div class="text validate" *ngIf="isSubmit && isFailed">
+            {{message}}
+          </div>
+          
+          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną atrakcję</button>
+          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
+          <button class="Submit_button" type="submit" [disabled]="!attractionForm.valid" *ngIf="!isSubmit">Stwórz atrakcję</button>
 
-          <textarea formControlName="description" type="text" placeholder="Wpisz opis atrakcji" ></textarea>
-          <div class="validate" *ngIf="description.invalid && description.touched">
-            <small *ngIf="description.errors?.required">Opis atrakcji jest wymagany</small>
+          <div class="tip">
+            <b>Porada</b> <br> 
+            Przesuń marker na interesujące Cię miejsce żeby dodać współrzędne do atrakcji!
           </div>
         </div>
 
-        <div class="text" *ngIf="isSubmit && !isFailed">
-          {{message}}
-        </div>
 
-        <div class="text validate" *ngIf="isSubmit && isFailed">
-          {{message}}
-        </div>
-        
-        <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną atrakcję</button>
-        <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
-        <button class="Submit_button" type="submit" [disabled]="!attractionForm.valid" *ngIf="!isSubmit">Stwórz atrakcję</button>
-      </div>
-    </form>
+      </form>
+    </div>
 
-
+    <div>
+      <agm-map [latitude]="lat" [longitude]="lon" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lon" [markerDraggable]="true" (dragEnd)="getPosition($event)"></agm-marker>
+      </agm-map>
+    </div>
   </div>
+
+ 
+
 </body>

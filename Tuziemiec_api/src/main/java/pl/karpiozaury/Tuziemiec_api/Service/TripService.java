@@ -70,7 +70,9 @@ public class TripService {
         Attraction attraction = new Attraction(
                 request.getName(),
                 request.getDescription(),
-                request.getPlace()
+                request.getPlace(),
+                request.getLatitude(),
+                request.getLongitude()
         );
 
         return attractionRepository.save(attraction);

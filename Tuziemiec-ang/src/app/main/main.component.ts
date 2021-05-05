@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Trip } from '../_model/trip';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
-import {ParticipationService} from '../_services/participation.service';
+import { ParticipationService } from '../_services/participation.service';
 
 @Component({
   selector: 'app-main',
@@ -18,9 +18,9 @@ export class MainComponent implements OnInit {
   message: string;
 
 
-  constructor(private token: TokenStorageService, 
-              private tripService: TripService,
-              private participationService: ParticipationService) { }
+  constructor(private token: TokenStorageService,
+    private tripService: TripService,
+    private participationService: ParticipationService) { }
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -45,19 +45,19 @@ export class MainComponent implements OnInit {
     window.location.reload();
   }
 
-  addCurrentUserToTrip(TripId : number): void {
-      this.participationService.postParticipation(TripId).subscribe( 
-        response => {
-          console.log(response)
-          this.message = response.message
-        },
+  addCurrentUserToTrip(TripId: number): void {
+    this.participationService.postParticipation(TripId).subscribe(
+      response => {
+        console.log(response)
+        this.message = response.message
+      },
 
-        err => {
-          console.log(err.error.message)
-          this.message = err.error.message
-        }
-      // this.reloadPage();
-      )
+      err => {
+        console.log(err.error.message)
+        this.message = err.error.message
+      }
+    )
+    this.reloadPage();
   }
 
 }

@@ -24,11 +24,21 @@ public class Attraction {
     @NotBlank
     private String place;
 
+    @NotBlank
+    private Float latitude;
+
+    @NotBlank
+    private Float longitude;
+
     public Attraction(@NotBlank String name,
                       @NotBlank String description,
-                      @NotBlank String place) {
+                      @NotBlank String place,
+                      @NotBlank Float latitude,
+                      @NotBlank Float longitude) {
         this.name = name;
         this.description = description;
         this.place = place;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }

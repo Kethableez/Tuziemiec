@@ -27,10 +27,8 @@ import { PastTripsComponent } from './past-trips/past-trips.component';
 import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';
 import { OrganizedTripsComponent } from './organized-trips/organized-trips.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// >>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
- 
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     LoginComponent,
     ProfileComponent,
     MainComponent,
-// <<<<<<< HEAD
     TripCreatorComponent,
-// =======
     MapsComponent,
     AttractionComponent,
     AttractionCreatorComponent,
@@ -50,9 +46,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     PastTripsComponent,
     IncomingTripsComponent,
     OrganizedTripsComponent,
-    TripDetailComponent
-// >>>>>>> 18643e5594a244c5d16939b623474cc6509c9208
+    TripDetailComponent,
   ],
+
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -60,7 +56,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     ReactiveFormsModule,
     appRoutingModule,
     AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyCr68faOi-O2mIfX7Rs7jSDXNhogTkvhW4'
+      apiKey: 'AIzaSyDrfFsVLrxbrj2ENXaMY08PvN7QTfP0EFs',
+      libraries: ['places']
     }),
     NgbModule
   ],

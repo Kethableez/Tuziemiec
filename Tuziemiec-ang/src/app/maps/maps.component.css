@@ -1,9 +1,5 @@
-agm-map{
-  height: 80%;
-  /* width: 70%; */
-  display: block;
-  margin-left: 20%;
-  margin-right: 20%;
+agm-map {
+  height: 300px;
 }
 
 .Button {
