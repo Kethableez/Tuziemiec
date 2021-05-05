@@ -55,10 +55,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     appRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDrfFsVLrxbrj2ENXaMY08PvN7QTfP0EFs',
-      libraries: ['places']
-    }),
+
     NgbModule
   ],
 
