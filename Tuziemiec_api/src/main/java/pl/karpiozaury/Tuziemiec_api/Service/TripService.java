@@ -2,20 +2,17 @@ package pl.karpiozaury.Tuziemiec_api.Service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
-import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
-import pl.karpiozaury.Tuziemiec_api.Model.Trip;
-import pl.karpiozaury.Tuziemiec_api.Model.TripTemplate;
+import pl.karpiozaury.Tuziemiec_api.Model.*;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.AttractionRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.TripRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.TripTemplateRequest;
-import pl.karpiozaury.Tuziemiec_api.Repository.AttractionRepository;
-import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
-import pl.karpiozaury.Tuziemiec_api.Repository.TripTemplateRepository;
-import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
+import pl.karpiozaury.Tuziemiec_api.Repository.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -113,6 +110,10 @@ public class TripService {
         }
 
         return templateRepository.save(template);
+    }
+
+    public List<Trip> getAvailableTrips() {
+        return tripRepository.findAvaliableTrips();
     }
 
 //    public void findByGuideId(Trip trip, Long id){

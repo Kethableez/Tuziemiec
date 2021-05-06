@@ -9,7 +9,7 @@
 
       <div class="Search" *ngIf="isLoggedIn">
         <form>
-          <input type="text" placeholder="Wpisz adres żeby wyszukać wycieczki">
+          <input type="text" name="search" [(ngModel)]="searchText" autocomplete="off">
         </form>
       </div>
 
@@ -42,7 +42,6 @@
     <button class="button2" routerLink="/create_trip">Dodaj wycieczkę</button>
     <button class="button2" routerLink="/panel">Panel wycieczek</button>
   </div>
-
 
   <div class="white_body">
     <div class="wrapper">
@@ -118,7 +117,9 @@
               </div>
       </div> -->
 
-      <div class="trip-card" *ngFor="let trip of avTrips">
+
+
+      <div class="trip-card" *ngFor="let trip of avTrips | filter:searchText">
         <div class="t-name">
           {{trip.template.name}}
         </div>
@@ -159,8 +160,8 @@
 
             <!-- Participants number icon -->
             <div class="t-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" 
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -187,12 +188,19 @@
 
             <div class="t-buttons">
               <!-- Participe button -->
-              <div class="t-button" (click)="addCurrentUserToTrip(trip.id)">
+              <div class="t-button" *ngIf="!isEnrolled(trip.id)" (click)="addCurrentUserToTrip(trip.id)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
                   stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle">
                   <circle cx="12" cy="12" r="10"></circle>
                   <line x1="12" y1="8" x2="12" y2="16"></line>
                   <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+              </div>
+
+              <div class="t-button" *ngIf="isEnrolled(trip.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                  <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
 
@@ -213,5 +221,4 @@
     </div>
 
   </div>
-
 </body>
