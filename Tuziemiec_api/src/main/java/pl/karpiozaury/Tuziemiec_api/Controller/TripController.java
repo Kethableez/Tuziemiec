@@ -2,14 +2,12 @@ package pl.karpiozaury.Tuziemiec_api.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
-import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
-import pl.karpiozaury.Tuziemiec_api.Model.Participation;
-import pl.karpiozaury.Tuziemiec_api.Model.Trip;
-import pl.karpiozaury.Tuziemiec_api.Model.TripTemplate;
+import pl.karpiozaury.Tuziemiec_api.Model.*;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.*;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
 import pl.karpiozaury.Tuziemiec_api.Repository.*;
@@ -175,27 +173,28 @@ public class TripController {
 
     @GetMapping("/all_trips")
     public ResponseEntity<List<Trip>> getAllTrips(){
-       List<Trip> all = tripRepository.findAll();
+       List<Trip> all = tripRepository.findAvaliableTrips();
        return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
     @GetMapping("/available")
-    public ResponseEntity<List<Trip>> getAvaliableTrips(UsernamePasswordAuthenticationToken token){
+    public ResponseEntity<List<Trip>> getAvaliableTrips(){
         //TODO: Wyświetlenie wycieczek na których użytkownik nie jest zapisany,
         //      Pomijanie tych wycieczek na których użytkownik już jest
         //      UsernamePassword...Token... etc.
-        List<Participation> userParticipation = participationRepository.findAllByUserId(
-                userRepository.findByUsername(token.getName()).orElseThrow().getId()
-        ).orElseThrow();
+//        List<Participation> userParticipation = participationRepository.findAllByUserId(
+//                userRepository.findByUsername(token.getName()).orElseThrow().getId()
+//        ).orElseThrow();
+//
+//        List<Trip> avaliable = tripRepository.findByStartDateGreaterThanEqual(LocalDate.now());
+//
+//        avaliable.removeIf(t -> t.getBooking().equals(t.getUserLimit()));
+//
+//        for (Participation p : userParticipation) {
+//            avaliable.remove(tripRepository.findById(p.getTripId()).orElseThrow());
+//        }
 
-        List<Trip> avaliable = tripRepository.findByStartDateGreaterThanEqual(LocalDate.now());
-
-        avaliable.removeIf(t -> t.getBooking().equals(t.getUserLimit()));
-
-        for (Participation p : userParticipation) {
-            avaliable.remove(tripRepository.findById(p.getTripId()).orElseThrow());
-        }
-
+        List<Trip> avaliable = tripService.getAvailableTrips();
         return new ResponseEntity<>(avaliable, HttpStatus.OK);
     }
 

@@ -1,5 +1,5 @@
 import { MapsAPILoader } from '@agm/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AttractionService } from '../_services/attraction.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -19,6 +19,9 @@ export class AttractionCreatorComponent implements OnInit {
   lat: number;
   lon: number;
   zoom: number;
+
+  @ViewChild('search')
+  public searchElementRef: ElementRef;
 
   private geoCoder;
 
@@ -46,7 +49,8 @@ export class AttractionCreatorComponent implements OnInit {
     private token: TokenStorageService,
     private fb: FormBuilder,
     private attractionService: AttractionService,
-    private mapsAPILoader: MapsAPILoader) { }
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone) { }
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -57,7 +61,22 @@ export class AttractionCreatorComponent implements OnInit {
 
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
-    })
+
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          this.lat = place.geometry.location.lat();
+          this.lon = place.geometry.location.lng();
+          this.zoom = 12;
+        });
+      });
+    });
 
   }
 
@@ -80,17 +99,6 @@ export class AttractionCreatorComponent implements OnInit {
       latitude: this.lat,
       longitude: this.lon
     })
-
-    // this.geoCoder.geocode({ 'location': { lat: this.latitude, lng: this.longitude } }, (results, status) => {
-    //   console.log(results);
-    //   console.log(status);
-    //   if (status === 'OK') {
-    //     if (results[0]) {
-    //       this.zoom = 12;
-    //       this.address = results[0].formatted_address;
-    //     }
-    //   }
-    // });
   }
 
   onSubmit() {

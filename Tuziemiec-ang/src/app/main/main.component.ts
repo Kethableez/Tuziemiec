@@ -3,6 +3,7 @@ import { Trip } from '../_model/trip';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { TripService } from '../_services/trip.service';
 import { ParticipationService } from '../_services/participation.service';
+import { Participation } from '../_model/participation';
 
 @Component({
   selector: 'app-main',
@@ -14,8 +15,10 @@ export class MainComponent implements OnInit {
   isLoggedIn = false;
   currentUser: any;
   avTrips: Trip[];
+  partList: Participation[];
   resp: Trip;
   message: string;
+  searchText;
 
 
   constructor(private token: TokenStorageService,
@@ -30,11 +33,15 @@ export class MainComponent implements OnInit {
       this.tripService.getAvailableTrips().subscribe(
         (response: Trip[]) => {
           this.avTrips = response;
-          this.resp = this.avTrips[1];
         }
       )
     }
 
+    this.participationService.userIncoming().subscribe(
+      (response: Participation[]) => {
+        this.partList = response;
+      }
+    )
   }
 
   logout(): void {
@@ -43,6 +50,11 @@ export class MainComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  isEnrolled(id: number): boolean {
+     if(this.partList.find(p => p.tripId == id) != null) return true;
+     else return false;
   }
 
   addCurrentUserToTrip(TripId: number): void {

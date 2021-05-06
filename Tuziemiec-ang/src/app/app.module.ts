@@ -15,9 +15,7 @@ import { StartComponent } from './start';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MainComponent } from './main/main.component';
-// <<<<<<< HEAD
 import { TripCreatorComponent } from './trip-creator/trip-creator.component';
-// =======
 import { MapsComponent } from './maps/maps.component';
 import { AttractionComponent } from './attraction/attraction.component';
 import { AttractionCreatorComponent } from './attraction-creator/attraction-creator.component';
@@ -26,8 +24,9 @@ import { TripPanelComponent } from './trip-panel/trip-panel.component';
 import { PastTripsComponent } from './past-trips/past-trips.component';
 import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';
 import { OrganizedTripsComponent } from './organized-trips/organized-trips.component';
-import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { TripDetailComponent } from './trip-detail/trip-detail.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -53,12 +52,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     BrowserModule,
     FormsModule,
+    Ng2SearchPipeModule,
     ReactiveFormsModule,
     appRoutingModule,
+<<<<<<< HEAD
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDrfFsVLrxbrj2ENXaMY08PvN7QTfP0EFs',
       libraries: ['places']
     }),
+=======
+>>>>>>> 912105bf83179e4350ace2efc172917beb7b8a19
     NgbModule
   ],
 
