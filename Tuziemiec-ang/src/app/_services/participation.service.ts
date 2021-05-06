@@ -24,4 +24,8 @@ import { Participation } from '../_model/participation';
     public userPast(): Observable <Participation[]> {
       return this.http.get<Participation[]>(this.apiServerUrl + '/participation/user_past_part');
     }
+
+    public userIncoming(): Observable <Participation[]> {
+      return this.http.get<Participation[]>(this.apiServerUrl + '/participation/user_current');
+    }
   }
