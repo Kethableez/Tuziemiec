@@ -71,7 +71,7 @@
 
             <div class="map">
                 <agm-map [latitude]="trip.template.attractions[0].latitude"
-                    [longitude]="trip.template.attractions[0].longitude" [zoom]="14" [mapDraggable]="false">
+                    [longitude]="trip.template.attractions[0].longitude" [zoom]="14" [disableDefaultUI]="true" >
                     <div *ngFor="let attraction of trip.template.attractions">
                         <agm-marker [latitude]="attraction.latitude" [longitude]="attraction.longitude"></agm-marker>
                     </div>

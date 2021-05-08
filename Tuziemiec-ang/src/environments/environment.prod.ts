@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseUrl: 'http://virt5.iiar.pwr.edu.pl:8089'
 };

@@ -55,7 +55,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     Ng2SearchPipeModule,
     ReactiveFormsModule,
     appRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDrfFsVLrxbrj2ENXaMY08PvN7QTfP0EFs',
+      libraries: ['places']
+    }),
     NgbModule
+    
   ],
 
   providers: [authInterceptorProviders],
