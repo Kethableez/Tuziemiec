@@ -1,150 +1,154 @@
 html {
-    height: 100%;
-  }
-  
-  body {
-    height: 100%;
-    /* background: linear-gradient(to bottom, #37323E 10%, #BFBDC1 90%);
+  /*height: 100%;*/
+}
+
+body {
+  height: 55em;
+  /* background: linear-gradient(to bottom, #37323E 10%, #BFBDC1 90%);
     background-attachment:fixed;
     background-repeat: no-repeat; */
-    background-color:  #7c90a0;
-    margin: 0;
-    padding: 0;
-    font-family: arial, verdana, sans-serif;
-  }
-  
-  .App_name {
-    background-color: #353535;
-    margin: auto;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-  }
+  background-color: #7c90a0;
+  margin: 0;
+  padding: 0;
+  font-family: arial, verdana, sans-serif;
+}
+
+.App_name {
+  background-color: #353535;
+  margin: auto;
+  /*width: 100%;*/
+  text-align: center;
+  cursor: pointer;
+}
 
   .App_name:focus {
     outline: 0;
   }
-  
-  .Name {
-    font-family: 'Alata';
-    font-style: italic;
-    font-size: 60px;
-    color: #ffffff;
-  }
-  .validate{
-      color: #9e2a2b;
-      font-family: 'Alegreya Sans', sans-serif;
-      font-weight: bold;
-  }
 
-  .Caption {
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    letter-spacing: 9px;
-    color: #ffffff;
-  }
-  
-  .Spacer {
-    border: 2px solid white;
-  }
-  
-  .Form_title {
-    font-family: 'Alata';
-    font-style: italic;
-    font-size: 42px;
-    padding: 20px;
-    text-align: center;
-    background-color: #4F565C;
-    border-radius: 35px 35px 0 0;
-    color: white;
-  }
-  
+.Name {
+  font-family: 'Alata';
+  font-style: italic;
+  font-size: 3.75rem;
+  color: #ffffff;
+}
+
+.validate {
+  color: #9e2a2b;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: bold;
+}
+
+.Caption {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  letter-spacing: 0.33em;
+  color: #ffffff;
+}
+
+.Spacer {
+  border: 2px solid white;
+}
+
+
+.Form {
+  margin: auto;
+  padding-top: 1.5em;
+  border-radius: 35px;
+  width: 40em;
+}
+
+@media (max-width: 830px) {
+
   .Form {
-    margin: auto;
-    padding-top: 25px;
-    border-radius: 35px;
-    width: 600px;
+        width:75%;
   }
-  
-  .Form_body {
-    text-align: center;
-    border-radius: 0 0 35px 35px;
-    background-color: #bdb4ae;
-    padding: 20px;
-  }
-  
-  input[type=text], input[type=password], input[type=date] {
-    border-radius: 30px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 20px;
-    text-align: center;
-    background-color: #ded9d5;
-    width: 80%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ded9d5;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-  }
-  
-  .Buttons {
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
-  }
-  
-  .Checkboxes {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 60px;
-    text-align: left;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 20px;
-  }
-  
-  .Button:enabled {
-    width: 200px;
-    height: 50px;
-    background-color: #4F565C;
-    box-sizing: border-box;
-    border: 3px solid #4F565C;
-    border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
-  }
+}
 
-  .Button:disabled {
-    width: 200px;
-    height: 50px;
-    opacity: 50%;
-    background-color: #4F565C;
-    box-sizing: border-box;
-    border: 3px solid #4F565C;
-    border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    color: #ffffff;
-  }
 
-  .Button:active {
-    background-color: #104169;
-    border: 3px solid #104169;
-  }
-  
-  .Button:focus {
-    outline: 0;
-  }
+.Form_title {
+  font-family: 'Alata';
+  font-style: italic;
+  font-size: 2.25rem;
+  padding: 0.5em;
+  text-align: center;
+  background-color: #4F565C;
+  border-radius: 35px 35px 0 0;
+  color: white;
+}
 
-  .text{
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 25px;
-    margin-bottom: 2%;
-  }
+
+.Form_body {
+  text-align: center;
+  border-radius: 0 0 35px 35px;
+  background-color: #bdb4ae;
+  padding: 1.25em;
+}
+
+input[type=text], input[type=password], input[type=date] {
+  border-radius: 30px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 1.25rem;
+  text-align: center;
+  background-color: #ded9d5;
+  width: 80%;
+  padding: 0.6em 0.75px;
+  margin: 0.5em 0;
+  box-sizing: border-box;
+  border: 3px solid #ded9d5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.Button {
+  padding: 0.25em 1.25em;
+  margin-top: 0.25em;
+  /*text-align: center;*/
+}
+
+.Checkboxes {
+  padding: 0.1em 0;
+  margin-left: 3em;
+  text-align: left;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 1.25rem;
+}
+
+.Button:enabled {
+  background-color: #4F565C;
+  box-sizing: border-box;
+  border: 3px solid #4F565C;
+  border-radius: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.Button:disabled {
+  background-color: #4F565C;
+  box-sizing: border-box;
+  border: 3px solid #4F565C;
+  border-radius: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.Button:active {
+  background-color: #104169;
+  border: 3px solid #104169;
+}
+
+.Button:focus {
+  outline: 0;
+}
+
+.text {
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 2%;
+}
