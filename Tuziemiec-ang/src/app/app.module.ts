@@ -13,20 +13,22 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register';
 import { StartComponent } from './start';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { MainComponent } from './main/main.component';
-import { TripCreatorComponent } from './trip-creator/trip-creator.component';
-import { MapsComponent } from './maps/maps.component';
-import { AttractionComponent } from './attraction/attraction.component';
-import { AttractionCreatorComponent } from './attraction-creator/attraction-creator.component';
-import { TemplateCreatorComponent } from './template-creator/template-creator.component';
-import { TripPanelComponent } from './trip-panel/trip-panel.component';
+import { ProfileComponent } from './home/profile/profile.component';
+import { TripCreatorComponent } from './home/trips/trip-creator/trip-creator.component';
+import { AttractionComponent } from './home/attraction/attraction.component';
+import { AttractionCreatorComponent } from './home/attraction/attraction-creator/attraction-creator.component';
+import { TemplateCreatorComponent } from './home/templates/template-creator/template-creator.component';
+import { TripHistoryComponent } from './trip-history/trip-history.component';
 import { PastTripsComponent } from './past-trips/past-trips.component';
 import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';
 import { OrganizedTripsComponent } from './organized-trips/organized-trips.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { TemplatesComponent } from './home/templates/templates.component';
+import { TripsComponent } from './home/trips/trips.component';
 
 @NgModule({
   declarations: [
@@ -35,17 +37,19 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    MainComponent,
     TripCreatorComponent,
-    MapsComponent,
     AttractionComponent,
     AttractionCreatorComponent,
     TemplateCreatorComponent,
-    TripPanelComponent,
+    TripHistoryComponent,
     PastTripsComponent,
     IncomingTripsComponent,
     OrganizedTripsComponent,
     TripDetailComponent,
+    HomeComponent,
+    DashboardComponent,
+    TemplatesComponent,
+    TripsComponent,
   ],
 
   imports: [

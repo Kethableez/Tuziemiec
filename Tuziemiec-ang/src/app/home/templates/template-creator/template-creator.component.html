@@ -1,0 +1,115 @@
+<body>
+  <div *ngIf="step_1">
+    <div class="Text4">
+      <button class="button3">
+        Wróć
+      </button>
+
+      <form [formGroup]="search" (ngSubmit)="findAttractions(place.value)">
+        <input style="
+          border-radius: 30px;
+          font-family: 'Alegreya Sans', sans-serif;
+          font-size: 25px;
+          text-align: center;
+          background-color: #ffffff;
+          width: 50%;
+          height: 50px;
+          border: none;
+          box-sizing: border-box;
+          outline: none;" formControlName="place" type="text" placeholder="Wpisz miasto aby wyszukać atrakcje">
+<!-- 
+        <button class="search-button" type="submit" [disabled]="!search.valid">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" fill="currentColor"
+            class="bi bi-search" viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+          </svg>
+        </button> -->
+      </form>
+
+      <button class="button3" type="submit" [disabled]="!templateForm.valid" *ngIf="!isSubmit">
+        Stwórz
+      </button>
+    </div>
+
+    <div class="wrapper">
+      <div class="list">
+        <div class="Text2 sticky">
+          Lista atrakcji
+        </div>
+        <hr>
+        <div class="Text2" *ngFor="let attraction of attractionList">
+          <div class="link selected" *ngIf="selectedAttractions.includes(attraction)"
+            (click)="onAttractionRemove(attraction)">
+            {{attraction.name}}
+          </div>
+
+          <div class="link to-select" *ngIf="!selectedAttractions.includes(attraction)"
+            (click)="onAttractionAdd(attraction)">
+            {{attraction.name}}
+          </div>
+          <hr>
+        </div>
+      </div>
+
+
+      <div class="map">
+        <agm-map [latitude]="51.9189046" [longitude]="19.1343786" [zoom]="6.7">
+          <div *ngFor="let marker of selectedAttractions">
+            <agm-marker [latitude]="marker.latitude" [longitude]="marker.longitude"></agm-marker>
+
+          </div>
+        </agm-map>
+      </div>
+
+      <div class="Form" *ngIf="isLoggedIn">
+        <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+          <div class="Form_body">
+            <div *ngIf="!isSubmit">
+              <input formControlName="name" type="text" placeholder="Wpisz nazwę szablonu"><br>
+              <div class="validate" *ngIf="name.invalid && name.touched">
+                <small *ngIf="name.errors?.required">Nazwa szablonu jest wymagana</small>
+              </div>
+  
+              <input formControlName="place" type="text" placeholder="Wpisz miejsce"><br>
+              <div class="validate" *ngIf="template_place.invalid && template_place.touched">
+                <small *ngIf="template_place.errors?.required">Miejsce jest wymagane</small>
+              </div>
+  
+              <textarea formControlName="description" type="text" placeholder="Wpisz opis szablonu"></textarea>
+              <div class="validate" *ngIf="description.invalid && description.touched">
+                <small *ngIf="description.errors?.required">Opis szablonu jest wymagany</small>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="text" *ngIf="isSubmit && !isFailed">
+              {{message}}
+            </div>
+  
+            <div class="text validate" *ngIf="isSubmit && isFailed">
+              {{message}}
+            </div>
+  
+            <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejny
+              szablon</button>
+            <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj
+              ponownie</button>
+          </div>
+
+        </form>
+      </div>
+      
+    </div>
+    <div class="Text">
+      Nie ma miejsca które szukasz?
+      <div class="router" routerLink="/create_attraction">
+        Kliknij tutaj aby dodać nową atrakcję!
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
