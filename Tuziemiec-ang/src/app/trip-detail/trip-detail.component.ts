@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { Review } from '../_model/review';
 import { Trip } from '../_model/trip';
 import { ReviewService } from '../_services/review.service';

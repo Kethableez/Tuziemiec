@@ -29,7 +29,7 @@
       </form>
 
       <button *ngIf="!isLoggedIn && isLoginFailed" class="Button" (click)="reloadPage()" >Spróbuj ponownie</button>
-      <button *ngIf="isLoggedIn && !isLoginFailed" class="Button" routerLink="/main">Strona główna</button>
+      <button *ngIf="isLoggedIn && !isLoginFailed" class="Button" routerLink="/home">Strona główna</button>
     </div>
     </div>
   </body>

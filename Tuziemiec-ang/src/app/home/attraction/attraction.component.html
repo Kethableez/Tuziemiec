@@ -1,0 +1,37 @@
+<body>
+  <div class="Text3">
+    <button class="button2" routerLink="/home/create_attraction">
+      Dodaj atrakcję
+    </button>
+  </div>
+
+  <div class="white_body">
+
+
+    <div class="wrapper">
+      <div class="attraction-box" *ngFor="let attraction of attractions">
+        <div class="attraction-name">
+          {{attraction.name}}
+        </div>
+        <div class="attraction-description">
+          {{attraction.description}}
+        </div>
+
+        <div class="attraction-place">
+          Miejsce: {{attraction.place}}
+        </div>
+
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 24 24" stroke="currentColor"
+            fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="8"></line>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>

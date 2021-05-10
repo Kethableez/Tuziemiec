@@ -1,35 +1,6 @@
 <body>
-    <div style="width: 100%; display: table;">
-        <div style="display: table-row">
-
-            <div class="Header">
-                <div class="Name">Tuziemiec</div>
-                <div class="Caption">Spotkajmy się!</div>
-            </div>
-
-            <div class="Text" *ngIf="isLoggedIn">
-                {{trip.template.name}}
-            </div>
-
-            <div class="Text" *ngIf="!isLoggedIn">
-                ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
-            </div>
-
-            <div class="Back" *ngIf="isLoggedIn">
-                <div>
-                    <button class="button" routerLink="/main">Wstecz</button>
-                    <!-- <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button> -->
-                </div>
-            </div>
-
-            <div class="Back" *ngIf="!isLoggedIn">
-                <button class="button" routerLink="/">Strona główna! </button>
-            </div>
-        </div>
-    </div>
-
     <div class="Trip-details shadow">
-        <div class="Text3">Informacje</div>
+        <div class="Text3">{{trip.template.name}}</div>
 
 
         <div class="wrapper2">
@@ -71,7 +42,7 @@
 
             <div class="map">
                 <agm-map [latitude]="trip.template.attractions[0].latitude"
-                    [longitude]="trip.template.attractions[0].longitude" [zoom]="14" [mapDraggable]="false">
+                    [longitude]="trip.template.attractions[0].longitude" [zoom]="14" [disableDefaultUI]="true" >
                     <div *ngFor="let attraction of trip.template.attractions">
                         <agm-marker [latitude]="attraction.latitude" [longitude]="attraction.longitude"></agm-marker>
                     </div>
