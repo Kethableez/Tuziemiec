@@ -11,13 +11,13 @@ body {
 }
 
 .Top {
-  background-color: #353535;
+  background-color: #404040;
   background-image: url(428904.jpg);
   background-size: cover;
   background-position: center;
   background-blend-mode: exclusion;
   width: 100%;
-  height: 60%;
+  height: 27em;
   color: #ffffff;
   
 }
@@ -38,7 +38,7 @@ body {
 
 .Caption_start {
   font-family: 'Alegreya Sans', sans-serif;
-  font-style: italic;
+  /*font-style: italic;*/
   /* font-size: 24px; */
   font-size: 1rem;
   letter-spacing: 0.3em;
@@ -76,9 +76,10 @@ body {
 }
 
 .Button {
-  background-color: #BDB4AE;
+  /*background-color: #BDB4AE;*/
+  background-color: #CDD1CD;
   box-sizing: border-box;
-  border: 3px solid #BDB4AE;
+  border: 3px solid #CDD1CD;
   border-radius: 20px;
   font-style: italic;
   font-size: 1.75rem;
@@ -115,17 +116,17 @@ body {
   }
 
 .Bottom {
-  background-color: #BDB4AE;
+  background-color: #a6b3ae;
   width: 100%;
   /*height: 45%;*/
   text-align: center;
 }
 
 .Lighter {
-  background-color: #ded9d5;
+  background-color: #CDD1CD;
   margin: auto;
   width: 90%;
-  height: 100%;
+  min-height: 40vh;
 }
 
 .Block {
@@ -154,7 +155,9 @@ body {
 }
 
 @media (max-width: 830px) {
-
+      .Top{
+            height:30em;
+      }
   .Block {
     flex-direction: column;
   }

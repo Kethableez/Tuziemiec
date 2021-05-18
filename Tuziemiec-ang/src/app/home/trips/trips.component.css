@@ -2,76 +2,81 @@ html {
     height: 100%;
     min-height: 100%;
   }
-  
-  body {
-    position: relative;
-    min-height: 100%;
-    background: #7c90a0;
-    margin: 0;
-    padding: 0;
-    font-family: arial, verdana, sans-serif;
-  }
-  
-  .tools {
-    display: grid;
-    margin: auto;
-    grid-template-columns: 0.5fr 2fr 0.5fr;
-    background-color: #353535;
-    width: 100%;
-    height: 7vh;
-    text-align: center;
-  }
 
-  .button {
-    cursor: pointer;
-    margin: auto;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    color: #ffffff;
-    width: 80%;
-    height: 5vh;
-    background-color: #353535;
-    border: 1px solid #575656;
-    padding: 2%;
-    border-radius: 25px;
-  }
+body {
+  position: relative;
+  min-height: 100%;
+  background: #a6b3ae;
+  margin: 0;
+  padding: 0;
+  font-family: arial, verdana, sans-serif;
+}
+
+.tools {
+  display: grid;
+  margin: auto;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  text-align: center;
+  background-color: #BDB4AE;
+  color: #ffffff;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-weight: bold;
+  height: 3em;
+}
+
+.sorting {
+     font-size: 0.5rem;
+}
+
+input[type=text] {
+  border-radius: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: #f4f4f9;
+  width: 100%;
+  padding: 0.5em 0.75em;
+  margin: 0.25em 0;
+  box-sizing: border-box;
+  border: 3px solid #f4f4f9;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  height: 1.5em;
+  margin-inline: auto;
+}
+
+.button {
+  cursor: pointer;
+  margin: auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  color: #ffffff;
+  height: 2em;
+  background-color: #a6b3ae;
+  /*#647498;*/
+  border: 1px solid #f4f4f9;
+  border-radius: 25px;
+}
 
   .button:hover {
     border: 2px solid #575656;
   }
-  
-  input[type=text] {
-    border-radius: 30px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 1.5rem;
-    text-align: center;
-    background-color: #ffffff;
-    width: 100%;
-    height: 5vh;
-    padding: 0.5em 0.75em;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #ffffff;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-  }
-  
-  
-  .white_body {
-    /* height: 100vh; */
-    min-height: 85vh;
-    background-color: #ffffff;
-    text-align: center;
-    margin: auto;
-    width: 90%;
-  }
-  
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-  }
+.white_body {
+  background-color: #f4f4f9;
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  /* height: max-content; */
+  min-height: 85vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
   
   .fnc_btn {
     background-color: #4f565c;
@@ -84,8 +89,8 @@ html {
   }
   
   .icon {
-    /* fill: #353535; */
-    stroke: #353535;
+    /* fill: #ae978b; */
+    stroke: #ae978b;
     cursor: pointer;
     display: inline;
     margin-inline: 1.5rem;
@@ -94,24 +99,24 @@ html {
     .icon:hover {
       stroke: #104169;
     }
-  
-  .star {
-    position: relative;
-    display: inline-block;
-    font-size: 2rem;
-    color: #104169;
-  }
-  
-  .full {
-    color: #104169;
-  }
-  
-  .half {
-    position: absolute;
-    display: inline-block;
-    overflow: hidden;
-    color: #104169;
-  }
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: #B8A17D;
+}
+
+.full {
+  color: #B8A17D;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #B8A17D;
+}
   
   hr {
     margin-top: 0;
@@ -125,33 +130,36 @@ html {
   }
   
   /* Testy */
+
+.trip-card {
+  display: grid;
+  grid-template-rows: 0.7fr 1.3fr;
+  width: 20.5em;
+  background-color: #CDD1CD;
+  border-radius: 0 0 30px 0;
+  margin: 3%;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.t-name {
+  font-family: 'Alata';
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+  padding-inline: 2%;
+  background-color: #588157;
+  color: #ffffff;
+  margin: auto;
+}
   
-  .trip-card {
-    display: grid;
-    grid-template-rows: 0.7fr 1.3fr;
-    background-color: #bdb4ae;
-    border-radius: 0 0 30px 0;
-    margin: 3%;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
-  }
-  
+
   .t-body {
     display: grid;
     grid-template-columns: 0.9fr 0.5fr;
   }
   
-  .t-name {
-    font-family: 'Alata';
-    font-size: 1.5rem;
-    width: 100%;
-    height: 100%;
-    padding-inline: 2%;
-    background-color: #4f565c;
-    color: #ffffff;
-    margin: auto;
-  }
   
   .t-details {
     display: grid;
@@ -171,14 +179,14 @@ html {
     display: grid;
     grid-template-rows: 1.5fr 1.5fr;
   }
-  
-  .t-icon {
-    /* fill: #353535; */
-    stroke: #353535;
-    margin: auto;
-    width: 1.6rem;
-    height: 1.6rem;
-  }
+
+.t-icon {
+  /* fill: #ae978b; */
+  stroke: #67676d;
+  margin: auto;
+  width: 1.6rem;
+  height: 1.6rem;
+}
   
   .t-buttons {
     display: grid;
@@ -188,19 +196,124 @@ html {
   }
   
   .t-rating {
-    height: 2rem;
+        padding: 0 1em;
+    height: 3em;
     margin: auto;
   }
-  
-  .t-button {
-    margin: auto;
-    stroke: #353535;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+
+.t-button {
+  margin: auto;
+  stroke: #67676d;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+  .t-button:hover {
+    stroke: #55555b;
   }
-  
-    .t-button:hover {
-      stroke: #104169;
-    }
-  
+
+.add:hover:after {
+  content: "Zapisz się na wycieczkę!";
+  display: block;
+  position: relative;
+  top: -1em;
+  right: -1em;
+  width: 10em;
+  color: #f4f4f9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25em 0;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -4em;
+  background: #67676d;
+}
+
+.added:hover:after {
+  content: "Już jesteś zapisany";
+  display: block;
+  position: relative;
+  top: -1em;
+  right: -1em;
+  width: 10em;
+  color: #f4f4f9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25em 0;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -4em;
+  background: #67676d;
+}
+.info:hover:after {
+  content: "Szczegółowe informacje";
+  display: block;
+  position: relative;
+  top: -1em;
+  right: -1em;
+  width: 8em;
+  color: #f4f4f9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25em 0;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -4em;
+  background: #67676d;
+}
+
+@media (max-width: 1500px) {
+  .wrapper {
+    align-items: none;
+  }
+
+  .trip-card {
+    width: 25em;
+  }
+}
+
+@media (max-width: 1220px) {
+  .wrapper {
+    justify-content: center;
+  }
+  .trip-card {
+        width: 30em;
+  }
+}
+
+.float {
+      font-size: 2rem;
+  position: fixed;
+  width: 2.5em;
+  height: 2.5em;
+  bottom: 2em;
+  right: 2em;
+  background-color: #157f1f;
+  color: #F4F4F9;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid #67676d;
+  box-shadow: 4px 5px 5px #67676d;
+}
+
+.float:hover {
+  background-color: #588157;
+  border: 2px solid #588157;
+}
+
+  .float:hover::after {
+    font-size: 1rem;
+    content: "Stwórz wycieczkę";
+    display: block;
+    position: absolute;
+    top: 2em;
+    width: 9em;
+    color: #f4f4f9;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.25em 0;
+    left: 50%;
+    margin-left: -12em;
+    background: #67676d;
+  }
