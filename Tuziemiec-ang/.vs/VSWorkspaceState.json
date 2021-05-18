@@ -3,8 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\attraction"
+    "\\src\\app\\home",
+    "\\src\\app\\home\\attraction",
+    "\\src\\app\\home\\profile",
+    "\\src\\app\\home\\templates\\template-creator",
+    "\\src\\app\\login",
+    "\\src\\app\\register",
+    "\\src\\app\\start"
   ],
-  "SelectedNode": "\\src\\app\\attraction\\attraction.component.css",
+  "SelectedNode": "\\src\\app\\home\\attraction\\attraction-creator\\attraction-creator.component.css",
   "PreviewInSolutionExplorer": false
 }
