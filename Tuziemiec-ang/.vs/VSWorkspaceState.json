@@ -4,13 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\home",
-    "\\src\\app\\home\\attraction",
-    "\\src\\app\\home\\profile",
-    "\\src\\app\\home\\templates\\template-creator",
-    "\\src\\app\\login",
-    "\\src\\app\\register",
-    "\\src\\app\\start"
+    "\\src\\app\\home\\trips",
+    "\\src\\app\\trip-detail"
   ],
-  "SelectedNode": "\\src\\app\\home\\attraction\\attraction-creator\\attraction-creator.component.css",
+  "SelectedNode": "\\src\\app\\trip-detail\\trip-detail.component.html",
   "PreviewInSolutionExplorer": false
 }

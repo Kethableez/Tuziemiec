@@ -1,48 +1,110 @@
 body {
     background-color: inherit;
-    height: 100vh;
+}
+.white-body {
+  background-color: #f4f4f9;
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  /* height: max-content; */
+  min-height: 91vh;
+  /* height: 88%; */
 }
 
-.header {
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Roboto', sans-serif;
-    background-color: #353535;
-    border-bottom: 1px solid #575656;
-    height: 7vh;
-    font-size: 25px;
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
-.text {
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 3vh;
-    color: #ffffff;
-    margin: auto;
+.template-box {
+  background-color: #CDD1CD;
+  border: 3px;
+  border-radius: 8%;
+  width: 19.8em;
+  margin: 1em 2.75em;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
 }
 
-.text2 {
-    margin-inline: 5%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 2vh;
-    color: #000000;
+.template-name {
+  border-radius: 20px 20px 0 0;
+  background-color: #588157;
+  font-family: 'Alata';
+  font-size: 1.5rem;
+  color: #f4f4f9;
 }
 
-.button {
-    text-align: center;
-    width: 200px;
-    height: 50px;
-    margin-top: 0.8vh;
-    background-color: #353535;
-    box-sizing: border-box;
-    border: 1px solid #575656;
-    border-radius: 20px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
+.template-place {
+  font-style: 'Alegreya Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: lighter;
+  color: #404040;
+}
+.template-rating {
+  height: 3em;
+  margin: auto;
+}
+
+.template-atrractions {
+  font-family: 'Alata';
+  font-weight: lighter;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #404040;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: #B8A17D;
+}
+
+.full {
+  color: #B8A17D;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #B8A17D;
+}
+  
+.float {
+  font-size: 2rem;
+  position: fixed;
+  width: 2.5em;
+  height: 2.5em;
+  bottom: 2em;
+  right: 2em;
+  background-color: #157f1f;
+  color: #F4F4F9;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid #67676d;
+  box-shadow: 4px 5px 5px #67676d;
+}
+
+  .float:hover {
+    background-color: #588157;
+    border: 2px solid #588157;
   }
 
-  .button:hover {
-    border: 2px solid #575656;
-  }
+    .float:hover::after {
+      font-size: 1rem;
+      content: "Stwórz szablon";
+      display: block;
+      position: absolute;
+      top: 2em;
+      width: 9em;
+      color: #f4f4f9;
+      text-align: center;
+      border-radius: 6px;
+      padding: 0.25em 0;
+      left: 50%;
+      margin-left: -12em;
+      background: #67676d;
+    }
