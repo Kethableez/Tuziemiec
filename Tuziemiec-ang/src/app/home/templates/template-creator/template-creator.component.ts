@@ -81,6 +81,7 @@ export class TemplateCreatorComponent implements OnInit {
   addToSelected(att: Attraction){
     if(!this.selectedAttractions.includes(att)){
       this.selectedAttractions.push(att);
+      this.idList.push(att.id);
     }
   }
 
@@ -89,12 +90,6 @@ export class TemplateCreatorComponent implements OnInit {
       this.idList.push(id);
     }
   }
-  
-  removeFromSelected(id: number){
-    this.selectedAttractions.forEach((value, index) => {
-      if(value.id == id) this.selectedAttractions.splice(index, 1);
-    })
-  };
 
   onClick(){
     this.step_1 = false;
@@ -111,21 +106,18 @@ export class TemplateCreatorComponent implements OnInit {
 
   onAttractionAdd(att: Attraction) {
     this.selectedAttractions.push(att);
+    this.idList.push(att.id);
   }
 
   onAttractionRemove(att: Attraction){
     this.selectedAttractions.forEach((value, index) =>{
       if(value.name == att.name) this.selectedAttractions.splice(index, 1);
     })
+
+    this.idList.forEach((value, index) =>{
+      if(value == att.id) this.idList.splice(index, 1);
+    })
   };
-
-  // onAttractionRemove(m: marker){
-  //   this.markerList.forEach((value, index) =>{
-  //     if(value.name == m.name) this.markerList.splice(index, 1);
-  //   })
-  // };
-
-
 
   onSubmit(){
     this.tripService.createTemplate(this.templateForm.value).subscribe(

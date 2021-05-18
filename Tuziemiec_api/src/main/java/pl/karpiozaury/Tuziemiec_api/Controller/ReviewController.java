@@ -8,16 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.karpiozaury.Tuziemiec_api.Model.Participation;
-import pl.karpiozaury.Tuziemiec_api.Model.Review;
-import pl.karpiozaury.Tuziemiec_api.Model.Trip;
-import pl.karpiozaury.Tuziemiec_api.Model.TripTemplate;
+import pl.karpiozaury.Tuziemiec_api.Model.*;
+import pl.karpiozaury.Tuziemiec_api.Payload.Request.RatingRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.ReviewRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
-import pl.karpiozaury.Tuziemiec_api.Repository.ParticipationRepository;
-import pl.karpiozaury.Tuziemiec_api.Repository.ReviewRepository;
-import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
-import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
+import pl.karpiozaury.Tuziemiec_api.Repository.*;
 import pl.karpiozaury.Tuziemiec_api.Service.TripService;
 
 import java.lang.annotation.Retention;
@@ -43,6 +38,9 @@ public class ReviewController {
 
     @Autowired
     private final TripService tripService;
+
+    @Autowired
+    private final ReviewRatingRepository ratingRepository;
 
     @Autowired
     private final ReviewRepository reviewRepository;
@@ -102,6 +100,17 @@ public class ReviewController {
         reviewRepository.save(review);
 
         return ResponseEntity.ok(new MessageResponse("Dodano opinie o wycieczce!"));
+    }
+
+    @PostMapping("/review/add_rating")
+    public ResponseEntity<?> addRating(@RequestBody RatingRequest request,
+                                       UsernamePasswordAuthenticationToken token){
+        ratingRepository.save(new ReviewRating(
+                request.getReview(),
+                request.getUserId(),
+                request.getRating()
+        ));
+        return ResponseEntity.ok(new MessageResponse("OK"));
     }
 
 

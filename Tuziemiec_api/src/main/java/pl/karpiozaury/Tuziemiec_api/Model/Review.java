@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "reviews")
@@ -22,12 +24,6 @@ public class Review {
     @JoinColumn(name = "participation_id")
     @OneToOne(cascade = CascadeType.ALL)
     private Participation participation;
-
-//    @NotBlank
-//    private Long userId;
-//
-//    @NotBlank
-//    private Long tripId;
 
     @NotBlank
     private String commentHeader;

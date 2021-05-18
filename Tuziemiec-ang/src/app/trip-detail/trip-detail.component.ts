@@ -47,8 +47,10 @@ export class TripDetailComponent implements OnInit {
         }
       )
     }
+  }
 
-
+  onClick() {
+    console.log(this.reviews.length)
   }
 
 }
