@@ -1,91 +1,96 @@
 <body>
-  
-  <div class="center" *ngIf="step_1">
 
-    <div class="Text3">
-      <button class="button" routerLink="/home/trips"> Wstecz </button>
-      <button class="button"  [disabled]="selectedTemplate.match('none')" (click)="onClick()">Dalej</button>
-    </div>
 
-    <div class="Text" *ngIf="userTemplateList.length==0">
-      Nie masz żadnego szablonu.
-      <div class="router" routerLink="/create_template">
-        Kliknij tutaj aby dodać nowy szablon!
-      </div> 
-    </div>
 
-    <div class="template-list" *ngFor="let template of userTemplateList">
-      <div class="template" (click)="onSelect(template.name)">
+  <div class="wrapper">
 
-        <div *ngIf="isSelected(template.name)">
-          <div class="template-name selected">
-            {{template.name}}
-          </div>
-          <div class="template-details">
-            {{template.place}}
-          </div>
-        </div>
-
-        <div *ngIf="!isSelected(template.name)">
-          <div class="template-name">
-            {{template.name}}
-          </div>
-          <div class="template-details">
-            {{template.place}}
-          </div>
-        </div>
+    <div class="list">
+      <div class="Text">
+        Wybierz szablon
         <hr>
       </div>
-    </div>
+      <div class="Text" *ngIf="userTemplateList.length==0">
+        Nie masz żadnego szablonu.
+        <div class="router" routerLink="/create_template">
+          Kliknij tutaj aby dodać nowy szablon!
+        </div>
+      </div>
 
-    <div class="Text" *ngIf="userTemplateList.length!=0">
-      <div class="router" routerLink="/create_template">
-        Kliknij tutaj aby dodać nowy szablon!
-      </div> 
-    </div>
+      <div class="template-list" *ngFor="let template of userTemplateList">
+        <div class="template" (click)="onSelect(template.name)">
 
-  </div>
+          <div *ngIf="isSelected(template.name)">
+            <div class="template-name selected">
+              {{template.name}}
+            </div>
+            <div class="template-details">
+              {{template.place}}
+            </div>
+          </div>
 
-  <div class="center" *ngIf="step_2">
-    <div class="Text3">
-      Uzupełnij dane
+          <div *ngIf="!isSelected(template.name)">
+            <div class="template-name">
+              {{template.name}}
+            </div>
+            <div class="template-details">
+              {{template.place}}
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
     </div>
 
     <div class="Form" *ngIf="isLoggedIn">
       <form [formGroup]="createTrip" (ngSubmit)="onSubmit()">
         <div class="Form_body">
           <div *ngIf="!isSubmit">
-      
+
             <input formControlName="startDate" type="date"><br>
             <div class="validate" *ngIf="startDate.invalid && startDate.touched">
-                <small *ngIf="startDate.errors?.required">Data startowa jest wymagana</small>
+              <small *ngIf="startDate.errors?.required">Data startowa jest wymagana</small>
             </div>
-  
+
             <input formControlName="endDate" type="date"><br>
             <div class="validate" *ngIf="endDate.invalid && endDate.touched">
-                <small *ngIf="endDate.errors?.required">Data końcowa jest wymagana</small>
-                <small *ngIf="endDate.errors?.ValidationErrors">Data końcowa nie może być przed datą startu!</small>
+              <small *ngIf="endDate.errors?.required">Data końcowa jest wymagana</small>
+              <small *ngIf="endDate.errors?.ValidationErrors">Data końcowa nie może być przed datą startu!</small>
             </div>
-  
+
             <input formControlName="userLimit" type="number" placeholder="Określ liczbę użytkowników"><br>
             <div class="validate" *ngIf="userLimit.invalid && userLimit.touched">
               <small *ngIf="userLimit.errors?.required">Limit użytkowników jest wymagany</small>
+            </div>
           </div>
-          </div>
-  
+
           <div class="text" *ngIf="isSubmit && !isFailed">
             {{message}}
           </div>
-  
+
           <div class="text validate" *ngIf="isSubmit && isFailed">
             {{message}}
           </div>
-          
-          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną wycieczkę</button>
-          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj ponownie</button>
-          <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit">Stwórz wycieczkę</button>
+
+          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną
+            wycieczkę</button>
+          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj
+            ponownie</button>
+          <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit">Stwórz
+            wycieczkę</button>
         </div>
       </form>
     </div>
+
   </div>
+
+  <div class="Text" *ngIf="userTemplateList.length!=0">
+    <div class="router" routerLink="/create_template">
+      Kliknij tutaj aby dodać nowy szablon!
+
+
+    </div>
+  </div>
+
+  {{createTrip.value | json}}
+
 </body>

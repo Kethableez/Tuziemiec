@@ -1,44 +1,53 @@
 <body>
 
   <div class="Profile_body" *ngIf="isLoggedIn">
-  <div class="inside">
-    <div class="left">Imię i nazwisko:</div>
-    <div class="right"> {{userData.firstName}} {{userData.lastName}}</div>
-    <div class="left">E-mail:</div>
-    <div class="right">{{userData.email}}</div>
-    <div class="left">Data urodzenia:</div>
-    <div class="right">{{userData.dayOfBirth}}</div>
-    <div class="left">Wiek:</div>
-    <div class="right">{{userData.age}}</div>
+    <div class="column">
+      <label>Imię i nazwisko</label>
+      <div class="data">
+        {{userData.firstName}} {{userData.lastName}}
+      </div>
+      <hr>
+      <label>Adres e-mail</label>
+      <div class="data">
+        {{userData.email}}
+      </div>
+      <hr>
+      <label>Rok urodzenia</label>
+      <div class="data">
+        {{userData.dayOfBirth}}
+      </div>
+      <hr>
+      <label>Wiek</label>
+      <div class="data">
+        {{userData.age}}
+      </div>
+
+
+    </div>
+    <div class="column">
+      <div class="Form">
+        <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()">
+          <div class="Form_body">
+
+            <label>Imię: </label><br>
+            <input formControlName="firstName" type="text" [(ngModel)]="userData.firstName"><br>
+            <div class="validate" *ngIf="firstName.invalid && firstName.touched">
+              <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
+            </div>
+
+            <label>Nazwisko: </label>
+            <input formControlName="lastName" type="text" [(ngModel)]="userData.lastName"><br>
+            <div class="validate" *ngIf="lastName.invalid && lastName.touched">
+              <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
+            </div>
+
+            <label>Dzień urodzenia: </label>
+            <input formControlName="dayOfBirth" type="date" [(ngModel)]="userData.dayOfBirth"><br><br>
+            <button class="button" type="submit">Zmień dane</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
   </div>
-  <hr>
-
-
-  <div class ="Form" >
-    <div class="Text3">Zmień swoje dane</div>
-    
-    <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()">
-      <div class="Form_body">
-
-
-        <input formControlName="firstName" type="text" [(ngModel)]="userData.firstName"><br>
-        <div class="validate" *ngIf="firstName.invalid && firstName.touched">
-          <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
-      </div>
-
-        <input formControlName="lastName" type="text" [(ngModel)]="userData.lastName" ><br>
-        <div class="validate" *ngIf="lastName.invalid && lastName.touched">
-          <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
-      </div>
-      
-        <input formControlName="dayOfBirth"  type="date" [(ngModel)]="userData.dayOfBirth"><br><br>
-        <button class="button" type="submit" >Zmień wprowadzone dane</button>
-      </div>
-    </form>
-
-  </div>
-
-</div>
 </body>
-
-

@@ -39,30 +39,30 @@ body {
     font-size: 1rem;
     margin: auto;
     stroke: #ffffff;
-    color: #ae978b;
+    color: #ffffff;
     font-family: 'Alata', sans-serif;
     background-color: #ae978b;
     cursor: pointer;
 }
 
 .button:hover {
-    border-bottom: 3px solid #ffffff;
-    color: #ffffff;
+    border-bottom: 3px solid #fff;
+    color: #fff;
     transition: border-bottom 100ms ease-in-out, 
                 color 0.1s ease-in-out;
 }
 
 .active {
-  color: #a6b3ae;
-  stroke: #a6b3ae;
-  border-bottom: 3px solid #7C90A0;
+  color: rgb(77, 77, 77);
+  stroke: rgb(77, 77, 77);
+  border-bottom: 3px solid rgb(77, 77, 77);
   cursor: default;
 }
 
   .active:hover {
-    color: #a6b3ae;
-    stroke: #a6b3ae;
-    border-bottom: 3px solid #7C90A0;
+    color: rgb(77, 77, 77);
+    stroke: rgb(77, 77, 77);
+    border-bottom: 3px solid rgb(77, 77, 77);
   }
 
 .text{

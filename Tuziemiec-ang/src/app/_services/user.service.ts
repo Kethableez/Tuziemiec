@@ -25,6 +25,6 @@ export class UserService {
   }
 
   editData(userData){
-    return this.http.post<any>(this.apiServerUrl + '/user/edit', userData);
+    return this.http.put<any>(this.apiServerUrl + '/user/edit', userData);
   }
 }

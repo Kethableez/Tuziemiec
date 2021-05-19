@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl, ReactiveFormsModule, A
 import { UserService } from '../_services/user.service';
 import { MustMatch } from './password.validator';
 import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import { Router } from '@angular/router';
 
 @Component({ 
     templateUrl: 'register.component.html',
@@ -46,7 +47,9 @@ export class RegisterComponent{
     failedRegister = false;
     errorMessage: string;
 
-    constructor(private fb: FormBuilder, private userService: UserService) {}
+    constructor(private fb: FormBuilder, 
+        private userService: UserService,
+        private router: Router) {}
 
 
     registerForm = this.fb.group({
@@ -67,7 +70,9 @@ export class RegisterComponent{
     onSubmit(){
         console.log(this.registerForm.value);
         this.userService.register(this.registerForm.value).subscribe(
-            response => console.log('Success!', response),
+            response => {
+                this.router.navigate(['/login']);
+            },
             err => {
                 this.errorMessage = err.error.message;
                 this.failedRegister = true;

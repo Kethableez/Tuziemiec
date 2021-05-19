@@ -1,10 +1,4 @@
 <body>
-    <div class="header">
-        <button class="button" routerLink="/home/create_template">
-            Dodaj szablon
-          </button>
-    </div>
-
     <div class="wrapper">
         <div class="text2" *ngFor="let template of userTemplateList">
             {{template.name}} 
@@ -15,5 +9,7 @@
         </div>
     </div>
 
-
+    <button class="float" routerLink="/home/create_template">
+        +
+    </button>
 </body>
