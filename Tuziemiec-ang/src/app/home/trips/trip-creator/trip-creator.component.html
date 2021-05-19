@@ -70,7 +70,7 @@
             <input formControlName="userLimit" type="number" placeholder="Określ liczbę użytkowników"><br>
             <div class="validate" *ngIf="userLimit.invalid && userLimit.touched">
               <small *ngIf="userLimit.errors?.required">Limit użytkowników jest wymagany</small>
-          </div>
+            </div>
           </div>
   
           <div class="text" *ngIf="isSubmit && !isFailed">
