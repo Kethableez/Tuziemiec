@@ -15,13 +15,19 @@ import { Review } from '../_model/review';
     constructor(private http: HttpClient) { }
 
     public getReviews(tempateId: number): Observable<Review[]> {
-        console.log(this.apiServerUrl + this.apiReviewUrl +'/template_reviews/' + tempateId);
         return this.http.get<Review[]>(this.apiServerUrl + this.apiReviewUrl +'/template_reviews/' + tempateId);
       }
 
     public addReview(commentData, tripId: number){
-      console.log(this.apiServerUrl + this.apiReviewUrl + '/add_review', commentData)
       return this.http.post<any>(this.apiServerUrl + this.apiReviewUrl + '/add_review', commentData);
     }
+
+    public likeReview(reviewId: number) {
+      return this.http.put<any>(this.apiServerUrl + this.apiReviewUrl + '/like_review/' + reviewId, {});
+    } 
+
+    public dislikeReview(reviewId: number) {
+      return this.http.put<any>(this.apiServerUrl + this.apiReviewUrl + '/dislike_review/' + reviewId, {});
+    } 
 
   }

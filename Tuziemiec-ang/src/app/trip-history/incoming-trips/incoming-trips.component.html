@@ -15,7 +15,7 @@
         <hr>
         <div *ngFor="let trip of incomingTrips">
             <div class="wrapper">
-                <div class="table-cell link" [routerLink]="['/trip', trip.id]"><b>{{trip.template.name}}</b></div>
+                <div class="table-cell link" [routerLink]="['/home/trip', trip.id]"><b>{{trip.template.name}}</b></div>
                 <div class="table-cell">{{trip.template.place}}</div>
                 <div class="table-cell">{{trip.startDate}} - {{trip.endDate}}</div>
                 <div class="table-cell">{{trip.booking}} / {{trip.userLimit}}</div>

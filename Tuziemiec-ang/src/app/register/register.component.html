@@ -30,11 +30,19 @@
                     <input formControlName="email" type="text" placeholder="Wpisz adres e-mail" ><br>
                     <div class="validate" *ngIf="email.invalid && email.touched">
                         <small *ngIf="email.errors?.required">Adres e-mail jest wymagany!</small>
+                        <small *ngIf="email.errors?.pattern">Adres e-mail ma niepoprawny format!</small>
                     </div>
+
 
                     <input formControlName="password"  type="password" placeholder="Wpisz swoje hasło" ><br>
                     <div class="validate" *ngIf="password.invalid && password.touched">
                         <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
+                    </div>
+
+                    <input formControlName="confirmPassword"  type="password" placeholder="Potwierdź swoje hasło" ><br>
+                    <div class="validate" *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                        <small *ngIf="confirmPassword.errors?.required">Potwierdzenie hasła jest wymagane!</small>
+                        <small *ngIf="f.confirmPassword.errors.mustMatch">Hasła nie są takie same!</small>
                     </div>
 
                     <input formControlName="dayOfBirth"  type="date"><br>
