@@ -44,4 +44,8 @@ import { TripTemplate } from '../_model/tripTemplate';
     public getOrganisedTrips(): Observable<Trip[]> {
       return this.http.get<Trip[]>(this.apiServerUrl + '/trip/created_trips');
     }
+
+    public editTrip(tripData, id:number){
+      return this.http.put<any>(this.apiServerUrl + '/trip/edit_trip/' + id, tripData);
+    }
   }

@@ -88,7 +88,19 @@ body {
 
   .button {
     width: 2em;
+    border-bottom: 0;
   }
+    .button:hover {
+      border-bottom: 3px solid #ffffff;
+    }
+
+  .active {
+    border-bottom: 3px solid #588157;
+  }
+
+    .active:hover {
+      border-bottom: 3px solid #588157;
+    }
 }
 
 

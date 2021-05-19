@@ -5,12 +5,13 @@
     "\\src\\app",
     "\\src\\app\\home",
     "\\src\\app\\home\\attraction",
+    "\\src\\app\\home\\attraction\\attraction-creator",
     "\\src\\app\\home\\profile",
+    "\\src\\app\\home\\templates",
     "\\src\\app\\home\\templates\\template-creator",
-    "\\src\\app\\login",
-    "\\src\\app\\register",
+    "\\src\\app\\home\\trips",
     "\\src\\app\\start"
   ],
-  "SelectedNode": "\\src\\app\\home\\attraction\\attraction-creator\\attraction-creator.component.css",
+  "SelectedNode": "\\src\\app\\home\\trips\\trips.component.css",
   "PreviewInSolutionExplorer": false
 }

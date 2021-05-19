@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     editPersonalDataForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      dayOfBirth: ['']
+      dayOfBirth: ['', Validators.required]
   });
 
   get dayOfBirth() {

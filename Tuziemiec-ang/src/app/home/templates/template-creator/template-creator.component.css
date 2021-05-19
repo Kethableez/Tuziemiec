@@ -1,6 +1,4 @@
-
-  
-  body {
+body {
     background-color: inherit;
     margin: 0;
     padding: 0;
@@ -9,8 +7,8 @@
 
 .Text4 {
   text-align: center;
-  background-color: #353535;
-  color: #ffffff;
+  background-color: #BDB4AE;
+  color: #f4f4f9;
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: bold;
   height: 3em;
@@ -21,12 +19,12 @@ input[type=text], textarea {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 1.5rem;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #f4f4f9;
   width: 80%;
   padding: 0.5em 0.75em;
   margin: 0.25em 0;
   box-sizing: border-box;
-  border: 3px solid #ded9d5;
+  border: 3px solid #f4f4f9;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
@@ -50,14 +48,14 @@ textarea {
 
 
 .list {
-  background-color: #ded9d5;
+  background-color: #CDD1CD;
   overflow: auto; /* new */
 }
 
 
 .Text2 {
   text-align: center;
-  color: #000000;
+  color: #67676d;
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: bold;
   /* font-style: italic; */
@@ -70,15 +68,15 @@ textarea {
 }
 
   .link:hover {
-    color: #104169;
+    color: #80c2af;
   }
 
 
 .selected {
-  color: #104169;
-  background-color: #bdb4ae;
+  color: #f4f4f9;
+  background-color: #588157;
   border-radius: 20px;
-  width: 80%;
+  width: 70%;
   margin: auto;
   letter-spacing: 2px;
 }
@@ -86,7 +84,7 @@ textarea {
 
 .map {
   padding: auto;
-  background-color: #bdb4ae;
+  background-color: #CDD1CD;
 }
 
 agm-map {
@@ -103,7 +101,7 @@ agm-map {
   vertical-align: middle;
   min-height: 75vh;
   border-radius: 0 0 35px 0;
-  background-color: #ded9d5;
+  background-color: #CDD1CD;
 }
 
 
@@ -123,9 +121,9 @@ agm-map {
 
 
 .Submit_button {
-  background-color: #4F565C;
+  background-color: #67676d;
   box-sizing: border-box;
-  border: 3px solid #4F565C;
+  border: 3px solid #67676d;
   border-radius: 20px;
   font-family: 'Alegreya Sans', sans-serif;
   font-style: italic;
@@ -144,8 +142,8 @@ agm-map {
   }
 
   .Submit_button:active {
-    background-color: #104169;
-    border: 3px solid #104169;
+    background-color: #80c2af;
+    border: 3px solid #80c2af;
   }
 
 
@@ -153,7 +151,7 @@ agm-map {
   margin-inline: auto;
   padding: 0.2em;
   text-align: center;
-  color: #000000;
+  color: #67676d;
   font-family: 'Alata';
   font-size: 1.25rem;
 }
@@ -165,7 +163,7 @@ agm-map {
 
   .router:hover {
     cursor: pointer;
-    color: #104169;
+    color: #588157;
     text-decoration-line: underline;
   }
 
