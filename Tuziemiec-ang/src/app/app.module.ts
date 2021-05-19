@@ -19,9 +19,9 @@ import { AttractionComponent } from './home/attraction/attraction.component';
 import { AttractionCreatorComponent } from './home/attraction/attraction-creator/attraction-creator.component';
 import { TemplateCreatorComponent } from './home/templates/template-creator/template-creator.component';
 import { TripHistoryComponent } from './trip-history/trip-history.component';
-import { PastTripsComponent } from './past-trips/past-trips.component';
-import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';
-import { OrganizedTripsComponent } from './organized-trips/organized-trips.component';
+import { PastTripsComponent } from './trip-history/past-trips/past-trips.component';
+import { IncomingTripsComponent } from './trip-history/incoming-trips/incoming-trips.component';
+import { OrganizedTripsComponent } from './trip-history/organized-trips/organized-trips.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';

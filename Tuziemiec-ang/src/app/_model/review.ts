@@ -6,6 +6,8 @@ export interface Review {
     commentBody: string;
     commentDate: Date;
     rating: number;
+    upVote: number;
+    downVote: number;
     templateId: number;
     participation: Participation;
 }

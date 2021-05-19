@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Trip } from '../_model/trip';
-import { TokenStorageService } from '../_services/token-storage.service';
-import { TripService } from '../_services/trip.service';
+import { Trip } from '../../_model/trip';
+import { TokenStorageService } from '../../_services/token-storage.service';
+import { TripService } from '../../_services/trip.service';
 
 @Component({
   selector: 'app-organized-trips',

@@ -18,6 +18,7 @@ export class TripDetailComponent implements OnInit {
   trip: Trip;
   reviews: Review[];
   id: number;
+  errorMessage: string;
 
   constructor(
     private token: TokenStorageService,
@@ -49,8 +50,22 @@ export class TripDetailComponent implements OnInit {
     }
   }
 
-  onClick() {
-    console.log(this.reviews.length)
+  like(reviewId: number) {
+    this.reviewService.likeReview(reviewId).subscribe(
+      response => console.log('Success!', response),
+      err => {
+          this.errorMessage = err.error.message;
+      }
+    )
+  }
+
+  dislike(reviewId: number) {
+    this.reviewService.dislikeReview(reviewId).subscribe(
+      response => console.log('Success!', response),
+      err => {
+          this.errorMessage = err.error.message;
+      }
+    )
   }
 
 }

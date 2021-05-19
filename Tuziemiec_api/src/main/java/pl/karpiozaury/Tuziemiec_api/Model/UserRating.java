@@ -8,33 +8,30 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "review_ratings")
+@Table(name = "user_ratings")
 @Setter
 @Getter
 @RequiredArgsConstructor
-public class ReviewRating {
+public class UserRating {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-
-//    @NotBlank
-//    private Long reviewId;
-
-    @JoinColumn(name = "review_id")
-    @OneToOne(cascade = CascadeType.ALL)
-    private Review review;
 
     @NotBlank
     private Long userId;
 
     @NotBlank
-    private int rating;
+    private Long reviewId;
 
-    public ReviewRating(Review review,
-                        @NotBlank Long userId,
-                        @NotBlank int rating) {
-        this.review = review;
+    @NotBlank
+    private Integer rating;
+
+    public UserRating(@NotBlank Long userId,
+                      @NotBlank Long reviewId,
+                      @NotBlank Integer rating) {
         this.userId = userId;
+        this.reviewId = reviewId;
         this.rating = rating;
     }
 }
