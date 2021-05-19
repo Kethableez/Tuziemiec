@@ -1,33 +1,33 @@
 <body>
+    <div class="white-body">
 
-  <div class="white-body">
-
-    <div class="wrapper">
-      <div class="template-box" *ngFor="let template of userTemplateList">
-        <div class="template-name">
-          {{template.name}}
-        </div>
-        <div class="template-place">
-          {{template.place}}
-        </div>
-        <div class="template-rating">
-          <ng-template #t let-fill="fill">
-            <span class="star" [class.full]="fill === 100">
-              <span class="half" [style.width.%]="fill">★</span>☆
-            </span>
-          </ng-template>
-          <ngb-rating [max]="5" [(rate)]="template.rating" [starTemplate]="t" [readonly]="true">
-          </ngb-rating>
-        </div>
-        <div class="template-attractions">
-            <div *ngFor="let att of this.template.attractions">
-              {{att.name}}
+        <div class="wrapper">
+            <div class="template-box" *ngFor="let template of userTemplateList">
+                <div class="template-name">
+                    {{template.name}}
+                </div>
+                <div class="template-place">
+                    {{template.place}}
+                </div>
+                <div class="template-rating">
+                    <ng-template #t let-fill="fill">
+                        <span class="star" [class.full]="fill === 100">
+                            <span class="half" [style.width.%]="fill">★</span>☆
+                        </span>
+                    </ng-template>
+                    <ngb-rating [max]="5" [(rate)]="template.rating" [starTemplate]="t" [readonly]="true">
+                    </ngb-rating>
+                </div>
+                <div class="template-attractions">
+                    <div *ngFor="let att of this.template.attractions">
+                        {{att.name}}
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
-    </div>
 
-    <button class="float" routerLink="/home/create_template">
-        +
-    </button>
+        <button class="float" routerLink="/home/create_template">
+            +
+        </button>
+    </div>
 </body>

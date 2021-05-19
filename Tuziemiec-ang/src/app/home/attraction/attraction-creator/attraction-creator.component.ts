@@ -1,6 +1,7 @@
 import { MapsAPILoader } from '@agm/core';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Attraction } from 'src/app/_model/attraction';
 import { AttractionService } from '../../../_services/attraction.service';
 import { TokenStorageService } from '../../../_services/token-storage.service';
 
@@ -14,6 +15,8 @@ export class AttractionCreatorComponent implements OnInit {
   isLoggedIn = false;
   isSubmit = false;
   isFailed = false;
+  enabled = false;
+  attractionSelector: Attraction;
   message = "dodano pomyślnie";
 
   lat: number;

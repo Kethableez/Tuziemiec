@@ -1,9 +1,8 @@
 html {
-  /*height: 100%;*/
+  height: 100%;
 }
 
 body {
-  height: 55em;
   /* background: linear-gradient(to bottom, #37323E 10%, #BFBDC1 90%);
     background-attachment:fixed;
     background-repeat: no-repeat; */
@@ -14,7 +13,7 @@ body {
 }
 
 .App_name {
-  background-color: #ae978b;
+  background-color: #304C89;
   margin: auto;
   /*width: 100%;*/
   text-align: center;
@@ -117,9 +116,9 @@ input[type=text], input[type=password], input[type=date] {
 }
 
 .Button:enabled {
-  background-color: #67676d;
+  background-color: #304C89;
   box-sizing: border-box;
-  border: 3px solid #67676d;
+  border: 3px solid #304C89;
   border-radius: 20px;
   font-family: 'Alegreya Sans', sans-serif;
   font-style: italic;
@@ -129,9 +128,9 @@ input[type=text], input[type=password], input[type=date] {
 }
 
 .Button:disabled {
-  background-color: #67676d;
+  background-color: #304C89;
   box-sizing: border-box;
-  border: 3px solid #67676d;
+  border: 3px solid #304C89;
   border-radius: 20px;
   font-family: 'Alegreya Sans', sans-serif;
   font-style: italic;
@@ -140,8 +139,8 @@ input[type=text], input[type=password], input[type=date] {
 }
 
 .Button:active {
-  background-color: #80c2af;
-  border: 3px solid #80c2af;
+  background-color: #304C89;
+  border: 3px solid #304C89;
 }
 
 .Button:focus {

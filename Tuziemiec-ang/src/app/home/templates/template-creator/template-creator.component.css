@@ -121,9 +121,9 @@ agm-map {
 
 
 .Submit_button {
-  background-color: #67676d;
+  background-color: #157f1f;
   box-sizing: border-box;
-  border: 3px solid #67676d;
+  border: 3px solid #157f1f;
   border-radius: 20px;
   font-family: 'Alegreya Sans', sans-serif;
   font-style: italic;
@@ -142,8 +142,8 @@ agm-map {
   }
 
   .Submit_button:active {
-    background-color: #80c2af;
-    border: 3px solid #80c2af;
+    background-color: #157f1f;
+    border: 3px solid #157f1f;
   }
 
 

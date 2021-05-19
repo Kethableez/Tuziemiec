@@ -21,9 +21,9 @@
           Miejsce: {{attraction.place}}
         </div>
 
-        <div class="icon info">
+        <div class="icon info" (click)="infoClick(attraction)">
           <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" viewBox="0 0 24 24" stroke="currentColor"
-               fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+            fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
             <circle cx="12" cy="12" r="10"></circle>
             <line x1="12" y1="16" x2="12" y2="12"></line>
             <line x1="12" y1="8" x2="12" y2="8"></line>
@@ -36,6 +36,47 @@
       +
     </button>
 
+  </div>
+
+  <div class="attraction_detail" *ngIf="enabled">
+    <div class="attraction_header">
+      {{attractionSelector.name}}
+
+      <div class="exit" (click)="exitClick()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+        </svg>
+      </div>
+    </div>
+    <div class="wrapper2">
+      <div class="column">
+        <div class="text">
+          <label>Opis: </label>
+          {{attractionSelector.description}}
+        </div>
+        <hr>
+
+        <div class="text">
+          <label>Miejsce:</label>
+          {{attractionSelector.place}}
+        </div>
+        <hr>
+        <div class="text">
+          <label>Ocena: </label>
+          <ngb-rating [max]="5" [(rate)]="tempRating" [readonly]="true"></ngb-rating> <br>
+        </div>
+      </div>
+
+      <div class="column">
+        <agm-map [latitude]="attractionSelector.latitude" [longitude]="attractionSelector.longitude" [zoom]="16"
+          [disableDefaultUI]="true">
+          <agm-marker [latitude]="attractionSelector.latitude" [longitude]="attractionSelector.longitude"></agm-marker>
+        </agm-map>
+      </div>
+    </div>
   </div>
 
 </body>

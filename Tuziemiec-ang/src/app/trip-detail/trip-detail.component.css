@@ -10,42 +10,6 @@ html {
     padding: 0;
     font-family: arial, verdana, sans-serif;
   }
-  
-  .Header {
-    display: table-cell;
-    background-color: #353535;
-    margin: auto;
-    width: 25%;
-    padding-bottom: 0.5%;
-    text-align: center;
-  }
-  
-  .Name {
-    background-color: #353535;
-    font-family: 'Alata';
-    font-style: italic;
-    font-size: 60px;
-    color: #ffffff;
-  }
-  
-  .Caption {
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    letter-spacing: 9px;
-    color: #ffffff;
-  }
-
-  .Text {
-    background-color: #353535;
-    display: table-cell;
-    font-family: 'Alata';
-    font-size: 30px;
-    color: #ffffff;
-    margin: auto;
-    width: 50%;
-    text-align: center;
-  }
 
 
 
@@ -70,7 +34,7 @@ body {
 }
 
   .Trip-comments{
-    background: #ded9d5;
+    background: #CDD1CD;
     text-align: center;
     margin-inline: auto;
     width: 70%;
@@ -123,7 +87,7 @@ body {
   }
 
 .comment-body {
-  font-family: 'Alata';
+  font-family: 'Roboto' sans-serif;
   text-align: justify;
   font-size: 1.25rem;
   color: #404040;
@@ -138,8 +102,7 @@ body {
 }
 
   .Text2 {
-    font-family: 'Alata';
-    font-weight: lighter;
+    font-family: 'Roboto' sans-serif;
     text-align: center;
     font-size: 1.25rem;
     color: #404040;
@@ -147,7 +110,7 @@ body {
 
 .Text3 {
   text-align: center;
-  background-color: #588157;
+  background-color: #4A6FBF;
   color: #ffffff;
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: bold;
@@ -183,7 +146,6 @@ body {
 .description {
     font-family: 'Alegreya Sans', sans-serif;
     font-size: 1.5rem;
-    font-style: italic;
     margin: 1em;
 }
 
@@ -194,7 +156,7 @@ hr {
 
 ngb-rating {
   font-size: 1.75em;
-  color: #104169;
+  color: #B8A17D;
 }
 
 .star {

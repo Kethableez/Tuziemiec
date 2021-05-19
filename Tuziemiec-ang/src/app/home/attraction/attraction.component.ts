@@ -12,6 +12,9 @@ export class AttractionComponent implements OnInit {
 
   attractions: Attraction[];
   isLoggedIn = false;
+  enabled = false;
+  attractionSelector: Attraction;
+  tempRating = 5;
   //currentUser: any;
 
 
@@ -31,6 +34,15 @@ export class AttractionComponent implements OnInit {
         }
       )
     }
+  }
+
+  infoClick(att: Attraction){
+    this.enabled = true;
+    this.attractionSelector = att;
+  }
+
+  exitClick() {
+    this.enabled = false;
   }
 
 }

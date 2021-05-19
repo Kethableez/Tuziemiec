@@ -17,7 +17,7 @@ body {
   margin: auto;
   grid-template-columns: 0.5fr 2fr 0.5fr;
   text-align: center;
-  background-color: #BDB4AE;
+  background-color: #4A6FBF;
   color: #ffffff;
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: bold;
@@ -296,14 +296,14 @@ input[type=text] {
   background-color: #157f1f;
   color: #F4F4F9;
   border-radius: 50%;
+  border: none;
   text-align: center;
-  border: 2px solid #67676d;
   box-shadow: 4px 5px 5px #67676d;
 }
 
 .float:hover {
   background-color: #588157;
-  border: 2px solid #588157;
+  border: none;
 }
 
   .float:hover::after {
@@ -318,6 +318,7 @@ input[type=text] {
     border-radius: 6px;
     padding: 0.25em 0;
     left: 50%;
+    border: none;
     margin-left: -12em;
     background: #67676d;
   }

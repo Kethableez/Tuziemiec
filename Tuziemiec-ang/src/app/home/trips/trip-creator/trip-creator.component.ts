@@ -23,7 +23,7 @@ export class TripCreatorComponent implements OnInit {
 
   userTemplateList: TripTemplate[] = [];
 
-  selectedTemplate = "none";
+  selectedTemplate: string;
   
   isSubmit = false;
   isFailed = false;
@@ -62,7 +62,7 @@ export class TripCreatorComponent implements OnInit {
   createTrip = this.fb.group({
     startDate: ['', Validators.required],
     endDate: ['', Validators.required],
-    templateName: [this.selectedTemplate],
+    templateName: ['', Validators.required],
     userLimit: ['', [Validators.required, Validators.min(1)]],
   }, {
     validator: CustomeDateValidators.fromToDate('startDate', 'endDate')

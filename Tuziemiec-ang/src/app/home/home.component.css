@@ -6,7 +6,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 4em;
-  background-color: #ae978b;
+  background-color: #304C89;
 }
 
 .logo {
@@ -41,7 +41,7 @@ body {
     stroke: #ffffff;
     color: #ffffff;
     font-family: 'Alata', sans-serif;
-    background-color: #ae978b;
+    background-color: #304C89;
     cursor: pointer;
 }
 
@@ -53,17 +53,10 @@ body {
 }
 
 .active {
-  color: rgb(77, 77, 77);
-  stroke: rgb(77, 77, 77);
-  border-bottom: 3px solid rgb(77, 77, 77);
+  border-bottom: 3px solid #fff;
   cursor: default;
 }
 
-  .active:hover {
-    color: rgb(77, 77, 77);
-    stroke: rgb(77, 77, 77);
-    border-bottom: 3px solid rgb(77, 77, 77);
-  }
 
 .text{
     position: absolute;
