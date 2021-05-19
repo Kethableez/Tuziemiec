@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators  } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, ReactiveFormsModule, AbstractControl  } from '@angular/forms';
 import { UserService } from '../_services/user.service';
+import { MustMatch } from './password.validator';
+import { format, formatDistance, formatRelative, subDays } from 'date-fns';
 
 @Component({ 
     templateUrl: 'register.component.html',
@@ -23,13 +25,22 @@ export class RegisterComponent{
         return this.registerForm.get('email');
     }
 
-    get password() {
+    get password () {
         return this.registerForm.get('password');
+    }
+
+    get confirmPassword(){
+        return this.registerForm.get('confirmPassword');
     }
 
     get dayOfBirth() {
         return this.registerForm.get('dayOfBirth');
     }
+
+    get f() { 
+        return this.registerForm.controls; 
+    }
+
 
     isSubmit = false;
     failedRegister = false;
@@ -38,15 +49,19 @@ export class RegisterComponent{
     constructor(private fb: FormBuilder, private userService: UserService) {}
 
 
-    //Email Validator
-    //Password Validator
     registerForm = this.fb.group({
         username: ['', [Validators.required, Validators.minLength(6)]],
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
-        email: ['', Validators.required],
+        email: new FormControl('', Validators.compose([
+            Validators.required,
+            Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
+        ])),
         password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
         dayOfBirth: ['', Validators.required]
+    }, {
+        validator: MustMatch('password', 'confirmPassword')
     });
 
     onSubmit(){

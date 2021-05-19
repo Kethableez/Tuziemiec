@@ -20,21 +20,24 @@
   <hr>
 
 
-  <button class="button" (click)="openEditPanel()">
-    Edytuj
-  </button>
-
-
-  <div class ="Form" *ngIf="isEditPanelClicked">
+  <div class ="Form" >
     <div class="Text3">Zmień swoje dane</div>
     
     <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()">
       <div class="Form_body">
 
 
-        <input formControlName="firstName" type="text" placeholder="Wpisz swoje imię" ><br>
-        <input formControlName="lastName" type="text" placeholder="Wpisz swoje nazwisko" ><br>
-        <input formControlName="dayOfBirth"  type="date"><br><br>
+        <input formControlName="firstName" type="text" [(ngModel)]="userData.firstName"><br>
+        <div class="validate" *ngIf="firstName.invalid && firstName.touched">
+          <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
+      </div>
+
+        <input formControlName="lastName" type="text" [(ngModel)]="userData.lastName" ><br>
+        <div class="validate" *ngIf="lastName.invalid && lastName.touched">
+          <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
+      </div>
+      
+        <input formControlName="dayOfBirth"  type="date" [(ngModel)]="userData.dayOfBirth"><br><br>
         <button class="button" type="submit" >Zmień wprowadzone dane</button>
       </div>
     </form>
