@@ -24,14 +24,18 @@
         <input formControlName="firstName" type="text" [(ngModel)]="userData.firstName"><br>
         <div class="validate" *ngIf="firstName.invalid && firstName.touched">
           <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
-      </div>
+        </div>
 
         <input formControlName="lastName" type="text" [(ngModel)]="userData.lastName" ><br>
         <div class="validate" *ngIf="lastName.invalid && lastName.touched">
           <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
-      </div>
+        </div>
       
-        <input formControlName="dayOfBirth"  type="date" [(ngModel)]="userData.dayOfBirth"><br><br>
+        <input formControlName="dayOfBirth"  type="date" [(ngModel)]="userData.dayOfBirth"><br>
+        <div class="validate" *ngIf="dayOfBirth.invalid && dayOfBirth.touched">
+          <small *ngIf="dayOfBirth.errors?.required">Data urodzenia jest wymagana!</small>
+        </div>
+
         <button class="button" type="submit" >Zmień wprowadzone dane</button>
       </div>
     </form>
