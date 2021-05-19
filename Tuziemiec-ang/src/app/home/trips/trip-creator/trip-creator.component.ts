@@ -81,16 +81,12 @@ export class TripCreatorComponent implements OnInit {
     }
   }
 
-  onSelect(name: string): any {
-    return this.selectedTemplate = name;
-  }
+  onSelect(name: string) {
+    this.selectedTemplate = name;
 
-  onClick() {
     this.createTrip.patchValue({
       templateName: this.selectedTemplate
     })
-    this.step_1 = false;
-    this.step_2 = true;
   }
 
   isSelected(template_n: string): boolean {

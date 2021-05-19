@@ -51,16 +51,11 @@
                     </div>
                 </div>
 
-                <div class="text" *ngIf="isSubmit && !failedRegister">
-                    Zarejestrowano pomyślnie!
-                </div>
-
                 <div class="text" *ngIf="isSubmit && failedRegister">
                     <div class="validate">{{errorMessage}}</div>
                 </div>
                 
                 <button *ngIf="!isSubmit" class="Button" type="submit" [disabled]="!registerForm.valid">Zarejestruj się</button>
-                <button *ngIf="isSubmit && !failedRegister" class="Button" routerLink="/login">Zaloguj się</button>
                 <button *ngIf="isSubmit && failedRegister" class="Button" (click)="reloadPage()" >Spróbuj ponownie</button>
             </div>
         </form>

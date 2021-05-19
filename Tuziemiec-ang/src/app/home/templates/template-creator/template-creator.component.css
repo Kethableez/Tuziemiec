@@ -1,14 +1,9 @@
-/*html {
-    background-color:  #7c90a0;
-  }*/
-
 body {
-  background-color: #a6b3ae;
-  min-height: 90vh;
-  margin: 0;
-  padding: 0;
-  font-family: arial, verdana, sans-serif;
-}
+    background-color: inherit;
+    margin: 0;
+    padding: 0;
+    font-family: arial, verdana, sans-serif;
+  }
 
 .Text4 {
   text-align: center;

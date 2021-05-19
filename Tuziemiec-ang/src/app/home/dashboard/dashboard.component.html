@@ -1,5 +1,32 @@
-{{userData.firstName}}
+
+<body>
+    <div class="greetings">
+        Witaj {{userData.firstName}}!
+    </div>
+
+<div class="wrapper">
+    <div class="box">
+        Nieocenione wycieczki: {{unreviewedCount}} <br>
+        <div  class="link"  [routerLink]="['/home/panel/past']">
+            Kliknij tutaj aby je ocenić!
+        </div>
+    </div>
+    <div class="box">
+        Nadchodzące wycieczki: {{incomingCount}} <br>
+        <div class="link" [routerLink]="['/home/panel/incoming']">
+            Kliknij tutaj aby je wyświetlić!
+        </div>
+
+    </div>
+    <div class="box">
+        Placeholder1
+    </div>
+    <div class="box">
+        Placeholder2
+    </div>
+</div>
 
 <div class="Buttons">
     <a class="Button" routerLink="/home/panel">Panel</a>
   </div>
+</body>

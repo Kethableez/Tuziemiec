@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators  } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService, 
     private tokenStorage: TokenStorageService,
-    private fb: FormBuilder ) { }
+    private fb: FormBuilder,
+    private router: Router ) { }
 
     get username() {
       return this.loginForm.get('username');
@@ -49,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        this.router.navigate(['/home/dashboard']);
       },
       err => {
         this.errorMessage = err.error.message;

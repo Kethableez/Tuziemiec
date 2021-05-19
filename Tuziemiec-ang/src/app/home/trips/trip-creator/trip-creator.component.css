@@ -88,16 +88,25 @@ html {
   
   .Form {
     margin: auto;
-    padding-top: 25px;
     border-radius: 35px;
-    width: 600px;
+    width: 100%;
+    height: 50vh;
   }
   
   .Form_body {
     text-align: center;
-    border-radius: 35px 35px 35px 35px;
-    background-color: #bdb4ae;
+    border-radius: 0 0 50px 0;
+    background-color: #ded9d5;
+    height: 50vh;
     padding: 20px;
+  }
+
+  .list {
+    text-align: center;
+    overflow: auto; /* new */
+    border-radius: 0 0 0 50px;
+    background-color: #ded9d5;
+    height: 50vh;
   }
   
   input[type=text], input[type=password], input[type=date], input[type=number],textarea {
@@ -105,12 +114,12 @@ html {
     font-family: 'Alegreya Sans', sans-serif;
     font-size: 20px;
     text-align: center;
-    background-color: #ded9d5;
+    background-color: #ffffff;
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 3px solid #ded9d5;
+    border: 3px solid #ffffff;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -320,4 +329,11 @@ html {
     cursor: pointer;
     color: #104169;
     text-decoration-line: underline;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    margin-inline: auto;
   }
