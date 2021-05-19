@@ -23,12 +23,6 @@ public class Review {
     @OneToOne(cascade = CascadeType.ALL)
     private Participation participation;
 
-//    @NotBlank
-//    private Long userId;
-//
-//    @NotBlank
-//    private Long tripId;
-
     @NotBlank
     private String commentHeader;
 
@@ -42,6 +36,12 @@ public class Review {
     private LocalDate commentDate;
 
     @NotBlank
+    private Integer upVote;
+
+    @NotBlank
+    private Integer downVote;
+
+    @NotBlank
     private Long templateId;
 
     public Review(Participation participation,
@@ -49,14 +49,32 @@ public class Review {
                   @NotBlank String commentBody,
                   @NotBlank Integer rating,
                   @NotBlank LocalDate commentDate,
-                  @NotBlank Long templateId ) {
+                  @NotBlank Integer like,
+                  @NotBlank Integer dislike,
+                  @NotBlank Long templateId) {
         this.participation = participation;
         this.commentHeader = commentHeader;
         this.commentBody = commentBody;
         this.rating = rating;
         this.commentDate = commentDate;
+        this.upVote = like;
+        this.downVote = dislike;
         this.templateId = templateId;
     }
+
+    //    public Review(Participation participation,
+//                  @NotBlank String commentHeader,
+//                  @NotBlank String commentBody,
+//                  @NotBlank Integer rating,
+//                  @NotBlank LocalDate commentDate,
+//                  @NotBlank Long templateId ) {
+//        this.participation = participation;
+//        this.commentHeader = commentHeader;
+//        this.commentBody = commentBody;
+//        this.rating = rating;
+//        this.commentDate = commentDate;
+//        this.templateId = templateId;
+//    }
 
 
 //    public Review(@NotBlank Long userId,

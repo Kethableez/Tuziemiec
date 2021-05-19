@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Trip } from '../_model/trip';
-import { ParticipationService } from '../_services/participation.service';
-import { TokenStorageService } from '../_services/token-storage.service';
-import { TripService } from '../_services/trip.service';
+import { Trip } from '../../_model/trip';
+import { ParticipationService } from '../../_services/participation.service';
+import { TokenStorageService } from '../../_services/token-storage.service';
+import { TripService } from '../../_services/trip.service';
 
 @Component({
   selector: 'app-incoming-trips',

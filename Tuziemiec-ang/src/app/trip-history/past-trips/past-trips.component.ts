@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Participation } from '../_model/participation';
-import { Trip } from '../_model/trip';
-import { ParticipationService } from '../_services/participation.service';
-import { ReviewService } from '../_services/review.service';
-import { TokenStorageService } from '../_services/token-storage.service';
-import { TripService } from '../_services/trip.service';
+import { Participation } from '../../_model/participation';
+import { Trip } from '../../_model/trip';
+import { ParticipationService } from '../../_services/participation.service';
+import { ReviewService } from '../../_services/review.service';
+import { TokenStorageService } from '../../_services/token-storage.service';
+import { TripService } from '../../_services/trip.service';
 
 @Component({
   selector: 'app-past-trips',

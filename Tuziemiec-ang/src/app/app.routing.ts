@@ -2,10 +2,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { AttractionCreatorComponent } from './home/attraction/attraction-creator/attraction-creator.component';
 import { AttractionComponent } from './home/attraction/attraction.component';
 import { HomeComponent } from './home/home.component';
-import { IncomingTripsComponent } from './incoming-trips/incoming-trips.component';
+import { IncomingTripsComponent } from './trip-history/incoming-trips/incoming-trips.component';
 import { LoginComponent } from './login/login.component';
-import { OrganizedTripsComponent } from './organized-trips/organized-trips.component';
-import { PastTripsComponent } from './past-trips/past-trips.component';
+import { OrganizedTripsComponent } from './trip-history/organized-trips/organized-trips.component';
+import { PastTripsComponent } from './trip-history/past-trips/past-trips.component';
 import { ProfileComponent } from './home/profile/profile.component';
 
 import { RegisterComponent } from './register';
@@ -35,16 +35,16 @@ const routes: Routes = [
             { path: 'create_attraction', component: AttractionCreatorComponent},
 
             { path: 'profile', component: ProfileComponent},
+            { path: 'panel', component: TripHistoryComponent,
+                children: [
+                    {path: 'incoming', component: IncomingTripsComponent},
+                    {path: 'past', component: PastTripsComponent},
+                    {path: 'organized', component: OrganizedTripsComponent},
+                ]
+            },
         ]
+    },
 
-    },
-    { path: 'panel', component: TripHistoryComponent,
-        children: [
-            {path: 'incoming', component: IncomingTripsComponent},
-            {path: 'past', component: PastTripsComponent},
-            {path: 'organized', component: OrganizedTripsComponent},
-        ]
-    },
     { path: '', component: StartComponent},
     { path: '**', redirectTo: ''}
 ];

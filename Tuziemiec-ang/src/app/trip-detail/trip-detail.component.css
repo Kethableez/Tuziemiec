@@ -106,7 +106,7 @@ html {
   
   .Comment{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-columns: 0.5fr 2.5fr 0.5fr 0.5fr;
     margin-top: 0.5%;
   }
 
@@ -116,6 +116,30 @@ html {
 
   .col3 {
     margin: auto;
+  }
+
+  .col4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .icon {
+    cursor: pointer;
+    margin-top: 30%;
+    width: 2rem;
+    height: 2rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+  }
+
+  .red {
+    stroke: red;
+    color: rgb(139, 0, 0);
+  }
+
+  .green {
+    stroke: green;
+    color: rgb(8, 77, 8);
   }
 
   .comment-header {

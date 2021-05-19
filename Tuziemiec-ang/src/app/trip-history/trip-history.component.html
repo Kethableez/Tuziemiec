@@ -1,34 +1,5 @@
 <body>
-    <div style="width: 100%; display: table;">
-        <div style="display: table-row">
-    
-            <div class="Header">
-                <div class="Name">Tuziemiec</div>
-                <div class="Caption">Spotkajmy się!</div>
-            </div>
-        
-            <div class="Text" *ngIf="isLoggedIn">
-                Panel wycieczek
-            </div>
-        
-            <div class="Text" *ngIf="!isLoggedIn">
-                ZALOGUJ SIĘ ŻEBY KORZYSTAĆ Z FUNKCJONALNOŚCI!
-            </div>
-        
-            <div class="Back" *ngIf="isLoggedIn">
-                <div>
-                    <button class="button" routerLink="/main">Wstecz</button>
-                    <!-- <button class="button" routerLink="/" (click)="logout()">Wyloguj się</button> -->
-                </div>
-            </div>
-    
-                <div class="Back" *ngIf="!isLoggedIn">
-                    <button class="button" routerLink="/">Strona główna! </button>
-                </div>
-            </div>
-    </div>
-
-    <div class="Function-buttons" *ngIf="isLoggedIn">
+    <div class="Function-buttons">
         <button class="button2" (click)="showIncoming()">Nadchodzące</button>
         <button class="button2" (click)="showPast()">Przeszłe</button>
         <button class="button2" (click)="showOrganized()">Stworzone</button>
