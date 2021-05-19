@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators  } from '@angular/forms';
+import { FormBuilder, Validators, AbstractControl, FormControl  } from '@angular/forms';
 import { Attraction } from '../../../_model/attraction';
 import { TripTemplate } from '../../../_model/tripTemplate';
 import { TokenStorageService } from '../../../_services/token-storage.service';
 import { TripService } from '../../../_services/trip.service';
+import { CustomeDateValidators } from './from-to-date.validator'
 
 @Component({
   selector: 'app-trip-creator',
@@ -53,11 +54,18 @@ export class TripCreatorComponent implements OnInit {
     })
   }
 
+  get f() { 
+    return this.createTrip.controls; 
+  }
+
+  //jak zrobic zeby info o validatorze sie pokazywalo
   createTrip = this.fb.group({
     startDate: ['', Validators.required],
     endDate: ['', Validators.required],
     templateName: [this.selectedTemplate],
     userLimit: ['', [Validators.required, Validators.min(1)]],
+  }, {
+    validator: CustomeDateValidators.fromToDate('startDate', 'endDate')
   });
 
   ngOnInit(): void {

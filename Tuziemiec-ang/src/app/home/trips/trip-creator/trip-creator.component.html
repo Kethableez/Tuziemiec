@@ -64,6 +64,7 @@
             <input formControlName="endDate" type="date"><br>
             <div class="validate" *ngIf="endDate.invalid && endDate.touched">
                 <small *ngIf="endDate.errors?.required">Data końcowa jest wymagana</small>
+                <small *ngIf="endDate.errors?.ValidationErrors">Data końcowa nie może być przed datą startu!</small>
             </div>
   
             <input formControlName="userLimit" type="number" placeholder="Określ liczbę użytkowników"><br>

@@ -14,7 +14,6 @@ import { FormBuilder, Validators  } from '@angular/forms';
 export class ProfileComponent implements OnInit {
 
   isLoggedIn = false;
-  isEditPanelClicked = false;
   currentUser: any;
   userData: User;
   failedRegister = false;
@@ -27,8 +26,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder) { }
 
     editPersonalDataForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       dayOfBirth: ['']
   });
 
@@ -45,8 +44,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit(){
-    this.isSubmit = true;
-    console.log(this.isSubmit);
+    console.log(typeof(this.userData.dayOfBirth));
     console.log(this.editPersonalDataForm.value);
     this.userService.editData(this.editPersonalDataForm.value).subscribe(
         response => console.log('Success!', response),
@@ -81,13 +79,4 @@ export class ProfileComponent implements OnInit {
     window.location.reload();
   }
 
-  openEditPanel(){
-    if(this.isEditPanelClicked == false)
-    {
-      this.isEditPanelClicked = true;
-    }else if(this.isEditPanelClicked == true)
-    {
-      this.isEditPanelClicked = false;
-    }
-  }
 }
