@@ -136,11 +136,15 @@
   font-size: 1.5rem;
   color: #ffffff;
   cursor: pointer;
-} 
+}
 
+  .button:hover {
+    background-color: #80c2af;
+    border: 3px solid #80c2af;
+  }
   .button:active {
-    background-color: #104169;
-    border: 3px solid #104169;
+    background-color: #80c2af;
+    border: 3px solid #80c2af;
   }
   
   .button:focus {

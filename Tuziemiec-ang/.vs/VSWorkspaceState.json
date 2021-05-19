@@ -4,9 +4,14 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\home",
+    "\\src\\app\\home\\attraction",
+    "\\src\\app\\home\\attraction\\attraction-creator",
+    "\\src\\app\\home\\profile",
+    "\\src\\app\\home\\templates",
+    "\\src\\app\\home\\templates\\template-creator",
     "\\src\\app\\home\\trips",
-    "\\src\\app\\trip-detail"
+    "\\src\\app\\start"
   ],
-  "SelectedNode": "\\src\\app\\trip-detail\\trip-detail.component.html",
+  "SelectedNode": "\\src\\app\\home\\trips\\trips.component.css",
   "PreviewInSolutionExplorer": false
 }
