@@ -9,6 +9,8 @@ import { AgmCoreModule } from '@agm/core';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
+import { HashLocationStrategy, LocationStrategy} from '@angular/common';
+
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register';
 import { StartComponent } from './start';
@@ -67,7 +69,7 @@ import { TripsComponent } from './home/trips/trips.component';
     
   ],
 
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, {provide: LocationStrategy, useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

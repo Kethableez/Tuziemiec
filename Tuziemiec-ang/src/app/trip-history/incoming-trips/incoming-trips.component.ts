@@ -51,7 +51,7 @@ export class IncomingTripsComponent implements OnInit {
         console.log(err.error.message)
       }
     );
-
+      // Wywalic reloada
     this.reloadPage();
   }
 }

@@ -31,7 +31,7 @@ export class PastTripsComponent implements OnInit {
   pastTrips: Trip[];
   pastParticipation: Participation[];
   tripSelector: Trip;
-  enabled = true;
+  enabled = false;
   b_rating = 0;
   errorMessage: string;
   style = 'not-blurred'

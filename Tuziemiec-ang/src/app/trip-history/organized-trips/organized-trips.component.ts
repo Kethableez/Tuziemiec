@@ -52,7 +52,7 @@ export class OrganizedTripsComponent implements OnInit {
       this.currentUser = this.token.getUser();
     }
 
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       this.tripService.getOrganisedTrips().subscribe(
         (response: Trip[]) => {
           this.organizedTrips = response;
@@ -61,7 +61,7 @@ export class OrganizedTripsComponent implements OnInit {
     }
   }
 
-  openEditForm(t : Trip){
+  openEditForm(t: Trip) {
     this.enabled = true;
     this.tripSelector = t;
 
@@ -76,15 +76,16 @@ export class OrganizedTripsComponent implements OnInit {
     this.style = 'not-blurred';
   }
 
-  onSubmit(tripId: number){
+  onSubmit(tripId: number) {
     console.log(this.editTripForm.value);
     this.tripService.editTrip(this.editTripForm.value, tripId).subscribe(
       response => console.log('Success!', response),
       err => {
-          this.errorMessage = err.error.message;
+        this.errorMessage = err.error.message;
       }
-  );
-  this.reloadPage();
+    );
+    // wywalić reloada
+    this.reloadPage();
   }
 
   reloadPage(): void {

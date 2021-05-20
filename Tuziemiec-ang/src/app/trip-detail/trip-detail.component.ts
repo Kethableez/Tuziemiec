@@ -53,8 +53,10 @@ export class TripDetailComponent implements OnInit {
   like(reviewId: number) {
     this.reviewService.likeReview(reviewId).subscribe(
       response => console.log('Success!', response),
+      //po responsie +1
       err => {
           this.errorMessage = err.error.message;
+
       }
     )
   }
