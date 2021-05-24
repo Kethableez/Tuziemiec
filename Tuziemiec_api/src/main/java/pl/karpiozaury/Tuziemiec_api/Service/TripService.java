@@ -68,6 +68,7 @@ public class TripService {
                 request.getName(),
                 request.getDescription(),
                 request.getPlace(),
+                0F,
                 request.getLatitude(),
                 request.getLongitude()
         );

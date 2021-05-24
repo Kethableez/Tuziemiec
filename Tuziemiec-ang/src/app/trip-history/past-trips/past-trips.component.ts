@@ -77,10 +77,11 @@ export class PastTripsComponent implements OnInit {
       response => console.log('Success!', response),
             err => {
                 this.errorMessage = err.error.message;
+                this.reloadPage();
             }
     );
+    // Pousuwac reloady, zamiienić to na podmianę ikonki!
 
-    this.reloadPage();
   }
 
   openCommentForm(t: Trip) {

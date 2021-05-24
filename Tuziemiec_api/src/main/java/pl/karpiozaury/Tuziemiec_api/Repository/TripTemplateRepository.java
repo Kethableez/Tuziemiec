@@ -1,6 +1,7 @@
 package pl.karpiozaury.Tuziemiec_api.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.karpiozaury.Tuziemiec_api.Model.TripTemplate;
 
@@ -10,6 +11,13 @@ import java.util.Optional;
 @Repository
 public interface TripTemplateRepository extends JpaRepository<TripTemplate, Long> {
     TripTemplate findByName(String name);
+
+    @Query(
+            value = "select * from tuziemiec.trip_templates order by rating DESC Limit 3",
+            nativeQuery = true
+    )
+    List<TripTemplate> findThreeByRating();
+
     //Optional<TripTemplate> findByIdAndGuideId(Long id);
     Optional<List<TripTemplate>> findAllByGuideId(Long id);
     Boolean existsByName(String name);

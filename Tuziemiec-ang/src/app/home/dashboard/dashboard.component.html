@@ -19,7 +19,10 @@
 
     </div>
     <div class="box">
-        Placeholder1
+        Rekomendowane wycieczki:
+        <div class="link" [routerLink]="['/home/trip', trip.id]" *ngFor="let trip of recommendations">
+            {{trip.template.name}}
+        </div>
     </div>
     <div class="box">
         Placeholder2

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Participation } from 'src/app/_model/participation';
+import { Trip } from 'src/app/_model/trip';
 import { User } from 'src/app/_model/user';
 import { ParticipationService } from 'src/app/_services/participation.service';
+import { RecommendationService } from 'src/app/_services/recommendation.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -17,13 +19,15 @@ export class DashboardComponent implements OnInit {
   isLoggedIn = false;
   pastList: Participation[];
   incomingList: Participation[];
+  recommendations: Trip[];
   unreviewedCount = 0;
   incomingCount = 0;
 
   constructor(    
     private token: TokenStorageService, 
     private userService: UserService, 
-    private participationService: ParticipationService) { }
+    private participationService: ParticipationService,
+    private recommendationService: RecommendationService) { }
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -58,6 +62,15 @@ export class DashboardComponent implements OnInit {
           this.incomingList.forEach(participation => {
             if (participation.isReviewed == false) this.incomingCount++;
           });
+        }
+      )
+    }
+
+    if (this.isLoggedIn == true) {
+      this.recommendationService.getRecommendation().subscribe(
+        (response: Trip[]) => {
+          this.recommendations = response;
+          console.log("Kurwa");
         }
       )
     }

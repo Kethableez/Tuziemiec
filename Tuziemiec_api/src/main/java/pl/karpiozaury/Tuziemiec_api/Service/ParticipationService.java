@@ -4,10 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
+import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
 import pl.karpiozaury.Tuziemiec_api.Model.Participation;
+import pl.karpiozaury.Tuziemiec_api.Model.Trip;
+import pl.karpiozaury.Tuziemiec_api.Model.UsersAttraction;
 import pl.karpiozaury.Tuziemiec_api.Repository.ParticipationRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
+import pl.karpiozaury.Tuziemiec_api.Repository.UsersAttractionRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,17 +29,28 @@ public class ParticipationService {
     @Autowired
     private final ParticipationRepository participationRepository;
 
+    @Autowired
+    private final UsersAttractionService usersAttractionService;
+
+    @Autowired
+    private final UsersAttractionRepository usersAttractionRepository;
+
     // Method to add user to participation table
     public Participation addPatricipant(Long tripId, UsernamePasswordAuthenticationToken token) {
         Long userId = userRepository.findByUsername(token.getName()).orElseThrow().getId();
-
-        //TODO: Checking if user participate in specific trip
 
         Participation participation = new Participation(
                 tripId,
                 userId,
                 tripRepository.findById(tripId).orElseThrow().getStartDate()
         );
+
+        for (Attraction att : tripRepository.findById(tripId).orElseThrow().getTemplate().getAttractions()) {
+            if (usersAttractionRepository.existsByUserIdAndAttractionId(userId, att.getId())) {
+                usersAttractionService.update(token, att.getId(), tripRepository.findById(tripId).orElseThrow().getStartDate());
+            }
+            else usersAttractionService.addToList(token, att.getId(), tripRepository.findById(tripId).orElseThrow().getStartDate());
+        }
 
         return participationRepository.save(participation);
     }
