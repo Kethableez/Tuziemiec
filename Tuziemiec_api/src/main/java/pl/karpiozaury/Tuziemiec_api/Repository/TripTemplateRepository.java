@@ -13,10 +13,10 @@ public interface TripTemplateRepository extends JpaRepository<TripTemplate, Long
     TripTemplate findByName(String name);
 
     @Query(
-            value = "select * from tuziemiec.trip_templates order by rating DESC Limit 3",
+            value = "select * from tuziemiec.trip_templates order by rating DESC",
             nativeQuery = true
     )
-    List<TripTemplate> findThreeByRating();
+    List<TripTemplate> findByRating();
 
     //Optional<TripTemplate> findByIdAndGuideId(Long id);
     Optional<List<TripTemplate>> findAllByGuideId(Long id);

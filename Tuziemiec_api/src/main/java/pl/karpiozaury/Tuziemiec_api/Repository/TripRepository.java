@@ -20,19 +20,19 @@ public interface TripRepository extends CrudRepository<Trip, Long> {
 
 
     @Query(
-            value = "select * from tuziemiec.trips where start_date >= CURDATE() and booking < user_limit and template_id in (select id from tuziemiec.trip_templates where guide_id = ?1) order by start_date ASC LIMIT 3",
+            value = "select * from tuziemiec.trips where start_date >= CURDATE() and booking < user_limit and template_id in (select id from tuziemiec.trip_templates where guide_id = ?1) order by start_date",
             nativeQuery = true
     )
     List<Trip> findTripsByGuideId(Long guideId);
 
     @Query(
-            value = "select * from tuziemiec.trips where start_date >= CURDATE() and booking < user_limit and template_id = ?1 Order by start_date asc Limit 1",
+            value = "select * from tuziemiec.trips where start_date >= CURDATE() and booking < user_limit and template_id = ?1 Order by start_date ASC",
             nativeQuery = true
     )
-    Optional<Trip> findByTemplateId(Long templateId);
+    Optional<List<Trip>> findByTemplateId(Long templateId);
 
     @Query(
-            value = "select * from tuziemiec.trips where start_date >= CURDATE() and booking < user_limit and template_id in (select id from tuziemiec.trip_templates where place = ?1) order by start_date ASC LIMIT 3",
+            value = "select * from tuziemiec.trips where start_date >= CURDATE() and booking < user_limit and template_id in (select id from tuziemiec.trip_templates where place = ?1) order by start_date ASC",
             nativeQuery = true
     )
     Optional<List<Trip>> findByPlace(String place);

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
+import pl.karpiozaury.Tuziemiec_api.Model.UsersAttraction;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.AttractionRating;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.AttractionRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
@@ -70,7 +71,7 @@ public class AttractionController {
         }
     }
 
-    @PutMapping("/add_rating/")
+    @PutMapping("/add_rating")
     public ResponseEntity<?> addRating(UsernamePasswordAuthenticationToken token, @RequestBody AttractionRating request) {
         Long userId = userRepository.findByUsername(token.getName()).orElseThrow().getId();
         if (usersAttractionRepository.existsByUserIdAndAttractionId(userId, request.getAttractionId())) {
@@ -88,5 +89,14 @@ public class AttractionController {
         else return ResponseEntity
                 .badRequest()
                 .body(new MessageResponse("Nie było Cie tam kurwo"));
+    }
+
+    @GetMapping("/user_ratings")
+    public ResponseEntity<?> getUserAllRatings(UsernamePasswordAuthenticationToken token) {
+        List<UsersAttraction> attractions = usersAttractionRepository.findByUserId(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId()
+        ).orElseThrow();
+
+        return new ResponseEntity<>(attractions, HttpStatus.OK);
     }
 }

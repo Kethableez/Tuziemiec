@@ -12,6 +12,7 @@ import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.TripTemplateRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,8 +36,21 @@ public class RecommendationService {
     public List<Trip> gudieTrips(UsernamePasswordAuthenticationToken token) {
         List<Participation> participations = participationRepository.findAllByUserId(userRepository.findByUsername(token.getName()).orElseThrow().getId()).orElseThrow();
 
+        List<Trip> recommendedTrips;
+
+        List<Participation> participationList = participationRepository.findByUserIdAndStartDateGreaterThanEqual(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId(),
+                LocalDate.now()
+        ).orElseThrow();
+
+        List<Trip> participatedTrips = new ArrayList<>();
+
+        for(Participation p : participationList) {
+            participatedTrips.add(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
+
         Long guideid = 0L;
-        HashMap<Long, Integer> guides = new HashMap<Long, Integer>();
+        HashMap<Long, Integer> guides = new HashMap<>();
 
         for (Participation participation : participations) {
             Long id = tripRepository.findById(participation.getTripId()).orElseThrow().getTemplate().getGuideId();
@@ -48,28 +62,57 @@ public class RecommendationService {
                 guideid = entry.getKey();
         }
 
-        System.out.println(guides);
-        return tripRepository.findTripsByGuideId(guideid);
+        recommendedTrips = tripRepository.findTripsByGuideId(guideid);
+        recommendedTrips.removeIf(participatedTrips::contains);
+        return recommendedTrips;
     }
 
     public List<Trip> ratingTrips(UsernamePasswordAuthenticationToken token) {
-        List<TripTemplate> templates = templateRepository.findThreeByRating();
+        List<TripTemplate> templates = templateRepository.findByRating();
+
+        templates.removeIf(t -> t.getGuideId().equals(userRepository.findByUsername(token.getName()).orElseThrow().getId()));
+
         List<Trip> trips = new ArrayList<>();
+
+        List<Participation> participationList = participationRepository.findByUserIdAndStartDateGreaterThanEqual(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId(),
+                LocalDate.now()
+        ).orElseThrow();
+
+        List<Trip> participatedTrips = new ArrayList<>();
+
+        for(Participation p : participationList) {
+            participatedTrips.add(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
 
         for(TripTemplate template : templates) {
             try {
-                trips.add(tripRepository.findByTemplateId(template.getId()).orElseThrow());
+                trips.addAll(tripRepository.findByTemplateId(template.getId()).orElseThrow());
             }
             catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }
 
+        trips.removeIf(participatedTrips::contains);
+
         return trips;
     }
 
     public List<Trip> placeTrips(UsernamePasswordAuthenticationToken token) {
         List<Trip> trips = new ArrayList<>();
+
+        List<Participation> participationList = participationRepository.findByUserIdAndStartDateGreaterThanEqual(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId(),
+                LocalDate.now()
+        ).orElseThrow();
+
+        List<Trip> participatedTrips = new ArrayList<>();
+
+        for(Participation p : participationList) {
+            participatedTrips.add(tripRepository.findById(p.getTripId()).orElseThrow());
+        }
+
         try {
             Long tripId = participationRepository.findLatestTrip(
                     userRepository.findByUsername(token.getName()).orElseThrow().getId()
@@ -81,6 +124,8 @@ public class RecommendationService {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+        trips.removeIf(participatedTrips::contains);
 
         return trips;
     }

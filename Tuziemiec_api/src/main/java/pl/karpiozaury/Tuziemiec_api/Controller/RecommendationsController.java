@@ -18,6 +18,7 @@ import pl.karpiozaury.Tuziemiec_api.Service.RecommendationService;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -39,20 +40,22 @@ public class RecommendationsController {
 
     @GetMapping("/")
     public ResponseEntity<List<Trip>> getRecommendations(UsernamePasswordAuthenticationToken token){
+        List<Trip> Alltrips = new ArrayList<>();
         List<Trip> trips = new ArrayList<>();
-        int day = LocalDate.now().getDayOfMonth();
-        day++;
 
-        if (day % 3 == 0) {
-            trips = recommendationService.gudieTrips(token);
+        Random rnd = new Random();
+
+        Alltrips.addAll(recommendationService.gudieTrips(token));
+        Alltrips.addAll(recommendationService.ratingTrips(token));
+        Alltrips.addAll(recommendationService.placeTrips(token));
+
+        if (Alltrips.size() <= 3) {
+            trips = Alltrips;
         }
-
-        else if (day % 3 == 1) {
-            trips = recommendationService.ratingTrips(token);
-        }
-
-        else if (day % 3 == 2) {
-            trips = recommendationService.placeTrips(token);
+        else {
+            trips.add(Alltrips.get(rnd.nextInt(Alltrips.size())));
+            trips.add(Alltrips.get(rnd.nextInt(Alltrips.size())));
+            trips.add(Alltrips.get(rnd.nextInt(Alltrips.size())));
         }
 
         return new ResponseEntity<>(trips, HttpStatus.OK);

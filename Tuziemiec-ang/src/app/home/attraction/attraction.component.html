@@ -64,9 +64,17 @@
           {{attractionSelector.place}}
         </div>
         <hr>
-        <div class="text">
+        <div class="text" *ngIf="!isRated(attractionSelector.id)">
           <label>Ocena: </label>
-          <ngb-rating [max]="5" [(rate)]="tempRating" [readonly]="true"></ngb-rating> <br>
+          <ngb-rating [max]="5" [(rate)]="attractionSelector.rating" [readonly]="true"></ngb-rating> <br>
+        </div>
+
+        <div class="text" *ngIf="isRated(attractionSelector.id)">
+          <form [formGroup]="ratingForm" (ngSubmit)="onSubmit()">
+            <label>Ocena: </label>
+            <ngb-rating formControlName="rating" [max]="5" [(rate)]="tempRating" [readonly]="false"></ngb-rating> <br>
+            <button class="button" type="submit" [disabled]="!ratingForm.valid">Oceń</button>
+          </form>
         </div>
       </div>
 
@@ -78,5 +86,4 @@
       </div>
     </div>
   </div>
-
 </body>
