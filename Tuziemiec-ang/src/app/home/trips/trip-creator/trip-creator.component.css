@@ -324,10 +324,10 @@ html {
     cursor: pointer;
     transition: color 200ms ease-out 100ms
   }
-  
+
     .router:hover {
       cursor: pointer;
-      color: #588157;
+      color: #294f6d;
       text-decoration-line: underline;
     }
 

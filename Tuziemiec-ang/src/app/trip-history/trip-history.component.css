@@ -13,42 +13,41 @@ html {
   
 
   .Function-buttons{
-    background-color: #4A6FBF;;
-    padding: 1%;
+    background-color: #5990af;
+    padding: 0.5em;
     text-align: center;
   }
 
-  .button2 {
-    width: 200px;
-    margin-left: 1%;
-    margin-right: 1%;
-    height: 50px;
-    background-color: #304C89;
-    box-sizing: border-box;
-    border: 3px solid #304C89;
-    border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-  }
+.button2 {
+  width: 200px;
+  margin: 0 1em;
+  height: 2em;
+  background-color: #294f6d;
+  box-sizing: border-box;
+  border: 3px solid #294f6d;
+  border-radius: 20px;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
 
   .button2:active {
-    background-color: #104169;
-    border: 3px solid #104169;
+    background-color: #4a7496;
+    border: 3px solid #4a7496;
   }
   
   .button2:focus {
     outline: 0;
   }
 
-  .panel {
-      margin: auto;
-      width: 80%;
-      min-height: 50vh;
-      background-color: #CDD1CD;
-      border-radius: 0 0 20px 20px;
-      -webkit-box-shadow: 0 8px 6px -6px black;
-      -moz-box-shadow: 0 8px 6px -6px black;
-         box-shadow: 0 8px 6px -6px black;
-  }
+.panel {
+  margin: auto;
+  width: 80%;
+  min-height: 50vh;
+  background-color: #ded9d5;
+  border-radius: 0 0 20px 20px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}

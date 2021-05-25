@@ -58,6 +58,42 @@ body {
     cursor: pointer;
 }
 
+
+  .icon:hover {
+    color: #5990af;
+  }
+
+.review:hover:after {
+  content: "Oceń wycieczkę";
+  display: block;
+  position: relative;
+  top: -3em;
+  width: 10em;
+  color: #f4f4f9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25em 0;
+  left: 50%;
+  margin-left: -3em;
+  background: #67676d;
+  font-size: 1.25rem;
+}
+
+.done:hover:after {
+  content: "Oceń wycieczkę";
+  display: block;
+  position: relative;
+  top: -3em;
+  width: 10em;
+  color: #f4f4f9;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.25em 0;
+  left: 50%;
+  margin-left: -3em;
+  background: #67676d;
+  font-size: 1.25rem;
+}
 .right {
     top: 4%;
     right: 4%;

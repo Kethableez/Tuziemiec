@@ -102,15 +102,16 @@ html {
     outline: 0;
   }
 
-  .white_body{
-    background-color: #f4f4f9;
-    text-align: center;
-    margin: auto;
-    width: 80%;
-    /* height: max-content; */
-    min-height: 82vh;
-    /* height: 88%; */
-  }
+.white_body {
+  background-color: #ffffff;
+  box-shadow: 0px 3px 6px black;
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  /* height: max-content; */
+  min-height: 91vh;
+  /* height: 88%; */
+}
 
   .wrapper{
     display: flex;
@@ -118,20 +119,17 @@ html {
     align-items: stretch;
   }
 
-  .attraction-box{
-    background-color: #CDD1CD;
-    border: 3px;
-    border-radius: 8%;
-    width: 19.8em;
-    margin: 1em 2.75em;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
-  }
+.attraction-box {
+  background-color: #ded9d5;
+  border: 3px;
+  border-radius: 8%;
+  width: 19.8em;
+  margin: 1em 2.75em;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}
 
-  .attraction-box:hover{
-    background: #ded9d5;
-  }
 
 .attraction-name {
   border-radius: 20px 20px 0 0;
@@ -155,9 +153,13 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
-  .icon {
-    margin: 0.5em 0;
-  }
+.icon {
+  margin: 0.5em auto;
+  stroke: #67676d;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
 .info:hover:after {
   content: "Szczegółowe informacje";
   display: block;
@@ -198,18 +200,18 @@ html {
   position: fixed;
   width: 2.5em;
   height: 2.5em;
-  bottom: 2em;
-  right: 2em;
-  background-color: #157f1f;
+  bottom: 1.5em;
+  right: 1.5em;
+  background-color: #294f6d;
   color: #F4F4F9;
   border-radius: 50%;
-  text-align: center;
   border: none;
+  text-align: center;
   box-shadow: 4px 5px 5px #67676d;
 }
 
   .float:hover {
-    background-color: #588157;
+    background-color: #4a7496;
     border: none;
   }
 

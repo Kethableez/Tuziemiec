@@ -6,7 +6,7 @@ html {
 body {
   position: relative;
   min-height: 100%;
-  background: #a6b3ae;
+  background: #aaaaaa;
   margin: 0;
   padding: 0;
   font-family: arial, verdana, sans-serif;
@@ -17,7 +17,7 @@ body {
   margin: auto;
   grid-template-columns: 0.5fr 2fr 0.5fr;
   text-align: center;
-  background-color: #4A6FBF;
+  background-color: #5990af;
   color: #ffffff;
   font-family: 'Alegreya Sans', sans-serif;
   font-weight: bold;
@@ -63,7 +63,8 @@ input[type=text] {
     border: 2px solid #575656;
   }
 .white_body {
-  background-color: #f4f4f9;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 6px black;
   text-align: center;
   margin: auto;
   width: 80%;
@@ -138,7 +139,7 @@ input[type=text] {
   display: grid;
   grid-template-rows: 0.7fr 1.3fr;
   width: 30%;
-  background-color: #CDD1CD;
+  background-color: #ded9d5;
   border-radius: 0 0 30px 0;
   margin-inline: 1.5%;
   margin-top: 1.5%;
@@ -285,15 +286,14 @@ input[type=text] {
         width: 30em;
   }
 }
-
 .float {
-      font-size: 2rem;
+  font-size: 2rem;
   position: fixed;
   width: 2.5em;
   height: 2.5em;
-  bottom: 2em;
-  right: 2em;
-  background-color: #157f1f;
+  bottom: 1.5em;
+  right: 1.5em;
+  background-color: #294f6d;
   color: #F4F4F9;
   border-radius: 50%;
   border: none;
@@ -301,10 +301,10 @@ input[type=text] {
   box-shadow: 4px 5px 5px #67676d;
 }
 
-.float:hover {
-  background-color: #588157;
-  border: none;
-}
+  .float:hover {
+    background-color: #4a7496;
+    border: none;
+  }
 
   .float:hover::after {
     font-size: 1rem;
