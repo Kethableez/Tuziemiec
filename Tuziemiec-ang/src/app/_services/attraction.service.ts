@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Attraction } from '../_model/attraction';
+import { UsersAttraction } from '../_model/usersAttraction';
 
 
 @Injectable({
@@ -30,8 +31,11 @@ import { Attraction } from '../_model/attraction';
       return this.http.post<any>(this.apiServerUrl + this.attractionUrl + '/create_attraction', attractionData);
     }
 
+    public rateAttraction(ratingData) {
+      return this.http.put<any>(this.apiServerUrl + this.attractionUrl + '/add_rating', ratingData);
+    }
 
-    // public getPast(): Observable<Trip[]> {
-    //   return this.http.get<Trip[]>(this.apiServerUrl + '/trip/guide_history');
-    // }
+    public getUserSeenAttractions(): Observable<UsersAttraction[]> {
+      return this.http.get<UsersAttraction[]>(this.apiServerUrl + this.attractionUrl + '/user_ratings');
+    }
   }

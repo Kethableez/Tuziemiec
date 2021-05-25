@@ -28,7 +28,7 @@ export class IncomingTripsComponent implements OnInit {
       this.currentUser = this.token.getUser();
     }
 
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       this.tripService.getIncomingTrips().subscribe(
         (response: Trip[]) => {
           this.incomingTrips = response;
@@ -45,13 +45,14 @@ export class IncomingTripsComponent implements OnInit {
     this.participationService.unparticipeTrip(TripId).subscribe(
       response => {
         console.log(response)
+        this.reloadPage();
       },
 
       err => {
         console.log(err.error.message)
       }
     );
-      // Wywalic reloada
-    this.reloadPage();
+    // Wywalic reloada
+
   }
 }

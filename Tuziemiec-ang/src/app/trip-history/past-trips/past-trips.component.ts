@@ -57,7 +57,7 @@ export class PastTripsComponent implements OnInit {
       this.currentUser = this.token.getUser();
     }
 
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       this.tripService.getPastTrips().subscribe(
         (response: Trip[]) => {
           this.pastTrips = response;
@@ -72,15 +72,16 @@ export class PastTripsComponent implements OnInit {
     }
   }
 
-  onSubmit(tripId: number){
+  onSubmit(tripId: number) {
     this.reviewService.addReview(this.commentForm.value, tripId).subscribe(
       response => console.log('Success!', response),
-            err => {
-                this.errorMessage = err.error.message;
-            }
+      err => {
+        this.errorMessage = err.error.message;
+        this.reloadPage();
+      }
     );
+    // Pousuwac reloady, zamiienić to na podmianę ikonki!
 
-    this.reloadPage();
   }
 
   openCommentForm(t: Trip) {
@@ -95,7 +96,7 @@ export class PastTripsComponent implements OnInit {
   }
 
 
-  isTripReviewed(id: number): boolean{
+  isTripReviewed(id: number): boolean {
     return this.pastParticipation.find(p => p.tripId == id).isReviewed;
   }
 
