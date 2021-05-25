@@ -9,11 +9,12 @@ body {
 }
 
 .greetings {
-    background-color: #4A6FBF;
+    background-color: #5990af;
     font-family: 'Alata';
-    font-size: 30px;
+    font-size: 2rem;
     text-align: center;
     margin-inline: auto;
+    color:#fff;
 }
 
 .link:hover {

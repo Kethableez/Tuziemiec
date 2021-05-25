@@ -1,12 +1,12 @@
 body {
-  background-color: #a6b3ae;
+  background-color: #aaaaaa;
 }
 
 .panel {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 4em;
-  background-color: #304C89;
+  background-color: #4a7496;
 }
 
 .logo {
@@ -41,7 +41,7 @@ body {
     stroke: #ffffff;
     color: #ffffff;
     font-family: 'Alata', sans-serif;
-    background-color: #304C89;
+    background-color: transparent;
     cursor: pointer;
 }
 
@@ -61,12 +61,12 @@ body {
 .text{
     position: absolute;
     bottom: 0.5em;
+    right: 0;
 }
 
 
 .icon {
     position: absolute;
-    right: 0;
     bottom: 0.5em;
     width: 2em;
     height: 1.5em;
@@ -88,11 +88,11 @@ body {
     }
 
   .active {
-    border-bottom: 3px solid #588157;
+    border-bottom: 3px solid #ffffff;
   }
 
     .active:hover {
-      border-bottom: 3px solid #588157;
+      border-bottom: 3px solid #ffffff;
     }
 }
 
@@ -112,10 +112,10 @@ body {
   width: 80%;
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
-  background-color: #588157;
+  background-color: #5990af;
   border-radius: 25px;
-  border: 5px dotted #CDD1CD;
-  box-shadow: 5px 5px 20px #CDD1CD;
+  border: 5px dotted #4a7496;
+  box-shadow: 5px 5px 20px #4a7496;
   color: #f4f4f9;
 }
 @media (max-width: 490px) {

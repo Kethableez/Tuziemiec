@@ -69,9 +69,9 @@
 .button {
   width: 10em;
   margin-inline: 20%;
-  background-color: #157f1f;;
+  background-color: #157f1f;
   box-sizing: border-box;
-  border: 3px solid #157f1f;;
+  border: 3px solid #157f1f;
   border-radius: 20px;
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 1.5rem;
@@ -104,7 +104,7 @@
   margin-left: 20%;
   margin-right: 20%;
   border-radius: 0px 0px 35px 35px;
-  background-color: #CDD1CD;
+  background-color: #ded9d5;
   margin-bottom: 5%;
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;

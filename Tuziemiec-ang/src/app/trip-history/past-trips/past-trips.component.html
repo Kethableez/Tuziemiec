@@ -58,7 +58,7 @@
                     <div class="table-cell">{{trip.template.rating}}</div>
 
                     <div class="table-cell icons">
-                        <div class="icon" *ngIf="!isTripReviewed(trip.id)" (click)="openCommentForm(trip)">
+                        <div class="icon review" *ngIf="!isTripReviewed(trip.id)" (click)="openCommentForm(trip)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="feather feather-message-square">
@@ -66,7 +66,7 @@
                             </svg>
                         </div>
 
-                        <div class="icon" *ngIf="isTripReviewed(trip.id)">
+                        <div class="icon done" *ngIf="isTripReviewed(trip.id)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="feather feather-check">

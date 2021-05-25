@@ -3,32 +3,33 @@
       <div class="Name">Tuziemiec</div>
       <div class="Caption">Spotkajmy się!</div>
     </div>
+    <div class='Bottom'></div>
+      <div class="Form">
+        <div class="Form_title" *ngIf="!isLoggedIn">Logowanie</div>
+        <div class="Form_title" *ngIf="isLoggedIn">Zalogowano</div>
+        <div class="Form_body">
 
-    <div class="Form">
-      <div class="Form_title" *ngIf="!isLoggedIn" >Zaloguj się!</div>
-      <div class="Form_title" *ngIf="isLoggedIn" >Zalogowano</div>
-      <div class="Form_body">
-
-        <div class="text" *ngIf="!isLoggedIn && isLoginFailed">
-          <div class="validate">{{errorMessage}}</div>
-      </div>
-
-      <form [formGroup]="loginForm" *ngIf="!isLoggedIn && !isLoginFailed" (ngSubmit)="onSubmit()">
-
-
-          <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika" ><br>
-          <div class="validate" *ngIf="username.invalid && username.touched">
-            <small *ngIf="username.errors?.required">Nazwa użytkownika jest wymagana!</small>
+          <div class="text" *ngIf="!isLoggedIn && isLoginFailed">
+            <div class="validate">{{errorMessage}}</div>
           </div>
 
-          <input formControlName="password" type="password" placeholder="Wpisz hasło" ><br>
-          <div class="validate" *ngIf="password.invalid && password.touched">
-            <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
-          </div>
-          <button *ngIf="!isLoggedIn" class="Button" (click)="onSubmit()" type="submit" [disabled]="!loginForm.valid">Zaloguj się</button>
-      </form>
+          <form [formGroup]="loginForm" *ngIf="!isLoggedIn && !isLoginFailed" (ngSubmit)="onSubmit()">
 
-      <button *ngIf="!isLoggedIn && isLoginFailed" class="Button" (click)="reloadPage()" >Spróbuj ponownie</button>
-    </div>
+
+            <input formControlName="username" type="text" placeholder="Wpisz nazwę użytkownika"><br>
+            <div class="validate" *ngIf="username.invalid && username.touched">
+              <small *ngIf="username.errors?.required">Nazwa użytkownika jest wymagana!</small>
+            </div>
+
+            <input formControlName="password" type="password" placeholder="Wpisz hasło"><br>
+            <div class="validate" *ngIf="password.invalid && password.touched">
+              <small *ngIf="password.errors?.required">Hasło jest wymagane!</small>
+            </div>
+            <button *ngIf="!isLoggedIn" class="Button" (click)="onSubmit()" type="submit" [disabled]="!loginForm.valid">Zaloguj się</button>
+          </form>
+
+          <button *ngIf="!isLoggedIn && isLoginFailed" class="Button" (click)="reloadPage()">Spróbuj ponownie</button>
+        </div>
+      
     </div>
   </body>
