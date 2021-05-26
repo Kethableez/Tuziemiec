@@ -11,6 +11,11 @@ export class TripHistoryComponent implements OnInit {
   isLoggedIn = false;
   currentUser: any;
 
+  incomingClicked = false;
+  pastClicked = false;
+  organisedClicked = false;
+
+
   constructor(private token: TokenStorageService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -23,14 +28,23 @@ export class TripHistoryComponent implements OnInit {
   }
 
   showIncoming() {
+    this.incomingClicked = true;
+    this.organisedClicked = false;
+    this.pastClicked = false;
     this.router.navigate(['incoming'], {relativeTo: this.route})
   }
 
   showPast() {
+    this.incomingClicked = false;
+    this.organisedClicked = false;
+    this.pastClicked = true;
     this.router.navigate(['past'], {relativeTo: this.route})
   }
 
   showOrganized() {
+    this.incomingClicked = false;
+    this.organisedClicked = true;
+    this.pastClicked = false;
     this.router.navigate(['organized'], {relativeTo: this.route})
   }
 

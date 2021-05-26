@@ -14,9 +14,6 @@ import { TripService } from '../../../_services/trip.service';
 })
 export class TemplateCreatorComponent implements OnInit {
 
-  step_1 = true;
-  step_2 = false;
-
   selectedAttractions: Attraction[] = [];
 
   isLoggedIn = false;
@@ -24,12 +21,17 @@ export class TemplateCreatorComponent implements OnInit {
 
   isSubmit = false;
   isFailed = false;
+  
   message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
 
   idList: number[] = [];
 
   get place() {
     return this.search.get('place');
+
   }
 
   search = this.fb.group({
@@ -92,9 +94,6 @@ export class TemplateCreatorComponent implements OnInit {
   }
 
   onClick(){
-    this.step_1 = false;
-    this.step_2 = true;
-
     this.selectedAttractions.forEach(item => {
       this.addToIdList(item.id);
     });
@@ -122,18 +121,40 @@ export class TemplateCreatorComponent implements OnInit {
   onSubmit(){
     this.tripService.createTemplate(this.templateForm.value).subscribe(
       response => {
-        console.log(response)
-        this.message = response.message
+        this.onResponse(response.message, 1);
       },
       err => {
-        console.log(err.error.message)
-        this.message = err.error.message
-        this.isFailed = true
+        this.onResponse(err.error.message, 2);
       }
     );
     this.isSubmit = true;
   }
 
+  onMessageClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+
+    this.templateForm.reset();
+    this.selectedAttractions = [];
+    this.idList = [];
+    this.attractionList = [];
+  }
   
   reloadPage(): void {
     window.location.reload();

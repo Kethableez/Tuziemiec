@@ -41,8 +41,8 @@ body {
 .table-cell {
     text-align: center;
     margin: 2%;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-weight: normal;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 24px;
     color: black;
 }
@@ -60,6 +60,8 @@ body {
 }
   .icon:hover:after {
     content: "Wypisz się z wycieczki";
+    font-family: 'Roboto';
+    font-weight: 300;
     display: block;
     position: relative;
     top: -3em;
@@ -80,3 +82,32 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.message-box {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding: 1%;
+    bottom: 0;
+    text-align: center;
+    border-radius: 25px 25px 0 0;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    position: fixed;
+    z-index: 500;
+    width: 20vw;
+    height: 8vh;
+    
+    box-shadow: 0 0 6px black;
+    cursor: pointer;
+  }
+
+  .good {
+    background-color: #b7fdc3;
+    bottom: 0;
+  }
+
+  .bad {
+    background-color: #f3baba;
+    bottom: 0;
+  }

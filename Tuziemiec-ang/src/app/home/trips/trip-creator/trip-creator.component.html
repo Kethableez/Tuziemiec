@@ -1,7 +1,11 @@
 <body>
+  <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+    {{message}}
+  </div>
 
-
-
+  <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+    {{message}}
+  </div>
   <div class="wrapper">
 
     <div class="list">
@@ -44,8 +48,7 @@
     <div class="Form" *ngIf="isLoggedIn">
       <form [formGroup]="createTrip" (ngSubmit)="onSubmit()">
         <div class="Form_body">
-          <div *ngIf="!isSubmit">
-
+          <div>
             <input formControlName="startDate" type="date"><br>
             <div class="validate" *ngIf="startDate.invalid && startDate.touched">
               <small *ngIf="startDate.errors?.required">Data startowa jest wymagana</small>
@@ -71,10 +74,6 @@
             {{message}}
           </div>
 
-          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">Dodaj kolejną
-            wycieczkę</button>
-          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">Spróbuj
-            ponownie</button>
           <button class="Submit_button" type="submit" [disabled]="!createTrip.valid" *ngIf="!isSubmit">Stwórz
             wycieczkę</button>
         </div>

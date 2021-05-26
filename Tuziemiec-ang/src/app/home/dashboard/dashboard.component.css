@@ -4,17 +4,22 @@ body {
 
 .wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     align-content: center;
 }
 
 .greetings {
-    background-color: #5990af;
+    background-color: #15588E;
     font-family: 'Alata';
     font-size: 2rem;
     text-align: center;
     margin-inline: auto;
     color:#fff;
+}
+
+.link {
+    font-family: 'Roboto';
+    font-weight: 300;
 }
 
 .link:hover {
@@ -25,11 +30,13 @@ body {
 
 .box{ 
     border-radius: 25px;
+    position: relative;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.082);
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 400;
     font-size: 25px;
     text-align: center;
-    background-color: #CDD1CD;
+    background-color: #fff;
     margin: 2%;
     padding: 2%;
     height: 20vh;

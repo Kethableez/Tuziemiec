@@ -1,9 +1,11 @@
 <body>
-  <!--<div class="Text3">
-    <button class="button2" routerLink="/home/create_attraction">
-      Dodaj atrakcję
-    </button>
-  </div>-->
+  <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+    {{message}}
+  </div>
+
+  <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+    {{message}}
+  </div>
 
   <div class="white_body">
 
@@ -14,7 +16,15 @@
           {{attraction.name}}
         </div>
         <div class="attraction-description">
-          {{attraction.description}}
+          <div class="t-rating">
+            <ng-template #t let-fill="fill">
+              <span class="star" [class.full]="fill === 100">
+                <span class="half" [style.width.%]="fill">★</span>☆
+              </span>
+            </ng-template>
+            <ngb-rating [max]="5" [(rate)]="attraction.rating" [starTemplate]="t" [readonly]="true">
+            </ngb-rating>
+          </div>
         </div>
 
         <div class="attraction-place">

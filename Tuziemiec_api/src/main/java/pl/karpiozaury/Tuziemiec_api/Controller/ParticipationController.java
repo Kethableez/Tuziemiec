@@ -91,12 +91,6 @@ public class ParticipationController {
     }
 
 
-//    public ResponseEntity<List<Participation>> getAllUnreviewedTrips(UsernamePasswordAuthenticationToken token) {
-//        List<Participation> unreviewedParticipations = participationRepository.findAllByIsReviewedTrue().orElseThrow();
-//        return new ResponseEntity<>(unreviewedParticipations, HttpStatus.OK);
-//    }
-
-    //----------------------
     @GetMapping("/trip_past/{id}")
     public ResponseEntity<List<Participation>> getTripPastParticipationList (@PathVariable("id") Long tripId) {
         List<Participation> tripPast = participationService.getTripPast(tripId);
@@ -143,12 +137,11 @@ public class ParticipationController {
         return ResponseEntity.ok(new MessageResponse("Wypisano z wycieczki!"));
     }
 
-//    @GetMapping("/unreviewed")
-//    public ResponseEntity<List<Participation>> getAllUnreviewedTrips(UsernamePasswordAuthenticationToken token) {
-//        List<Participation> unreviewedParticipations = participationRepository.findAllByIsReviewedTrue().orElseThrow();
-//        return new ResponseEntity<>(unreviewedParticipations, HttpStatus.OK);
-//    }
-
-    //TODO: Rekomendacje -> pobranie np. nazwy z histori, nazwy z aktualnymi porównanie i zwrocenie lub
-    //      od tego samego uzytkownika, najwyżej oceniane etc...
+    @GetMapping("/isEnrolled/{id}")
+    public boolean isUserEnrolled(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {
+        return participationRepository.existsByUserIdAndTripId(
+                userRepository.findByUsername(token.getName()).orElseThrow().getId(),
+                tripId
+        );
+    }
 }

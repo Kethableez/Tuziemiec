@@ -1,15 +1,21 @@
 <body>
 
   <div class="Text4">
-      <input type="text" class="Search" (keydown.enter)="$event.preventDefault()"
-        placeholder="Wyszukaj miejsce" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+    <input type="text" class="Search" (keydown.enter)="$event.preventDefault()" placeholder="Wyszukaj miejsce"
+      autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
   </div>
 
 
+  <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+    {{message}}
+  </div>
 
+  <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+    {{message}}
+  </div>
 
   <div class="wrapper" *ngIf="isLoggedIn">
-    <div>
+    <div class="map">
       <agm-map [latitude]="lat" [longitude]="lon" [zoom]="zoom" [disableDefaultUI]="true">
         <agm-marker [latitude]="lat" [longitude]="lon" [markerDraggable]="true" (dragEnd)="getPosition($event)">
         </agm-marker>
@@ -19,7 +25,7 @@
     <div class="Form">
       <form [formGroup]="attractionForm" (ngSubmit)="onSubmit()">
         <div class="Form_body">
-          <div *ngIf="!isSubmit">
+          <div>
             <input formControlName="name" type="text" placeholder="Wpisz nazwę atrakcji"><br>
             <div class="validate" *ngIf="name.invalid && name.touched">
               <small *ngIf="name.errors?.required">Nazwa atrakcji jest wymagana</small>
@@ -36,25 +42,8 @@
             </div>
           </div>
 
-          <div class="text" *ngIf="isSubmit && !isFailed">
-            {{message}}
-          </div>
-
-          <div class="text validate" *ngIf="isSubmit && isFailed">
-            {{message}}
-          </div>
-
-          <button class="Submit_button" type="button" *ngIf="isSubmit && !isFailed" (click)="reloadPage()">
-            Dodaj kolejną
-            atrakcję
-          </button>
-          <button class="Submit_button" type="button" *ngIf="isSubmit && isFailed" (click)="reloadPage()">
-            Spróbuj
-            ponownie
-          </button>
-          <button class="Submit_button" type="submit" [disabled]="!attractionForm.valid" *ngIf="!isSubmit">
-            Stwórz
-            atrakcję
+          <button class="Submit_button" type="submit" [disabled]="!attractionForm.valid">
+            Stwórz atrakcję
           </button>
 
         </div>

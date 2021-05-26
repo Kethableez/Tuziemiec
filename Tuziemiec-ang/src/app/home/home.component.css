@@ -4,9 +4,11 @@ body {
 
 .panel {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 4em;
-  background-color: #4a7496;
+  background-color: #104169
+  /* background-color: ; */
+  
 }
 
 .logo {
@@ -23,7 +25,8 @@ body {
 }
 
 .sub-text {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 200;
   font-style: italic;
   font-size: 0.75rem;
   letter-spacing: 0.3em;

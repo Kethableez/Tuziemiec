@@ -40,8 +40,8 @@ body {
 .table-cell {
     text-align: center;
     margin: 2%;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-weight: normal;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 24px;
     color: black;
 }
@@ -65,6 +65,8 @@ body {
 
 .review:hover:after {
   content: "Oceń wycieczkę";
+  font-family: 'Roboto';
+  font-weight: 300;
   display: block;
   position: relative;
   top: -3em;
@@ -81,6 +83,8 @@ body {
 
 .done:hover:after {
   content: "Oceń wycieczkę";
+  font-family: 'Roboto';
+  font-weight: 300;
   display: block;
   position: relative;
   top: -3em;
@@ -127,8 +131,8 @@ hr {
     width: 50vw;
     height: 45vh;
     z-index: 1;
-    background-color: #CDD1CD;
-    border: 1px solid rgba(0, 0, 0, 0.116);
+    background-color: #e6e6e6;
+    box-shadow: 0px 3px 6px black;
 
     
 }
@@ -139,7 +143,7 @@ hr {
     font-size: 3.17vh;
     padding: 1.98vh;
     text-align: center;
-    background-color: #304C89;
+    background-color: #15588E;
     border-radius: 35px 35px 0 0;
     color: white;
 
@@ -147,7 +151,8 @@ hr {
 
   input[type=text], textarea {
     border-radius: 30px;
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 1.98vh;
     text-align: center;
     background-color: #fff;
@@ -160,29 +165,29 @@ hr {
   }
 
   .Button:enabled {
-    width: 10.41vw;
-    height: 4.95vh;
-    background-color: #304C89;
+    width: fit-content;
+    height: fit-content;
+    background-color: #15588E;
     box-sizing: border-box;
-    border: 3px solid #304C89;
+    border: 3px solid #15588E;
     border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
+    font-family: 'Roboto';
+    font-weight: 200;
     font-size: 24px;
     color: #ffffff;
     cursor: pointer;
   }
 
   .Button:disabled {
-    width: 10.41vw;
-    height: 4.95vh;
+    width: fit-content;
+    height: fit-content;
     opacity: 50%;
-    background-color: #304C89;
+    background-color: #15588E;
     box-sizing: border-box;
-    border: 3px solid #304C89;
+    border: 3px solid #15588E;
     border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
+    font-family: 'Roboto';
+    font-weight: 200;
     font-size: 24px;
     color: #ffffff;
   }
@@ -198,11 +203,41 @@ hr {
 
   .validate{
     color: #9e2a2b;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-weight: bold;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 1.2rem;
 }
 
 ngb-rating {
     font-size: 40px;
     color: #104169;
+  }
+
+  .message-box {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding: 1%;
+    bottom: 0;
+    text-align: center;
+    border-radius: 25px 25px 0 0;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    position: fixed;
+    z-index: 500;
+    width: 20vw;
+    height: 8vh;
+    
+    box-shadow: 0 0 6px black;
+    cursor: pointer;
+  }
+
+  .good {
+    background-color: #b7fdc3;
+    bottom: 0;
+  }
+
+  .bad {
+    background-color: #f3baba;
+    bottom: 0;
   }

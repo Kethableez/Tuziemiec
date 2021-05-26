@@ -28,4 +28,8 @@ import { Participation } from '../_model/participation';
     public userIncoming(): Observable <Participation[]> {
       return this.http.get<Participation[]>(this.apiServerUrl + '/participation/user_current');
     }
+
+    public isUserEnrolled(TripId: number): Observable<boolean> {
+      return this.http.get<boolean>(this.apiServerUrl + '/participation/isEnrolled/' + TripId);
+    }
   }

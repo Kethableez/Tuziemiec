@@ -1,5 +1,13 @@
 <body>
 
+    <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+        {{message}}
+      </div>
+    
+      <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+        {{message}}
+      </div>
+
     <div class="comment-form" *ngIf="enabled">
         <div class="icon right" (click)="closeCommentForm()">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="2rem" height="2rem" fill="none"

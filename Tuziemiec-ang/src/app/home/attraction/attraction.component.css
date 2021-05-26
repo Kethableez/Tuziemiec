@@ -12,8 +12,9 @@ html {
 .Text3 {
   text-align: center;
   color: #ffffff;
-  font-family: 'Roboto', sans-serif;
-  background-color: #353535;
+  font-family: 'Roboto';
+  font-weight: 300;
+  background-color: #15588E;
   border-bottom: 1px solid #575656;
   /* margin: 1.5%; */
   height: 4em;
@@ -83,7 +84,8 @@ html {
     box-sizing: border-box;
     border: 1px solid #575656;
     border-radius: 20px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 1.5rem;
     color: #ffffff;
     cursor: pointer;
@@ -120,28 +122,46 @@ html {
   }
 
 .attraction-box {
-  background-color: #ded9d5;
+  background-color: #e6e6e6;
   border: 3px;
-  border-radius: 8%;
+  border-radius: 20px;
   width: 19.8em;
   margin: 1em 2.75em;
-  -webkit-box-shadow: 0 8px 6px -6px black;
+  /* -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
-  box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black; */
+  box-shadow: 0px 3px 6px black;
 }
 
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: #B8A17D;
+}
+
+.full {
+  color: #B8A17D;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #B8A17D;
+}
 
 .attraction-name {
   border-radius: 20px 20px 0 0;
-  background-color: #588157;
+  background-color: #15588E;
   font-family: 'Alata';
   font-size: 1.5rem;
   color: #f4f4f9;
 }
 
   .attraction-place {
-    font-style: 'Alegreya Sans', sans-serif;
-    font-weight: lighter;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 1.25rem;
     color: #000000;
   }
@@ -150,7 +170,8 @@ html {
   margin-inline: 10%;
   margin: 0.5em 0;
   font-size: 1.25rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 
 .icon {
@@ -162,6 +183,8 @@ html {
 }
 .info:hover:after {
   content: "Szczegółowe informacje";
+  font-family: 'Roboto';
+  font-weight: 300;
   display: block;
   position: relative;
   top: -1em;
@@ -198,23 +221,24 @@ html {
 
 .button {
   width: fit-content;
-  background-color: #157f1f;;
+  background-color: #104169;;
   box-sizing: border-box;
-  border: 3px solid #157f1f;;
+  border: 3px solid #104169;;
   border-radius: 20px;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 200;
   font-size: 1.5rem;
   color: #ffffff;
   cursor: pointer;
 }
 
   .button:hover {
-    background-color: #157f1f;;
-    border: 3px solid #157f1f;;
+    background-color: #104169;;
+    border: 3px solid #104169;;
   }
   .button:active {
-    background-color: #157f1f;;
-    border: 3px solid #157f1f;;
+    background-color: #104169;;
+    border: 3px solid #104169;;
   }
   
   .button:focus {
@@ -249,6 +273,8 @@ html {
     .float:hover::after {
       font-size: 1rem;
       content: "Stwórz atrakcję";
+      font-family: 'Roboto';
+      font-weight: 300;
       display: block;
       position: absolute;
       top: 2em;
@@ -278,7 +304,7 @@ html {
       padding-top: 2%;
       padding-bottom: 2%;
       border-radius: 40px 40px 0 0;
-      background-color: #157F1F;
+      background-color: #15588E;
       color: #fff;
       font-family: 'Alata';
       font-size: 30px;
@@ -308,8 +334,9 @@ html {
 
     .text {
       margin-top: 2%;
-      font-family: 'Roboto' sans-serif;
-      font-size: 20px;
+      font-family: 'Roboto';
+      font-weight: 300;
+      font-size: 25px;
     }
 
     ngb-rating {
@@ -325,4 +352,33 @@ html {
       right: 1vw;
       width: 2rem;
       height: 2rem;
+    }
+
+    .message-box {
+      font-family: 'Roboto';
+      font-weight: 400;
+      font-size: 1.5rem;
+      padding: 1%;
+      bottom: 0;
+      text-align: center;
+      border-radius: 25px 25px 0 0;
+      margin-left: 40vw;
+      margin-right: 40vw;
+      position: fixed;
+      z-index: 500;
+      width: 20vw;
+      height: 8vh;
+      
+      box-shadow: 0 0 6px black;
+      cursor: pointer;
+    }
+  
+    .good {
+      background-color: #b7fdc3;
+      bottom: 0;
+    }
+  
+    .bad {
+      background-color: #f3baba;
+      bottom: 0;
     }

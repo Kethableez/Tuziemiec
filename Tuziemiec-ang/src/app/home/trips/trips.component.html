@@ -1,4 +1,11 @@
 <body>
+  <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+    {{message}}
+  </div>
+
+  <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+    {{message}}
+  </div>
 
     <div class="tools">
       <div>
@@ -120,6 +127,11 @@
       <button class="float" routerLink="/home/create_trip">
         +
       </button>
+
+    </div>
+
+    <div *ngFor="let item of partList">
+      {{item.tripId}}
 
     </div>
 </body>

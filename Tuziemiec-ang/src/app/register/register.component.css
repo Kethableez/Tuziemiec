@@ -7,16 +7,15 @@ body {
   /* background: linear-gradient(to bottom, #37323E 10%, #BFBDC1 90%);
     background-attachment:fixed;
     background-repeat: no-repeat; */
-  background-color: #fff;
+  background-color: unset;
   margin: 0;
   padding: 0;
   font-family: arial, verdana, sans-serif;
 }
 
 .App_name {
-  background-color: #4a7496;
+  background-color: #104169;
   margin: auto;
-  height: 20vh;
   width: 100%;
   text-align: center;
   cursor: pointer;
@@ -31,33 +30,38 @@ body {
   font-style: italic;
   font-size: 3.75rem;
   color: #ffffff;
-  text-shadow: 2px 2px #666143;
 }
 
 .validate {
+  font-size: 1.2rem;
   color: #9e2a2b;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 
 .Caption {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 100;
+  margin-left: 0.5em;
   font-size: 1.5rem;
   letter-spacing: 0.33em;
   color: #ffffff;
-  text-shadow: 1px 1px #666143;
 }
 
 .Spacer {
   border: 2px solid white;
 }
 .Bottom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
   background-image: url(ireland.jpg);
   background-size: cover;
   background-position: center;
   background-blend-mode: exclusion;
-  height: 120vh;
-  width: 100%;
+  min-height: 100vh;
+  width: 100vw;
   opacity: 60%;
 }
 
@@ -66,7 +70,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -25%);
+  transform: translate(-50%, -50%);
   margin: auto;
   padding-top: 1.5em;
   border-radius: 35px;
@@ -83,10 +87,10 @@ body {
 
 .Form_title {
   font-family: 'Alata';
-  font-size: 2rem;
-  padding: 0.25em;
+  font-size: 2.25rem;
+  padding: 0.5em;
   text-align: center;
-  background-color: #588157;
+  background-color: #15588E;
   border-radius: 35px 35px 0 0;
   color: white;
 }
@@ -95,21 +99,23 @@ body {
 .Form_body {
   text-align: center;
   border-radius: 0 0 35px 35px;
-  background-color: #CDD1CD;
-  padding: 0.75em;
+  background-color: #E6E6E6;
+  padding: 1.25em;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.445);
 }
 
 input[type=text], input[type=password], input[type=date] {
   border-radius: 30px;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 1.25rem;
   text-align: center;
-  background-color: #f4f4f9;
+  background-color: #ffffff;
   width: 80%;
-  padding: 0.5em 0.5px;
-  margin: 0.25em 0;
+  padding: 0.6em 0.75em;
+  margin: 0.5em 0;
   box-sizing: border-box;
-  border: 3px solid #CDD1CD;
+  border: 3px solid #E6E6E6;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
@@ -118,6 +124,10 @@ input[type=text], input[type=password], input[type=date] {
 .Button {
   padding: 0.25em 1.25em;
   margin-top: 0.25em;
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-size: 1.5rem;
+  color: #ffffff;
   /*text-align: center;*/
 }
 
@@ -130,30 +140,26 @@ input[type=text], input[type=password], input[type=date] {
 }
 
 .Button:enabled {
-  background-color: #5990af;
+  background-color: #15588E;
   box-sizing: border-box;
-  border: 3px solid #5990af;
+  border: 3px solid #15588E;
   border-radius: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
   color: #ffffff;
   cursor: pointer;
 }
 
 .Button:disabled {
-  background-color: #5990af;
+  background-color: #15588E;
   box-sizing: border-box;
-  border: 3px solid #5990af;
+  opacity: 50%;
+  border: 3px solid #15588E;
   border-radius: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
-  font-size: 1.5rem;
   color: #ffffff;
 }
 
 .Button:active {
-  background-color: #4a7496;
-  border: 3px solid #4a7496;
+  background-color: #15588E;
+  border: 3px solid #15588E;
 }
 
 .Button:focus {

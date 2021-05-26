@@ -6,7 +6,7 @@ html {
 body {
   position: relative;
   min-height: 100%;
-  background: #aaaaaa;
+  background: inherit;
   margin: 0;
   padding: 0;
   font-family: arial, verdana, sans-serif;
@@ -17,10 +17,10 @@ body {
   margin: auto;
   grid-template-columns: 0.5fr 2fr 0.5fr;
   text-align: center;
-  background-color: #5990af;
+  background-color: #15588E;
   color: #ffffff;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Roboto';
+  font-weight: 200;
   height: 3em;
 }
 
@@ -30,7 +30,8 @@ body {
 
 input[type=text] {
   border-radius: 30px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 1.5rem;
   text-align: center;
   background-color: #f4f4f9;
@@ -139,7 +140,7 @@ input[type=text] {
   display: grid;
   grid-template-rows: 0.7fr 1.3fr;
   width: 30%;
-  background-color: #ded9d5;
+  background-color: #E6E6E6;
   border-radius: 0 0 30px 0;
   margin-inline: 1.5%;
   margin-top: 1.5%;
@@ -154,7 +155,7 @@ input[type=text] {
   width: 100%;
   height: 100%;
   padding-inline: 2%;
-  background-color: #588157;
+  background-color: #15588E;
   color: #f4f4f9;
   margin: auto;
 }
@@ -173,10 +174,10 @@ input[type=text] {
   }
   
   .t-text {
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 400;
     text-align: left;
     font-size: 1.25rem;
-    font-weight: bolder;
   }
   
   .t-funct {
@@ -220,6 +221,8 @@ input[type=text] {
 
 .add:hover:after {
   content: "Zapisz się na wycieczkę!";
+  font-family: 'Roboto';
+  font-weight: 300;
   display: block;
   position: relative;
   top: -1em;
@@ -237,6 +240,8 @@ input[type=text] {
 
 .added:hover:after {
   content: "Już jesteś zapisany";
+  font-family: 'Roboto';
+  font-weight: 300;
   display: block;
   position: relative;
   top: -1em;
@@ -255,6 +260,8 @@ input[type=text] {
   content: "Szczegółowe informacje";
   display: block;
   position: relative;
+  font-family: 'Roboto';
+  font-weight: 300;
   top: -1em;
   right: -1em;
   width: 8em;
@@ -309,6 +316,8 @@ input[type=text] {
   .float:hover::after {
     font-size: 1rem;
     content: "Stwórz wycieczkę";
+    font-family: 'Roboto';
+    font-weight: 300;
     display: block;
     position: absolute;
     top: 2em;
@@ -321,4 +330,34 @@ input[type=text] {
     border: none;
     margin-left: -12em;
     background: #67676d;
+  }
+
+
+  .message-box {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding: 1%;
+    bottom: 0;
+    text-align: center;
+    border-radius: 25px 25px 0 0;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    position: fixed;
+    z-index: 500;
+    width: 20vw;
+    height: 8vh;
+    
+    box-shadow: 0 0 6px black;
+    cursor: pointer;
+  }
+
+  .good {
+    background-color: #b7fdc3;
+    bottom: 0;
+  }
+
+  .bad {
+    background-color: #f3baba;
+    bottom: 0;
   }

@@ -21,15 +21,8 @@
     <div class="box">
         Rekomendowane wycieczki:
         <div class="link" [routerLink]="['/home/trip', trip.id]" *ngFor="let trip of recommendations">
-            {{trip.template.name}}
+            <b>{{trip.template.name}} | </b> {{trip.startDate}} | {{trip.booking}} / {{trip.userLimit}} | {{trip.template.place}}
         </div>
     </div>
-    <div class="box">
-        Placeholder2
-    </div>
 </div>
-
-<div class="Buttons">
-    <a class="Button" routerLink="/home/panel">Panel</a>
-  </div>
 </body>

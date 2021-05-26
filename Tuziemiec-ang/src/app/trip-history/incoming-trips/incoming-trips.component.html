@@ -1,4 +1,11 @@
 <body>
+    <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+        {{message}}
+      </div>
+    
+      <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+        {{message}}
+      </div>
     <div class="Text" *ngIf="incomingTrips.length == 0">
         Nie jesteś zapisany do żadnej wycieczki!
     </div>

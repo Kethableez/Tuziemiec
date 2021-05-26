@@ -36,6 +36,11 @@ export class PastTripsComponent implements OnInit {
   errorMessage: string;
   style = 'not-blurred'
 
+  message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
+
   commentForm = this.fb.group({
     tripId: ['', Validators.required],
     commentHeader: ['', Validators.required],
@@ -74,10 +79,14 @@ export class PastTripsComponent implements OnInit {
 
   onSubmit(tripId: number) {
     this.reviewService.addReview(this.commentForm.value, tripId).subscribe(
-      response => console.log('Success!', response),
+      response => {
+        this.onResponse(response.message, 1);
+        this.setReviewed(tripId);
+        this.closeCommentForm();
+
+      },
       err => {
-        this.errorMessage = err.error.message;
-        this.reloadPage();
+        this.onResponse(err.error.message, 2);
       }
     );
     // Pousuwac reloady, zamiienić to na podmianę ikonki!
@@ -95,6 +104,30 @@ export class PastTripsComponent implements OnInit {
     this.style = 'blurred';
   }
 
+  onClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+  }
+
+  setReviewed(id: number) {
+    this.pastParticipation.find(p => p.tripId == id).isReviewed = true;
+  }
 
   isTripReviewed(id: number): boolean {
     return this.pastParticipation.find(p => p.tripId == id).isReviewed;

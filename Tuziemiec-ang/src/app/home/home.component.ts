@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   tripClicked = false;
   templateClicked = false;
   attractionClicked = false;
+  panelClicked = false;
   profileClicked = false;
 
   constructor(
@@ -64,6 +65,7 @@ export class HomeComponent implements OnInit {
     this.templateClicked = false;
     this.attractionClicked = false;
     this.profileClicked = false;
+    this.panelClicked = false;
 
     this.router.navigate(['dashboard'], {relativeTo: this.route});
   }
@@ -74,6 +76,7 @@ export class HomeComponent implements OnInit {
     this.templateClicked = false;
     this.attractionClicked = false;
     this.profileClicked = false;
+    this.panelClicked = false;
 
     this.router.navigate(['trips'], { relativeTo: this.route })
   }
@@ -84,6 +87,7 @@ export class HomeComponent implements OnInit {
     this.dashboardClicked = false;
     this.attractionClicked = false;
     this.profileClicked = false;
+    this.panelClicked = false;
 
     this.router.navigate(['templates'], {relativeTo: this.route})
   }
@@ -94,6 +98,8 @@ export class HomeComponent implements OnInit {
     this.tripClicked = false;
     this.dashboardClicked = false;
     this.templateClicked = false;
+    this.panelClicked = false;
+
     this.router.navigate(['attractions'], { relativeTo: this.route});
   }
 
@@ -103,7 +109,20 @@ export class HomeComponent implements OnInit {
     this.dashboardClicked = false;
     this.templateClicked = false;
     this.attractionClicked = false;
+    this.panelClicked = false;
+
     this.router.navigate(['profile'], { relativeTo: this.route});
+  }
+
+  showPanel() {
+    this.panelClicked = true;
+    this.profileClicked = false;
+    this.tripClicked = false;
+    this.dashboardClicked = false;
+    this.templateClicked = false;
+    this.attractionClicked = false;
+
+    this.router.navigate(['panel'], {relativeTo: this.route});
   }
 
 

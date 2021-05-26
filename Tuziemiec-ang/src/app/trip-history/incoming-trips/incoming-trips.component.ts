@@ -16,6 +16,9 @@ export class IncomingTripsComponent implements OnInit {
   currentUser: any;
   incomingTrips: Trip[];
   message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
 
   constructor(
     private token: TokenStorageService,
@@ -44,15 +47,42 @@ export class IncomingTripsComponent implements OnInit {
   removeCurrentUserFromTrip(TripId): void {
     this.participationService.unparticipeTrip(TripId).subscribe(
       response => {
-        console.log(response)
-        this.reloadPage();
+        this.onResponse("Wypisano z wycieczki!", 1);
+        this.RemoveFromTrip(TripId);
       },
 
       err => {
-        console.log(err.error.message)
+        this.onResponse(err.error.message, 2);
       }
     );
     // Wywalic reloada
 
+  }
+
+  onClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+  }
+
+  RemoveFromTrip(TripId: number) {
+    this.incomingTrips.forEach((Trip, index) => {
+      if(Trip.id == TripId) this.incomingTrips.splice(index, 1);
+    })
   }
 }

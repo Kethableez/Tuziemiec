@@ -10,7 +10,8 @@
   
   input[type=text], input[type=date]{
     border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 25px;
     text-align: center;
     background-color: #ffffff;
@@ -19,7 +20,7 @@
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 3px solid #ffffff;
+    border: 3px solid #fff;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -30,7 +31,8 @@
     background-color: #353535;
     margin: auto;
     width: 25%;
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 30px;
     color: #ffffff;
     text-align: center;
@@ -60,7 +62,8 @@
     display: table-cell;
     background-color: #353535;
     width: 25%;
-    font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 30px;
     color: #ffffff;
     text-align: center;
@@ -69,23 +72,24 @@
 .button {
   width: 10em;
   margin-inline: 20%;
-  background-color: #157f1f;
+  background-color: #15588E;
   box-sizing: border-box;
-  border: 3px solid #157f1f;
+  border: 3px solid #15588E;
   border-radius: 20px;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 200;
   font-size: 1.5rem;
   color: #ffffff;
   cursor: pointer;
 }
 
   .button:hover {
-    background-color: #157f1f;;
-    border: 3px solid #157f1f;;
+    background-color: #15588E;;
+    border: 3px solid #15588E;;
   }
   .button:active {
-    background-color: #157f1f;;
-    border: 3px solid #157f1f;;
+    background-color: #15588E;;
+    border: 3px solid #15588E;;
   }
   
   .button:focus {
@@ -104,30 +108,12 @@
   margin-left: 20%;
   margin-right: 20%;
   border-radius: 0px 0px 35px 35px;
-  background-color: #ded9d5;
+  background-color: #e6e6e6;
   margin-bottom: 5%;
-  -webkit-box-shadow: 0 8px 6px -6px black;
-  -moz-box-shadow: 0 8px 6px -6px black;
-  box-shadow: 0 8px 6px -6px black;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
 }
-
-  .Trip_name{
-    background-color: #4f565c;
-    border-radius: 20px 20px 0 0;
-    font-family: 'Alata';
-    font-size: 35px;
-    text-align:justify;
-    color: ivory;
-  }
-
-  .Trip_description{
-    color: black;
-    font-family: 'Alegreya Sans', sans-serif;
-    /* border-radius: 0 0 20px 20px; */
-    background-color: #bdb4ae;
-    font-size: 20px;
-    text-align:justify;
-  }
 
   .wrapper {
     margin: auto;
@@ -143,15 +129,16 @@
   text-align: center;
   background-color: #BDB4AE;
   color: #ffffff;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Roboto';
+  font-weight: 300;
   height: 7vh;
 }
 
 .button2 {
   cursor: pointer;
   margin: auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 20px;
   width: 15vw;
   margin-inline: 5%;
@@ -172,15 +159,15 @@
   }
 
   label {
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Roboto';
+    font-weight: 500;
     font-size: 20px;
-    font-weight: bold;
     margin: 0;
   }
 
   .data {
-    font-family: 'Roboto' sans-serif;
-    font-weight: normal;
+    font-family: 'Roboto';
+    font-weight: 300;
     font-size: 25px;
     margin: 0;
   }

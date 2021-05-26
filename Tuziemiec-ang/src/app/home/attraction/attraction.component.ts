@@ -18,7 +18,11 @@ export class AttractionComponent implements OnInit {
   attractionSelector: Attraction;
   seenAttractions: UsersAttraction[];
   tempRating = 0;
-  errorMessage: string;
+  
+  message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
 
   ratingForm = this.fb.group({
     attractionId: ['', Validators.required],
@@ -68,10 +72,11 @@ export class AttractionComponent implements OnInit {
 
   onSubmit() {
     this.attractionService.rateAttraction(this.ratingForm.value).subscribe(
-      response => console.log('Success!', response),
+      response => {
+        this.onResponse(response.message, 1);
+      },
       err => {
-        this.errorMessage = err.error.message;
-        // this.reloadPage();
+        this.onResponse(err.error.message, 2);
       }
     )
   }
@@ -88,6 +93,27 @@ export class AttractionComponent implements OnInit {
     }
 
     return !isRated;
+  }
+
+  onClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
   }
 
   reloadPage(): void {

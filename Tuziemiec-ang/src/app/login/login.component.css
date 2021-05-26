@@ -6,16 +6,16 @@ body {
   /* background: linear-gradient(to bottom, #37323E 10%, #BFBDC1 90%);
     background-attachment:fixed;
     background-repeat: no-repeat; */
-  background-color: #fff;
+    z-index: -1;
+  background-color: unset;
   margin: 0;
   padding: 0;
   font-family: arial, verdana, sans-serif;
 }
 
 .App_name {
-  background-color: #4a7496;
+  background-color: #104169;
   margin: auto;
-  height: 20vh;
   width: 100%;
   text-align: center;
   cursor: pointer;
@@ -30,23 +30,22 @@ body {
   font-style: italic;
   font-size: 3.75rem;
   color: #ffffff;
-  text-shadow: 2px 2px #666143;
 }
 
 .validate {
+  font-size: 1.2rem;
   color: #9e2a2b;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 
 .Caption {
-  font-family: 'Alegreya Sans', sans-serif;
-  /*font-style: italic;*/
+  font-family: 'Roboto';
+  font-weight: 100;
   margin-left: 0.5em;
   font-size: 1.5rem;
   letter-spacing: 0.33em;
   color: #ffffff;
-  text-shadow: 1px 1px #666143;
 }
 
 .Spacer {
@@ -54,12 +53,16 @@ body {
 }
 
 .Bottom {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
   background-image: url(ireland.jpg);
   background-size: cover;
   background-position: center;
   background-blend-mode: exclusion;
-  min-height: 80vh;
-  width: 100%;
+  min-height: 100vh;
+  width: 100vw;
   opacity: 60%;
 }
 
@@ -87,7 +90,7 @@ body {
   font-size: 2.25rem;
   padding: 0.5em;
   text-align: center;
-  background-color: #588157;
+  background-color: #15588E;
   border-radius: 35px 35px 0 0;
   color: white;
 }
@@ -96,21 +99,23 @@ body {
 .Form_body {
   text-align: center;
   border-radius: 0 0 35px 35px;
-  background-color: #CDD1CD;
+  background-color: #E6E6E6;
   padding: 1.25em;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.445);
 }
 
 input {
   border-radius: 30px;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 1.25rem;
   text-align: center;
-  background-color: #f4f4f9;
+  background-color: #ffffff;
   width: 80%;
   padding: 0.6em 0.75em;
   margin: 0.5em 0;
   box-sizing: border-box;
-  border: 3px solid #CDD1CD;
+  border: 3px solid #E6E6E6;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
@@ -122,6 +127,10 @@ input {
 .Button {
   padding: 0.25em 1.25em;
   margin-top: 0.25em;
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-size: 1.5rem;
+  color: #ffffff;
   /*text-align: center;*/
 }
 
@@ -129,36 +138,30 @@ input {
   padding: 0.1em 0;
   margin-left: 3em;
   text-align: left;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
   font-size: 1.25rem;
 }
 
 .Button:enabled {
-  background-color: #5990af;
+  background-color: #15588E;
   box-sizing: border-box;
-  border: 3px solid #5990af;
+  border: 3px solid #15588E;
   border-radius: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  color: #ffffff;
   cursor: pointer;
 }
 
 .Button:disabled {
-  background-color: #5990af;
+  background-color: #15588E;
   box-sizing: border-box;
-  border: 3px solid #5990af;
+  opacity: 50%;
+  border: 3px solid #15588E;
   border-radius: 20px;
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
-  font-size: 1.5rem;
   color: #ffffff;
 }
 
 .Button:active {
-  background-color: #4a7496;
-  border: 3px solid #4a7496;
+  background-color: #15588E;
+  border: 3px solid #15588E;
 }
 
 .Button:focus {
@@ -166,49 +169,9 @@ input {
 }
 
 .text {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 1.25rem;
   margin-bottom: 2%;
 }
 
-  /*
-  
-  a.Button2 {
-    margin-left: 20px;
-    width: 200px;
-    height: 50px;
-    background-color: #bdb4ae;
-    box-sizing: border-box;
-    border: 3px solid #4F565C;
-    border-radius: 20px;
-    font-family: 'Alegreya Sans', sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    color: #4F565C;
-  }
-
-  a.Button2:hover {
-    border: 3px solid #444444;
-    color: #444444;
-  }
-  
-  a.Link {
-    color: #4F565C;
-    margin-left: -280px;
-  }
-  
-  a {
-    font-family: 'Alegreya Sans', sans-serif;
-    font-size: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    text-decoration: none;
-        font-weight: bold;
-  }
-  
-  a:hover {
-    color: #444444;
-  }
-  */

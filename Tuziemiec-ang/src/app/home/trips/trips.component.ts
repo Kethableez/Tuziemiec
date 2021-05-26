@@ -15,8 +15,12 @@ export class TripsComponent implements OnInit {
   currentUser: any;
   avTrips: Trip[];
   partList: Participation[];
+  partId: number[] = [];
   resp: Trip;
-  message: string;
+  message = "";
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
   searchText;
 
   constructor(private token: TokenStorageService,
@@ -35,6 +39,9 @@ export class TripsComponent implements OnInit {
     this.participationService.userIncoming().subscribe(
       (response: Participation[]) => {
         this.partList = response;
+        this.partList.forEach(element => {
+          this.partId.push(element.tripId);
+        });
       }
     )
   }
@@ -44,23 +51,43 @@ export class TripsComponent implements OnInit {
   }
 
   isEnrolled(id: number): boolean {
-     if(this.partList.find(p => p.tripId == id) != null) return true;
+    //  if(this.partList.find(p => p.tripId == id) != null) return true;
+    if(this.partId.find(p => p == id) != null) return true;
      else return false;
   }
 
   addCurrentUserToTrip(TripId: number): void {
     this.participationService.postParticipation(TripId).subscribe(
       response => {
-        console.log(response)
-        this.message = response.message
+        this.onResponse(response.message, 1);
+        this.partId.push(TripId);
       },
 
       err => {
-        console.log(err.error.message)
-        this.message = err.error.message
+        this.onResponse(err.error.message, 2);
       }
     )
-    // this.reloadPage();
   }
 
+  onClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+  }
 }

@@ -17,7 +17,11 @@ export class AttractionCreatorComponent implements OnInit {
   isFailed = false;
   enabled = false;
   attractionSelector: Attraction;
-  message = "dodano pomyślnie";
+
+  message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
 
   lat: number;
   lon: number;
@@ -97,7 +101,7 @@ export class AttractionCreatorComponent implements OnInit {
     console.log($event);
     this.lat = $event.latLng.lat();
     this.lon = $event.latLng.lng();
-
+    
     this.attractionForm.patchValue({
       latitude: this.lat,
       longitude: this.lon
@@ -107,16 +111,35 @@ export class AttractionCreatorComponent implements OnInit {
   onSubmit() {
     this.attractionService.createAttraction(this.attractionForm.value).subscribe(
       response => {
-        console.log(response)
-        this.message = response.message
+        this.onResponse(response.message, 1);
       },
       err => {
-        console.log(err.error.message)
-        this.message = err.error.message
-        this.isFailed = true
+        this.onResponse(err.error.message, 2);
       }
     );
-    this.isSubmit = true;
+  }
+
+  onClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+
+    this.attractionForm.reset();
   }
 
   reloadPage(): void {

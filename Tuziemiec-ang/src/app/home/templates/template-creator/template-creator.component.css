@@ -9,22 +9,23 @@ body {
   text-align: center;
   background-color: #BDB4AE;
   color: #f4f4f9;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
+  font-family: 'Roboto';
+  font-weight: 300;
   height: 3em;
 }
 
 input[type=text], textarea {
   border-radius: 30px;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 1.5rem;
   text-align: center;
-  background-color: #f4f4f9;
+  background-color: #fff;
   width: 80%;
   padding: 0.5em 0.75em;
   margin: 0.25em 0;
   box-sizing: border-box;
-  border: 3px solid #f4f4f9;
+  border: 3px solid #fff;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   outline: none;
@@ -40,24 +41,25 @@ textarea {
 
 .wrapper {
   display: grid;
+  border-radius: 0 0 35px 0;
   grid-template-columns: 0.75fr 1.25fr 1fr;
   width: 80%;
   margin-inline: auto;
-  
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.521);
 }
 
 
 .list {
-  background-color: #CDD1CD;
+  background-color: #e6e6e6;
   overflow: auto; /* new */
 }
 
 
 .Text2 {
   text-align: center;
-  color: #67676d;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
+  color: #000;
+  font-family: 'Roboto';
+  font-weight: 300;
   /* font-style: italic; */
   font-size: 1.5rem;
 }
@@ -68,13 +70,13 @@ textarea {
 }
 
   .link:hover {
-    color: #80c2af;
+    color: rgba(0, 0, 0, 0.651);
   }
 
 
 .selected {
-  color: #f4f4f9;
-  background-color: #588157;
+  color: rgba(0, 0, 0, 0.651);
+  background-color: #aaa;
   border-radius: 20px;
   width: 70%;
   margin: auto;
@@ -101,33 +103,34 @@ agm-map {
   vertical-align: middle;
   min-height: 75vh;
   border-radius: 0 0 35px 0;
-  background-color: #CDD1CD;
+  background-color: #e6e6e6;
 }
 
 
 .validate {
   color: #9e2a2b;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-weight: bold;
-  font-size: 1rem;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.2rem;
 
 }
 
 .text {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
   font-size: 1.75rem;
 }
 
 
 .Submit_button {
-  background-color: #294f6d;
+  background-color: #15588E;
   width: 10em;
   height: 2em;
   box-sizing: border-box;
-  border: 3px solid #294f6d;
+  border: 3px solid #15588E;
   border-radius: 20px;
-  font-family: 'Alegreya Sans', sans-serif;
-  font-style: italic;
+  font-family: 'Roboto';
+  font-weight: 200;
   font-size: 1.5rem;
   color: #ffffff;
 }
@@ -141,8 +144,8 @@ agm-map {
   }
 
   .Submit_button:active {
-    background-color: #294f6d;
-    border: 3px solid #294f6d;
+    background-color: #15588E;
+    border: 3px solid #15588E;
   }
 
 .Text {
@@ -165,3 +168,31 @@ agm-map {
     text-decoration-line: underline;
   }
 
+  .message-box {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 1.5rem;
+    padding: 1%;
+    bottom: 0;
+    text-align: center;
+    border-radius: 25px 25px 0 0;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    position: fixed;
+    z-index: 500;
+    width: 20vw;
+    height: 8vh;
+    
+    box-shadow: 0 0 6px black;
+    cursor: pointer;
+  }
+
+  .good {
+    background-color: #b7fdc3;
+    bottom: 0;
+  }
+
+  .bad {
+    background-color: #f3baba;
+    bottom: 0;
+  }

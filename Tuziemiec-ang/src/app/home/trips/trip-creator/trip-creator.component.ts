@@ -30,6 +30,10 @@ export class TripCreatorComponent implements OnInit {
   isLoggedIn = false;
 
   message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
+  
   currentUser: any;
 
   get startDate() {
@@ -39,10 +43,6 @@ export class TripCreatorComponent implements OnInit {
   get endDate() {
     return this.createTrip.get('endDate');
   }
-
-  // get templateName() {
-  //   return this.createTrip.get('templateName');
-  // }
 
   get userLimit() {
     return this.createTrip.get('userLimit');
@@ -97,16 +97,36 @@ export class TripCreatorComponent implements OnInit {
   onSubmit() {
     this.tripService.createTrip(this.createTrip.value).subscribe(
       response => {
-        console.log(response)
-        this.message = response.message
+        this.onResponse(response.message, 1);
       },
       err => {
-        console.log(err.error.message)
-        this.message = err.error.message
-        this.isFailed = true
+        this.onResponse(err.error.message, 2);
       }
     );
-    this.isSubmit = true;
+  }
+
+  onClick(){
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+
+    this.createTrip.reset();
+    this.selectedTemplate = "";
   }
 
   reloadPage(): void {

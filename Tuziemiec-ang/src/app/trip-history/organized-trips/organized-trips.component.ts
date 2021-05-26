@@ -32,6 +32,11 @@ export class OrganizedTripsComponent implements OnInit {
   errorMessage: string;
   style = 'not-blurred'
 
+  message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
+
   editTripForm = this.fb.group({
     startDate: ['', Validators.required],
     endDate: ['', Validators.required],
@@ -79,14 +84,37 @@ export class OrganizedTripsComponent implements OnInit {
   onSubmit(tripId: number) {
     console.log(this.editTripForm.value);
     this.tripService.editTrip(this.editTripForm.value, tripId).subscribe(
-      response => console.log('Success!', response),
+      response => { 
+        this.onResponse(response.message, 1);
+      },
       err => {
-        this.errorMessage = err.error.message;
+        this.onResponse(err.error.message, 2);
       }
     );
-    // wywalić reloada
-    this.reloadPage();
   }
+
+  onClick() {
+    this.showMessage = false;
+    this.message = "";
+    this.goodResponse = false;
+    this.badResponse = false;
+  }
+
+  onResponse(responseMessage: string, responseSelector: number) {
+    if (responseSelector == 1) {
+      this.goodResponse = true;
+      this.badResponse = false;
+    }
+    else if (responseSelector == 2) {
+      this.goodResponse = false;
+      this.badResponse = true;
+    }
+
+    this.showMessage = true;
+    this.message = responseMessage;
+  }
+
+
 
   reloadPage(): void {
     window.location.reload();

@@ -1,4 +1,12 @@
 <body>
+    <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+        {{message}}
+      </div>
+    
+      <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+        {{message}}
+      </div>
+
     <div class="Trip-details shadow">
         <div class="Text3">{{trip.template.name}}</div>
 
@@ -49,7 +57,16 @@
             </div>
 
         </div>
+    </div>
 
+    <div *ngIf="trip.template.guideId != currUser.id">
+        <div class="button" *ngIf="!isEnrolled && trip.booking < trip.userLimit" (click)="addCurrentUserToTrip()">
+            Zapisz się
+        </div>
+    
+        <div class="button" *ngIf="isEnrolled" (click)="removeCurrentUserFromTrip()">
+            Wypisz się
+        </div>
     </div>
 
 

@@ -1,4 +1,11 @@
 <body>
+    <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+        {{message}}
+    </div>
+
+    <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+        {{message}}
+    </div>
 
     <div class="edit-form" *ngIf="enabled">
         <div class="icon right" (click)="closeCommentForm()">
@@ -28,51 +35,52 @@
 
             <input formControlName="userLimit" type="number" [(ngModel)]="tripSelector.userLimit"><br>
             <div class="validate" *ngIf="userLimit.invalid && userLimit.touched">
-              <small *ngIf="userLimit.errors?.required">Limit użytkowników jest wymagany</small>
+                <small *ngIf="userLimit.errors?.required">Limit użytkowników jest wymagany</small>
             </div>
 
-            <button class="Button" type="submit"  [disabled]="!editTripForm.valid">Zatwierdź</button>
+            <button class="Button" type="submit" [disabled]="!editTripForm.valid">Zatwierdź</button>
         </form>
     </div>
 
 
 
-<div [ngClass]="style">
-    <div class="Text" *ngIf="organizedTrips.length == 0">
-        Nie zorganizowałeś żadnej wycieczki!
-    </div>
-
-    <div *ngIf="organizedTrips.length != 0">
-        <div class="wrapper">
-            <div class="table-header">Nazwa</div>
-            <div class="table-header">Miejsce</div>
-            <div class="table-header">Data wycieczki</div>
-            <div class="table-header">Ilość osób</div>
-            <div class="table-header">Ocena</div>
-            <div class="table-header"></div>
+    <div [ngClass]="style">
+        <div class="Text" *ngIf="organizedTrips.length == 0">
+            Nie zorganizowałeś żadnej wycieczki!
         </div>
-        <hr>
-        <div *ngFor="let trip of organizedTrips">
+
+        <div *ngIf="organizedTrips.length != 0">
             <div class="wrapper">
-                <div class="table-cell link" [routerLink]="['/home/trip', trip.id]"><b>{{trip.template.name}}</b></div>
-                <div class="table-cell">{{trip.template.place}}</div>
-                <div class="table-cell">{{trip.startDate}} - {{trip.endDate}}</div>
-                <div class="table-cell">{{trip.booking}} / {{trip.userLimit}}</div>
-                <div class="table-cell">{{trip.template.rating}}</div>
-                <div class="table-cell icons">
-                    <div class="icon" (click)="openEditForm(trip)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-edit-3">
-                            <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
-                            <line x1="3" y1="22" x2="21" y2="22"></line>
-                        </svg>
+                <div class="table-header">Nazwa</div>
+                <div class="table-header">Miejsce</div>
+                <div class="table-header">Data wycieczki</div>
+                <div class="table-header">Ilość osób</div>
+                <div class="table-header">Ocena</div>
+                <div class="table-header"></div>
+            </div>
+            <hr>
+            <div *ngFor="let trip of organizedTrips">
+                <div class="wrapper">
+                    <div class="table-cell link" [routerLink]="['/home/trip', trip.id]"><b>{{trip.template.name}}</b>
+                    </div>
+                    <div class="table-cell">{{trip.template.place}}</div>
+                    <div class="table-cell">{{trip.startDate}} - {{trip.endDate}}</div>
+                    <div class="table-cell">{{trip.booking}} / {{trip.userLimit}}</div>
+                    <div class="table-cell">{{trip.template.rating}}</div>
+                    <div class="table-cell icons">
+                        <div class="icon" (click)="openEditForm(trip)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="feather feather-edit-3">
+                                <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+                                <line x1="3" y1="22" x2="21" y2="22"></line>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>

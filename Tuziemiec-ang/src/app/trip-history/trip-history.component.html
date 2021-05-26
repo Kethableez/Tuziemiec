@@ -1,8 +1,39 @@
 <body>
+  <div class="nav">
     <div class="Function-buttons">
-        <button class="button2" (click)="showIncoming()">Nadchodzące</button>
-        <button class="button2" (click)="showPast()">Przeszłe</button>
-        <button class="button2" (click)="showOrganized()">Zorganizowane</button>
+      <!-- <button class="button2" (click)="showIncoming()">Nadchodzące</button>
+      <button class="button2" (click)="showPast()">Przeszłe</button>
+      <button class="button2" (click)="showOrganized()">Zorganizowane</button> -->
+      <div class="show-incoming" (click)="showIncoming()">
+        <div class="active" *ngIf="incomingClicked">
+          Nadchodzące
+        </div>
+
+        <div class="inactive" *ngIf="!incomingClicked">
+          Nadchodzące
+        </div>
+      </div>
+
+      <div class="show-past" (click)="showPast()">
+        <div class="active" *ngIf="pastClicked">
+          Przeszłe
+        </div>
+
+        <div class="inactive" *ngIf="!pastClicked">
+          Przeszłe
+        </div>
+      </div>
+
+      <div class="show-organised" (click)="showOrganized()">
+        <div class="active" *ngIf="organisedClicked">
+          Zorganizowane
+        </div>
+
+        <div class="inactive" *ngIf="!organisedClicked">
+          Zorganizowane
+        </div>
+      </div>
+  </div>
   </div>
   <!-- + Podświetlenie przycisków -->
   <div class="panel">
