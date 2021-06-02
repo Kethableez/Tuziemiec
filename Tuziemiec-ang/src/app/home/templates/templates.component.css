@@ -16,15 +16,36 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
+  justify-content: space-between;
 }
 
 .template-box {
   background-color: #E6E6E6;
   border: 3px;
   border-radius: 20px;
-  width: 19.8em;
+  width: 25%;
   margin: 1em 2.75em;
   box-shadow: 0px 3px 6px black;
+}
+
+@media (max-width: 1500px) {
+  /*.wrapper {
+            align-items: none;
+            justify-content: space-evenly;
+      }*/
+  .template-box {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1120px) {
+  .wrapper {
+    justify-content: center;
+  }
+
+  .template-box {
+    width: 60%;
+  }
 }
 
 .template-name {
