@@ -377,3 +377,6 @@ html {
     background-color: #f3baba;
     bottom: 0;
   }
+input.ng-invalid.ng-dirty {
+  border: 3px solid #9e2a2b;
+}

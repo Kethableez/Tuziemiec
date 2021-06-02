@@ -1,61 +1,61 @@
 html {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 body {
-    background-color: inherit;
+  background-color: inherit;
 }
 
 .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 0.4fr 0.4fr;
-    margin:auto;
-    width: 100%;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.4fr 0.4fr;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
 }
 
 .Text {
-    text-align: center;
-    font-family: 'Alata';
-    font-size: 30px;
-    margin-bottom: 2%;
+  text-align: center;
+  font-family: 'Alata';
+  font-size: 30px;
+  margin-bottom: 2%;
 }
 
 .link {
   cursor: pointer;
 }
 
-.link:hover {
-  color: #104169;
-}
+  .link:hover {
+    color: #104169;
+  }
 
 .table-header {
-    text-align: center;
-    font-family: 'Alata';
-    font-size: 30px;
-    margin-bottom: 2%;
-    margin-top: 2%;
+  text-align: center;
+  font-family: 'Alata';
+  font-size: 30px;
+  margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .table-cell {
-    text-align: center;
-    margin: 2%;
-    font-family: 'Roboto';
-    font-weight: 300;
-    font-size: 24px;
-    color: black;
+  text-align: center;
+  margin: 2%;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 24px;
+  color: black;
 }
 
 .icons {
-    display: inline-block;
+  display: inline-block;
 }
 
 .icon {
-    margin-inline: 0.4rem;
-    display: inline-block;
-    width: 1.4rem;
-    height: 1.4rem;
-    cursor: pointer;
+  margin-inline: 0.4rem;
+  display: inline-block;
+  width: 1.4rem;
+  height: 1.4rem;
+  cursor: pointer;
 }
 
 
@@ -98,21 +98,24 @@ body {
   background: #67676d;
   font-size: 1.25rem;
 }
+
 .right {
-    top: 4%;
-    right: 4%;
-    position: absolute;
+  top: 4%;
+  right: 4%;
+  position: absolute;
 }
 
 hr {
   margin-top: 0;
   margin-bottom: 0;
 }
+
 .blurred {
   width: 100%;
   height: 100%;
-  filter: blur(2px);    
+  filter: blur(2px);
 }
+
 .not-blurred {
   width: 100%;
   height: 100%;
@@ -120,124 +123,120 @@ hr {
 }
 
 .comment-form {
-    border-radius: 35px;
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 30%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    width: 50vw;
-    height: 45vh;
-    z-index: 1;
-    background-color: #e6e6e6;
-    box-shadow: 0px 3px 6px black;
-
-    
+  border-radius: 35px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 30%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 50vw;
+  height: 45vh;
+  z-index: 1;
+  background-color: #e6e6e6;
+  box-shadow: 0px 3px 6px black;
 }
 
 .Form_title {
-    height: 12vh;
-    font-family: 'Alata';
-    font-size: 3.17vh;
-    padding: 1.98vh;
-    text-align: center;
-    background-color: #15588E;
-    border-radius: 35px 35px 0 0;
-    color: white;
+  height: 12vh;
+  font-family: 'Alata';
+  font-size: 3.17vh;
+  padding: 1.98vh;
+  text-align: center;
+  background-color: #15588E;
+  border-radius: 35px 35px 0 0;
+  color: white;
+}
 
-  }
+input[type=text], textarea {
+  border-radius: 30px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 1.98vh;
+  text-align: center;
+  background-color: #fff;
+  width: 40vw;
+  padding: 12px 1.18vh;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  outline: none;
+}
 
-  input[type=text], textarea {
-    border-radius: 30px;
-    font-family: 'Roboto';
-    font-weight: 300;
-    font-size: 1.98vh;
-    text-align: center;
-    background-color: #fff;
-    width: 40vw;
-    padding: 12px 1.18vh;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 3px solid #fff;
-    outline: none;
-  }
+.Button:enabled {
+  width: fit-content;
+  height: fit-content;
+  background-color: #15588E;
+  box-sizing: border-box;
+  border: 3px solid #15588E;
+  border-radius: 20px;
+  font-family: 'Roboto';
+  font-weight: 200;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+}
 
-  .Button:enabled {
-    width: fit-content;
-    height: fit-content;
-    background-color: #15588E;
-    box-sizing: border-box;
-    border: 3px solid #15588E;
-    border-radius: 20px;
-    font-family: 'Roboto';
-    font-weight: 200;
-    font-size: 24px;
-    color: #ffffff;
-    cursor: pointer;
-  }
+.Button:disabled {
+  width: fit-content;
+  height: fit-content;
+  opacity: 50%;
+  background-color: #15588E;
+  box-sizing: border-box;
+  border: 3px solid #15588E;
+  border-radius: 20px;
+  font-family: 'Roboto';
+  font-weight: 200;
+  font-size: 24px;
+  color: #ffffff;
+}
 
-  .Button:disabled {
-    width: fit-content;
-    height: fit-content;
-    opacity: 50%;
-    background-color: #15588E;
-    box-sizing: border-box;
-    border: 3px solid #15588E;
-    border-radius: 20px;
-    font-family: 'Roboto';
-    font-weight: 200;
-    font-size: 24px;
-    color: #ffffff;
-  }
+.Button:active {
+  background-color: #104169;
+  border: 3px solid #104169;
+}
 
-  .Button:active {
-    background-color: #104169;
-    border: 3px solid #104169;
-  }
-  
-  .Button:focus {
-    outline: 0;
-  }
+.Button:focus {
+  outline: 0;
+}
 
-  .validate{
-    color: #9e2a2b;
-    font-family: 'Roboto';
-    font-weight: 300;
-    font-size: 1.2rem;
+.validate {
+  color: #9e2a2b;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 ngb-rating {
-    font-size: 40px;
-    color: #104169;
-  }
+  font-size: 40px;
+  color: #104169;
+}
 
-  .message-box {
-    font-family: 'Roboto';
-    font-weight: 400;
-    font-size: 1.5rem;
-    padding: 1%;
-    bottom: 0;
-    text-align: center;
-    border-radius: 25px 25px 0 0;
-    margin-left: 40vw;
-    margin-right: 40vw;
-    position: fixed;
-    z-index: 500;
-    width: 20vw;
-    height: 8vh;
-    
-    box-shadow: 0 0 6px black;
-    cursor: pointer;
-  }
+.message-box {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding: 1%;
+  bottom: 0;
+  text-align: center;
+  border-radius: 25px 25px 0 0;
+  margin-left: 40vw;
+  margin-right: 40vw;
+  position: fixed;
+  z-index: 500;
+  width: 20vw;
+  height: 8vh;
+  box-shadow: 0 0 6px black;
+  cursor: pointer;
+}
 
-  .good {
-    background-color: #b7fdc3;
-    bottom: 0;
-  }
+.good {
+  background-color: #b7fdc3;
+  bottom: 0;
+}
 
-  .bad {
-    background-color: #f3baba;
-    bottom: 0;
-  }
+.bad {
+  background-color: #f3baba;
+  bottom: 0;
+}

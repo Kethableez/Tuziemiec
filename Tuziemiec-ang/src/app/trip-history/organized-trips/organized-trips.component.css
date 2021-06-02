@@ -111,7 +111,7 @@ hr {
     right: 0;
     text-align: center;
     width: 50vw;
-    height: 45vh;
+    height: 60vh;
     z-index: 1;
     background-color: #e6e6e6;
     /* border: 1px solid rgba(0, 0, 0, 0.116); */
@@ -138,14 +138,14 @@ hr {
     background-color: #fff;
     width: 40vw;
     padding: 12px 1.18vh;
-    margin: 8px 0;
+    margin: 1em 0;
     box-sizing: border-box;
     border: 3px solid #fff;
     outline: none;
   }
 
   .Button:enabled {
-    width: fit-content;
+    width: 10em;
     height: fit-content;
     background-color: #15588E;
     box-sizing: border-box;
@@ -153,24 +153,24 @@ hr {
     border-radius: 20px;
     font-family: 'Roboto';
     font-weight: 200;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #ffffff;
     cursor: pointer;
   }
 
-  .Button:disabled {
-    width: fit-content;
-    height: fit-content;
-    opacity: 50%;
-    background-color: #15588E;
-    box-sizing: border-box;
-    border: 3px solid #15588E;
-    border-radius: 20px;
-    font-family: 'Roboto';
-    font-weight: 300;
-    font-size: 24px;
-    color: #ffffff;
-  }
+.Button:disabled {
+  width: 10em;
+  height: fit-content;
+  opacity: 50%;
+  background-color: #15588E;
+  box-sizing: border-box;
+  border: 3px solid #15588E;
+  border-radius: 20px;
+  font-family: 'Roboto';
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
 
   .Button:active {
     background-color: #104169;

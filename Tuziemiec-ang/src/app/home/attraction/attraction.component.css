@@ -119,13 +119,14 @@ html {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    justify-content: space-between;
   }
 
 .attraction-box {
   background-color: #e6e6e6;
   border: 3px;
   border-radius: 20px;
-  width: 19.8em;
+  width: 25%;
   margin: 1em 2.75em;
   /* -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
@@ -201,17 +202,21 @@ html {
 }
 
 @media (max-width: 1500px) {
-      .wrapper {
+      /*.wrapper {
             align-items: none;
-      }
+            justify-content: space-evenly;
+      }*/
       .attraction-box {
-            width: 25em;
+            width: 40%;
       }
 }
-@media (max-width: 1220px) {
+@media (max-width: 1120px) {
       .wrapper {
             justify-content: center;
       }
+  .attraction-box {
+    width: 60%;
+  }
 }
 /*
   .fnc_btn{
@@ -288,16 +293,17 @@ html {
       background: #67676d;
     }
 
-    .attraction_detail {
-      border-radius: 40px;
-      top: 10vw;
-      left: 25vw;
-      background-color: #ffffff;
-      position: absolute;
-      width: 50vw;
-      height: 49vh;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.507);
-    }
+.attraction_detail {
+
+  border-radius: 40px;
+  top: 10vw;
+  left: 25vw;
+  background-color: #ffffff;
+  position: absolute;
+  width: 50vw;
+  height: 65vh;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.507);
+}
 
     .attraction_header {
       text-align: center;
@@ -307,7 +313,7 @@ html {
       background-color: #15588E;
       color: #fff;
       font-family: 'Alata';
-      font-size: 30px;
+      font-size: 1.75rem;
     }
 
     .wrapper2 {
@@ -321,22 +327,22 @@ html {
       margin-inline: 2%;
     }
 
-    agm-map {
-      height: 100%;
-    }
+agm-map {
+  height: 52vh;
+}
 
     label {
       text-align: left;
       width: 100%;
       font-family: 'Alata';
-      font-size: 25px;
+      font-size: 1.5rem;
     }
 
     .text {
       margin-top: 2%;
       font-family: 'Roboto';
       font-weight: 300;
-      font-size: 25px;
+      font-size: 1.5rem;
     }
 
     ngb-rating {

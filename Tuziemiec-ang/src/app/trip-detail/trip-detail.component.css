@@ -188,9 +188,8 @@ agm-map {
 .button {
   margin: auto;
   background-color: #15588E;
-  width: 12vw;
-  height: 5vh;
-  margin-bottom: 1%;
+  width: 10em;
+  margin-bottom: 2%;
   font-family: 'Roboto';
   font-weight: 200;
   font-size: 2rem;
