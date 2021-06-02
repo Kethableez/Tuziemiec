@@ -4,12 +4,14 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\home",
+    "\\src\\app\\home\\attraction",
+    "\\src\\app\\home\\attraction\\attraction-creator",
+    "\\src\\app\\home\\profile",
     "\\src\\app\\home\\templates",
     "\\src\\app\\home\\templates\\template-creator",
-    "\\src\\app\\home\\trips\\trip-creator",
-    "\\src\\app\\start",
-    "\\src\\app\\trip-history"
+    "\\src\\app\\home\\trips",
+    "\\src\\app\\home\\trips\\trip-creator"
   ],
-  "SelectedNode": "\\src\\app\\start\\start.component.css",
+  "SelectedNode": "\\src\\app\\home\\trips\\trip-creator\\trip-creator.component.css",
   "PreviewInSolutionExplorer": false
 }

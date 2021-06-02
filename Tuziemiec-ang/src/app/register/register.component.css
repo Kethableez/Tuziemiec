@@ -60,8 +60,8 @@ body {
   background-size: cover;
   background-position: center;
   background-blend-mode: exclusion;
-  min-height: 100vh;
-  width: 100vw;
+  height: 150vh;
+  width: 100%;
   opacity: 60%;
 }
 
@@ -70,7 +70,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -25%);
   margin: auto;
   padding-top: 1.5em;
   border-radius: 35px;
@@ -170,4 +170,8 @@ input[type=text], input[type=password], input[type=date] {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 1.25rem;
   margin-bottom: 2%;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 3px solid #9e2a2b;
 }

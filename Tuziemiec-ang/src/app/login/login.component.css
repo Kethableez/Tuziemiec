@@ -120,10 +120,14 @@ input {
   transition: 0.5s;
   outline: none;
 }
-  input:invalid{
+  /*.validate input{
     border: 3px solid #9e2a2b;
   }
+*/
 
+input.ng-invalid.ng-dirty {
+  border: 3px solid #9e2a2b;
+}
 .Button {
   padding: 0.25em 1.25em;
   margin-top: 0.25em;
