@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl, ReactiveFormsModule, AbstractControl  } from '@angular/forms';
 import { UserService } from '../_services/user.service';
 import { MustMatch } from './password.validator';
-import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import { format, formatDistance, formatRelative, isPast, subDays } from 'date-fns';
 import { Router } from '@angular/router';
 
 @Component({ 
@@ -46,6 +46,8 @@ export class RegisterComponent{
     isSubmit = false;
     failedRegister = false;
     errorMessage: string;
+    isDatePast = false;
+    isTried = false;
 
     constructor(private fb: FormBuilder, 
         private userService: UserService,
@@ -69,20 +71,29 @@ export class RegisterComponent{
 
     onSubmit(){
         console.log(this.registerForm.value);
-        this.userService.register(this.registerForm.value).subscribe(
-            response => {
-                this.router.navigate(['/login']);
-            },
-            err => {
-                this.errorMessage = err.error.message;
-                this.failedRegister = true;
-            }
-        );
+        this.chceckDate();
+        if (this.isDatePast){
+            this.userService.register(this.registerForm.value).subscribe(
+                response => {
+                    this.router.navigate(['/login']);
+                },
+                err => {
+                    this.errorMessage = err.error.message;
+                    this.failedRegister = true;
+                }
+            );
+    
+            this.isSubmit = true;
+        }
 
-        this.isSubmit = true;
     }
 
     reloadPage(): void {
         window.location.reload();
       }
+
+    chceckDate() : void{
+        this.isDatePast = isPast(new Date(this.dayOfBirth.value));
+        this.isTried = true;
+    }
 }

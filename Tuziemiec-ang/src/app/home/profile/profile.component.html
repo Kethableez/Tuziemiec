@@ -43,7 +43,10 @@
             </div>
 
             <label>Data urodzenia: </label>
-            <input formControlName="dayOfBirth" type="date" [(ngModel)]="userData.dayOfBirth"><br><br>
+            <input formControlName="dayOfBirth" type="date" [(ngModel)]="userData.dayOfBirth"><br>
+            <div *ngIf="this.isTried && !this.isDatePast">
+              Data urodzenia musi być z przeszłości!
+            </div><br>
             <button class="button" type="submit">Zmień dane</button>
           </div>
         </form>

@@ -49,6 +49,9 @@
                     <div class="validate" *ngIf="dayOfBirth.invalid && dayOfBirth.touched">
                         <small *ngIf="dayOfBirth.errors?.required">Data urodzenia jest wymagana!</small>
                     </div>
+                    <div *ngIf="this.isTried && !this.isDatePast">
+                        Data urodzenia musi być z przeszłości!
+                    </div>
                 </div>
 
                 <div class="text" *ngIf="isSubmit && failedRegister">

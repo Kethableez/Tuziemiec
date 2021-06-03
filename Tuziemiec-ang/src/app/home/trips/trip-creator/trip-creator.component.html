@@ -64,6 +64,9 @@
             <div class="validate" *ngIf="userLimit.invalid && userLimit.touched">
               <small *ngIf="userLimit.errors?.required">Limit użytkowników jest wymagany</small>
             </div>
+            <div *ngIf="this.isTried && !this.isDateCorrect">
+                Początek wycieczki musi mieć miejsce w przyszłości!
+            </div>
           </div>
 
           <div class="text" *ngIf="isSubmit && !isFailed">

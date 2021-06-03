@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl, FormControl  } from '@angular/forms';
+import { isPast, add } from 'date-fns';
 import { Attraction } from '../../../_model/attraction';
 import { TripTemplate } from '../../../_model/tripTemplate';
 import { TokenStorageService } from '../../../_services/token-storage.service';
@@ -33,6 +34,11 @@ export class TripCreatorComponent implements OnInit {
   goodResponse = false;
   badResponse = false;
   showMessage = true;
+
+  DateNo1:Date;
+  DateNo2:Date;
+  isDateCorrect = false;
+  isTried = false;
   
   currentUser: any;
 
@@ -95,14 +101,18 @@ export class TripCreatorComponent implements OnInit {
   }
 
   onSubmit() {
-    this.tripService.createTrip(this.createTrip.value).subscribe(
-      response => {
-        this.onResponse(response.message, 1);
-      },
-      err => {
-        this.onResponse(err.error.message, 2);
-      }
-    );
+    this.checkDate();
+    if (this.isDateCorrect){
+      this.tripService.createTrip(this.createTrip.value).subscribe(
+        response => {
+          this.onResponse(response.message, 1);
+        },
+        err => {
+          this.onResponse(err.error.message, 2);
+        }
+      );
+    }
+
   }
 
   onClick(){
@@ -131,5 +141,15 @@ export class TripCreatorComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  checkDate():void{
+    this.DateNo1 = add(new Date(this.startDate.value),{hours: 21, minutes: 59, seconds: 59});
+    //this.DateNo2 = new Date(this.endDate.value);
+    console.log(this.DateNo1);
+    if (!isPast(this.DateNo1)){
+      this.isDateCorrect = true;
+    }
+    this.isTried = true;
   }
 }
