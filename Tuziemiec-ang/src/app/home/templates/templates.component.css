@@ -8,7 +8,7 @@ body {
   margin: auto;
   width: 80%;
   /* height: max-content; */
-  min-height: 91vh;
+  min-height: 94vh;
   /* height: 88%; */
 }
 
@@ -16,7 +16,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  justify-content: space-between;
 }
 
 .template-box {
@@ -28,7 +27,7 @@ body {
   box-shadow: 0px 3px 6px black;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1320px) {
   /*.wrapper {
             align-items: none;
             justify-content: space-evenly;
