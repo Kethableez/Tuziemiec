@@ -15,6 +15,8 @@ export class TripHistoryComponent implements OnInit {
   pastClicked = false;
   organisedClicked = false;
 
+  url_route: String;
+
 
   constructor(private token: TokenStorageService,
     private route: ActivatedRoute,
@@ -25,6 +27,12 @@ export class TripHistoryComponent implements OnInit {
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
     }
+
+    this.url_route = this.route.snapshot['_routerState'].url;
+
+    if (this.url_route == "/home/panel/incoming") this.incomingClicked = true;
+    else if (this.url_route == "/home/panel/past") this.pastClicked = true;
+    else if (this.url_route == "/home/panel/organized") this.organisedClicked = true;
   }
 
   showIncoming() {

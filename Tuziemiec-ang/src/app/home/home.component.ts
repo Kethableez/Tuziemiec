@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   isLoggedIn = false;
   currentUser: any;
   User: User;
+  url_route: String;
 
   dashboardClicked = false;
   tripClicked = false;
@@ -43,6 +44,33 @@ export class HomeComponent implements OnInit {
         }
       )
     }
+
+    this.url_route = this.route.snapshot['_routerState'].url;
+
+    if (this.url_route.includes("/home/dashboard")) {
+      this.dashboardClicked = true;
+    }
+
+    else if (this.url_route.includes("/home/trips")) {
+      this.tripClicked = true;
+    }
+
+    else if (this.url_route.includes("/home/templates")) {
+      this.templateClicked = true;
+    }
+
+    else if (this.url_route.includes("/home/attractions")) {
+      this.attractionClicked = true;
+    }
+
+    else if (this.url_route.includes("/home/panel")) {
+      this.panelClicked = true;
+    }
+
+    else if (this.url_route.includes("/home/profile")) {
+      this.profileClicked = true;
+    }
+
   }
 
 

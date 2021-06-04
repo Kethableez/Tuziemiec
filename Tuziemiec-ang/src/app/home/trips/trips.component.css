@@ -335,26 +335,30 @@ input[type=text] {
 
 
   .message-box {
+    display: flex;
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1%;
-    bottom: 0;
+    top: 0;
     text-align: center;
-    border-radius: 25px 25px 0 0;
-    margin-left: 40vw;
-    margin-right: 40vw;
+    border-radius: 5px;
+    margin-left: 40%;
+    margin-right: 40%;
     position: fixed;
     z-index: 500;
     width: 20vw;
-    height: 8vh;
-    
+    height: min-content;
     box-shadow: 0 0 6px black;
     cursor: pointer;
   }
 
+  .message-text {
+    width: 90%;
+  }
+
   .good {
-    background-color: #b7fdc3;
+    background-color: #dbfae0;
     bottom: 0;
   }
 

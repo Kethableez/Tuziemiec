@@ -1,6 +1,9 @@
 <body>
 
   <div class="Profile_body" *ngIf="isLoggedIn">
+    <div class="colummn">
+      <img class="image" [src]="image" alt="Avatar">
+    </div>
     <div class="column">
       <label>Imię i nazwisko:</label>
       <div class="data">
@@ -20,14 +23,13 @@
       <label>Wiek:</label>
       <div class="data">
         {{userData.age}}
-
       </div>
 
 
     </div>
     <div class="column">
       <div class="Form">
-        <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()" >
           <div class="Form_body">
 
             <label>Imię: </label><br>
@@ -44,10 +46,18 @@
 
             <label>Data urodzenia: </label>
             <input formControlName="dayOfBirth" type="date" [(ngModel)]="userData.dayOfBirth"><br><br>
-            <button class="button" type="submit">Zmień dane</button>
+            
+            <div style="text-align: center;">
+              <button class="button" type="submit">Zmień dane</button>
+            </div>
+
           </div>
         </form>
 
+
+          <input type="file" (change)="onSelectFile($event)">
+          <button class="button" (click)="onUpload()">upload</button>
+        
       </div>
     </div>
   </div>

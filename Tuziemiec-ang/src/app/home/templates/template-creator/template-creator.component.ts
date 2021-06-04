@@ -25,7 +25,12 @@ export class TemplateCreatorComponent implements OnInit {
   message: string;
   goodResponse = false;
   badResponse = false;
-  showMessage = true;
+  showMessage = false;
+
+  image: String;
+  tempImage: String;
+  selectedFile = null;
+  tripName: string;
 
   idList: number[] = [];
 
@@ -98,10 +103,6 @@ export class TemplateCreatorComponent implements OnInit {
       this.addToIdList(item.id);
     });
   }
-
-  // onAttractionAdd(m: marker) {
-  //   this.markerList.push(m);
-  // }
 
   onAttractionAdd(att: Attraction) {
     this.selectedAttractions.push(att);

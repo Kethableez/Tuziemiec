@@ -93,6 +93,7 @@ public class AuthController {
                 encoder.encode(registerRequest.getPassword()),
                 registerRequest.getFirstName(),
                 registerRequest.getLastName(),
+                "default_avatar.jpeg",
                 registerRequest.getDayOfBirth());
 
         Set<Role> roles = new HashSet<>();
