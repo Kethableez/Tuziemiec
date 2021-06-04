@@ -228,3 +228,7 @@ agm-map {
   background-color: #f3baba;
   bottom: 0;
 }
+
+textarea.ng-invalid.ng-dirty, input.ng-invalid.ng-dirty {
+  border: 3px solid #9e2a2b;
+}

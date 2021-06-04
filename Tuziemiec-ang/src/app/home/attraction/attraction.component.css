@@ -119,7 +119,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
   }
 
 .attraction-box {
@@ -201,11 +201,7 @@ html {
   background: #67676d;
 }
 
-@media (max-width: 1500px) {
-      /*.wrapper {
-            align-items: none;
-            justify-content: space-evenly;
-      }*/
+@media (max-width: 1320px) {
       .attraction-box {
             width: 40%;
       }
@@ -301,7 +297,7 @@ html {
   background-color: #ffffff;
   position: fixed;
   width: 50vw;
-  height: 65vh;
+  min-height: 70vh;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.507);
 }
 

@@ -70,7 +70,7 @@ input[type=text] {
   margin: auto;
   width: 80%;
   /* height: max-content; */
-  min-height: 85vh;
+  min-height: 89vh;
 }
 
 
@@ -276,13 +276,18 @@ input[type=text] {
 }
 
 @media (max-width: 1400px) {
-  .wrapper {
-    align-items: flex-start;
-  }
+  /*.wrapper {*/
+    /*align-items: flex-start;*/
+  /*}*/
 
   .trip-card {
     width: 25em;
     margin-inline: 5%;
+    height: 9em;
+  }
+
+  .t-name {
+        height: 1.5em;
   }
 }
 

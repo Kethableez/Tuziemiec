@@ -82,7 +82,7 @@ body {
 }
 
 .done:hover:after {
-  content: "Oceń wycieczkę";
+  content: "Już oceniłeś tą wycieczkę";
   font-family: 'Roboto';
   font-weight: 300;
   display: block;
@@ -132,7 +132,7 @@ hr {
   right: 0;
   text-align: center;
   width: 50vw;
-  height: 45vh;
+  height: 60vh;
   z-index: 1;
   background-color: #e6e6e6;
   box-shadow: 0px 3px 6px black;
@@ -165,7 +165,7 @@ input[type=text], textarea {
 }
 
 .Button:enabled {
-  width: fit-content;
+  width: 10em;
   height: fit-content;
   background-color: #15588E;
   box-sizing: border-box;
@@ -179,7 +179,7 @@ input[type=text], textarea {
 }
 
 .Button:disabled {
-  width: fit-content;
+  width: 10em;
   height: fit-content;
   opacity: 50%;
   background-color: #15588E;
@@ -227,7 +227,7 @@ ngb-rating {
   position: fixed;
   z-index: 500;
   width: 20vw;
-  height: min-content;
+  height: fit-content;
   box-shadow: 0 0 6px black;
   cursor: pointer;
 }
@@ -244,4 +244,7 @@ ngb-rating {
 .bad {
   background-color: #f3baba;
   bottom: 0;
+}
+textarea.ng-invalid.ng-dirty, input.ng-invalid.ng-dirty {
+  border: 3px solid #9e2a2b;
 }
