@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../_model/user';
@@ -9,6 +9,7 @@ import { User } from '../_model/user';
 })
 export class UserService {
   private apiServerUrl = environment.apiBaseUrl;
+
 
   constructor(private http: HttpClient) { }
 
@@ -26,5 +27,13 @@ export class UserService {
 
   editData(userData){
     return this.http.put<any>(this.apiServerUrl + '/user/edit', userData);
+  }
+
+  getPhoto() {
+    return this.http.get<any>(this.apiServerUrl + '/images/getAvatar')
+  }
+
+  uploadPhoto(photo: FormData) {
+    return this.http.post<any>(this.apiServerUrl + '/images/uploadAvatar', photo);
   }
 }

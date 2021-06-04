@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
-import pl.karpiozaury.Tuziemiec_api.Model.Attraction;
-import pl.karpiozaury.Tuziemiec_api.Model.Participation;
-import pl.karpiozaury.Tuziemiec_api.Model.Trip;
-import pl.karpiozaury.Tuziemiec_api.Model.UsersAttraction;
+import pl.karpiozaury.Tuziemiec_api.Model.*;
 import pl.karpiozaury.Tuziemiec_api.Repository.ParticipationRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.TripRepository;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
@@ -37,16 +34,17 @@ public class ParticipationService {
 
     // Method to add user to participation table
     public Participation addPatricipant(Long tripId, UsernamePasswordAuthenticationToken token) {
-        Long userId = userRepository.findByUsername(token.getName()).orElseThrow().getId();
+        User user = userRepository.findByUsername(token.getName()).orElseThrow();
 
         Participation participation = new Participation(
                 tripId,
-                userId,
+                user.getId(),
+                user.getUsername(),
                 tripRepository.findById(tripId).orElseThrow().getStartDate()
         );
 
         for (Attraction att : tripRepository.findById(tripId).orElseThrow().getTemplate().getAttractions()) {
-            if (usersAttractionRepository.existsByUserIdAndAttractionId(userId, att.getId())) {
+            if (usersAttractionRepository.existsByUserIdAndAttractionId(user.getId(), att.getId())) {
                 usersAttractionService.update(token, att.getId(), tripRepository.findById(tripId).orElseThrow().getStartDate());
             }
             else usersAttractionService.addToList(token, att.getId(), tripRepository.findById(tripId).orElseThrow().getStartDate());

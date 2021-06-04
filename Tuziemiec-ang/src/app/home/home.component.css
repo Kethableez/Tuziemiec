@@ -35,12 +35,16 @@ body {
 }
 
 .button {
-    position: relative;
-    top: 0.5em;
-    width: 9em;
+    /* position: relative; */
+    display: flex;
+    align-content: center;
+    top: 1em;
+    /* width: 9em; */
+    width: max-content;
     height: 2.5em;
     font-size: 1rem;
     margin: auto;
+    margin-top: 1em;
     stroke: #ffffff;
     color: #ffffff;
     font-family: 'Alata', sans-serif;
@@ -62,15 +66,13 @@ body {
 
 
 .text{
-    position: absolute;
-    bottom: 0.5em;
-    right: 0;
+  text-align: right;
 }
 
 
 .icon {
-    position: absolute;
-    bottom: 0.5em;
+    /* position: absolute; */
+    /* bottom: 0.5em; */
     width: 2em;
     height: 1.5em;
 }

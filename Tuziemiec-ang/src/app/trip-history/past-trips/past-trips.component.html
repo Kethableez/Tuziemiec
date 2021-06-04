@@ -1,12 +1,29 @@
 <body>
 
     <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
-        {{message}}
-      </div>
-    
-      <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
-        {{message}}
-      </div>
+        <div class="message-text">
+            {{message}}
+        </div>
+        <div class="close-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor"
+                class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path
+                    d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+            </svg>
+        </div>
+    </div>
+    <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+        <div class="message-text">
+            {{message}}
+        </div>
+        <div class="close-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor"
+                class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path
+                    d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+            </svg>
+        </div>
+    </div>
 
     <div class="comment-form" *ngIf="enabled">
         <div class="icon right" (click)="closeCommentForm()">
@@ -59,7 +76,8 @@
             <hr>
             <div *ngFor="let trip of pastTrips">
                 <div class="wrapper">
-                    <div class="table-cell link" [routerLink]="['/home/trip', trip.id]"><b>{{trip.template.name}}</b></div>
+                    <div class="table-cell link" [routerLink]="['/home/trip', trip.id]"><b>{{trip.template.name}}</b>
+                    </div>
                     <div class="table-cell">{{trip.template.place}}</div>
                     <div class="table-cell">{{trip.startDate}} - {{trip.endDate}}</div>
                     <div class="table-cell">{{trip.booking}} / {{trip.userLimit}}</div>

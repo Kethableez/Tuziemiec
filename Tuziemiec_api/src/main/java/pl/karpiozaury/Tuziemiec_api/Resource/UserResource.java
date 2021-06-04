@@ -11,6 +11,7 @@ import pl.karpiozaury.Tuziemiec_api.Model.User;
 import pl.karpiozaury.Tuziemiec_api.Payload.Request.UserDataRequest;
 import pl.karpiozaury.Tuziemiec_api.Payload.Response.MessageResponse;
 import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
+import pl.karpiozaury.Tuziemiec_api.Service.ImageService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -46,4 +47,5 @@ public class UserResource {
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("Dane zostały zmienione pomyślnie"));
     }
+
 }

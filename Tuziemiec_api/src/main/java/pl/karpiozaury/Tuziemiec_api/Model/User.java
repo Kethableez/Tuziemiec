@@ -47,6 +47,9 @@ public class User {
     private String lastName;
 
     @NotBlank
+    private String avatar;
+
+    @NotBlank
     private LocalDate dayOfBirth;
 
     @NotBlank
@@ -59,12 +62,13 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public User(String username, @Email String email, String password, String firstName, String lastName, LocalDate dayOfBirth) {
+    public User(String username, @Email String email, String password, String firstName, String lastName, String avatar, LocalDate dayOfBirth)  {
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.avatar = avatar;
         this.dayOfBirth = dayOfBirth;
     }
 

@@ -23,6 +23,7 @@ export class TripDetailComponent implements OnInit {
   reviews: Review[];
   isEnrolled: boolean;
   id: number;
+  images: String[] = [];
 
   message: string;
   goodResponse = false;
@@ -84,6 +85,10 @@ export class TripDetailComponent implements OnInit {
 
       }
     )
+  }
+
+  getPhoto(userName: string): string {
+    return "http://localhost:8080/images/getAvatar/" + userName;
   }
 
   dislike(reviewId: number) {
