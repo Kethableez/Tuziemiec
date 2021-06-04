@@ -4,8 +4,8 @@ import { User } from '../../_model/user';
 import { TokenStorageService } from '../../_services/token-storage.service';
 import { TripService } from '../../_services/trip.service';
 import { UserService } from '../../_services/user.service';
-import { FormBuilder, Validators } from '@angular/forms';
-import { DomSanitizer, SafeStyle, SafeUrl } from '@angular/platform-browser';
+import { FormBuilder, Validators  } from '@angular/forms';
+import { isPast } from 'date-fns';
 
 @Component({
   selector: 'app-profile',
@@ -24,6 +24,9 @@ export class ProfileComponent implements OnInit {
   tempImage: String;
   selectedFile = null;
   response = false;
+
+  isDatePast = false;
+  isTried = false;
 
   constructor(
     private token: TokenStorageService,
@@ -51,15 +54,19 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     console.log(typeof (this.userData.dayOfBirth));
     console.log(this.editPersonalDataForm.value);
-    this.userService.editData(this.editPersonalDataForm.value).subscribe(
-      response => console.log('Success!', response),
-      err => {
-        this.errorMessage = err.error.message;
-      }
+    this.chceckDate();
+    if (this.isDatePast){
+      this.userService.editData(this.editPersonalDataForm.value).subscribe(
+        response => console.log('Success!', response),
+        err => {
+            this.errorMessage = err.error.message;
+        }
     );
 
     this.isSubmit = true;
-  }
+    }
+
+}
 
   ngOnInit(): void {
     if (this.token.getToken()) {
@@ -112,4 +119,8 @@ export class ProfileComponent implements OnInit {
     window.location.reload();
   }
 
+  chceckDate() : void{
+    this.isDatePast = isPast(new Date(this.dayOfBirth.value));
+    this.isTried = true;
+}
 }
