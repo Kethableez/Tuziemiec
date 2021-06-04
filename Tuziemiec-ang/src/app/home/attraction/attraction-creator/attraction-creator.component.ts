@@ -63,7 +63,6 @@ export class AttractionCreatorComponent implements OnInit {
     if (this.token.getToken()) {
       this.isLoggedIn = true;
     }
-
     this.mapsAPILoader.load().then(() => {
 
       this.setCurrentLocation();

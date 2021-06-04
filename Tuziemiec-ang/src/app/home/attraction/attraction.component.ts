@@ -35,6 +35,7 @@ export class AttractionComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       //this.currentUser = this.token.getUser();

@@ -27,6 +27,9 @@ public class Participation {
     private Long userId;
 
     @NotBlank
+    private String userName;
+
+    @NotBlank
     private LocalDate startDate;
 
     @NotBlank
@@ -34,9 +37,11 @@ public class Participation {
 
     public Participation(@NotBlank Long tripId,
                          @NotBlank Long userId,
+                         @NotBlank String userName,
                          @NotBlank LocalDate startDate) {
         this.tripId = tripId;
         this.userId = userId;
+        this.userName = userName;
         this.startDate = startDate;
         this.isReviewed = false;
     }

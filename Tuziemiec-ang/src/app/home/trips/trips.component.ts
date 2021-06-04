@@ -20,7 +20,7 @@ export class TripsComponent implements OnInit {
   message = "";
   goodResponse = false;
   badResponse = false;
-  showMessage = true;
+  showMessage = false;
   searchText;
 
   constructor(private token: TokenStorageService,

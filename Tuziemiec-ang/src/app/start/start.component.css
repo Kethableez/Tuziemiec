@@ -52,12 +52,14 @@ body {
 } */
 
 .Container {
-  display: grid;
-  grid-template-columns: 1.5fr 0.5fr;
-  margin-top: 7%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8em;
   margin-left: 5%;
   margin-right: 5%;
 }
+
+
 /* .Start_text {
       display: flex;
       flex-direction: column;
@@ -65,12 +67,10 @@ body {
 } */
 
 .Start_text {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
+  width: 70%;
 }
 
 .Main_text {
-  width: 100%;
   font-family: 'Alata';
   /* font-size: 60px; */
   font-size: 2.75rem;
@@ -92,17 +92,19 @@ body {
 
 
 .Buttons {
-  width: 100%;
+  width: 25%;
   margin: 1em 0;
-  display: grid;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
   text-align: center;
   align-items: center;
-  grid-template-rows: 1fr 1fr;
+  /*grid-template-rows: 1fr 1fr;*/
 }
 
 .Button {
   /*background-color: #BDB4AE;*/
-  width: 15vw;
+  width: 10em;
   height: fit-content;
   background-color: #15588E;
   box-sizing: border-box;
@@ -122,7 +124,6 @@ body {
 
   color: #ffffff;
   text-decoration: none;
-  margin: auto;
   padding: 0.25em 1.25em;
   border: 2px solid #15588E;
 }
@@ -131,60 +132,35 @@ body {
     background-color: #6582be;
     border: 2px solid #6582be;
   }
-@media (max-width: 900px) {
-      .Top {
-            height: 70vh;
-      }
 
-      .Container {
-            flex-direction: row;
-            margin: 1em;
-      }
 
-  .Start_text {
-    width: 100%;
+@media (max-width: 1300px) {
+  .Container {
+        margin-top: 6em;
   }
+}
 
-      
+@media (max-height: 730px) {
+      .Container {
+            margin-top: 5em;
+      }
+
       .Main_text {
             font-size: 2rem;
       }
-
       .Sub_text {
-            font-size: 1rem;
-            margin-top: 2em;
+            font-size: 1.5rem;
       }
-
-  .Buttons {
-      flex-direction: column;
-      align-items: center;
-  }
-  .Button {
-        width: 30vw;
-      margin: 0.5em 1em;
-      padding: 0.25em 0;
-  }
-}
-@media (max-width: 580px) {
-      .Top {
-            height: 80vh;
-      }
-
-      .Container {
-            flex-direction: column;
-      }
-
-      .Buttons {
-            flex-direction: row;
-      }
-}
-
-@media (max-width: 520px) {
       .Button {
             font-size: 1.25rem;
       }
 }
 
+@media (max-height: 730px) and (max-width: 850px) {
+      .Container {
+            margin-top: 0;
+      }
+}
 /*a {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 20px;
@@ -241,18 +217,4 @@ body {
   margin-bottom: 0.5em;
 }
 
-@media (max-width: 830px) {
-  .Block {
-    flex-direction: column;
-  }
-  .Column {
-      width: 90%;
-      margin: 0 2em;
-  }
-  /*.text1 {
-      margin-top: 5.5em;
-  }*/
-  .text2 {
-      margin-bottom: 1em;
-  }
-}
+

@@ -40,7 +40,7 @@ html {
     width: 70%;
   }
   
-  .Comment{
+ /* .Comment{
     display: grid;
     grid-template-columns: 0.5fr 2.5fr 0.5fr 0.5fr;
     margin-top: 0.5%;
@@ -59,6 +59,49 @@ html {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+*/
+ .com-head {
+       display: flex;
+       justify-content: space-between;
+ }
+ .com-body {
+       margin: 0.5em 0;
+       display: flex;
+       justify-content: space-between;
+ }
+ .col1 {
+       width: 50%;
+       margin: 3%;
+ }
+
+ .col2 {
+       font-size: 4rem;
+       width: 5em;
+       margin-top: 1%;
+ }
+.col3 {
+    width: 10%;
+    margin-right: 2%;
+}
+@media (max-height: 730px) {
+      .col3 {
+            width: 15%;
+      }
+}
+.col4 {
+      margin-left: 3%;
+}
+.col5 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 3%;
+}
+
+@media (max-width: 1160px) {
+      .col3 {
+            display: none;
+      }
+}
 
   .icon {
     cursor: pointer;
@@ -66,7 +109,8 @@ html {
     width: 2rem;
     height: 2rem;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 1.25rem;
+    margin: 0 0.5em;
   }
 
   .red {
@@ -82,8 +126,20 @@ html {
   .comment-header {
     font-family: 'Alata';
     text-align: left;
-    font-size: 30px;
+    font-size: 2rem;
     color: #353535;
+  }
+
+  .photo {
+    margin-inline: auto;
+    text-align: center;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .image {
+    width: 100%;
+    object-fit: cover;
   }
 
 .comment-body {
@@ -153,10 +209,10 @@ html {
 hr {
     color: black;
     opacity: 100%;
+    margin-top: 2em;
 }
 
 ngb-rating {
-  font-size: 1.75em;
   color: #B8A17D;
 }
 
@@ -188,9 +244,8 @@ agm-map {
 .button {
   margin: auto;
   background-color: #15588E;
-  width: 12vw;
-  height: 5vh;
-  margin-bottom: 1%;
+  width: 10em;
+  margin-bottom: 2%;
   font-family: 'Roboto';
   font-weight: 200;
   font-size: 2rem;
@@ -205,26 +260,30 @@ agm-map {
 }
 
 .message-box {
+  display: flex;
   font-family: 'Roboto';
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 1%;
-  bottom: 0;
+  top: 0;
   text-align: center;
-  border-radius: 25px 25px 0 0;
-  margin-left: 40vw;
-  margin-right: 40vw;
+  border-radius: 5px;
+  margin-left: 40%;
+  margin-right: 40%;
   position: fixed;
   z-index: 500;
   width: 20vw;
-  height: 8vh;
-  
+  height: min-content;
   box-shadow: 0 0 6px black;
   cursor: pointer;
 }
 
+.message-text {
+  width: 90%;
+}
+
 .good {
-  background-color: #b7fdc3;
+  background-color: #dbfae0;
   bottom: 0;
 }
 
@@ -232,3 +291,4 @@ agm-map {
   background-color: #f3baba;
   bottom: 0;
 }
+

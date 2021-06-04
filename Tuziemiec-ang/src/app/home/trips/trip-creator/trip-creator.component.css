@@ -79,7 +79,7 @@ html {
   .Form_title {
     font-family: 'Alata';
     font-style: italic;
-    font-size: 42px;
+    font-size: 3rem;
     padding: 20px;
     text-align: center;
     background-color: #5A352A;
@@ -91,14 +91,15 @@ html {
     margin: auto;
     border-radius: 35px;
     width: 100%;
-    height: 50vh;
+    /*display: flex;*/
+    height: 60vh;
   }
   
   .Form_body {
     text-align: center;
     border-radius: 0 0 50px 0;
-    background-color: #e6e6e6;
-    height: 50vh;
+    /*background-color: #e6e6e6;*/
+    /*height: 60vh;*/
     padding: 20px;
   }
 
@@ -106,15 +107,15 @@ html {
     text-align: center;
     overflow: auto; /* new */
     border-radius: 0 0 0 50px;
-    background-color: #e6e6e6;
-    height: 50vh;
+    /*background-color: #e6e6e6;*/
+    /*height: 60vh;*/
   }
   
   input[type=text], input[type=password], input[type=date], input[type=number],textarea {
     border-radius: 30px;
     font-family: 'Roboto';
     font-weight: 300;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     background-color: #ffffff;
     width: 80%;
@@ -134,26 +135,26 @@ html {
     text-align: left;
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
   }
   
   .Submit_button:enabled {
-    width: 200px;
-    height: 50px;
+    width: 10em;
+    height: 1.5em;
     background-color: #15588E;
     box-sizing: border-box;
     border: 3px solid #15588E;
     border-radius: 20px;
     font-family: 'Roboto';
     font-weight: 300;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #ffffff;
     cursor: pointer;
   }
 
   .Submit_button:disabled {
-    width: 200px;
-    height: 50px;
+    width: 10em;
+    height: 1.5em;
     opacity: 50%;
     background-color: #15588E;
     box-sizing: border-box;
@@ -161,7 +162,7 @@ html {
     border-radius: 20px;
     font-family: 'Roboto';
     font-weight: 300;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #ffffff;
   }
 
@@ -232,8 +233,11 @@ html {
     margin-inline: auto;
   }
 
+  hr {
+        margin-bottom: 1em;
+  }
   .template {
-    margin-top: 0.5%;
+    margin-top: 1em;
   }
 
   .template-name {
@@ -338,38 +342,44 @@ html {
       text-decoration-line: underline;
     }
 
-  .wrapper {
-    display: grid;
-    border-radius: 0 0 50px 50px;
-    grid-template-columns: 1fr 1fr;
-    width: 80%;
-    margin-inline: auto;
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
-  }
+.wrapper {
+  display: grid;
+  border-radius: 0 0 50px 50px;
+  grid-template-columns: 1fr 1fr;
+  width: 80%;
+  margin-inline: auto;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  background-color: #e6e6e6;
+  height: 60vh;
+}
 
   .message-box {
+    display: flex;
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1%;
-    bottom: 0;
+    top: 0;
     text-align: center;
-    border-radius: 25px 25px 0 0;
-    margin-left: 40vw;
-    margin-right: 40vw;
+    border-radius: 5px;
+    margin-left: 40%;
+    margin-right: 40%;
     position: fixed;
     z-index: 500;
     width: 20vw;
-    height: 8vh;
-    
+    height: min-content;
     box-shadow: 0 0 6px black;
     cursor: pointer;
   }
 
+  .message-text {
+    width: 90%;
+  }
+
   .good {
-    background-color: #b7fdc3;
+    background-color: #dbfae0;
     bottom: 0;
   }
 
@@ -377,3 +387,6 @@ html {
     background-color: #f3baba;
     bottom: 0;
   }
+input.ng-invalid.ng-dirty {
+  border: 3px solid #9e2a2b;
+}

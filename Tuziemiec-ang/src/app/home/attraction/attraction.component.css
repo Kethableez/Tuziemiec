@@ -119,13 +119,14 @@ html {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+    /*justify-content: space-between;*/
   }
 
 .attraction-box {
   background-color: #e6e6e6;
   border: 3px;
   border-radius: 20px;
-  width: 19.8em;
+  width: 25%;
   margin: 1em 2.75em;
   /* -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
@@ -200,18 +201,18 @@ html {
   background: #67676d;
 }
 
-@media (max-width: 1500px) {
-      .wrapper {
-            align-items: none;
-      }
+@media (max-width: 1320px) {
       .attraction-box {
-            width: 25em;
+            width: 40%;
       }
 }
-@media (max-width: 1220px) {
+@media (max-width: 1120px) {
       .wrapper {
             justify-content: center;
       }
+  .attraction-box {
+    width: 60%;
+  }
 }
 /*
   .fnc_btn{
@@ -288,16 +289,17 @@ html {
       background: #67676d;
     }
 
-    .attraction_detail {
-      border-radius: 40px;
-      top: 10vw;
-      left: 25vw;
-      background-color: #ffffff;
-      position: absolute;
-      width: 50vw;
-      height: 49vh;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.507);
-    }
+.attraction_detail {
+
+  border-radius: 40px;
+  bottom: 10vw;
+  left: 25vw;
+  background-color: #ffffff;
+  position: fixed;
+  width: 50vw;
+  min-height: 70vh;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.507);
+}
 
     .attraction_header {
       text-align: center;
@@ -307,7 +309,7 @@ html {
       background-color: #15588E;
       color: #fff;
       font-family: 'Alata';
-      font-size: 30px;
+      font-size: 1.75rem;
     }
 
     .wrapper2 {
@@ -321,22 +323,22 @@ html {
       margin-inline: 2%;
     }
 
-    agm-map {
-      height: 100%;
-    }
+agm-map {
+  height: 52vh;
+}
 
     label {
       text-align: left;
       width: 100%;
       font-family: 'Alata';
-      font-size: 25px;
+      font-size: 1.5rem;
     }
 
     .text {
       margin-top: 2%;
       font-family: 'Roboto';
       font-weight: 300;
-      font-size: 25px;
+      font-size: 1.5rem;
     }
 
     ngb-rating {
@@ -355,26 +357,30 @@ html {
     }
 
     .message-box {
+      display: flex;
       font-family: 'Roboto';
       font-weight: 400;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       padding: 1%;
-      bottom: 0;
+      top: 0;
       text-align: center;
-      border-radius: 25px 25px 0 0;
-      margin-left: 40vw;
-      margin-right: 40vw;
+      border-radius: 5px;
+      margin-left: 40%;
+      margin-right: 40%;
       position: fixed;
       z-index: 500;
       width: 20vw;
-      height: 8vh;
-      
+      height: min-content;
       box-shadow: 0 0 6px black;
       cursor: pointer;
     }
   
+    .message-text {
+      width: 90%;
+    }
+  
     .good {
-      background-color: #b7fdc3;
+      background-color: #dbfae0;
       bottom: 0;
     }
   

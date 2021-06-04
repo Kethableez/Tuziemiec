@@ -70,7 +70,7 @@ input[type=text] {
   margin: auto;
   width: 80%;
   /* height: max-content; */
-  min-height: 85vh;
+  min-height: 89vh;
 }
 
 
@@ -143,7 +143,7 @@ input[type=text] {
   background-color: #E6E6E6;
   border-radius: 0 0 30px 0;
   margin-inline: 1.5%;
-  margin-top: 1.5%;
+  margin-top: 2em;
   -webkit-box-shadow: 0 8px 6px -6px black;
   -moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
@@ -275,17 +275,23 @@ input[type=text] {
   background: #67676d;
 }
 
-@media (max-width: 1500px) {
-  .wrapper {
-    align-items: none;
-  }
+@media (max-width: 1400px) {
+  /*.wrapper {*/
+    /*align-items: flex-start;*/
+  /*}*/
 
   .trip-card {
     width: 25em;
+    margin-inline: 5%;
+    height: 9em;
+  }
+
+  .t-name {
+        height: 1.5em;
   }
 }
 
-@media (max-width: 1220px) {
+@media (max-width: 1270px) {
   .wrapper {
     justify-content: center;
   }
@@ -334,26 +340,30 @@ input[type=text] {
 
 
   .message-box {
+    display: flex;
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1%;
-    bottom: 0;
+    top: 0;
     text-align: center;
-    border-radius: 25px 25px 0 0;
-    margin-left: 40vw;
-    margin-right: 40vw;
+    border-radius: 5px;
+    margin-left: 40%;
+    margin-right: 40%;
     position: fixed;
     z-index: 500;
     width: 20vw;
-    height: 8vh;
-    
+    height: min-content;
     box-shadow: 0 0 6px black;
     cursor: pointer;
   }
 
+  .message-text {
+    width: 90%;
+  }
+
   .good {
-    background-color: #b7fdc3;
+    background-color: #dbfae0;
     bottom: 0;
   }
 
