@@ -1,0 +1,8 @@
+Springboot:
+ImageService:
+    private static final String AVATAR_PATH
+    private static final String TRIP_PATH
+    private static final String BACKGROUND_PATH
+
+
+

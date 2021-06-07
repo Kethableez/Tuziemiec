@@ -1,0 +1,324 @@
+<!-- <body>
+    <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+        <div class="message-text">
+          {{message}}
+        </div>
+        <div class="close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-x-lg"
+            viewBox="0 0 16 16">
+            <path
+              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+          </svg>
+        </div>
+      </div>
+      <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+        <div class="message-text">
+          {{message}}
+        </div>
+        <div class="close-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-x-lg"
+            viewBox="0 0 16 16">
+            <path
+              d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+          </svg>
+        </div>
+      </div>
+
+    <div class="Trip-details shadow">
+        <div class="Text3">{{trip.template.name}}</div>
+
+        <div class="wrapper2">
+            <div class="trip">
+                <div class="description">
+                    "{{this.trip.template.description}}"
+                </div>
+                <hr>
+
+                <div class="wrapper">
+                    <div class="Text1">Miejsce: </div>
+                    <div class="Text2"> {{this.trip.template.place}} </div>
+
+                    <div class="Text1">Data: </div>
+                    <div class="Text2">{{this.trip.startDate}} - {{this.trip.endDate}} </div>
+
+                    <div class="Text1">Ocena:</div>
+                    <div class="Text2">
+                        <ng-template #t let-fill="fill">
+                            <span class="star" [class.full]="fill === 100">
+                                <span class="half" [style.width.%]="fill">★</span>☆
+                            </span>
+                        </ng-template>
+                        <ngb-rating [max]="5" [(rate)]="trip.template.rating" [starTemplate]="t" [readonly]="true">
+                        </ngb-rating>
+                    </div>
+
+                    <div class="Text1">Ilość miejsc:</div>
+                    <div class="Text2"> {{this.trip.booking}} / {{this.trip.userLimit}} </div>
+
+                    <div class="Text1">Atrakcje:</div>
+                    <div class="Text2">
+                        <div *ngFor="let att of this.trip.template.attractions">
+                            {{att.name}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map">
+                <agm-map [latitude]="trip.template.attractions[0].latitude"
+                    [longitude]="trip.template.attractions[0].longitude" [zoom]="14" [disableDefaultUI]="true">
+                    <div *ngFor="let attraction of trip.template.attractions">
+                        <agm-marker [latitude]="attraction.latitude" [longitude]="attraction.longitude"></agm-marker>
+                    </div>
+                </agm-map>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="trip.template.guideId != currUser.id">
+        <div class="button" *ngIf="!isEnrolled && trip.booking < trip.userLimit" (click)="addCurrentUserToTrip()">
+            Zapisz się
+        </div>
+    
+        <div class="button" *ngIf="isEnrolled" (click)="removeCurrentUserFromTrip()">
+            Wypisz się
+        </div>
+    </div>
+
+
+    <div class="Trip-comments shadow" *ngIf="reviews.length != 0">
+        <div class="Text3">
+            Komentarze i oceny
+        </div>
+        <div *ngFor="let rev of reviews">
+            <div class="Comment">
+                <div class="col1 ">
+                    <div class=photo>
+                        <img class="image" [src]="getPhoto(rev.participation.userName)">
+                    </div>
+                    Dodano: {{rev.commentDate}}
+                </div>
+
+            <div class="col2 ">
+              <ngb-rating [max]="5" [(rate)]="rev.rating" [readonly]="true"></ngb-rating> <br>
+            </div>
+            <div class="col3">
+              <b> Użytkownik: {{rev.participation.userId}} </b><br>
+              Dodano: <br> {{rev.commentDate}} <br>
+              Uczestniczył: <br>
+              {{rev.participation.startDate}}
+            </div>
+          </div>
+            <div class="com-body">
+              <div class="col4">
+                 {{rev.rating}} -->
+                <!-- <div class="comment-header">
+                  {{rev.commentHeader}}
+                </div>
+                <div class="comment-body">
+                  {{rev.commentBody}}
+                </div>
+              </div>
+
+              <div class="col5">
+                <div class="upvote">
+                  <div class="icon green">
+                    <svg (click)="like(rev.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-thumbs-up">
+                      <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                      </path>
+                    </svg>
+                    {{rev.upVote}}
+                  </div>
+                </div>
+
+                <div class="downvote">
+                  <div class="icon red">
+                    <svg (click)="dislike(rev.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                         class="feather feather-thumbs-down">
+                      <path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17">
+                      </path>
+                    </svg>
+                    {{rev.downVote}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          <hr> -->
+            <!--<div class="col3 ">
+              <ngb-rating [max]="5" [(rate)]="rev.rating" [readonly]="true"></ngb-rating> <br>
+              Uczestniczył: <br>
+              {{rev.participation.startDate}}
+            </div>-->
+        <!-- </div>  
+    </div>
+</body> --> 
+
+<body>
+  <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+      <div class="message-text">
+        {{message}}
+      </div>
+      <div class="close-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-x-lg"
+          viewBox="0 0 16 16">
+          <path
+            d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+        </svg>
+      </div>
+    </div>
+    <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+      <div class="message-text">
+        {{message}}
+      </div>
+      <div class="close-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-x-lg"
+          viewBox="0 0 16 16">
+          <path
+            d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+        </svg>
+      </div>
+    </div>
+
+  <div class="Trip-details shadow">
+      <div class="Text3">{{trip.template.name}}</div>
+      <div class="guide-avatar">
+        <img class="image" [src]="getPhoto(trip.template.guideId)">
+      </div>
+      <div class="wrapper2">
+          <div class="trip">
+              <div class="description">
+                  "{{this.trip.template.description}}"
+              </div>
+              <hr>
+
+              <div class="wrapper">
+                  <div class="Text1">Miejsce: </div>
+                  <div class="Text2"> {{this.trip.template.place}} </div>
+
+                  <div class="Text1">Data: </div>
+                  <div class="Text2">{{this.trip.startDate}} - {{this.trip.endDate}} </div>
+
+                  <div class="Text1">Ocena:</div>
+                  <div class="Text2">
+                      <ng-template #t let-fill="fill">
+                          <span class="star" [class.full]="fill === 100">
+                              <span class="half" [style.width.%]="fill">★</span>☆
+                          </span>
+                      </ng-template>
+                      <ngb-rating [max]="5" [(rate)]="trip.template.rating" [starTemplate]="t" [readonly]="true">
+                      </ngb-rating>
+                  </div>
+
+                  <div class="Text1">Ilość miejsc:</div>
+                  <div class="Text2"> {{this.trip.booking}} / {{this.trip.userLimit}} </div>
+
+                  <div class="Text1">Atrakcje:</div>
+                  <div class="Text2">
+                      <div *ngFor="let att of this.trip.template.attractions">
+                          {{att.name}}
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="map">
+              <agm-map [latitude]="trip.template.attractions[0].latitude"
+                  [longitude]="trip.template.attractions[0].longitude" [zoom]="14" [disableDefaultUI]="true">
+                  <div *ngFor="let attraction of trip.template.attractions">
+                      <agm-marker [latitude]="attraction.latitude" [longitude]="attraction.longitude"></agm-marker>
+                  </div>
+              </agm-map>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="trip.template.guideId != currUser.id">
+      <div class="button" *ngIf="!isEnrolled && trip.booking < trip.userLimit" (click)="addCurrentUserToTrip()">
+          Zapisz się
+      </div>
+  
+      <div class="button" *ngIf="isEnrolled" (click)="removeCurrentUserFromTrip()">
+          Wypisz się
+      </div>
+
+  </div>
+
+  <div class="button" (click)="showGallery()">
+    Galeria
+</div>
+
+
+  <div class="Trip-comments shadow" *ngIf="reviews.length != 0">
+      <div class="Text3">
+          Komentarze i oceny
+      </div>
+      <div *ngFor="let rev of reviews">
+          <div class="Comment">
+              <div class="col1 ">
+                  <div class=photo>
+                      <img class="image" [src]="getPhoto(rev.participation.userId)">
+                  </div>
+                  Dodano: {{rev.commentDate}}
+              </div>
+
+              <div class="col2">
+                  <!-- {{rev.rating}} -->
+                  <div class="comment-header">
+                      {{rev.commentHeader}}
+                  </div>
+                  <div class="comment-body">
+                      {{rev.commentBody}}
+                  </div>
+              </div>
+
+              <div class="col4">
+                  <div class="upvote">
+                      <div class="icon green">
+                          <svg (click)="like(rev.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              class="feather feather-thumbs-up">
+                              <path
+                                  d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                              </path>
+                          </svg>
+                          {{rev.upVote}}
+                      </div>
+                  </div>
+
+                  <div class="downvote">
+                      <div class="icon red">
+                          <svg (click)="dislike(rev.id)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              class="feather feather-thumbs-down">
+                              <path
+                                  d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17">
+                              </path>
+                          </svg>
+                          {{rev.downVote}}
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col3 ">
+                  <ngb-rating [max]="5" [(rate)]="rev.rating" [readonly]="true"></ngb-rating> <br>
+                  Uczestniczył: <br>
+                  {{rev.participation.startDate}}
+              </div>
+          </div>
+          <hr>
+      </div>
+  </div>
+
+  <div class="photo-view" *ngIf="viewPhoto" >
+    <img class="view" [src]="selectedPhoto" (click)="onClose()"> 
+    <div class="galery" id="scroll">
+      <div class="photo-box"  *ngFor="let url of tripImages">
+        <img class="galery-photo" [src]="url" (click)="onPhotoClick(url)">
+      </div>
+    </div>
+  </div>
+</body>
