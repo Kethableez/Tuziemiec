@@ -46,8 +46,15 @@ public class RecommendationsController {
         Random rnd = new Random();
 
         Alltrips.addAll(recommendationService.gudieTrips(token));
-        Alltrips.addAll(recommendationService.ratingTrips(token));
-        Alltrips.addAll(recommendationService.placeTrips(token));
+
+        for(Trip t : recommendationService.ratingTrips(token)) {
+            if (!Alltrips.contains(t)) Alltrips.add(t);
+        }
+
+        for(Trip t : recommendationService.placeTrips(token)) {
+            if (!Alltrips.contains(t)) Alltrips.add(t);
+        }
+        
 
         if (Alltrips.size() <= 3) {
             trips = Alltrips;

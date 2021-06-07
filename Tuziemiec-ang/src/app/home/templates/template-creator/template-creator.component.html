@@ -27,7 +27,7 @@
   <div>
 
     <div class="wrapper">
-      <div class="list">
+      <div class="list" id="scroll">
         <div class="Text2 sticky">
           <form [formGroup]="search" (ngSubmit)="findAttractions(place.value)">
             <input style="
@@ -51,8 +51,7 @@
             {{attraction.name}}
           </div>
 
-          <div class="link" *ngIf="!selectedAttractions.includes(attraction)"
-            (click)="onAttractionAdd(attraction)">
+          <div class="link" *ngIf="!selectedAttractions.includes(attraction)" (click)="onAttractionAdd(attraction)">
             {{attraction.name}}
           </div>
           <hr>
@@ -87,19 +86,35 @@
               <div class="validate" *ngIf="description.invalid && description.touched">
                 <small *ngIf="description.errors?.required">Opis szablonu jest wymagany</small>
               </div>
+              <hr>
 
+              <input type="file" multiple (change)="onSelect($event)">
               
               <hr>
-              <button class="Submit_button" type="submit" [disabled]="!templateForm.valid">
+
+
+              <div class="wrapper3" id="scroll">
+                <div class="box" *ngFor="let photo of images" (click)="imageClick(photo)">
+                  <div *ngIf="isSelected(photo)">
+                    <img class="image selection" [src]="photo" >
+                  </div>
+
+                  <div *ngIf="!isSelected(photo)">
+                    <img class="image" [src]="photo" >
+                  </div>
+                </div>              
+              </div>
+              <hr>
+              <button class="Submit_button" type="submit" [disabled]="!selectedFiles || !templateForm.valid">
                 Stwórz
               </button>
-              
+
             </div>
           </div>
 
         </form>
       </div>
-      
+
     </div>
     <div class="Text">
       Nie ma miejsca które szukasz?
@@ -109,6 +124,7 @@
 
     </div>
   </div>
+  {{templateForm.value | json}}
 
 
 </body>

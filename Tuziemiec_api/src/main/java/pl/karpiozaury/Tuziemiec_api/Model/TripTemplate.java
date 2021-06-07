@@ -34,6 +34,9 @@ public class TripTemplate {
     private Long guideId;
 
     @NotBlank
+    private String coverPhoto;
+
+    @NotBlank
     private Float rating;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -48,12 +51,14 @@ public class TripTemplate {
                         @NotBlank String description,
                         @NotBlank String place,
                         @NotBlank Long guideId,
+                        @NotBlank String coverPhoto,
                         @NotBlank Float rating) {
 
         this.name = name;
         this.description = description;
         this.place = place;
         this.guideId = guideId;
+        this.coverPhoto = coverPhoto;
         this.rating = rating;
     }
 }

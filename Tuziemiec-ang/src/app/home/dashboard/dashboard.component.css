@@ -20,6 +20,7 @@ body {
 .link {
     font-family: 'Roboto';
     font-weight: 300;
+    margin-top: 2%;
 }
 
 .link:hover {
@@ -29,7 +30,7 @@ body {
 }
 
 .box{ 
-    border-radius: 25px;
+    border-radius: 10px;
     position: relative;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.082);
     font-family: 'Roboto';
@@ -38,6 +39,103 @@ body {
     text-align: center;
     background-color: #fff;
     margin: 1em;
-    padding: 2%;
     min-height: 20vh;
+}
+
+.box-header {
+    width: 100%;
+    height: fit-content;
+    font-family: 'Alata';
+    font-size: 2rem;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    background-color: #304C89;
+}
+
+.box-body {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.trip-card {
+    width: 30%;
+    margin-inline: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    min-height: 20vh;
+    border-radius: 10px;
+    background-color: #15588E;
+    box-shadow: 0 0 6px rgb(122, 122, 122);
+    cursor: pointer;
+}
+
+.trip-card:hover {
+    /* background-color: #1c6eb1; */
+    box-shadow: 0 0 20px #1c6eb1;
+}
+
+.photo {
+    height: 13vh;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+
+.details {
+    /* font-size: 1.5rem; */
+    font-size: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    min-height: 7vh;
+    height: fit-content;
+    min-width: 20vw;
+}
+
+.details-name {
+    font-family: 'Alata';
+    color: #fff;
+    text-align: center;
+}
+
+.wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.details-place {
+    font-family: 'Roboto';
+    font-weight: 300;
+    color: #fff;
+    text-align: left;
+    margin-left: 15%;
+}
+
+.details-date {
+    font-family: 'Roboto';
+    font-weight: 300;
+    color: #fff;
+    text-align: right;
+    margin-right: 15%;
+}
+
+#scroll::-webkit-scrollbar-track
+{
+    transform:rotateX(180);
+	border-radius: 10px;
+}
+
+#scroll::-webkit-scrollbar
+{
+    transform:rotateX(180);
+	width: 5px;
+    height: 10px;
+
+}
+
+#scroll::-webkit-scrollbar-thumb
+{
+    transform:rotateX(180);
+	border-radius: 10px;
+	background-color: rgb(128, 128, 128);
 }

@@ -47,6 +47,7 @@ public class TripService {
                 request.getDescription(),
                 request.getPlace(),
                 userRepository.findByUsername(token.getName()).orElseThrow().getId(),
+                request.getCoverPhoto(),
                 initial_rating
         );
 

@@ -12,7 +12,7 @@ import { RegisterComponent } from './register';
 import { StartComponent } from './start/start.component';
 import { TemplateCreatorComponent } from './home/templates/template-creator/template-creator.component';
 import { TripCreatorComponent } from './home/trips/trip-creator/trip-creator.component';
-import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { TripDetailComponent } from './home/trip-detail/trip-detail.component';
 import { TripHistoryComponent } from './trip-history/trip-history.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { TripsComponent } from './home/trips/trips.component';
@@ -44,7 +44,6 @@ const routes: Routes = [
             },
         ]
     },
-
     { path: '', component: StartComponent},
     { path: '**', redirectTo: ''}
 ];

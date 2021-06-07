@@ -5,6 +5,7 @@ import { User } from 'src/app/_model/user';
 import { ParticipationService } from 'src/app/_services/participation.service';
 import { RecommendationService } from 'src/app/_services/recommendation.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { TripService } from 'src/app/_services/trip.service';
 import { UserService } from 'src/app/_services/user.service';
 
 @Component({
@@ -22,29 +23,31 @@ export class DashboardComponent implements OnInit {
   recommendations: Trip[];
   unreviewedCount = 0;
   incomingCount = 0;
+  incomingTrips: Trip[];
 
-  constructor(    
-    private token: TokenStorageService, 
-    private userService: UserService, 
+  constructor(
+    private token: TokenStorageService,
+    private userService: UserService,
     private participationService: ParticipationService,
-    private recommendationService: RecommendationService) { }
+    private recommendationService: RecommendationService,
+    private tripService: TripService) { }
 
   ngOnInit(): void {
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
     }
-    if (this.isLoggedIn == true){
+    if (this.isLoggedIn == true) {
       this.userService.getData().subscribe(
         (response: User) => {
           this.userData = response;
         }
-      )    
+      )
     }
 
-    if (this.isLoggedIn == true){
+    if (this.isLoggedIn == true) {
       this.participationService.userPast().subscribe(
-        (response: Participation[]) =>{
+        (response: Participation[]) => {
           this.pastList = response;
 
           this.pastList.forEach(participation => {
@@ -53,10 +56,18 @@ export class DashboardComponent implements OnInit {
         }
       )
     }
-
-    if (this.isLoggedIn == true){
+    if (this.isLoggedIn == true) {
+      {
+        this.tripService.getIncomingTrips().subscribe(
+          (response: Trip[]) => {
+            this.incomingTrips = response;
+          }
+        )
+      }
+    }
+    if (this.isLoggedIn == true) {
       this.participationService.userIncoming().subscribe(
-        (response: Participation[]) =>{
+        (response: Participation[]) => {
           this.incomingList = response;
 
           this.incomingList.forEach(participation => {
@@ -70,10 +81,14 @@ export class DashboardComponent implements OnInit {
       this.recommendationService.getRecommendation().subscribe(
         (response: Trip[]) => {
           this.recommendations = response;
-          console.log("Kurwa");
         }
       )
     }
 
   }
+  getPhoto(tripName: string, fileName: string): string {
+    return "http://localhost:8080/images/getTripPhoto?fileName=" + fileName + "&tripName=" + tripName;
+  }
 }
+
+

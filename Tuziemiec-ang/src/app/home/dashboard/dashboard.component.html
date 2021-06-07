@@ -1,28 +1,71 @@
-
 <body>
     <div class="greetings">
         Witaj {{userData.firstName}}!
     </div>
 
-<div class="wrapper">
+    <div class="wrapper">
     </div>
     <div class="box">
-        Nadchodzące wycieczki: {{incomingCount}} <br>
-        <div class="link" [routerLink]="['/home/panel/incoming']">
+        <div class="box-header">
+            Nadchodzące wycieczki: {{incomingCount}}
+        </div>
+        <!-- <div class="link" [routerLink]="['/home/panel/incoming']">
             Kliknij tutaj aby je wyświetlić!
+        </div> -->
+        <div class="box-body" id="scroll">
+            <div class="trip-card" *ngFor="let trip of incomingTrips" [routerLink]="['/home/trip', trip.id]">
+                <img class="photo" [src]="getPhoto(trip.template.name, trip.template.coverPhoto)">
+                <div class="details">
+                    <div class="details-name">
+                        {{trip.template.name}}
+                    </div>
+                    <div class="wrap">
+                        <div class="details-place">
+                            {{trip.template.place}}
+                        </div>
+                        <div class="details-date">
+                            {{trip.startDate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
     <div class="box">
-        Rekomendowane wycieczki:
-        <div class="link" [routerLink]="['/home/trip', trip.id]" *ngFor="let trip of recommendations">
-            <b>{{trip.template.name}} | </b> {{trip.startDate}} | {{trip.booking}} / {{trip.userLimit}} | {{trip.template.place}}
+        <div class="box-header">
+            Rekomendowane wycieczki:
         </div>
+        <div class="box-body" id="scroll">
+            <div class="trip-card" *ngFor="let trip of recommendations" [routerLink]="['/home/trip', trip.id]">
+                <img class="photo" [src]="getPhoto(trip.template.name, trip.template.coverPhoto)">
+                <div class="details">
+                    <div class="details-name">
+                        {{trip.template.name}}
+                    </div>
+                    <div class="wrap">
+                        <div class="details-place">
+                            {{trip.template.place}}
+                        </div>
+                        <div class="details-date">
+                            {{trip.startDate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="box">
-        Nieocenione wycieczki: {{unreviewedCount}} <br>
-        <div  class="link"  [routerLink]="['/home/panel/past']">
+        <div class="box-header">
+            Nieocenione wycieczki: {{unreviewedCount}} <br>
+        </div>
+        <div *ngIf="unreviewedCount != 0" class="link" [routerLink]="['/home/panel/past']">
             Kliknij tutaj aby je ocenić!
         </div>
-</div>
+
+        <div *ngIf="unreviewedCount == 0" class="link" [routerLink]="['/home/trips']">
+            Kliknij tutaj aby przeglądać dostępne wycieczki!
+        </div>
+    </div>
 </body>

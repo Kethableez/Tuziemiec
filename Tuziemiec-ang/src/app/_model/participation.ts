@@ -4,5 +4,4 @@ export interface Participation {
     startDate: Date;
     tripId: number;
     userId: number;
-    userName: string;
 }

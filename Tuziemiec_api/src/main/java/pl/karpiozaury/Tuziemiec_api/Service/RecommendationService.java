@@ -96,6 +96,7 @@ public class RecommendationService {
 
         trips.removeIf(participatedTrips::contains);
 
+
         return trips;
     }
 
@@ -126,6 +127,7 @@ public class RecommendationService {
         }
 
         trips.removeIf(participatedTrips::contains);
+        trips.removeIf(t -> t.getTemplate().getGuideId().equals(userRepository.findByUsername(token.getName()).orElseThrow().getId()));
 
         return trips;
     }

@@ -204,3 +204,49 @@ agm-map {
 textarea.ng-invalid.ng-dirty, input.ng-invalid.ng-dirty {
   border: 3px solid #9e2a2b;
 }
+
+.wrapper3 {
+  height: 10rem;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+
+#scroll::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+}
+
+#scroll::-webkit-scrollbar
+{
+	width: 8px;
+
+}
+
+#scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #585858;
+}
+
+.box {
+  margin-top: 10%;
+  margin-inline: auto;
+  width: 4rem;
+  border-radius: 20px;
+  height: 4rem;
+}
+.selection{
+  /* border: 2px solid #15588E; */
+  box-shadow: 0 0 10px #15588E;
+}
+
+
+.image {
+  cursor: pointer;
+  object-fit: cover;
+  border-radius: 20px;
+  width: 4rem;
+  height: 4rem;
+}

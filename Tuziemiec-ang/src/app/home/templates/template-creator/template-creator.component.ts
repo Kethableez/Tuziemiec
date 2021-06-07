@@ -27,10 +27,12 @@ export class TemplateCreatorComponent implements OnInit {
   badResponse = false;
   showMessage = false;
 
-  image: String;
-  tempImage: String;
-  selectedFile = null;
+  image: string;
+  selectedImage: string;
+  images: string[] = [];
   tripName: string;
+
+  selectedFiles: FileList;
 
   idList: number[] = [];
 
@@ -59,6 +61,7 @@ export class TemplateCreatorComponent implements OnInit {
     name: ['', Validators.required],
     place: ['', Validators.required],
     description: ['', Validators.required],
+    coverPhoto: [''],
     attraction_id: [this.idList]
   })
 
@@ -119,10 +122,49 @@ export class TemplateCreatorComponent implements OnInit {
     })
   };
 
+  onSelect(event) {
+
+    this.selectedFiles = event.target.files;
+    this.images = [];
+
+    for (let i = 0; i < event.target.files.length; i++){
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[i]);
+      reader.onload = (event: any) => {
+        this.images.push(event.target.result);
+      }
+    }
+
+  }
+
+  imageClick(imageName: string) {
+    let index = this.images.indexOf(imageName);
+    this.selectedImage = imageName;
+    this.templateForm.patchValue({
+      'coverPhoto': this.selectedFiles[index].name
+    })
+  }
+
+  isSelected(imageName: string) {
+    return (imageName == this.selectedImage)
+  }
+
+
   onSubmit(){
+    this.tripName = this.templateForm.get('name').value
+
     this.tripService.createTemplate(this.templateForm.value).subscribe(
       response => {
         this.onResponse(response.message, 1);
+        for(let i = 0; i < this.selectedFiles.length; i++){
+          var formData = new FormData();
+          formData.append('imageFile', this.selectedFiles[i]);
+
+          this.tripService.upload(formData, this.tripName).subscribe(
+            (res) => console.log(res),
+            (err) => console.log(err)
+          );
+        }
       },
       err => {
         this.onResponse(err.error.message, 2);

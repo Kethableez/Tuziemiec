@@ -49,6 +49,9 @@ public class TripController {
     @Autowired
     private TripTemplateRepository tripTemplateRepository;
 
+    @Autowired
+    private TripPhotoRepository photoRepository;
+
     //TODO: existsByName inside tripService
     @PostMapping("/create_template")
     public ResponseEntity<?> createTemplate(@RequestBody TripTemplateRequest request,
@@ -150,6 +153,18 @@ public class TripController {
         Trip trip = tripRepository.findById(id).orElseThrow();
         return new ResponseEntity<>(trip, HttpStatus.OK);
     }
+
+    @GetMapping("/getPhotoNames/{templateName}")
+    public ResponseEntity<List<String>> getPhotoNames(@PathVariable("templateName") String templateName) {
+        List<TripPhoto> photos =  photoRepository.findAllByTripName(templateName);
+        List<String> filenames = new ArrayList<>();
+        for (TripPhoto photo : photos) {
+            filenames.add(photo.getFileName());
+        }
+
+        return new ResponseEntity<>(filenames, HttpStatus.OK);
+    }
+
 
     @GetMapping("/templates")
     public ResponseEntity<List<TripTemplate>> getUserTemplates(UsernamePasswordAuthenticationToken token) {

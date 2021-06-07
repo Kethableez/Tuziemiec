@@ -17,16 +17,14 @@ import pl.karpiozaury.Tuziemiec_api.Service.ImageService;
 @RequiredArgsConstructor
 public class ImageController {
 
-    private static final String PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Trips\\";
-
     @Autowired
     private final ImageService imageService;
 
-    @GetMapping(value = "/getAvatar/{username}",
+    @GetMapping(value = "/getAvatar/{userId}",
             produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<?> showAvatar(@PathVariable("username") String username) {
+    public ResponseEntity<?> showAvatar(@PathVariable("userId") Long userId) {
         try {
-            byte[] image = imageService.getImage(username);
+            byte[] image = imageService.getImage(userId);
             return new ResponseEntity<>(image, HttpStatus.OK);
         }
         catch (Exception e){
@@ -35,11 +33,11 @@ public class ImageController {
         }
     }
 
-    @GetMapping(value = "/getDefault",
-            produces = MediaType.IMAGE_JPEG_VALUE)
+    @GetMapping(value = "/getBackground",
+            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public ResponseEntity<?> getDefault() {
         try {
-            byte[] image = imageService.getDefault();
+            byte[] image = imageService.getBackground();
             return new ResponseEntity<>(image, HttpStatus.OK);
         }
         catch (Exception e){
@@ -47,11 +45,25 @@ public class ImageController {
             return ResponseEntity.badRequest().body("Error!");
         }
     }
+
+    @GetMapping(value = "/getTripPhoto",
+            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public ResponseEntity<?> getTripPhoto(@RequestParam("tripName") String tripName, @RequestParam("fileName") String Filename) {
+        try {
+            byte[] image = imageService.getTripPhoto(tripName, Filename);
+            return new ResponseEntity<>(image, HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error!");
+        }
+    }
+
 
     @PostMapping("/uploadAvatar")
     public ResponseEntity<?> uploadAvatarImage(@RequestParam("imageFile") MultipartFile imageFile, UsernamePasswordAuthenticationToken token) {
         try {
-            imageService.saveImage(imageFile, token);
+            imageService.saveAvatar(imageFile, token);
             return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
         }
         catch (Exception e) {
@@ -60,16 +72,15 @@ public class ImageController {
         }
     }
 
-
-    @PutMapping("/uploadDefault")
-    public String uploadDefault(@RequestParam("imageFile") MultipartFile imageFile) {
+    @PostMapping("/uploadTripPhoto")
+    public ResponseEntity<?> uploadTripPhoto(@RequestParam("imageFile") MultipartFile imageFile, @RequestParam("templateName") String templateName) {
         try {
-            imageService.saveDefault(imageFile);
+            imageService.saveTripPhoto(imageFile, templateName);
+            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
         }
         catch (Exception e) {
             e.printStackTrace();
-            return "error";
+            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
         }
-        return "Image saved!";
     }
 }

@@ -7,5 +7,6 @@ export interface TripTemplate {
     description: string;
     guideId: number;
     rating: number;
+    coverPhoto: string;
     attractions: Attraction[];
 }

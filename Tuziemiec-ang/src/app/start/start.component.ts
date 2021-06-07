@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { TripService } from '../_services/trip.service';
 
 @Component({ 
     selector: 'app-start',
@@ -21,4 +22,5 @@ export class StartComponent implements OnInit {
             this.router.navigate(['/home/dashboard']);
           }
     }
+
 }

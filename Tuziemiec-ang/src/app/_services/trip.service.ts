@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Trip } from '../_model/trip';
@@ -47,5 +47,21 @@ import { TripTemplate } from '../_model/tripTemplate';
 
     public editTrip(tripData, id:number){
       return this.http.put<any>(this.apiServerUrl + '/trip/edit_trip/' + id, tripData);
+    }
+
+    public upload(photo: FormData, name: string) {
+      return this.http.post<any>(this.apiServerUrl + '/images/uploadTripPhoto?templateName=' + name, photo);
+    }
+
+    public getFilenames(tripName: string): Observable<string[]> {
+      return this.http.get<string[]>(this.apiServerUrl + '/trip/getPhotoNames/' + tripName);
+    }
+
+    public getPhoto(tripName: string, filename: string){
+      return this.http.get<any>(this.apiServerUrl + 'images/getTripPhoto?fileName=' + filename +'tripName=' + tripName);
+    }
+
+    public getBackground(){
+      return this.http.get<any>(this.apiServerUrl + 'images/getBackground');
     }
   }

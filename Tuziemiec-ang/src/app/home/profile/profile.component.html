@@ -1,4 +1,28 @@
 <body>
+  <div class="message-box good" *ngIf="showMessage && goodResponse && !badResponse" (click)="onClick()">
+    <div class="message-text">
+      {{message}}
+    </div>
+    <div class="close-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-x-lg"
+        viewBox="0 0 16 16">
+        <path
+          d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+      </svg>
+    </div>
+  </div>
+  <div class="message-box bad" *ngIf="showMessage && !goodResponse && badResponse" (click)="onClick()">
+    <div class="message-text">
+      {{message}}
+    </div>
+    <div class="close-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-x-lg"
+        viewBox="0 0 16 16">
+        <path
+          d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z" />
+      </svg>
+    </div>
+  </div>
 
   <div class="Profile_body" *ngIf="isLoggedIn">
     <div class="colummn">
@@ -29,34 +53,37 @@
     </div>
     <div class="column">
       <div class="Form">
-        <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()" >
+        <form [formGroup]="editPersonalDataForm" (ngSubmit)="onSubmit()">
           <div class="Form_body">
 
             <label>Imię: </label><br>
-            <input formControlName="firstName" type="text" [(ngModel)]="userData.firstName"><br>
+            <input formControlName="firstName" type="text" [ngModel]="userData.firstName"><br>
             <div class="validate" *ngIf="firstName.invalid && firstName.touched">
               <small *ngIf="firstName.errors?.required">Imię jest wymagane!</small>
             </div>
 
             <label>Nazwisko: </label>
-            <input formControlName="lastName" type="text" [(ngModel)]="userData.lastName"><br>
+            <input formControlName="lastName" type="text" [ngModel]="userData.lastName"><br>
             <div class="validate" *ngIf="lastName.invalid && lastName.touched">
               <small *ngIf="lastName.errors?.required">Nazwisko jest wymagane!</small>
             </div>
 
             <label>Data urodzenia: </label>
-            <input formControlName="dayOfBirth" type="date" [(ngModel)]="userData.dayOfBirth"><br>
+            <input formControlName="dayOfBirth" type="date" [ngModel]="userData.dayOfBirth"><br>
             <div *ngIf="this.isTried && !this.isDatePast">
               Data urodzenia musi być z przeszłości!
             </div><br>
-            <button class="button" type="submit">Zmień dane</button>
+            <div class="center">
+              <button class="button" type="submit">Zmień dane</button>
+            </div>
           </div>
         </form>
-
-
+        <hr>
+        <div class="center">
           <input type="file" (change)="onSelectFile($event)">
-          <button class="button" (click)="onUpload()">upload</button>
-        
+          <button class="button" (click)="onUpload()">Zmień zdjęcie</button>
+        </div>
+
       </div>
     </div>
   </div>

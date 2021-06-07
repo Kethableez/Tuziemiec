@@ -24,7 +24,7 @@ import { TripHistoryComponent } from './trip-history/trip-history.component';
 import { PastTripsComponent } from './trip-history/past-trips/past-trips.component';
 import { IncomingTripsComponent } from './trip-history/incoming-trips/incoming-trips.component';
 import { OrganizedTripsComponent } from './trip-history/organized-trips/organized-trips.component';
-import { TripDetailComponent } from './trip-detail/trip-detail.component'
+import { TripDetailComponent } from './home/trip-detail/trip-detail.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HomeComponent } from './home/home.component';

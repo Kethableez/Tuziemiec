@@ -25,6 +25,11 @@ export class ProfileComponent implements OnInit {
   selectedFile = null;
   response = false;
 
+  message: string;
+  goodResponse = false;
+  badResponse = false;
+  showMessage = true;
+
   isDatePast = false;
   isTried = false;
 
@@ -57,9 +62,14 @@ export class ProfileComponent implements OnInit {
     this.chceckDate();
     if (this.isDatePast){
       this.userService.editData(this.editPersonalDataForm.value).subscribe(
-        response => console.log('Success!', response),
+        response => {
+          this.onResponse(response.message, 1);
+          this.userData.firstName = this.editPersonalDataForm.get('firstName').value;
+          this.userData.lastName = this.editPersonalDataForm.get('lastName').value;
+          this.userData.dayOfBirth = this.editPersonalDataForm.get('dayOfBirth').value;
+        },
         err => {
-            this.errorMessage = err.error.message;
+          this.onResponse(err.error.message, 2);
         }
     );
 
@@ -78,7 +88,7 @@ export class ProfileComponent implements OnInit {
       this.userService.getData().subscribe(
         (response: User) => {
           this.userData = response;
-          this.image = "http://localhost:8080/images/getAvatar/" + this.userData.username;
+          this.image = "http://localhost:8080/images/getAvatar/" + this.userData.id;
         }
       )
     }
@@ -107,10 +117,10 @@ export class ProfileComponent implements OnInit {
     this.userService.uploadPhoto(formData).subscribe(
       (res) => { 
         this.image = this.tempImage;
-        console.log(res);
+        this.onResponse(res.message, 1);
       },
       (err) => {
-        console.log(err)
+        this.onResponse(err.error.message, 2);
       }
     )
   }
@@ -123,4 +133,26 @@ export class ProfileComponent implements OnInit {
     this.isDatePast = isPast(new Date(this.dayOfBirth.value));
     this.isTried = true;
 }
+
+onResponse(responseMessage: string, responseSelector: number) {
+  if (responseSelector == 1) {
+    this.goodResponse = true;
+    this.badResponse = false;
+  }
+  else if (responseSelector == 2) {
+    this.goodResponse = false;
+    this.badResponse = true;
+  }
+
+  this.showMessage = true;
+  this.message = responseMessage;
+}
+
+onClick(){
+  this.showMessage = false;
+  this.message = "";
+  this.goodResponse = false;
+  this.badResponse = false;
+}
+
 }

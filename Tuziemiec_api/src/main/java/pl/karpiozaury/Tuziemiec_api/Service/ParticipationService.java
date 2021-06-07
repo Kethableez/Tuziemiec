@@ -39,7 +39,6 @@ public class ParticipationService {
         Participation participation = new Participation(
                 tripId,
                 user.getId(),
-                user.getUsername(),
                 tripRepository.findById(tripId).orElseThrow().getStartDate()
         );
 
