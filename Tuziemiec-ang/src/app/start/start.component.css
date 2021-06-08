@@ -3,12 +3,13 @@ html {
 }
 
 body {
-  height: 100%;
-  background: #a6b3ae;
+  background: #aaa;
   margin: 0;
   padding: 0;
   font-family: arial, verdana, sans-serif;
+  overflow-y: scroll;
 }
+
 
 .Top {
   background-image: url(http://localhost:8080/images/getBackground);
@@ -161,19 +162,7 @@ body {
             margin-top: 0;
       }
 }
-/*a {
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 11px;
-  padding-bottom: 11px;
-  text-decoration: none;
-}
-*/
-/*  a:hover, a.focus {
-    color: #ffffff;
-  }*/
+
 
 .Bottom {
   background-color: #aaaaaa;
@@ -187,6 +176,8 @@ body {
   background-color: #fff;
   margin: auto;
   width: 80%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   min-height: 40vh;
   box-shadow: 0px 3px 6px black;
 }
@@ -218,3 +209,125 @@ body {
 }
 
 
+.box-info {
+  margin-inline: auto;
+  width: 90%;
+  margin-bottom: 6%;
+  background-color: #e6e6e6;
+  border-radius: 25px;
+  box-shadow: 0 3px 6px #aaaaaa;
+}
+
+.box-detail {
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.box {
+  width: 30%;
+  height: max-content;
+  margin-inline: 3%;
+}
+
+.box-header {
+  font-family: 'Alata';
+  color: #000000;
+  font-size: 2.5rem;
+}
+
+.box-icon {
+  fill: #15588E;
+  margin: auto;
+  width: 3rem;
+  height: 3rem;
+}
+
+.box-head {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.box-body {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  font-family: 'Roboto';
+  font-weight: 300;
+  text-align: center;
+  font-size: 1rem;
+  margin-inline: 14%;
+}
+
+.footer {
+  width: 100%;
+  background-color: #104169;
+  padding-bottom: 1%;
+}
+
+.pad {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.AppName-footer {
+  color: #ffffff;
+  margin-inline: auto;
+}
+
+.name-footer {
+  font-size: 3rem;
+}
+
+.capt-footer {
+  font-size: 1.2rem;
+}
+
+.cols {
+  display: flex;
+  margin-inline: 15%;
+}
+
+.col {
+  width: 30%;
+  margin-inline: 3%;
+}
+
+.txt1 {
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.txt2 {
+  font-family: 'Roboto';
+  font-weight: 200;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+.link-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 1%;
+  color: #fff;
+}
+
+a {
+  font-family: 'Roboto';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.2rem;
+}
+*/
+  a:hover, a.focus {
+    color: #ffffff;
+    text-decoration: underline  white;
+  }
