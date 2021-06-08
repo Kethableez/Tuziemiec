@@ -70,6 +70,7 @@ public class TripService {
                 request.getDescription(),
                 request.getPlace(),
                 0F,
+                request.getCoverPhoto(),
                 request.getLatitude(),
                 request.getLongitude()
         );

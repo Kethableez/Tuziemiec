@@ -59,16 +59,15 @@
             </div>
           </div>
 
+          <input type="file" (change)="onSelectFile($event)">
+
           <button class="Submit_button" type="submit" [disabled]="!attractionForm.valid">
             Stwórz atrakcję
           </button>
 
         </div>
-
-
       </form>
+
     </div>
-
-
   </div>
 </body>

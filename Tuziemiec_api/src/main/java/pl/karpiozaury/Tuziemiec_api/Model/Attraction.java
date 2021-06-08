@@ -28,6 +28,9 @@ public class Attraction {
     private Float rating;
 
     @NotBlank
+    private String coverPhoto;
+
+    @NotBlank
     private Float latitude;
 
     @NotBlank
@@ -37,12 +40,14 @@ public class Attraction {
                       @NotBlank String description,
                       @NotBlank String place,
                       @NotBlank Float rating,
+                      @NotBlank String coverPhoto,
                       @NotBlank Float latitude,
                       @NotBlank Float longitude) {
         this.name = name;
         this.description = description;
         this.place = place;
         this.rating = rating;
+        this.coverPhoto = coverPhoto;
         this.latitude = latitude;
         this.longitude = longitude;
     }

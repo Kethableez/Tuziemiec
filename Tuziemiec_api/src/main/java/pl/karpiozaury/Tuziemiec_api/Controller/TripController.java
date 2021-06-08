@@ -26,8 +26,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class TripController {
 
-    static final int started_booking_places = 0;
-
     @Autowired
     private TripRepository tripRepository;
 
@@ -52,7 +50,6 @@ public class TripController {
     @Autowired
     private TripPhotoRepository photoRepository;
 
-    //TODO: existsByName inside tripService
     @PostMapping("/create_template")
     public ResponseEntity<?> createTemplate(@RequestBody TripTemplateRequest request,
                                             UsernamePasswordAuthenticationToken token) {
@@ -66,11 +63,10 @@ public class TripController {
         return ResponseEntity.ok(new MessageResponse("Szablon dodany pomyślnie"));
     }
 
-    //TODO: existsByNameAndGuideId inside tripService
     @PostMapping("/create_trip")
     public ResponseEntity<?> createTrip(@RequestBody TripRequest request,
                                         UsernamePasswordAuthenticationToken token) {
-        //Check if template for specific user exists
+
         if(!tripTemplateRepository.existsByNameAndGuideId(request.getTemplateName(),
                 userRepository.findByUsername(token.getName()).orElseThrow().getId())) {
             return ResponseEntity
@@ -82,7 +78,7 @@ public class TripController {
 
         return ResponseEntity.ok(new MessageResponse("Wycieczka dodana pomyślnie"));
     }
-    //Edit details of trip
+
     @PutMapping("/edit_trip/{id}")
     public ResponseEntity<?> editTrip(@PathVariable("id") Long tripId,
                                       @RequestBody TripDataRequest request,
@@ -112,7 +108,6 @@ public class TripController {
         return ResponseEntity.ok(new MessageResponse("Pomyślnie zmieniono parametry wycziecki"));
     }
 
-    //Edit details of Template
     @PutMapping("/edit_template/{id}")
     public ResponseEntity<?> editTemplate(@PathVariable("id") Long templateId,
                                           @RequestBody TemplateDataRequest request,
@@ -158,6 +153,7 @@ public class TripController {
     public ResponseEntity<List<String>> getPhotoNames(@PathVariable("templateName") String templateName) {
         List<TripPhoto> photos =  photoRepository.findAllByTripName(templateName);
         List<String> filenames = new ArrayList<>();
+
         for (TripPhoto photo : photos) {
             filenames.add(photo.getFileName());
         }
@@ -194,21 +190,6 @@ public class TripController {
 
     @GetMapping("/available")
     public ResponseEntity<List<Trip>> getAvaliableTrips(){
-        //TODO: Wyświetlenie wycieczek na których użytkownik nie jest zapisany,
-        //      Pomijanie tych wycieczek na których użytkownik już jest
-        //      UsernamePassword...Token... etc.
-//        List<Participation> userParticipation = participationRepository.findAllByUserId(
-//                userRepository.findByUsername(token.getName()).orElseThrow().getId()
-//        ).orElseThrow();
-//
-//        List<Trip> avaliable = tripRepository.findByStartDateGreaterThanEqual(LocalDate.now());
-//
-//        avaliable.removeIf(t -> t.getBooking().equals(t.getUserLimit()));
-//
-//        for (Participation p : userParticipation) {
-//            avaliable.remove(tripRepository.findById(p.getTripId()).orElseThrow());
-//        }
-
         List<Trip> avaliable = tripService.getAvailableTrips();
         return new ResponseEntity<>(avaliable, HttpStatus.OK);
     }
@@ -218,5 +199,4 @@ public class TripController {
         List<Trip> past = tripRepository.findByStartDateLessThan(LocalDate.now());
         return new ResponseEntity<>(past, HttpStatus.OK);
     }
-
 }

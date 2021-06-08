@@ -46,6 +46,19 @@ public class ImageController {
         }
     }
 
+    @GetMapping(value = "/getAttractionPhoto",
+            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public ResponseEntity<?> getTripPhoto(@RequestParam("attractionId") Long attractionId) {
+        try {
+            byte[] image = imageService.getAttractionPhoto(attractionId);
+            return new ResponseEntity<>(image, HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error!");
+        }
+    }
+
     @GetMapping(value = "/getTripPhoto",
             produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public ResponseEntity<?> getTripPhoto(@RequestParam("tripName") String tripName, @RequestParam("fileName") String Filename) {
@@ -76,6 +89,18 @@ public class ImageController {
     public ResponseEntity<?> uploadTripPhoto(@RequestParam("imageFile") MultipartFile imageFile, @RequestParam("templateName") String templateName) {
         try {
             imageService.saveTripPhoto(imageFile, templateName);
+            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
+        }
+    }
+
+    @PostMapping("/uploadAttractionPhoto")
+    public ResponseEntity<?> uploadAttractionPhoto(@RequestParam("imageFile") MultipartFile imageFile) {
+        try {
+            imageService.saveAttractionPhoto(imageFile);
             return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
         }
         catch (Exception e) {

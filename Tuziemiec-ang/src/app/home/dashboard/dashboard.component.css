@@ -49,7 +49,7 @@ body {
     font-size: 2rem;
     color: #fff;
     border-radius: 10px 10px 0 0;
-    background-color: #304C89;
+    background-color: #104169;
 }
 
 .box-body {
@@ -64,14 +64,14 @@ body {
     margin-bottom: 1%;
     min-height: 20vh;
     border-radius: 10px;
-    background-color: #15588E;
+    background-color: #e6e6e6;
     box-shadow: 0 0 6px rgb(122, 122, 122);
     cursor: pointer;
 }
 
 .trip-card:hover {
     /* background-color: #1c6eb1; */
-    box-shadow: 0 0 20px #1c6eb1;
+    box-shadow: 0 0 20px black;
 }
 
 .photo {
@@ -94,7 +94,7 @@ body {
 
 .details-name {
     font-family: 'Alata';
-    color: #fff;
+    color: #000;
     text-align: center;
 }
 
@@ -106,7 +106,7 @@ body {
 .details-place {
     font-family: 'Roboto';
     font-weight: 300;
-    color: #fff;
+    color: #000;
     text-align: left;
     margin-left: 15%;
 }
@@ -114,7 +114,7 @@ body {
 .details-date {
     font-family: 'Roboto';
     font-weight: 300;
-    color: #fff;
+    color: #000;
     text-align: right;
     margin-right: 15%;
 }

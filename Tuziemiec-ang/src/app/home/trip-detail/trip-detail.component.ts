@@ -82,6 +82,10 @@ export class TripDetailComponent implements OnInit {
               for (let i = 0; i < this.filenames.length; i++){
                 this.tripImages.push("http://localhost:8080/images/getTripPhoto?fileName=" + this.filenames[i] + "&tripName=" + this.trip.template.name);
               }
+
+              for (let i = 0; i < this.trip.template.attractions.length; i++) {
+                this.tripImages.push("http://localhost:8080/images/getAttractionPhoto?attractionId=" + this.trip.template.attractions[i].id);
+              }
               this.selectedPhoto = this.tripImages[0];
             }
           )

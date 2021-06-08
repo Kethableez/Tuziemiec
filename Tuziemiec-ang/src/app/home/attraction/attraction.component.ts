@@ -103,6 +103,10 @@ export class AttractionComponent implements OnInit {
     this.badResponse = false;
   }
 
+  showPhoto(attId: number): string {
+    return "http://localhost:8080/images/getAttractionPhoto?attractionId=" + attId;
+  }
+
   onResponse(responseMessage: string, responseSelector: number) {
     if (responseSelector == 1) {
       this.goodResponse = true;

@@ -38,4 +38,8 @@ import { UsersAttraction } from '../_model/usersAttraction';
     public getUserSeenAttractions(): Observable<UsersAttraction[]> {
       return this.http.get<UsersAttraction[]>(this.apiServerUrl + this.attractionUrl + '/user_ratings');
     }
+
+    public uploadPhoto(photo: FormData) {
+      return this.http.post<any>(this.apiServerUrl + '/images/uploadAttractionPhoto', photo);
+    }
   }

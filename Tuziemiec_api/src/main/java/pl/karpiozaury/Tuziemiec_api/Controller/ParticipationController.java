@@ -51,7 +51,6 @@ public class ParticipationController {
         return new ResponseEntity<>(userCurrent, HttpStatus.OK);
     }
 
-    // List of past trips where user participated
     @GetMapping("/user_past")
     public ResponseEntity<List<Trip>> getUserPastTrips (UsernamePasswordAuthenticationToken token) {
         List<Participation> userPast = participationService.getUserPast(token);
@@ -63,7 +62,6 @@ public class ParticipationController {
         return new ResponseEntity<>(past, HttpStatus.OK);
     }
 
-    // List of current trips where user will participate
     @GetMapping("/user_incoming")
     public ResponseEntity<List<Trip>> getUserCurrentTrips (UsernamePasswordAuthenticationToken token) {
         List<Participation> userCurrent = participationService.getUserCurrent(token);
@@ -76,7 +74,6 @@ public class ParticipationController {
         return new ResponseEntity<>(current, HttpStatus.OK);
     }
 
-    // List of past trips which are not reviewed
     @GetMapping("/unreviewed_trips")
     public ResponseEntity<List<Trip>> getUnreviewedTrips(UsernamePasswordAuthenticationToken token){
         List<Participation> unreviewedParticipation = participationRepository.findAllByIsReviewedFalseAndUserId(
@@ -90,7 +87,6 @@ public class ParticipationController {
         return new ResponseEntity<>(unreviewed, HttpStatus.OK);
     }
 
-
     @GetMapping("/trip_past/{id}")
     public ResponseEntity<List<Participation>> getTripPastParticipationList (@PathVariable("id") Long tripId) {
         List<Participation> tripPast = participationService.getTripPast(tripId);
@@ -102,8 +98,6 @@ public class ParticipationController {
         List<Participation> tripCurrent = participationService.getTripCurrent(tripId);
         return new ResponseEntity<>(tripCurrent, HttpStatus.OK);
     }
-
-    // TODO: Trigger do BD zamiast increase i decrease
 
     @PostMapping("/participe/{id}")
     public ResponseEntity<?> singToTrip(@PathVariable("id") Long tripId, UsernamePasswordAuthenticationToken token) {

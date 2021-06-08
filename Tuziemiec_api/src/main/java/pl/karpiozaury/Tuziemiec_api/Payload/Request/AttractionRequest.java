@@ -9,6 +9,7 @@ public class AttractionRequest {
     private String name;
     private String description;
     private String place;
+    private String coverPhoto;
     private Float latitude;
     private Float longitude;
 }

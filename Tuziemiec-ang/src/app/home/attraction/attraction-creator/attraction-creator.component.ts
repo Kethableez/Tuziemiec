@@ -23,6 +23,8 @@ export class AttractionCreatorComponent implements OnInit {
   badResponse = false;
   showMessage = true;
 
+  selectedFile = null;
+
   lat: number;
   lon: number;
   zoom: number;
@@ -48,6 +50,7 @@ export class AttractionCreatorComponent implements OnInit {
     name: ['', Validators.required],
     place: ['', Validators.required],
     description: ['', Validators.required],
+    coverPhoto: ['', Validators.required],
     latitude: ['', Validators.required],
     longitude: ['', Validators.required]
   });
@@ -96,6 +99,16 @@ export class AttractionCreatorComponent implements OnInit {
     }
   }
 
+  onSelectFile(event){
+    if (event.target.files.length > 0) {
+      const f = event.target.files[0];
+      this.selectedFile = event.target.files[0];
+      this.attractionForm.patchValue({
+        'coverPhoto': event.target.files[0].name
+      })
+    }
+  }
+
   getPosition($event: google.maps.MouseEvent) {
     console.log($event);
     this.lat = $event.latLng.lat();
@@ -111,6 +124,12 @@ export class AttractionCreatorComponent implements OnInit {
     this.attractionService.createAttraction(this.attractionForm.value).subscribe(
       response => {
         this.onResponse(response.message, 1);
+        var formData = new FormData();
+        formData.append('imageFile', this.selectedFile);
+        this.attractionService.uploadPhoto(formData).subscribe(
+          (res) => console.log(res),
+          (err) => console.log(err)
+        )
       },
       err => {
         this.onResponse(err.error.message, 2);

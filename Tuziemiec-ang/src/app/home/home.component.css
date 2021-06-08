@@ -6,9 +6,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   height: 4em;
-  background-color: #104169
+  background-color: #104169;
   /* background-color: ; */
-  
 }
 
 .logo {

@@ -67,6 +67,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/getBackground").permitAll()
                 .antMatchers("/images/getAvatar/{username}").permitAll()
                 .antMatchers("/images/getTripPhoto").permitAll()
+                .antMatchers("/images/getAttractionPhoto").permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -16,9 +16,7 @@ import pl.karpiozaury.Tuziemiec_api.Repository.UserRepository;
 import pl.karpiozaury.Tuziemiec_api.Service.RecommendationService;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -60,9 +58,8 @@ public class RecommendationsController {
             trips = Alltrips;
         }
         else {
-            trips.add(Alltrips.get(rnd.nextInt(Alltrips.size())));
-            trips.add(Alltrips.get(rnd.nextInt(Alltrips.size())));
-            trips.add(Alltrips.get(rnd.nextInt(Alltrips.size())));
+            Collections.shuffle(Alltrips);
+            for (int i = 0; i < 3; i++) trips.add(Alltrips.get(i));
         }
 
         return new ResponseEntity<>(trips, HttpStatus.OK);
