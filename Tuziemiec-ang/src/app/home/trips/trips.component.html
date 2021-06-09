@@ -42,11 +42,13 @@
 
   <div class="white_body">
     <div class="wrapper">
-      <div class="trip-card" *ngFor="let trip of avTrips | filter:searchText">
+      <div class="trip-card" *ngFor="let trip of avTrips | filter : searchText">
         <div class="t-name">
           {{trip.template.name}}
         </div>
-
+        <div class="t-image">
+          <img class="image" [src]="getPhoto(trip.template.name, trip.template.coverPhoto)">
+        </div>
         <div class="t-body">
           <div class="t-details">
 
@@ -78,7 +80,7 @@
 
             <!-- Trip Date -->
             <div class="t-text">
-              {{trip.startDate}}
+              {{trip.startDate | date:'dd.MM.yy' }} r.
             </div>
 
             <!-- Participants number icon -->
@@ -100,7 +102,7 @@
           </div>
 
           <div class="t-funct">
-            <div class="t-rating">
+            <div class="t-rating" *ngIf="trip.template.rating != 0">
               <ng-template #t let-fill="fill">
                 <span class="star" [class.full]="fill === 100">
                   <span class="half" [style.width.%]="fill">★</span>☆
@@ -108,6 +110,10 @@
               </ng-template>
               <ngb-rating [max]="5" [(rate)]="trip.template.rating" [starTemplate]="t" [readonly]="true">
               </ngb-rating>
+            </div>
+
+            <div class="txt" *ngIf="trip.template.rating == 0">
+              Brak ocen
             </div>
 
             <div class="t-buttons">

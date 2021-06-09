@@ -31,7 +31,7 @@ export class TemplateCreatorComponent implements OnInit {
   selectedImage: string;
   images: string[] = [];
   tripName: string;
-
+  
   selectedFiles: FileList;
 
   idList: number[] = [];

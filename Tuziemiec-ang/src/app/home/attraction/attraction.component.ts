@@ -18,6 +18,8 @@ export class AttractionComponent implements OnInit {
   attractionSelector: Attraction;
   seenAttractions: UsersAttraction[];
   tempRating = 0;
+
+  searchText: string;
   
   message: string;
   goodResponse = false;
@@ -72,6 +74,13 @@ export class AttractionComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.attractions.find(obj => obj.id === this.attractionSelector.id).rating == 0){
+      this.attractions.find(obj => obj.id === this.attractionSelector.id).rating = this.ratingForm.get('rating').value
+    }
+    else {
+      this.attractions.find(obj => obj.id === this.attractionSelector.id).rating = (this.attractions.find(obj => obj.id === this.attractionSelector.id).rating + this.ratingForm.get('rating').value) / 2;
+    }
+
     this.attractionService.rateAttraction(this.ratingForm.value).subscribe(
       response => {
         this.onResponse(response.message, 1);
@@ -92,7 +101,6 @@ export class AttractionComponent implements OnInit {
         }
       }
     }
-
     return !isRated;
   }
 
@@ -119,6 +127,8 @@ export class AttractionComponent implements OnInit {
 
     this.showMessage = true;
     this.message = responseMessage;
+
+    this.ratingForm.reset;
   }
 
   reloadPage(): void {

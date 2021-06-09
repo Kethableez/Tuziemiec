@@ -90,4 +90,8 @@ export class TripsComponent implements OnInit {
     this.showMessage = true;
     this.message = responseMessage;
   }
+
+  getPhoto(tripName: string, fileName: string): string {
+    return "http://localhost:8080/images/getTripPhoto?fileName=" + fileName + "&tripName=" + tripName;
+  }
 }

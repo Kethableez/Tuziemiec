@@ -24,14 +24,29 @@
     </div>
   </div>
 
+  <div class="tools">
+    <div>
+
+    </div>
+    <form>
+      <input type="text" placeholder="Szukaj atrakcji" name="search" [(ngModel)]="searchText" autocomplete="off">
+    </form>
+
+  </div>
+
   <div class="white_body">
 
 
     <div class="wrapper">
-      <div class="attraction-box" *ngFor="let attraction of attractions">
+      <div class="attraction-box" *ngFor="let attraction of attractions | filter : searchText">
         <div class="attraction-name">
           {{attraction.name}}
         </div>
+
+        <div class="img">
+          <img class="image" [src]="showPhoto(attraction.id)">
+        </div>
+
         <div class="attraction-description">
           <div class="t-rating" *ngIf="attraction.rating != 0">
             <ng-template #t let-fill="fill">

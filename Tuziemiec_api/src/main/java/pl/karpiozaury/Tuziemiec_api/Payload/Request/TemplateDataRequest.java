@@ -9,6 +9,4 @@ import java.util.List;
 @Getter
 public class TemplateDataRequest {
     private String description;
-    private String place;
-    private List<String> attraction_names;
 }

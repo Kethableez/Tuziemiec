@@ -239,7 +239,6 @@ input[type=file]{
     font-family: 'Roboto';
     font-weight: 400;
     text-align: center;
-    width: 100%;
     margin-inline: 30%;
     margin-bottom: 2%;
     -webkit-transition: 0.5s;

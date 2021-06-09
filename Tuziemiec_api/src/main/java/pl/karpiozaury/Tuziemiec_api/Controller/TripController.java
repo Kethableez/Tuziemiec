@@ -118,28 +118,17 @@ public class TripController {
          )) {
              return ResponseEntity
                      .badRequest()
-                     .body(new MessageResponse("Nie możesz zmienić parametrów tego szablonu"));
+                     .body(new MessageResponse("Nie możesz zmienić parametrów tego szablonu!"));
          }
          TripTemplate template = tripTemplateRepository.findById(templateId).orElseThrow();
 
-         if(!request.getPlace().equals("")){
-             template.setPlace(request.getPlace());
-         }
 
          if(!request.getDescription().equals("")){
              template.setDescription(request.getDescription());
          }
 
-         if(!request.getAttraction_names().isEmpty()){
-             Set<Attraction> attractions = new HashSet<>();
-             request.getAttraction_names().forEach(
-                     (name) -> attractions.add(attractionRepository.findByName(name).orElseThrow())
-             );
-             template.setAttractions(attractions);
-         }
-
          tripTemplateRepository.save(template);
-         return ResponseEntity.ok(new MessageResponse("Pomyślnie zmieniono parametry wycziecki"));
+         return ResponseEntity.ok(new MessageResponse("Pomyślnie zmieniono opis szablonu!"));
     }
 
     // All necessary GetMappings

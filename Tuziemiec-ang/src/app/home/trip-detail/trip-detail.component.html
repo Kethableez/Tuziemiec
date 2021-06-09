@@ -41,7 +41,7 @@
           <div class="Text2"> {{this.trip.template.place}} </div>
 
           <div class="Text1">Data: </div>
-          <div class="Text2">{{this.trip.startDate}} - {{this.trip.endDate}} </div>
+          <div class="Text2">{{this.trip.startDate | date:'dd.MM.yy' }} - {{this.trip.endDate | date:'dd.MM.yy' }} </div>
 
           <div class="Text1">Ocena:</div>
           <div class="Text2">
@@ -93,10 +93,15 @@
     </div>
   </div>
 
-  <div class="Trip-comments shadow" *ngIf="reviews.length != 0">
+  <div class="Trip-comments shadow">
     <div class="Text3">
       Komentarze i oceny
     </div>
+
+    <div class="Text2" *ngIf="reviews.length == 0">
+      Brak komentarzy :(
+    </div>
+
     <div *ngFor="let rev of reviews">
       <div class="Comment">
         <div class="col1 ">

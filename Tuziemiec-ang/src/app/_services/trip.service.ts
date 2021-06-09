@@ -25,6 +25,10 @@ import { TripTemplate } from '../_model/tripTemplate';
       return this.http.get<TripTemplate[]>(this.apiServerUrl + '/trip/templates');
     }
 
+    public editTemplate(description, id: number) {
+      return this.http.put<any>(this.apiServerUrl + '/trip/edit_template/' + id, description);
+    }
+
     public getTrip(id: number): Observable<any> {
       return this.http.get<Trip>(this.apiServerUrl + '/trip/' + id);
     }
