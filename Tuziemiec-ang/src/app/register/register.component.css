@@ -60,7 +60,7 @@ body {
   background-size: cover;
   background-position: center;
   background-blend-mode: exclusion;
-  height: 150vh;
+  height: 180vh;
   width: 100%;
   opacity: 60%;
 }
@@ -75,6 +75,13 @@ body {
   padding-top: 1.5em;
   border-radius: 35px;
   width: 40em;
+  max-height: 100%;
+}
+
+@media (min-height: 730px) {
+  .Bottom {
+    height: 130vh;
+  }
 }
 
 @media (max-width: 830px) {

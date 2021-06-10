@@ -25,10 +25,10 @@
   </div>
 
   <div class="Profile_body" *ngIf="isLoggedIn">
-    <div class="colummn">
+    <div class="column">
       <img class="image" [src]="image" alt="Avatar">
     </div>
-    <div class="column">
+    <div class="column col-data">
       <label>Imię i nazwisko:</label>
       <div class="data">
         {{userData.firstName}} {{userData.lastName}}

@@ -4,14 +4,14 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\home",
-    "\\src\\app\\home\\trips",
-    "\\src\\app\\login",
+    "\\src\\app\\home\\attraction",
+    "\\src\\app\\home\\dashboard",
+    "\\src\\app\\home\\profile",
+    "\\src\\app\\register",
     "\\src\\app\\start",
-    "\\src\\app\\trip-detail",
     "\\src\\app\\trip-history",
-    "\\src\\app\\trip-history\\organized-trips",
     "\\src\\app\\trip-history\\past-trips"
   ],
-  "SelectedNode": "\\src\\app\\start\\start.component.css",
+  "SelectedNode": "\\src\\app\\register\\register.component.css",
   "PreviewInSolutionExplorer": false
 }

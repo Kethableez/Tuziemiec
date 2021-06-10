@@ -149,8 +149,8 @@ input[type=file]{
   }
 
 .Profile_body {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 0px 0px 35px 35px;
@@ -200,21 +200,24 @@ input[type=file]{
     border: 2px solid #157f1f;;
   }
 
-  .column {
-    margin: 3%;
-  }
-
+.column {
+  margin: 3%;
+}
+.col-data {
+      width: 15em;
+      margin: 3% 0;
+}
   label {
     font-family: 'Roboto';
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 0;
   }
 
   .data {
     font-family: 'Roboto';
     font-weight: 300;
-    font-size: 25px;
+    font-size: 1.25rem;
     margin: 0;
   }
 
@@ -258,3 +261,13 @@ input[type=file]{
     background-color: #f3baba;
     bottom: 0;
   }
+@media (max-width: 1350px) {
+  .Profile_body {
+        flex-direction: column;
+        align-items: center;
+  }
+  .col-data {
+        width: 100%;
+        text-align: center;
+  }
+}
