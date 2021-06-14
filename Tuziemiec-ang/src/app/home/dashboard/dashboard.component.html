@@ -15,6 +15,7 @@
         <div class="box-body" id="scroll">
             <div class="trip-card" *ngFor="let trip of incomingTrips" [routerLink]="['/home/trip', trip.id]">
                 <img class="photo" [src]="getPhoto(trip.template.name, trip.template.coverPhoto)">
+                <!-- <img class="photo" src="'http://localhost:8080/images/getTripPhoto?fileName=' + {{trip.template.name}} + '&tripName=' + "> -->
                 <div class="details">
                     <div class="details-name">
                         {{trip.template.name}}
@@ -49,6 +50,7 @@
                         </div>
                         <div class="details-date">
                             {{trip.startDate | date:'dd.MM.yy' }} r.
+
                         </div>
                     </div>
                 </div>
