@@ -101,6 +101,7 @@ body {
 .wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 0 1em;
 }
 
 .details-place {
@@ -108,7 +109,7 @@ body {
     font-weight: 300;
     color: #000;
     text-align: left;
-    margin-left: 15%;
+    /*margin-left: 15%;*/
 }
 
 .details-date {
@@ -116,9 +117,18 @@ body {
     font-weight: 300;
     color: #000;
     text-align: right;
-    margin-right: 15%;
+    /*margin-right: 15%;*/
 }
-
+@media (max-height: 730px) {
+      .box {
+            font-size: 1.25rem;
+      }
+}
+@media (max-height: 730px) and (max-width: 870px) {
+      .trip-card {
+            width: 40%;
+      }
+}
 #scroll::-webkit-scrollbar-track
 {
     transform:rotateX(180);
