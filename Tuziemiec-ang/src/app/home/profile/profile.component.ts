@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
       this.userService.getData().subscribe(
         (response: User) => {
           this.userData = response;
-          this.image = "http://localhost:8080/images/getAvatar/" + this.userData.id;
+          this.image = "http://virt5.iiar.pwr.edu.pl:8089/images/getAvatar/" + this.userData.id;
         }
       )
     }
@@ -115,7 +115,7 @@ export class ProfileComponent implements OnInit {
     var formData = new FormData();
     formData.append('imageFile', this.selectedFile);
     this.userService.uploadPhoto(formData).subscribe(
-      (res) => { 
+      (res) => {
         this.image = this.tempImage;
         this.onResponse(res.message, 1);
       },

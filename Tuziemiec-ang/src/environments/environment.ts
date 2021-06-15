@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:8080'
-  // apiBaseUrl: 'http://virt5.iiar.pwr.edu.pl:8089'
+  // apiBaseUrl: 'http://localhost:8080'
+  apiBaseUrl: 'http://virt5.iiar.pwr.edu.pl:8089'
 };
 
 /*

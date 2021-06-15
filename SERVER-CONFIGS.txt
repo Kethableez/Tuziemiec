@@ -4,5 +4,7 @@ ImageService:
     private static final String TRIP_PATH
     private static final String BACKGROUND_PATH
 
+INSERT INTO tuziemiec.roles(name) VALUES('ROLE_ADMIN');
+INSERT INTO tuziemiec.roles(name) VALUES('ROLE_USER');
 
 

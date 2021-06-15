@@ -20,7 +20,7 @@ export class AttractionComponent implements OnInit {
   tempRating = 0;
 
   searchText: string;
-  
+
   message: string;
   goodResponse = false;
   badResponse = false;
@@ -37,7 +37,7 @@ export class AttractionComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    
+
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       //this.currentUser = this.token.getUser();
@@ -112,7 +112,7 @@ export class AttractionComponent implements OnInit {
   }
 
   showPhoto(attId: number): string {
-    return "http://localhost:8080/images/getAttractionPhoto?attractionId=" + attId;
+    return "http://virt5.iiar.pwr.edu.pl:8089/images/getAttractionPhoto?attractionId=" + attId;
   }
 
   onResponse(responseMessage: string, responseSelector: number) {

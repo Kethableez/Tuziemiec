@@ -12,7 +12,7 @@ body {
 
 
 .Top {
-  background-image: url(http://localhost:8080/images/getBackground);
+  background-image: url(http://virt5.iiar.pwr.edu.pl:8089/images/getBackground);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -118,7 +118,7 @@ body {
   font-weight: 100; */
 
   font-family: 'Roboto';
-  font-size: 1.75rem; 
+  font-size: 1.75rem;
   font-weight: 100;
   /* font-style: italic; */
   /* font-stretch: condensed; */
@@ -330,4 +330,8 @@ a {
   a:hover, a.focus {
     color: #ffffff;
     text-decoration: underline  white;
+  }
+
+  .center {
+    text-align: center;
   }

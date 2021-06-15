@@ -39,6 +39,11 @@ textarea {
   height: 8em;
 }
 
+.scrl {
+  overflow-y: scroll; /* new */
+  height: 65vh;
+}
+
 .wrapper {
   display: grid;
   border-radius: 0 0 35px 0;
@@ -51,7 +56,8 @@ textarea {
 
 .list {
   background-color: #e6e6e6;
-  overflow: auto; /* new */
+
+  height: 100%;
 }
 
 

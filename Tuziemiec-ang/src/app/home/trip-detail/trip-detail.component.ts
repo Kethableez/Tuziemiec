@@ -49,7 +49,7 @@ export class TripDetailComponent implements OnInit {
     if (this.token.getToken()) {
       this.isLoggedIn = true;
       this.currentUser = this.token.getUser();
-      
+
       this.userService.getData().subscribe(
         (response: User) => {
           this.currUser = response;
@@ -80,11 +80,11 @@ export class TripDetailComponent implements OnInit {
             (response: string[]) => {
               this.filenames = response;
               for (let i = 0; i < this.filenames.length; i++){
-                this.tripImages.push("http://localhost:8080/images/getTripPhoto?fileName=" + this.filenames[i] + "&tripName=" + this.trip.template.name);
+                this.tripImages.push("http://virt5.iiar.pwr.edu.pl:8089/images/getTripPhoto?fileName=" + this.filenames[i] + "&tripName=" + this.trip.template.name);
               }
 
               for (let i = 0; i < this.trip.template.attractions.length; i++) {
-                this.tripImages.push("http://localhost:8080/images/getAttractionPhoto?attractionId=" + this.trip.template.attractions[i].id);
+                this.tripImages.push("http://virt5.iiar.pwr.edu.pl:8089/images/getAttractionPhoto?attractionId=" + this.trip.template.attractions[i].id);
               }
               this.selectedPhoto = this.tripImages[0];
             }
@@ -108,7 +108,7 @@ export class TripDetailComponent implements OnInit {
   }
 
   getPhoto(userId: number): string {
-    return "http://localhost:8080/images/getAvatar/" + userId;
+    return "http://virt5.iiar.pwr.edu.pl:8089/images/getAvatar/" + userId;
   }
 
 
@@ -117,7 +117,7 @@ export class TripDetailComponent implements OnInit {
       response =>{
         console.log('Success!', response);
         this.reviews.find(r => r.id == reviewId).downVote -= 1;
-      }, 
+      },
       err => {
           this.message = err.error.message;
       }
@@ -148,7 +148,7 @@ export class TripDetailComponent implements OnInit {
         this.onResponse(err.error.message, 2);
       }
       )
-    
+
   }
 
   onPhotoClick(photoName: string) {

@@ -27,8 +27,8 @@
   <div>
 
     <div class="wrapper">
-      <div class="list" id="scroll">
-        <div class="Text2 sticky">
+      <div class="list" >
+        <div class="Text2">
           <form [formGroup]="search" (ngSubmit)="findAttractions(place.value)">
             <input style="
               border-radius: 30px;
@@ -45,17 +45,20 @@
           </form>
         </div>
         <hr>
-        <div class="Text2" *ngFor="let attraction of attractionList">
-          <div class="link selected" *ngIf="selectedAttractions.includes(attraction)"
-            (click)="onAttractionRemove(attraction)">
-            {{attraction.name}}
-          </div>
+        <div class="scrl" id="scroll">
+          <div class="Text2" *ngFor="let attraction of attractionList">
+            <div class="link selected" *ngIf="selectedAttractions.includes(attraction)"
+              (click)="onAttractionRemove(attraction)">
+              {{attraction.name}}
+            </div>
 
-          <div class="link" *ngIf="!selectedAttractions.includes(attraction)" (click)="onAttractionAdd(attraction)">
-            {{attraction.name}}
+            <div class="link" *ngIf="!selectedAttractions.includes(attraction)" (click)="onAttractionAdd(attraction)">
+              {{attraction.name}}
+            </div>
+            <hr>
           </div>
-          <hr>
         </div>
+
       </div>
 
 
@@ -89,7 +92,7 @@
               <hr>
 
               <input type="file" multiple (change)="onSelect($event)">
-              
+
               <hr>
 
 
@@ -102,7 +105,7 @@
                   <div *ngIf="!isSelected(photo)">
                     <img class="image" [src]="photo" >
                   </div>
-                </div>              
+                </div>
               </div>
               <hr>
               <button class="Submit_button" type="submit" [disabled]="!selectedFiles || !templateForm.valid">
