@@ -20,10 +20,15 @@ import java.nio.file.Paths;
 @Service
 @RequiredArgsConstructor
 public class ImageService {
-    private static final String AVATAR_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Avatars\\";
-    private static final String TRIP_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Trips\\";
-    private static final String ATTRACTION_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Attractions\\";
-    private static final String BACKGROUND_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\";
+//    private static final String AVATAR_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Avatars\\";
+//    private static final String TRIP_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Trips\\";
+//    private static final String ATTRACTION_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\Attractions\\";
+//    private static final String BACKGROUND_PATH = "C:\\Users\\Amadeusz\\Desktop\\Tuziemiec\\Tuziemiec_images\\";
+
+    private static final String AVATAR_PATH = "Photos\\Avatars\\";
+    private static final String TRIP_PATH = "Photos\\Trips\\";
+    private static final String ATTRACTION_PATH = "Photos\\Attractions\\";
+    private static final String BACKGROUND_PATH = "Photos\\";
 
     @Autowired
     private final UserRepository userRepository;
@@ -48,6 +53,7 @@ public class ImageService {
     public byte[] getBackground() throws IOException {
         String filename = "background.jpg";
         Path path = Paths.get(BACKGROUND_PATH + filename);
+//        Path path = Paths.get(filename);
         return Files.readAllBytes(path);
     }
 
@@ -74,6 +80,24 @@ public class ImageService {
         currentUser.setAvatar(filename);
         userRepository.save(currentUser);
     }
+
+    public void saveDefault(MultipartFile imageFile) throws Exception {
+        String filename = "default_avatar" + ".jpeg";
+
+        byte[] bytes = imageFile.getBytes();
+        Path path =  Paths.get(AVATAR_PATH + filename);
+        Files.write(path, bytes);
+    }
+
+    public void saveBackground(MultipartFile imageFile) throws Exception {
+        String filename = "background" + ".jpg";
+
+        byte[] bytes = imageFile.getBytes();
+        Path path = Paths.get(BACKGROUND_PATH + filename);
+        Files.write(path, bytes);
+    }
+
+
 
     public void saveTripPhoto(MultipartFile imageFile, String templateName) throws Exception {
         byte[] bytes = imageFile.getBytes();

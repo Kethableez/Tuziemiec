@@ -108,4 +108,28 @@ public class ImageController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
         }
     }
+
+    @PostMapping("/uploadDefault")
+    public ResponseEntity<?> uploadDefaultPhoto(@RequestParam("imageFile") MultipartFile imageFile) {
+        try {
+            imageService.saveDefault(imageFile);
+            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
+        }
+    }
+
+    @PostMapping("/uploadBackground")
+    public ResponseEntity<?> uploadBackground(@RequestParam("imageFile") MultipartFile imageFile) {
+        try {
+            imageService.saveBackground(imageFile);
+            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
+        }
+    }
 }
