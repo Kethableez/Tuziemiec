@@ -80,11 +80,11 @@ export class TripDetailComponent implements OnInit {
             (response: string[]) => {
               this.filenames = response;
               for (let i = 0; i < this.filenames.length; i++){
-                this.tripImages.push("http://http://virt5.iiar.pwr.edu.pl:8089/images/getTripPhoto?fileName=" + this.filenames[i] + "&tripName=" + this.trip.template.name);
+                this.tripImages.push("http://virt5.iiar.pwr.edu.pl:8089/images/getTripPhoto?fileName=" + this.filenames[i] + "&tripName=" + this.trip.template.name);
               }
 
               for (let i = 0; i < this.trip.template.attractions.length; i++) {
-                this.tripImages.push("http://http://virt5.iiar.pwr.edu.pl:8089/images/getAttractionPhoto?attractionId=" + this.trip.template.attractions[i].id);
+                this.tripImages.push("http://virt5.iiar.pwr.edu.pl:8089/images/getAttractionPhoto?attractionId=" + this.trip.template.attractions[i].id);
               }
               this.selectedPhoto = this.tripImages[0];
             }
@@ -108,7 +108,7 @@ export class TripDetailComponent implements OnInit {
   }
 
   getPhoto(userId: number): string {
-    return "http://http://virt5.iiar.pwr.edu.pl:8089/images/getAvatar/" + userId;
+    return "http://virt5.iiar.pwr.edu.pl:8089/images/getAvatar/" + userId;
   }
 
 
