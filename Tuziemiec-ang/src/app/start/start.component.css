@@ -12,7 +12,7 @@ body {
 
 
 .Top {
-  background-image: url(http://virt5.iiar.pwr.edu.pl:8089/images/getBackground);
+  background-image: url(http://localhost:8080/images/getBackground);
   background-size: cover;
   background-position: center;
   width: 100%;

@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
       this.userService.getData().subscribe(
         (response: User) => {
           this.userData = response;
-          this.image = "http://virt5.iiar.pwr.edu.pl:8089/images/getAvatar/" + this.userData.id;
+          this.image = "http://localhost:8080/images/getAvatar/" + this.userData.id;
         }
       )
     }

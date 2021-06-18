@@ -100,7 +100,7 @@ export class TemplatesComponent implements OnInit {
 
 
   getPhoto(tripName: string, fileName: string): string {
-    return "http://virt5.iiar.pwr.edu.pl:8089/images/getTripPhoto?fileName=" + fileName + "&tripName=" + tripName;
+    return "http://localhost:8080/images/getTripPhoto?fileName=" + fileName + "&tripName=" + tripName;
   }
 
 

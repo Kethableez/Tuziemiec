@@ -27,28 +27,28 @@ import java.util.Set;
 public class TripController {
 
     @Autowired
-    private TripRepository tripRepository;
+    private final TripRepository tripRepository;
 
     @Autowired
-    private ParticipationService participationService;
+    private final ParticipationService participationService;
 
     @Autowired
-    private ParticipationRepository participationRepository;
+    private final ParticipationRepository participationRepository;
 
     @Autowired
-    private TripService tripService;
+    private final TripService tripService;
 
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    private AttractionRepository attractionRepository;
+    private final AttractionRepository attractionRepository;
 
     @Autowired
-    private TripTemplateRepository tripTemplateRepository;
+    private final TripTemplateRepository tripTemplateRepository;
 
     @Autowired
-    private TripPhotoRepository photoRepository;
+    private final ImageRepository imageRepository;
 
     @PostMapping("/create_template")
     public ResponseEntity<?> createTemplate(@RequestBody TripTemplateRequest request,
@@ -140,11 +140,12 @@ public class TripController {
 
     @GetMapping("/getPhotoNames/{templateName}")
     public ResponseEntity<List<String>> getPhotoNames(@PathVariable("templateName") String templateName) {
-        List<TripPhoto> photos =  photoRepository.findAllByTripName(templateName);
+//        List<TripPhoto> photos =  photoRepository.findAllByTripName(templateName);
+        List<Image> images = imageRepository.findAllByFilePurpose(templateName);
         List<String> filenames = new ArrayList<>();
 
-        for (TripPhoto photo : photos) {
-            filenames.add(photo.getFileName());
+        for (Image image : images) {
+            filenames.add(image.getFileName());
         }
 
         return new ResponseEntity<>(filenames, HttpStatus.OK);

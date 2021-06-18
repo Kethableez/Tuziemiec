@@ -112,7 +112,7 @@ export class AttractionComponent implements OnInit {
   }
 
   showPhoto(attId: number): string {
-    return "http://virt5.iiar.pwr.edu.pl:8089/images/getAttractionPhoto?attractionId=" + attId;
+    return "http://localhost:8080/images/getAttractionPhoto?attractionId=" + attId;
   }
 
   onResponse(responseMessage: string, responseSelector: number) {

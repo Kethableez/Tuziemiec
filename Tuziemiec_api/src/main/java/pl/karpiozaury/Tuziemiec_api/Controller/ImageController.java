@@ -20,24 +20,11 @@ public class ImageController {
     @Autowired
     private final ImageService imageService;
 
-    @GetMapping(value = "/getAvatar/{userId}",
-            produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<?> showAvatar(@PathVariable("userId") Long userId) {
-        try {
-            byte[] image = imageService.getImage(userId);
-            return new ResponseEntity<>(image, HttpStatus.OK);
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.badRequest().body("Error!");
-        }
-    }
-
     @GetMapping(value = "/getBackground",
             produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public ResponseEntity<?> getDefault() {
         try {
-            byte[] image = imageService.getBackground();
+            byte[] image = imageService.getBackground().getData();
             return new ResponseEntity<>(image, HttpStatus.OK);
         }
         catch (Exception e){
@@ -46,32 +33,29 @@ public class ImageController {
         }
     }
 
-    @GetMapping(value = "/getAttractionPhoto",
-            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public ResponseEntity<?> getTripPhoto(@RequestParam("attractionId") Long attractionId) {
+    @PostMapping("/uploadBackground")
+    public ResponseEntity<?> uploadBackground(@RequestParam("imageFile") MultipartFile imageFile) {
         try {
-            byte[] image = imageService.getAttractionPhoto(attractionId);
-            return new ResponseEntity<>(image, HttpStatus.OK);
+            imageService.saveBackground(imageFile);
+            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
         }
-        catch (Exception e){
+        catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body("Error!");
+            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
         }
     }
 
-    @GetMapping(value = "/getTripPhoto",
-            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public ResponseEntity<?> getTripPhoto(@RequestParam("tripName") String tripName, @RequestParam("fileName") String Filename) {
+    @PostMapping("/uploadDefault")
+    public ResponseEntity<?> uploadDefault(@RequestParam("imageFile") MultipartFile imageFile) {
         try {
-            byte[] image = imageService.getTripPhoto(tripName, Filename);
-            return new ResponseEntity<>(image, HttpStatus.OK);
+            imageService.saveDefault(imageFile);
+            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
         }
-        catch (Exception e){
+        catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body("Error!");
+            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
         }
     }
-
 
     @PostMapping("/uploadAvatar")
     public ResponseEntity<?> uploadAvatarImage(@RequestParam("imageFile") MultipartFile imageFile, UsernamePasswordAuthenticationToken token) {
@@ -82,6 +66,19 @@ public class ImageController {
         catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
+        }
+    }
+
+    @GetMapping(value = "/getAvatar/{userId}",
+            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public ResponseEntity<?> showAvatar(@PathVariable("userId") Long userId) {
+        try {
+            byte[] image = imageService.getAvatar(userId).getData();
+            return new ResponseEntity<>(image, HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error!");
         }
     }
 
@@ -97,6 +94,19 @@ public class ImageController {
         }
     }
 
+    @GetMapping(value = "/getTripPhoto",
+            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public ResponseEntity<?> getTripPhoto(@RequestParam("tripName") String tripName, @RequestParam("fileName") String Filename) {
+        try {
+            byte[] image = imageService.getTripPhoto(tripName, Filename).getData();
+            return new ResponseEntity<>(image, HttpStatus.OK);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("Error!");
+        }
+    }
+
     @PostMapping("/uploadAttractionPhoto")
     public ResponseEntity<?> uploadAttractionPhoto(@RequestParam("imageFile") MultipartFile imageFile) {
         try {
@@ -109,27 +119,16 @@ public class ImageController {
         }
     }
 
-    @PostMapping("/uploadDefault")
-    public ResponseEntity<?> uploadDefaultPhoto(@RequestParam("imageFile") MultipartFile imageFile) {
+    @GetMapping(value = "/getAttractionPhoto",
+            produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public ResponseEntity<?> getTripPhoto(@RequestParam("attractionId") Long attractionId) {
         try {
-            imageService.saveDefault(imageFile);
-            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
+            byte[] image = imageService.getAttractionPhoto(attractionId).getData();
+            return new ResponseEntity<>(image, HttpStatus.OK);
         }
-        catch (Exception e) {
+        catch (Exception e){
             e.printStackTrace();
-            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
-        }
-    }
-
-    @PostMapping("/uploadBackground")
-    public ResponseEntity<?> uploadBackground(@RequestParam("imageFile") MultipartFile imageFile) {
-        try {
-            imageService.saveBackground(imageFile);
-            return ResponseEntity.ok(new MessageResponse("Dodano zdjęcie!"));
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.badRequest().body(new MessageResponse("Error!"));
+            return ResponseEntity.badRequest().body("Error!");
         }
     }
 }
